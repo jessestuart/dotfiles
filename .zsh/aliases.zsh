@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # SSH
 alias ssh="/usr/bin/ssh"
 

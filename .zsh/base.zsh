@@ -85,6 +85,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_inte
 
 export GPG_TTY=$(tty)
 
-# [ -f "${HOME}/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
+[ -f "${HOME}/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
