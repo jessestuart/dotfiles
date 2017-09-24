@@ -1,1 +1,1 @@
-/Users/jesse/Dropbox/Mackup/.zshrc
+source $HOME/.zsh/zshrc
