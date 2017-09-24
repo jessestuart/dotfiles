@@ -29,6 +29,7 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -66,8 +67,6 @@ let g:mapleader = ','
 nmap <leader>w :w!<cr>
 nmap <leader>1 :wq!<cr>
 nmap <leader>q :q!<cr>
-" :W sudo saves the file (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 " Enable line numbers.
 set number
@@ -81,7 +80,6 @@ set scrolloff=7
 
 " Turn on the WiLd menu
 set wildmenu
-
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.class
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -165,8 +163,8 @@ if (has('nvim'))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  let NVIM_TUI_ENABLE_TRUE_COLOR=1
-  let NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+  let g:NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 set termguicolors
 
@@ -337,8 +335,6 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 autocmd BufWrite *.groovy :call DeleteTrailingWS()
-" autocmd BufWrite .* :call DeleteTrailingWS()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ag searching and cope displaying
@@ -398,8 +394,12 @@ map <leader>pp :setlocal paste!<cr>
 
 map <leader>fz :FZF<cr>
 
-map <leader>src :source ~/.config/nvim/init.vim<cr>
-map <leader>pig :PlugInstall<cr>
+map <leader>Z :Goyo<cr>
+map <leader>sc :source ~/.config/nvim/init.vim<cr>
+map <leader>pi :PlugInstall<cr>
+
+map <leader>n :NERDTreeToggle<cr>
+map <leader>z <C-W>T<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functionshttps://github.com/amix/vimrc

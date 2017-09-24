@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
@@ -188,16 +186,6 @@ function a() {
 	fi;
 }
 
-# `v` with no arguments opens the current directory in Vim, otherwise opens the
-# given location
-function v() {
-	if [ $# -eq 0 ]; then
-		vim .;
-	else
-		vim "$@";
-	fi;
-}
-
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
@@ -248,3 +236,4 @@ function truecolor() {
     printf "\n";
   }'
 }
+

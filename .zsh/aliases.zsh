@@ -1,3 +1,6 @@
+alias dt="dots"
+alias dts="dots status"
+
 # SSH
 alias ssh="/usr/bin/ssh"
 

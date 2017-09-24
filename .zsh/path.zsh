@@ -1,5 +1,5 @@
 # Add the bins.
-export PATH="$HOME/bin/**:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/bin/dash:$PATH"
 export PATH="$HOME/bin/holman:$PATH"
 export PATH="/usr/local/bin:$PATH"
