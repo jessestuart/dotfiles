@@ -1,0 +1,10 @@
+# Git
+alias g="git"
+alias pull="hub pull"
+alias push="hub push"
+alias god="git checkout develop && git pull"
+alias gom="git checkout master && git pull"
+alias gpf="git push -f"
+alias gup="git pull"
+alias lg="legit"
+alias gs="git status"
