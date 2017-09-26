@@ -2,15 +2,17 @@
 " Asynchronous Lint Engine (ALE), and other JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_javascript_eslint_options = 'esversion: 6'
+let g:ale_javascript_prettier_use_global = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \}
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'prettier'],
 \}
 " Fix files automatically on save. (This is off by default)
-let g:ale_fix_on_save = 1
+nnoremap <leader>gaf :ALEFix<cr>
+" let g:ale_fix_on_save = 1
 
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '?'
@@ -28,6 +30,8 @@ let g:javascript_plugin_jsdoc = 1
 " Deoplete / code completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+" Options are 'complete', 'completefunc', and 'omnifunc'.
+let g:deoplete#complete_method = 'complete'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -57,4 +61,59 @@ map <leader>pe :cp<cr>
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['.git$[[dir]]', 'node_modules$[[dir]]', '.DS_Store']
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GTM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gtm_plugin_status_enabled = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dash
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <silent> <leader>ds <Plug>DashSearch
+
+let g:tern#is_show_argument_hints_enabled = 1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+set conceallevel=2
+au! BufRead,BufNewFile *.markdown set filetype=mkd
+au! BufRead,BufNewFile *.md       set filetype=mkd
+
+let g:FerretMap=0
+
+" Default configuration for public GitHub
+let g:github_dashboard = {
+\ 'username': 'jessestuart'
+\ }
+let g:github_user = 'jessestuart'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colorizer
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:colorizer_auto_color = 1

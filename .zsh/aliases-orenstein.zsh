@@ -40,6 +40,8 @@ alias track='git checkout -t'
 # alias m='git checkout master'
 alias dt-sync='dots add -u . && dots commit -m "Minor changes. Commit message skipped." && dots push origin'
 
+alias gwip='git add -u . && git commit -m "[wip]" && repush'
+
 alias newscreen="tmux"
 alias trs='tmux rename-session'
 

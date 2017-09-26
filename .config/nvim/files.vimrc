@@ -11,7 +11,6 @@ set directory   =$HOME/.config/nvim/files/swap//
 set updatecount =100
 set undofile
 set undodir     =$HOME/.config/nvim/files/undo/
-set viminfo     ="100,$HOME/.config/nvim/files/viminfo"
 
 " Use Unix as the standard file type
 set fileformats=unix,dos,mac
@@ -41,3 +40,10 @@ set wrap
 set ttyfast
 " Only redraw when necessary.
 set lazyredraw
+
+augroup markdown
+    " remove previous autocmds
+    autocmd!
+    " set every new or read *.md buffer to use the markdown filetype
+    autocmd BufRead,BufNew *.md setf markdown
+augroup END

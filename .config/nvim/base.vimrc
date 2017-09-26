@@ -14,11 +14,19 @@ set autoread
 " Enable line numbers. Make 'em relative.
 set number
 set relativenumber
+
+" Show a colored gutter at 80 columns.
 set colorcolumn=80
+" Except in Git commit titles / messages, which are constrained to 50 / 72
+" characters, respectively.
+autocmd FileType gitcommit set colorcolumn+=51
 
 " Make VIM remember position in file after reopen
 if has('autocmd')
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe 'normal! g\' | endif
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -77,7 +85,10 @@ set t_vb=
 set timeoutlen=500
 
 " Add a bit extra margin to the left.
-set foldcolumn=1
+set foldcolumn=2
+
+" Enable clipboard on unix systems.
+set clipboard=unnamed
 
 """"""""""""""""""""""""""""""
 " => Status line

@@ -15,9 +15,11 @@ set termencoding=utf-8
 " @see http://sunaku.github.io/tmux-24bit-color.html#usage
 if (empty($TMUX))
   if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   if (has('termguicolors'))
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
   endif
 endif
@@ -34,10 +36,12 @@ end
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
-" let g:onedark_termcolors=256
+let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
+let g:enable_bold_font = 1
 highlight Comment cterm=italic
 
+set background=dark
 try
   colorscheme onedark
 catch

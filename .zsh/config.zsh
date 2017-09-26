@@ -8,6 +8,9 @@ setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
 
+setopt auto_cd
+cdpath=($HOME/tt $HOME/dev $HOME/Downloads)
+
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
 setopt complete_aliases

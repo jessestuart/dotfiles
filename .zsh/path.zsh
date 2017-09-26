@@ -18,3 +18,4 @@ export PATH=$PATH:$MONGO_PATH/bin
 # Python stuff.
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+export PATH="$PATH:/usr/local/opt/yarn/bin"

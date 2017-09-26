@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions (https://github.com/amix/vimrc)
+" Helper functions (https://github.com/amix/vimrc)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
     exe 'menu Foo.Bar :' . a:str
@@ -66,3 +66,27 @@ function! Z(...)
     exec 'cd ' . "\"${path}\""
   endif
 endfunction
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" Delete trailing white space on save.
+func! DeleteTrailingWS()
+  exe 'normal mz'
+  %s/\s\+$//ge
+  exe 'normal `z'
+endfunc
+autocmd BufWrite * :call DeleteTrailingWS()
+

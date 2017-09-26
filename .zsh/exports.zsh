@@ -47,8 +47,8 @@ export EC2_INI_PATH=/etc/ansible/ec2.ini
 # Sorry `cowsay` -- turn this noisy shit off.
 export ANSIBLE_NOCOWS=1
 
-#Neovim true color support
+# Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
-#Neovim cursor shape support
+# Neovim cursor shape support
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 

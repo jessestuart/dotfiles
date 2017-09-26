@@ -237,3 +237,32 @@ function truecolor() {
   }'
 }
 
+function load_sdkman() {
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh" &> /dev/null
+}
+
+function load_gtm() {
+  source $HOME/bin/gtm-plugin.sh
+}
+
+function git_list_branches() {
+  local limit_num_branches=0
+  if [ $# -eq 0 ]; then
+    limit_num_branches=10
+  else
+    limit_num_branches=$1
+  fi
+
+  for branch in `git branch -r | grep -v HEAD`;
+    do
+      echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch;
+    done | sort | tail -$limit_num_branches
+}
+
+function deploy_grails() {
+  if [ $# -eq 0 ]; then
+
+  fi
+}
+

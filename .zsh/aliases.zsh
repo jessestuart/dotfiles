@@ -1,11 +1,14 @@
 alias dt="dots"
 alias dts="dots status"
+alias bs="brew -S"
+alias ark="tar czf Archive_$(date +'%s').tar.gz"
+alias ql-reset="qlmanage cache -r && qlmanage -r"
+alias pac="nvim package.json"
 
 # SSH
 alias ssh="/usr/bin/ssh"
 
 # Docker
-alias d="docker"
 alias dk="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
@@ -23,9 +26,11 @@ alias ygadd="yarn global add"
 alias ap="ansible-playbook"
 alias atom="atom-beta"
 alias d1="du -h -d 1"
+# List folders in directory, and sort by size.
+alias d1s="du -d 1 -k . | sort -n"
 alias dots="git --git-dir=\"$HOME\"/.dotfiles --work-tree=\"$HOME\""
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
-alias kbz="sudo su && ps -efw | ag 'bz' | awk '{print $2}' | xargs kill"
+alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
 alias lessme="less README.md"
 alias nv="nvim"
 alias tf="terraform"
@@ -33,6 +38,9 @@ alias tmd="tmux detach"
 alias bw="brew"
 alias bws="brew -S"
 alias bwi="brew install"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n} | sort'
@@ -180,8 +188,5 @@ alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v e
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-# Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
