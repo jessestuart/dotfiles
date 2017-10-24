@@ -19,7 +19,7 @@ compdef _git git-nuke=git-checkout
 
 function git-on-master {
   branch=`git_branch_name`
-  git checkout master && git pull --rebase 
+  git checkout master && git pull --rebase
   git checkout $branch
   git rebase master && git push -f
 }

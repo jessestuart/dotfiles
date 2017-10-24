@@ -237,15 +237,6 @@ function truecolor() {
   }'
 }
 
-function load_sdkman() {
-  export SDKMAN_DIR="$HOME/.sdkman"
-  [[ "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh" &> /dev/null
-}
-
-function load_gtm() {
-  source $HOME/bin/gtm-plugin.sh
-}
-
 function git_list_branches() {
   local limit_num_branches=0
   if [ $# -eq 0 ]; then
@@ -264,5 +255,17 @@ function deploy_grails() {
   if [ $# -eq 0 ]; then
 
   fi
+}
+
+function man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
 }
 

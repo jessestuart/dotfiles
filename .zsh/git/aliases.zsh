@@ -1,5 +1,7 @@
 # Git aliases -- because who needs GUIs when
 alias g="git"
+alias ga="git add -A"
+alias gas="git add -A && git status"
 alias gacam="git add -u && git cam"
 alias gacm="git add -A && gcm"
 alias god="git checkout develop && git pull"
@@ -23,3 +25,6 @@ function gacmp() {
 alias gci="hub ci-status -v"
 alias hubci="hub ci-status -v"
 alias git-cleanup-merged-prs="git fetch --prune; git branch -r --merged | grep origin | grep -v '>' | grep -v master | grep -v develop | xargs -L1 | awk '{sub(/origin\//,"");print}' | xargs git push origin --delete"
+alias gds="git diff --staged"
+alias go-="git checkout -"
+alias gcob="git checkout -b"

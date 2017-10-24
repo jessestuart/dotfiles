@@ -4,7 +4,7 @@
 let g:ale_javascript_eslint_options = 'esversion: 6'
 let g:ale_javascript_prettier_use_global = 1
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
+\   'javascript': ['prettier', 'flow', 'eslint'],
 \}
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
@@ -86,7 +86,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
-
+let g:pandoc#modules#disabled = ['folding']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GTM
@@ -115,5 +115,20 @@ let g:github_user = 'jessestuart'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorizer
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:colorizer_auto_color = 1
+
+let g:github_dashboard = {
+  \ 'username': 'jessestuart',
+  \ 'password': $GITHUB_PERSONAL_ACCESS_TOKEN }
+
+" let g:gutentags_exclude_project_root = [
+"   \ '/Users/jesse/',
+"   \ '/usr/local/' ]
+
+let g:gutentags_file_list_command = {
+  \ 'markers': {
+  \ '.git': 'git ls-files',
+  \ },
+\ }
+

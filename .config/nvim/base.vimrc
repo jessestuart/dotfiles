@@ -40,7 +40,9 @@ set wildmenu
 " Ignore compiled files.
 set wildignore=*.o,*~,*.pyc,*.class
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set wildignore+=node_modules/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=nvim/plugged/*
 
 " Always show current position.
 set ruler

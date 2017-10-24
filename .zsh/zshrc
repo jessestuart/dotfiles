@@ -1,30 +1,22 @@
+#!/bin/zsh
+
 # Shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.zsh
 
-if [[ -a ~/.secrets ]]; then source ~/.secrets; fi
-
 typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+local config_files=($HOME/.zsh/**/*.zsh)
 
-# Load the path file(s) first.
-for file in ${(M)config_files:#*/path.zsh}; do source $file; done
-for file in ${(M)config_files:#*/zpreztorc.zsh}; do source $file; done
+# 1) Load zprezto configuration.
+for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done
+# 2) Load the path file(s).
+for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
-# Initialize autocomplete here, otherwise functions won't be loaded.
+# 3) Initialize autocomplete here, otherwise functions won't be loaded.
 autoload -U compinit; compinit
 
-# Load everything but the path files.
-for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}
-do source $file; done
-# Load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}; do source $file; done
+# 4) Load everything else.
+# Next, every completion after autocomplete loads
+for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}; do . $file; done
+for file in ${(M)config_files:#*/completion.zsh}; do . $file; done
 
 unset config_files
-
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Load SDKMAN from our functions.zsh file.
-load_sdkman
-# load_gtm
-source "${HOME}/.zsh/aliases.zsh"

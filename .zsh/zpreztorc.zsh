@@ -5,6 +5,7 @@
 #
 # General
 #
+
 # Set case-sensitivity for completion, history lookup, etc.
 zstyle ':prezto:*:*' case-sensitive 'no'
 
@@ -69,7 +70,7 @@ zstyle ':prezto:module:git:status:ignore' submodules 'untracked'
 #
 
 # Set the command prefix on non-GNU systems.
-# zstyle ':prezto:module:gnu-utility' prefix 'g'
+zstyle ':prezto:module:gnu-utility' prefix 'g'
 
 #
 # History Substring Search
@@ -104,13 +105,6 @@ zstyle ':prezto:module:prompt' theme 'pure'
 # zstyle ':prezto:module:prompt' pwd-length 'short'
 
 #
-# Ruby
-#
-
-# Auto switch the Ruby version on directory change.
-zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
-
-#
 # SSH
 #
 
@@ -131,12 +125,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'cursor' \
   'root'
 
-# Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
-#   'command' 'bg=blue' \
-#   'function' 'bg=blue'
-
 # Set syntax pattern styles.
 zstyle ':prezto:module:syntax-highlighting' pattern \
   'rm*-rf*' 'fg=white,bold,bg=red'
@@ -153,8 +141,6 @@ zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
 zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
-
-# Set the terminal multiplexer title format.  zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 #
 # Tmux

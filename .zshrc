@@ -1,8 +1,6 @@
 source $HOME/.zsh/zshrc
-# source $HOME/dotfiles/zshrc
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ulimit -n 2048
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

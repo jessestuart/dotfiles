@@ -4,6 +4,9 @@ alias bs="brew -S"
 alias ark="tar czf Archive_$(date +'%s').tar.gz"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias pac="nvim package.json"
+alias glb="git_list_branches"
+alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
+alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor;"
 
 # SSH
 alias ssh="/usr/bin/ssh"
@@ -20,6 +23,7 @@ alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
 
 # JS
 alias npmig="npm install -g"
+alias nig="npm install -g"
 alias ygadd="yarn global add"
 
 # Misc
@@ -56,6 +60,8 @@ alias la="exa -la"
 alias lsd="exa -d"
 # Always use color output for `ls`
 alias ls="exa"
+# List sorted by date.
+alias lasd="exa -la -s date"
 
 # ===================================================
 
