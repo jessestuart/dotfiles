@@ -38,4 +38,11 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
+# Set right-hand prompt via zsh's RPROMPT.
+function gtm_prompt_info() {
+  echo $GTM_STATUS
+}
+export RPROMPT=$(gtm_prompt_info)
+
+
 fpath=(/usr/local/share/zsh-completions $fpath)

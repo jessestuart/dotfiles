@@ -1,7 +1,3 @@
-###
-# TODO Break up into separate files.
-###
-
 # Make vim the default editor.
 export EDITOR='nvim';
 export TERM='xterm-256color';
@@ -34,9 +30,6 @@ export LESS_TERMCAP_md="${yellow}";
 export MANPAGER='less -X';
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-# TODO(jesse) Why is this here? [20170117]
-# export GRAILS_OPTS="-XX:-UseSplitVerifier -Xverify:none"
 
 ###
 # ANSIBLE
