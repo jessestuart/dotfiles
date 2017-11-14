@@ -11,12 +11,13 @@ for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done
 # 2) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
-# 3) Initialize autocomplete here, otherwise functions won't be loaded.
-autoload -U compinit; compinit
-
-# 4) Load everything else.
-# Next, every completion after autocomplete loads
+# 3) Load everything else. Order is important here for autocompletion to work.
 for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}; do . $file; done
-for file in ${(M)config_files:#*/completion.zsh}; do . $file; done
+for file in ${(M)config_files:#*/completions.zsh}; do . $file; done
+
+fpath=(/usr/local/share/zsh-completions ~/bin/zsh-completions $fpath)
+
+# 4) Initialize autocomplete here, otherwise functions won't be loaded.
+autoload -Uz compinit && compinit -i
 
 unset config_files

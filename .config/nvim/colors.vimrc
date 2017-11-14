@@ -34,14 +34,13 @@ if (has('autocmd') && !has('gui_running'))
   autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
 end
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 let g:airline_theme='onedark'
-let g:onedark_termcolors=256
+let g:onedark_termcolors=16
 let g:onedark_terminal_italics=1
-let g:enable_bold_font = 1
+let g:enable_bold_font=1
 highlight Comment cterm=italic
 
-set background=dark
 try
   colorscheme onedark
 catch

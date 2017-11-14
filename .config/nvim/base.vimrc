@@ -24,16 +24,20 @@ autocmd FileType gitcommit set colorcolumn+=51
 " Make VIM remember position in file after reopen
 if has('autocmd')
   autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface (https://github.com/amix/vimrc)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k.
-set scrolloff=7
+" Keep cursor in the middle when moving vertically using j/k.
+set scrolloff=9999
+" Enable mouse suport
+set mouse=a
+" Hypen is part of the keyword, if you want to substract then add spaces {{{
+set iskeyword+=-
 
 " Turn on the WiLd menu.
 set wildmenu
@@ -97,3 +101,40 @@ set clipboard=unnamed
 """"""""""""""""""""""""""""""
 " Always show the statusline.
 set laststatus=2
+
+" -----------------------------------------
+
+" Don't wait so long for the next keypress (particularly in ambigious Leader
+" situations.
+set timeoutlen=500
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+" Don't automatically continue comments after newline
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+set fillchars=vert:┃,fold:·
+set list listchars=tab:→\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
+set conceallevel=2
+
+" Git shortcuts {{{
+nnoremap U  <nop>
+nnoremap Up :<C-u>Gpush<CR>
+nnoremap Us :<C-u>Gstatus<CR>
+nnoremap Ud :<C-u>Gdiff<CR>
+nnoremap Ub :<C-u>Merginal<CR>
+nnoremap UB :<C-u>Gblame<CR>
+nnoremap Uc :<C-u>Gcommit<CR>
+nnoremap Uu :<C-u>Gpull<CR>
+nmap     UU Uu
+
+cabbrev G  Git
+cabbrev G! Git!
+
+" Expand abbreviations on enter {{{
+inoremap <CR> <C-]><CR>
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+  set grepformat=%f:%l:%c:%m,%f:%l%m,%f\ \ %l%m
+endif

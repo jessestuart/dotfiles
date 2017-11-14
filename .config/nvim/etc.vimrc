@@ -5,37 +5,55 @@ scriptencoding
 " All about that, leader life.
 let g:mapleader = ','
 
-" Quickly open a markdown buffer for scribble
-map <leader>md :e ~/buffer.md<CR>
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<CR>
-
-nnoremap <leader>fz :FZF<CR>
-nnoremap <leader>ff :FZF<CR>
-
-map <leader>Z :Goyo<CR>
+" =================
+" Plugin management
+" =================
 map <leader>sc :source ~/.config/nvim/init.vim<CR>
 map <leader>pi :PlugInstall<CR>
 nmap <leader>up :PlugUpdate<CR>
 
-map <leader>n :NERDTreeToggle<CR>
-map <leader>z <C-W>T<CR>
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<CR>
 
+" I would be lost without FZF.
+nnoremap <leader>fz :FZF<CR>
+
+map <leader>zen :Goyo<CR>
+
+map <leader>n :NERDTreeToggle<CR>
+
+" ======================
 " Fast saving / closing.
+" ======================
 nmap <leader>w :w!<CR>
 nmap <leader>1 :wq!<CR>
 nmap <leader>q :q!<CR>
-
+map <C-s> :w!<CR>
+nmap <leader><space> :wq!<CR>
 
 nnoremap <leader>ev :vsplit ~/.config/nvim/<CR>
+" Nifty.
+nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
-" SPLITS
+" Vertical Split
 nnoremap <leader>I :vsplit<CR>
+" Vertical Split
 nnoremap <leader>\ :vsplit<CR>
+" Horizontal Split
 nnoremap <leader>- :split<CR>
+" Make the current buffer fill the window.
+map <leader>z <C-W>T<CR>
+
+map <Leader>gw :!git add . && git commit -m '[wip]'<cr>
+map <Leader>re :%s/
+
+map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+
 
 "-----------------------------
-" => Visual mode related
+" => Visual mode-related
 "-----------------------------
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -47,10 +65,6 @@ vnoremap . :norm.<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <c-space> ?
-
 " Disable highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
 
@@ -74,10 +88,11 @@ map <leader>tn :tabnew<CR>
 map <leader>to :tabonly<CR>
 map <leader>tc :tabclose<CR>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <leader>t<leader> :tabnext<CR>
+map <leader>tp :tabpreviousCR>
 
-" Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
+" Let 'tl' toggle between this and the last accessed tab
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
@@ -121,13 +136,6 @@ if has('mac') || has('macunix')
   vmap <D-k> <M-k>
 endif
 
-" show leading spaces
-" hi Conceal guibg=NONE ctermbg=NONE ctermfg=DarkGrey
-" autocmd BufWinEnter * setl conceallevel=2 concealcursor=nv
-" autocmd BufWinEnter * syn match LeadingSpace /\(^ *\)\@<= / containedin=ALL conceal cchar=·
-" autocmd BufReadPre * setl conceallevel=2 concealcursor=nv
-" autocmd BufReadPre * syn match LeadingSpace /\(^ *\)\@<= / containedin=ALL conceal cchar=·
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,6 +147,10 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+
+map <leader>alf :ALEFix<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From Upcase
@@ -152,3 +164,4 @@ endif
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'groovy']
 
+tnoremap <Esc> <C-\><C-n>

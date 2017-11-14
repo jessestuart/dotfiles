@@ -1,3 +1,5 @@
+alias c="cd"
+alias fv="fzf | xargs nvim"
 alias dt="dots"
 alias dts="dots status"
 alias bs="brew -S"
@@ -7,9 +9,17 @@ alias pac="nvim package.json"
 alias glb="git_list_branches"
 alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor;"
-
-# SSH
-alias ssh="/usr/bin/ssh"
+alias npmup="ncu -u -a"
+alias gh="cd ~/github"
+alias dev="cd ~/dev"
+alias yrd="yarn run dev"
+alias nrd="npm run dev"
+alias grba="git rebase --abort"
+alias webdev="CLIENT_ONLY=true API_ENV=dev npm run dev"
+alias webqa="CLIENT_ONLY=true API_ENV=qa npm run dev"
+alias pop="git stash pop"
+alias gl="git log"
+alias cat="vimcat"
 
 # Docker
 alias dk="docker"
@@ -20,20 +30,19 @@ alias dup="open /Applications/Docker.app"
 # Grails
 alias gr="yes | grails run-app"
 alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
-
-# JS
-alias npmig="npm install -g"
-alias nig="npm install -g"
-alias ygadd="yarn global add"
+alias grl="ps -efw | ag '[g]rails'"
 
 # Misc
+alias npmig="npm install -g"
+alias nig="npm install -g"
+alias yga="yarn global add"
 alias ap="ansible-playbook"
 alias atom="atom-beta"
 alias d1="du -h -d 1"
 # List folders in directory, and sort by size.
 alias d1s="du -d 1 -k . | sort -n"
 alias dots="git --git-dir=\"$HOME\"/.dotfiles --work-tree=\"$HOME\""
-alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+alias fuck='eval $(thefuck $(fc -ln -1))'
 alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
 alias lessme="less README.md"
 alias nv="nvim"
@@ -45,6 +54,7 @@ alias bwi="brew install"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+alias rl="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n} | sort'
@@ -55,7 +65,8 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 # List all files colorized in long format
 alias l="exa -l"
 # List all files colorized in long format, including dot files
-alias la="exa -la"
+alias la="exa -la --git-ignore --group-directories-first"
+alias laa="exa -la --group-directories-first"
 # List only directories
 alias lsd="exa -d"
 # Always use color output for `ls`
@@ -137,7 +148,7 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 unset jscbin;
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+# alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

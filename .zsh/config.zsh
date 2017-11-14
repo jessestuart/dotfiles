@@ -1,4 +1,5 @@
-setopt NO_BG_NICE # don't nice background tasks
+# Don't nice background tasks
+setopt NO_BG_NICE
 setopt NO_HUP
 setopt NO_LIST_BEEP
 setopt LOCAL_OPTIONS # allow functions to have local options

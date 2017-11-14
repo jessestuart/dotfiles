@@ -45,3 +45,11 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Neovim cursor shape support
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
+
+export PAGER=vimpager
+
+# export DOCKER_HOST=tcp://192.168.64.3:2376
+# export DOCKER_CERT_PATH=/Users/jesse/.docker/machine/machines/dinghy
+# export DOCKER_TLS_VERIFY=1
+# export DOCKER_MACHINE_NAME=dinghy

@@ -41,6 +41,19 @@ set ttyfast
 " Only redraw when necessary.
 set lazyredraw
 
+" When at 3 spaces and I hit >>, go to 4, not 5.
+set shiftround
+
+" Say no to code folding.
+set nofoldenable
+
+" (Hopefully) removes the delay when hitting esc in insert mode.
+set ttimeout
+set ttimeoutlen=1
+
+" Turn off spell-checking in markdown and text..
+au BufRead,BufNewFile *.md,*.txt setlocal nospell
+
 augroup markdown
     " remove previous autocmds
     autocmd!
