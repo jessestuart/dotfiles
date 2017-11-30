@@ -167,5 +167,5 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'thaerkh/vim-workspace'
-
+Plug 'jceb/vim-orgmode'
 call plug#end()
