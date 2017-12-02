@@ -1,3 +1,8 @@
+# ============================================================================
+# << ALIAS INBOX >>
+# These get added as they come to me.  If I end up continuing to use them,
+# they'll be grouped together / moved to a more appropriate place.
+# ============================================================================
 alias c="cd"
 alias fv="fzf | xargs nvim"
 alias dt="dots"
@@ -20,12 +25,15 @@ alias webqa="CLIENT_ONLY=true API_ENV=qa npm run dev"
 alias pop="git stash pop"
 alias gl="git log"
 alias cat="vimcat"
+alias grhh="git add -u && git reset --hard HEAD"
+alias w="nvim ~/vimwiki/index.wiki"
+alias ck="chromekill"
+alias vidc="vi docker-compose.yml"
+alias vid="vi Dockerfile"
 
-# Docker
-alias dk="docker"
-alias dc="docker-compose"
-alias dm="docker-machine"
-alias dup="open /Applications/Docker.app"
+function copy() {
+  cat "$1" | pbcopy
+}
 
 # Grails
 alias gr="yes | grails run-app"
@@ -38,9 +46,6 @@ alias nig="npm install -g"
 alias yga="yarn global add"
 alias ap="ansible-playbook"
 alias atom="atom-beta"
-alias d1="du -h -d 1"
-# List folders in directory, and sort by size.
-alias d1s="du -d 1 -k . | sort -n"
 alias dots="git --git-dir=\"$HOME\"/.dotfiles --work-tree=\"$HOME\""
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
@@ -52,12 +57,20 @@ alias bw="brew"
 alias bws="brew -S"
 alias bwi="brew install"
 
+# Display human-readable size of each child directory.
+alias d1="du -h -d 1"
+# List folders in directory, and sort by size.
+alias d1s="du -d 1 -k . | sort -n"
+
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 alias rl="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n} | sort'
+
+alias sz="source ~/.zshrc"
+alias z="source ~/.zshrc"
 
 #--------------------------------------
 # Alias `ls` to use `exa`.
@@ -84,17 +97,6 @@ alias spoton="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.met
 alias tmup="sudo sysctl debug.lowpri_throttle_enabled=0"
 alias tmdown="sudo sysctl debug.lowpri_throttle_enabled=1"
 
-# JS 2015
-alias sz="source ~/.zshrc"
-
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
@@ -110,8 +112,20 @@ alias week='date +%V'
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm,
+# and their installed packages.
+function system_update() {
+  sudo softwareupdate -i -a
+  brew update
+  brew upgrade
+  brew cleanup
+  npm install npm -g
+  npm update -g
+  sudo gem update --system
+  sudo gem update
+  sudo gem cleanup
+}
+alias update=system_update
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
