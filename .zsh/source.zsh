@@ -16,5 +16,6 @@ function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
 
-source "${HOME}/bin/google-cloud-sdk/path.zsh.inc"
-source "${HOME}/bin/google-cloud-sdk/completion.zsh.inc"
+local GCP_ROOT="${HOME}/bin/google-cloud-sdk"
+[[ "$GCP_ROOT" ]] && . "$GCP_ROOT/path.zsh.inc" &>/dev/null
+[[ "$GCP_ROOT" ]] && . "$GCP_ROOT/completion.zsh.inc" &>/dev/null

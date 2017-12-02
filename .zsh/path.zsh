@@ -26,5 +26,7 @@ export PATH="/Users/jesse/.gem/ruby/2.3.0/bin:$PATH"
 
 export PATH="$PATH:/usr/local/opt/yarn/bin"
 
+export PATH="$PATH:~/dotfiles/**/*.sh"
+
 # ~* Secrets *~
 if [[ -a ~/.secrets ]]; then source ~/.secrets; fi
