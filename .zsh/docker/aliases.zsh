@@ -1,6 +1,10 @@
 # ------------------------------------
 # Docker aliases and functions.
 # ------------------------------------
+alias dk="docker"
+alias dc="docker-compose"
+alias dm="docker-machine"
+alias dup="open /Applications/Docker.app"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
@@ -40,7 +44,7 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 # Remove all images
 dri() { docker rmi $(docker images -q); }
 
-# Dockerfile build, e.g., $dbu tcnksm/test 
+# Dockerfile build, e.g., $dbu tcnksm/test
 dbu() { docker build -t=$1 .; }
 
 # Show all alias related docker
