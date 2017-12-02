@@ -1,30 +1,35 @@
 call plug#begin()
 " -------------------------------------
+" Text Editing.
+" -------------------------------------
+Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'reedes/vim-pencil'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
+" -------------------------------------
 " File management, searching, etc.
 " Getting around.
 " -------------------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'vim-scripts/bufexplorer.zip'
-Plug 'wincent/ferret'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'yegappan/mru'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'haya14busa/is.vim'
 Plug 'haya14busa/vim-asterisk'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'justinmk/vim-sneak'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-sneak'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'machakann/vim-highlightedyank'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'vim-ctrlspace/vim-ctrlspace'
-
-" -------------------------------------
-" Text Editing.
-" -------------------------------------
-Plug 'tommcdo/vim-exchange'
-Plug 'reedes/vim-pencil'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'wellle/targets.vim'
+Plug 'wincent/ferret'
+Plug 'yegappan/mru'
 
 " -------------------------------------
 " Pope.
@@ -37,6 +42,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-speeddating'
 
 " -------------------------------------
 " Git/Github-related plugins.
@@ -50,7 +56,7 @@ Plug 'mattn/webapi-vim' " Required for vim-github-comment
 Plug 'mmozuras/vim-github-comment'
 
 " -------------------------------------
-" Javascript / Node / etc. development.
+" WebDev -- javascript, CSS, etc.
 " -------------------------------------
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
@@ -63,6 +69,10 @@ Plug 'prettier/vim-prettier', {
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags tern-coffee --save-dev' }
+Plug 'othree/tern_for_vim_coffee'
+Plug 'Galooshi/vim-import-js' " This may not work?
+Plug 'alampros/vim-styled-jsx'
+Plug 'mattn/emmet-vim'
 " ----
 " Place deoplete first, then autocomplete-flow
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -70,8 +80,6 @@ Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'Galooshi/vim-import-js' " This may not work?
-Plug 'othree/tern_for_vim_coffee'
 
 " -------------------------------------
 " Snippets.
@@ -101,6 +109,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'KeitaNakamura/neodark.vim'
 
 " -------------------------------------
@@ -110,6 +119,7 @@ Plug 'fatih/vim-go'
 Plug 'sheerun/vim-polyglot'
 Plug 'modille/groovy.vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'alcesleo/vim-uppercase-sql'
 Plug 'tpope/vim-fireplace'    " Closure
 Plug 'guns/vim-sexp'          " Closure
 
@@ -127,34 +137,25 @@ augroup LoadDuringHold_Targets
 augroup end
 
 " -------------------------------------
-" Catch all. TODO: Organize these.
+" Experimentation. Inbox.
+" TODO: Organize these.
 " -------------------------------------
-" Plug 'benmills/vimux'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 Plug 'Shougo/denite.nvim'
 Plug 'sjl/splice.vim'
-Plug 'wellle/targets.vim'
-" Plug 'meister/vim-snazzyfied'
 Plug 'rizzatti/dash.vim'
-Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimwiki/vimwiki'
-" Plug 'kshenoy/vim-signature'
-" Plug 'chriskempson/base16-vim'
 Plug 'fmoralesc/vim-tutor-mode'
-Plug 'mattn/emmet-vim'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'chrisbra/Colorizer'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'sunaku/vim-shortcut'
-Plug 'alampros/vim-styled-jsx'
 Plug 'ktonga/vim-follow-my-lead'
-
 
 Plug 'Shougo/neco-vim'
 Plug 'prabirshrestha/async.vim'
@@ -162,10 +163,12 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'yami-beta/asyncomplete-omni.vim'
 Plug 'prabirshrestha/asyncomplete-flow.vim'
 Plug 'prabirshrestha/asyncomplete-necovim.vim'
-Plug 'alcesleo/vim-uppercase-sql'
 Plug 'wesQ3/vim-windowswap'
-Plug 'alvan/vim-closetag'
-Plug 'jiangmiao/auto-pairs'
 Plug 'thaerkh/vim-workspace'
+
 Plug 'jceb/vim-orgmode'
+
+" Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
+" Plug 'kshenoy/vim-signature'
+
 call plug#end()

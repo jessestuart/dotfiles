@@ -9,8 +9,9 @@ let g:mapleader = ','
 " Plugin management
 " =================
 map <leader>sc :source ~/.config/nvim/init.vim<CR>
-map <leader>pi :PlugInstall<CR>
-nmap <leader>up :PlugUpdate<CR>
+map <leader>pi <leader>sc:PlugInstall<CR>
+map <leader>piu <leader>sc:PlugInstall:PlugUpdate<CR>
+nmap <leader>up <leader>sc:PlugUpdate<CR>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<CR>
@@ -50,7 +51,6 @@ map <Leader>re :%s/
 map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-
 
 "-----------------------------
 " => Visual mode-related
@@ -94,7 +94,10 @@ map <leader>tp :tabpreviousCR>
 let g:lasttab = 1
 " Let 'tl' toggle between this and the last accessed tab
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+augroup tableave
+  autocmd!
+  autocmd TabLeave * let g:lasttab = tabpagenr()
+augroup END
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory

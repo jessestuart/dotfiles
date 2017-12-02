@@ -8,13 +8,16 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
 let g:ale_linters = {
 \   'javascript': ['prettier', 'flow', 'eslint'],
-\   'python': ['yapf', 'flake8'],
+\   'python': ['isort', 'yapf'],
+\   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
+\   'Dockerfile': ['hadolint']
 \}
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['autopep8', 'isort', 'yapf'],
-\   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace']
+\   'python': ['isort', 'yapf'],
+\   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
+\   'Dockerfile': ['hadolint']
 \}
 " Fix files automatically on save. (This is off by default)
 nnoremap <leader>gaf :ALEFix<cr>
@@ -38,13 +41,6 @@ let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Deoplete / code completion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
-" Options are 'complete', 'completefunc', and 'omnifunc'.
-let g:deoplete#complete_method = 'complete'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ag after the selected text
@@ -52,7 +48,7 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ag and put the cursor in the right position
 map <leader>ag :Ag
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <,r>r :call VisualSelection('replace', '')<CR>
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " `cope` is a window usually used for displaying the current list of errors,
 " but we can co-opt it to display search results from Ag with: <leader>cc
@@ -64,16 +60,19 @@ map <leader>ne :cn<cr>
 map <leader>pe :cp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Control-P
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 &&
+  \ exists("b:NERDTree") &&
+  \ b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=['.git$[[dir]]', 'node_modules$[[dir]]', '.DS_Store']
+let g:NERDTreeIgnore=[
+  \ '.git$[[dir]]',
+  \ 'node_modules$[[dir]]',
+  \ '.DS_Store',
+  \ '*.pyc',
+  \ '\~$'
+  \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
@@ -90,7 +89,6 @@ let g:NERDTreeIgnore=['.git$[[dir]]', 'node_modules$[[dir]]', '.DS_Store']
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -104,19 +102,12 @@ let g:pandoc#modules#disabled = ['folding']
 let g:gtm_plugin_status_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Dash
+" Miscellany
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>ds <Plug>DashSearch
 
-set conceallevel=2
-au! BufRead,BufNewFile *.markdown set filetype=mkd
-au! BufRead,BufNewFile *.md       set filetype=mkd
-
 let g:FerretMap=0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colorizer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:colorizer_auto_color = 1
 
 let g:github_dashboard = {
@@ -126,7 +117,7 @@ let g:github_user = 'jessestuart'
 
 let g:gutentags_file_list_command = {
   \ 'markers': {
-  \ '.git': 'git ls-files',
+  \   '.git': 'git ls-files',
   \ },
 \ }
 
@@ -162,11 +153,13 @@ augroup asyncomplete_register_sources
         \ }))
 augroup END
 
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js"
+let g:closetag_filenames = '*.html,*.php,*.jsx,*.js'
 let g:user_emmet_install_global = 1
 
 nnoremap <leader>tw :ToggleWorkspace<CR>
-" let g:workspace_autocreate =1
 
-let g:NERDTreeIgnore=['\.pyc$', '\~$']
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
