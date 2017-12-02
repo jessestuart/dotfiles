@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
+source ~/.zshrc
+
 git-hooks run "$0" "$@"
 
 gtm commit --yes || /usr/local/bin/gtm commit --yes
 
-notify_rescuetime
-git pushgtm
+notify_rescuetime >/dev/null 2>&1 &
+git pushgtm >/dev/null 2>&1 &
+.git/hooks/ctags >/dev/null 2>&1 &
 
