@@ -258,4 +258,4 @@
   gpgsign = true
   template = /Users/jesse/.stCommitMsg
 [gpg]
-	program = gpg2
+  program = gpg2
