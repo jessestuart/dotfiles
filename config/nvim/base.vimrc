@@ -1,8 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General configuration settings.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-scriptencoding utf-8
+scriptencoding
 " Sets how many lines of history VIM has to remember.
 set history=500
 
@@ -26,7 +25,7 @@ augroup gitcommit
   autocmd FileType gitcommit set colorcolumn+=51
 augroup END
 
-function! ResCur()
+function! RestoreCursor()
   if line("'\"") <= line('$')
     normal! g`"
     return 1
@@ -35,7 +34,7 @@ endfunction
 
 augroup resCur
   autocmd!
-  autocmd BufWinEnter * call ResCur()
+  autocmd BufWinEnter * call RestoreCursor()
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,8 +42,6 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keep cursor in the middle when moving vertically using j/k.
 set scrolloff=9999
-" Enable mouse suport
-set mouse=a
 " Hypen is part of the keyword.
 set iskeyword+=-
 
@@ -102,7 +99,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-" Add a bit extra margin to the left.
+" Add a bit of extra margin to the left gutter.
 set foldcolumn=2
 
 " Enable clipboard on unix systems.
@@ -111,7 +108,7 @@ set clipboard=unnamed
 " Always show the statusline.
 set laststatus=2
 
-" Don't wait so long for the next keypress (particularly in ambigious Leader
+" Don't wait so long for the next keypress (particularly in ambigious <leader>
 " situations.
 set timeoutlen=500
 
@@ -119,9 +116,10 @@ set timeoutlen=500
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Display whitespace characters.
-set list listchars=tab:→\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
+set list listchars=tab:›\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
 " Or alternatively:
-" set list listchars=tab:»·,trail:·
+" set list listchars=tab:→\ ,trail:·
+" set list listchars=tab:»\ ,trail:·
 set fillchars=vert:┃,fold:·
 set conceallevel=2
 
@@ -147,3 +145,19 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set grepformat=%f:%l:%c:%m,%f:%l%m,%f\ \ %l%m
 endif
+
+" Delete trailing whitespace on save.
+function! DeleteTrailingWS()
+  " Set a mark on the current line...
+  exe 'normal mz'
+  " Delete all trailing whitespace...
+  exe ':%s/\s\+$//ge'
+  " Return to the mark we just set...
+  exe 'normal `z'
+  " Then delete the mark to clean up after ourselves.
+  exe ':delmarks z'
+endfunction
+augroup rm_trailing_whitespace
+  autocmd!
+  autocmd BufWrite * :call DeleteTrailingWS()
+augroup END

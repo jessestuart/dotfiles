@@ -1,56 +1,66 @@
 scriptencoding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Custom leader commands 💃
+" => Custom mappings 💃
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " All about that, leader life.
 let g:mapleader = ','
 
-" =================
-" Plugin management
-" =================
+" ==========================
+" vim-plug plugin management
+" ==========================
+" Reload configuration with <leader>sc
 map <leader>sc :source ~/.config/nvim/init.vim<CR>
+map <leader><space> :source ~/.config/nvim/init.vim<CR>
+" Install new plugins with <leader>pi
 map <leader>pi <leader>sc:PlugInstall<CR>
-map <leader>piu <leader>sc:PlugInstall:PlugUpdate<CR>
-nmap <leader>up <leader>sc:PlugUpdate<CR>
+" Update all plugins with <leader>up
+nmap <leader>up <leader>sc:PlugInstall:PlugUpdate<CR>
 
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<CR>
-
+" ==========================================
+" Miscellaneous mappings I've grown to love.
+" ==========================================
 " I would be lost without FZF.
 nnoremap <leader>fz :FZF<CR>
 
+" Toggle Goyo for distraction-free editing.
 map <leader>zen :Goyo<CR>
 
+" Toggle NERDTree. Call it a guilty pleasure.
 map <leader>n :NERDTreeToggle<CR>
+
+" I like wrapping comments in blocks of '=' characters.
+nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
+
+" Disable highlight with <leader><CR>.
+map <silent> <leader><CR> :noh<CR>
+
+" Shortcut to begin a substitution with
+map <Leader>re :%s/
+
+" Quickly move current line:
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<CR>
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<CR>
+
+" Quickly add empty lines:
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
 
 " ======================
 " Fast saving / closing.
 " ======================
+" Write buffer with <leader>w or ctrl+s. The latter works in insert mode too!
 nmap <leader>w :w!<CR>
-nmap <leader>1 :wq!<CR>
-nmap <leader>q :q!<CR>
 map <C-s> :w!<CR>
-nmap <leader><space> :wq!<CR>
+imap <C-s> :w!<CR>
+" Write and close buffer with <leader>1.
+nmap <leader>1 :wq!<CR>
+" Close buffer unsaved with <leader>q.
+nmap <leader>q :q!<CR>
 
+" Open neovim config directory with <leader>ev.
 nnoremap <leader>ev :vsplit ~/.config/nvim/<CR>
-" Nifty.
-nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
-" Vertical Split
-nnoremap <leader>I :vsplit<CR>
-" Vertical Split
-nnoremap <leader>\ :vsplit<CR>
-" Horizontal Split
-nnoremap <leader>- :split<CR>
-" Make the current buffer fill the window.
-map <leader>z <C-W>T<CR>
-
-map <Leader>gw :!git add . && git commit -m '[wip]'<cr>
-map <Leader>re :%s/
-
-map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <Leader>gw :!git add . && git commit -m '[wip]'<CR>
 
 "-----------------------------
 " => Visual mode-related
@@ -59,37 +69,46 @@ map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-" Make the dot command work in visual mode! (courtesy of @danielmiessler)
+" Make the dot command work in visual mode. (h/t @danielmiessler)
 vnoremap . :norm.<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Moving around buffers, windows, & tabs.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable highlight when <leader><CR> is pressed
-map <silent> <leader><CR> :noh<CR>
+" Vertical Split
+nnoremap <leader>i :vsplit<CR>
+" Horizontal Split
+nnoremap <leader>- :split<CR>
+" Make the current buffer fill the window.
+map <leader>z <C-W>T<CR>
 
-" Smart way to move between windows
+map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+
+" The only sane way to move between windows --- ctrl+{h|j|k|l}.
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
+" Close the current buffer.
 map <leader>bd :Bclose<CR>:tabclose<CR>gT
-
-" Close all the buffers
+" Close all buffers.
 map <leader>ba :bufdo bd<CR>
-
+" Switch between next/previous buffers with <leader>l or <leader>h.
 map <leader>l :bnext<CR>
 map <leader>h :bprevious<CR>
 
-" Useful mappings for managing tabs
+" ============
+" Manage tabs.
+" ============
 map <leader>tn :tabnew<CR>
 map <leader>to :tabonly<CR>
 map <leader>tc :tabclose<CR>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext<CR>
-map <leader>tp :tabpreviousCR>
+map <leader>tp :tabprevious<CR>
 
 let g:lasttab = 1
 " Let 'tl' toggle between this and the last accessed tab
@@ -113,21 +132,13 @@ try
 catch
 endtry
 
-" Quickly move current line:
-nnoremap ]e  :<c-u>execute 'move +'. v:count1<CR>
-nnoremap [e  :<c-u>execute 'move -1-'. v:count1<CR>
-
-" Quickly add empty lines:
-nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[
-nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =================
+" Editing mappings.
+" =================
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
+" Move a line of text using ALT+[jk].
 nmap <M-j> mz:m+<CR>`z
 nmap <M-k> mz:m-2<CR>`z
 vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
@@ -151,20 +162,12 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-
-map <leader>alf :ALEFix<CR>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From Upcase
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neat neovim feature -- automatically preview `:s` substitutions in
-" real-time.
-if exists('&inccommand')
-  set inccommand=split
-endif
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'groovy']
+let g:markdown_fenced_languages = [
+  \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'python']
 
+" Sane way to switch out of neovim's :term mode with <Esc>.
 tnoremap <Esc> <C-\><C-n>

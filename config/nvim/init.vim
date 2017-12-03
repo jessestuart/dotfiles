@@ -7,7 +7,7 @@ source $HOME/.config/nvim/files.vimrc
 source $HOME/.config/nvim/plugins.vimrc
 source $HOME/.config/nvim/colors.vimrc
 source $HOME/.config/nvim/functions.vimrc
-source $HOME/.config/nvim/etc.vimrc
+source $HOME/.config/nvim/mappings.vimrc
 source $HOME/.config/nvim/plugins-config.vimrc
 source $HOME/.config/nvim/deoplete.vimrc
 

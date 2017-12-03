@@ -1,17 +1,21 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asynchronous Lint Engine (ALE), and other JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_plugin_flow = 1
 let g:ale_javascript_eslint_options = 'esversion: 6'
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
+
 let g:ale_linters = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'Dockerfile': ['hadolint'],
 \   'javascript': ['prettier', 'flow', 'eslint'],
 \   'python': ['isort', 'yapf'],
-\   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
-\   'Dockerfile': ['hadolint']
+\   'sh': ['shfmt'],
+\   'vim': ['vint'],
+\   'yaml': ['yamllint', 'swaglint']
 \}
+
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier'],
@@ -32,6 +36,7 @@ nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
