@@ -3,3 +3,6 @@
 gitconfig:135,1512280800:135,m
 .git/rebase-merge/git-rebase-todo:25,1512280800:25,d
 .git/COMMIT_EDITMSG:10,1512280800:10,r
+
+[ver:1,total:120]
+.gtm/terminal.app:120,1512280800:120,r
