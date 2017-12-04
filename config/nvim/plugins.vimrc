@@ -122,6 +122,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'alcesleo/vim-uppercase-sql'
 Plug 'tpope/vim-fireplace'    " Closure
 Plug 'guns/vim-sexp'          " Closure
+Plug 'chrisbra/csv.vim'
 
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
 " number of over the messy original from `vim-scripts`.

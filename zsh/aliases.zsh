@@ -30,6 +30,7 @@ alias w="nvim ~/vimwiki/index.wiki"
 alias ck="chromekill"
 alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
+alias chex"chmod +x"
 
 function copy() {
   cat "$1" | pbcopy
