@@ -5,11 +5,15 @@ app
 Bento
 bento
 CircleCI
+circleci
 CLI
 CMS
 codebase
 dev
 Dokku
+dyn
+dynenvs
+envs
 flexbox
 gaearon
 GitHub
@@ -42,6 +46,7 @@ TT
 Ubuntu
 uglified
 utils
+v2
 Vagrantfile
 VirtualBox
 virtualization

@@ -31,6 +31,7 @@ alias ck="chromekill"
 alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
 alias chex"chmod +x"
+alias bi="brew info"
 
 function copy() {
   cat "$1" | pbcopy
@@ -223,9 +224,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
 
-# alias -g G='| grep'
-# alias -g L='| less'
-# alias -g M='| more'
 alias gad='git add --all .'
 alias gag='git add . && git commit --amend --no-edit && git push -f'
 alias gbc='gdc'
@@ -251,6 +249,6 @@ alias repush="gpr && git push"
 alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
 alias review="git diff master"
 alias track='git checkout -t'
-alias gwip='git add -u . && git commit -m "[wip]" && repush'
+alias gwip='git add -u . && git commit -m "[commit message skipped]" && repush'
 
-alias dt-sync='dots add -u . && dots commit -m "Minor changes. Commit message skipped." && dots push origin'
+alias dt-sync='dots add -u . && dots commit -m "[commit message skipped]" && dots push origin'
