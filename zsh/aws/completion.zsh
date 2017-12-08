@@ -1,1 +1,0 @@
-source <(awless completion zsh)

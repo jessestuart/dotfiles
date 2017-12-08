@@ -1,0 +1,354 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/248cffc/
+<BS>	config/nvim/after/ftplugin/help.vim	/^nnoremap <buffer> <BS> <C-T>$/;"	m
+<CR>	config/nvim/after/ftplugin/help.vim	/^nnoremap <buffer> <CR> <C-]>$/;"	m
+O	config/nvim/after/ftplugin/qf.vim	/^nnoremap <buffer><silent> O <CR>:cclose<CR>$/;"	m
+__docker_arguments	zsh/docker/completions.zsh	/^__docker_arguments() {$/;"	f
+__docker_caching_policy	zsh/docker/completions.zsh	/^__docker_caching_policy() {$/;"	f
+__docker_checkpoint_commands	zsh/docker/completions.zsh	/^__docker_checkpoint_commands() {$/;"	f
+__docker_checkpoint_subcommand	zsh/docker/completions.zsh	/^__docker_checkpoint_subcommand() {$/;"	f
+__docker_commands	zsh/docker/completions.zsh	/^__docker_commands() {$/;"	f
+__docker_complete_containers	zsh/docker/completions.zsh	/^__docker_complete_containers() {$/;"	f
+__docker_complete_containers_ids	zsh/docker/completions.zsh	/^__docker_complete_containers_ids() {$/;"	f
+__docker_complete_containers_names	zsh/docker/completions.zsh	/^__docker_complete_containers_names() {$/;"	f
+__docker_complete_detach_keys	zsh/docker/completions.zsh	/^__docker_complete_detach_keys() {$/;"	f
+__docker_complete_disabled_plugins	zsh/docker/completions.zsh	/^__docker_complete_disabled_plugins() {$/;"	f
+__docker_complete_enabled_plugins	zsh/docker/completions.zsh	/^__docker_complete_enabled_plugins() {$/;"	f
+__docker_complete_events_filter	zsh/docker/completions.zsh	/^__docker_complete_events_filter() {$/;"	f
+__docker_complete_images	zsh/docker/completions.zsh	/^__docker_complete_images() {$/;"	f
+__docker_complete_images_filters	zsh/docker/completions.zsh	/^__docker_complete_images_filters() {$/;"	f
+__docker_complete_info_plugins	zsh/docker/completions.zsh	/^__docker_complete_info_plugins() {$/;"	f
+__docker_complete_log_drivers	zsh/docker/completions.zsh	/^__docker_complete_log_drivers() {$/;"	f
+__docker_complete_log_options	zsh/docker/completions.zsh	/^__docker_complete_log_options() {$/;"	f
+__docker_complete_manager_nodes	zsh/docker/completions.zsh	/^__docker_complete_manager_nodes() {$/;"	f
+__docker_complete_networks	zsh/docker/completions.zsh	/^__docker_complete_networks() {$/;"	f
+__docker_complete_networks_ids	zsh/docker/completions.zsh	/^__docker_complete_networks_ids() {$/;"	f
+__docker_complete_networks_names	zsh/docker/completions.zsh	/^__docker_complete_networks_names() {$/;"	f
+__docker_complete_nodes	zsh/docker/completions.zsh	/^__docker_complete_nodes() {$/;"	f
+__docker_complete_nodes_ids	zsh/docker/completions.zsh	/^__docker_complete_nodes_ids() {$/;"	f
+__docker_complete_nodes_names	zsh/docker/completions.zsh	/^__docker_complete_nodes_names() {$/;"	f
+__docker_complete_pending_nodes	zsh/docker/completions.zsh	/^__docker_complete_pending_nodes() {$/;"	f
+__docker_complete_pid	zsh/docker/completions.zsh	/^__docker_complete_pid() {$/;"	f
+__docker_complete_plugins	zsh/docker/completions.zsh	/^__docker_complete_plugins() {$/;"	f
+__docker_complete_prune_filters	zsh/docker/completions.zsh	/^__docker_complete_prune_filters() {$/;"	f
+__docker_complete_ps_filters	zsh/docker/completions.zsh	/^__docker_complete_ps_filters() {$/;"	f
+__docker_complete_repositories	zsh/docker/completions.zsh	/^__docker_complete_repositories() {$/;"	f
+__docker_complete_repositories_with_tags	zsh/docker/completions.zsh	/^__docker_complete_repositories_with_tags() {$/;"	f
+__docker_complete_running_containers	zsh/docker/completions.zsh	/^__docker_complete_running_containers() {$/;"	f
+__docker_complete_runtimes	zsh/docker/completions.zsh	/^__docker_complete_runtimes() {$/;"	f
+__docker_complete_search_filters	zsh/docker/completions.zsh	/^__docker_complete_search_filters() {$/;"	f
+__docker_complete_secrets	zsh/docker/completions.zsh	/^__docker_complete_secrets() {$/;"	f
+__docker_complete_services	zsh/docker/completions.zsh	/^__docker_complete_services() {$/;"	f
+__docker_complete_services_ids	zsh/docker/completions.zsh	/^__docker_complete_services_ids() {$/;"	f
+__docker_complete_services_names	zsh/docker/completions.zsh	/^__docker_complete_services_names() {$/;"	f
+__docker_complete_stacks	zsh/docker/completions.zsh	/^__docker_complete_stacks() {$/;"	f
+__docker_complete_stopped_containers	zsh/docker/completions.zsh	/^__docker_complete_stopped_containers() {$/;"	f
+__docker_complete_volumes	zsh/docker/completions.zsh	/^__docker_complete_volumes() {$/;"	f
+__docker_complete_worker_nodes	zsh/docker/completions.zsh	/^__docker_complete_worker_nodes() {$/;"	f
+__docker_container_commands	zsh/docker/completions.zsh	/^__docker_container_commands() {$/;"	f
+__docker_container_subcommand	zsh/docker/completions.zsh	/^__docker_container_subcommand() {$/;"	f
+__docker_get_containers	zsh/docker/completions.zsh	/^__docker_get_containers() {$/;"	f
+__docker_get_log_options	zsh/docker/completions.zsh	/^__docker_get_log_options() {$/;"	f
+__docker_get_networks	zsh/docker/completions.zsh	/^__docker_get_networks() {$/;"	f
+__docker_image_commands	zsh/docker/completions.zsh	/^__docker_image_commands() {$/;"	f
+__docker_image_subcommand	zsh/docker/completions.zsh	/^__docker_image_subcommand() {$/;"	f
+__docker_network_commands	zsh/docker/completions.zsh	/^__docker_network_commands() {$/;"	f
+__docker_network_complete_ls_filters	zsh/docker/completions.zsh	/^__docker_network_complete_ls_filters() {$/;"	f
+__docker_network_subcommand	zsh/docker/completions.zsh	/^__docker_network_subcommand() {$/;"	f
+__docker_node_commands	zsh/docker/completions.zsh	/^__docker_node_commands() {$/;"	f
+__docker_node_complete_ls_filters	zsh/docker/completions.zsh	/^__docker_node_complete_ls_filters() {$/;"	f
+__docker_node_complete_ps_filters	zsh/docker/completions.zsh	/^__docker_node_complete_ps_filters() {$/;"	f
+__docker_node_subcommand	zsh/docker/completions.zsh	/^__docker_node_subcommand() {$/;"	f
+__docker_nodes	zsh/docker/completions.zsh	/^__docker_nodes() {$/;"	f
+__docker_plugin_commands	zsh/docker/completions.zsh	/^__docker_plugin_commands() {$/;"	f
+__docker_plugin_complete_ls_filters	zsh/docker/completions.zsh	/^__docker_plugin_complete_ls_filters() {$/;"	f
+__docker_plugin_subcommand	zsh/docker/completions.zsh	/^__docker_plugin_subcommand() {$/;"	f
+__docker_plugins	zsh/docker/completions.zsh	/^__docker_plugins() {$/;"	f
+__docker_search	zsh/docker/completions.zsh	/^__docker_search() {$/;"	f
+__docker_secret_commands	zsh/docker/completions.zsh	/^__docker_secret_commands() {$/;"	f
+__docker_secret_subcommand	zsh/docker/completions.zsh	/^__docker_secret_subcommand() {$/;"	f
+__docker_secrets	zsh/docker/completions.zsh	/^__docker_secrets() {$/;"	f
+__docker_service_commands	zsh/docker/completions.zsh	/^__docker_service_commands() {$/;"	f
+__docker_service_complete_ls_filters	zsh/docker/completions.zsh	/^__docker_service_complete_ls_filters() {$/;"	f
+__docker_service_complete_placement_pref	zsh/docker/completions.zsh	/^__docker_service_complete_placement_pref() {$/;"	f
+__docker_service_complete_ps_filters	zsh/docker/completions.zsh	/^__docker_service_complete_ps_filters() {$/;"	f
+__docker_service_subcommand	zsh/docker/completions.zsh	/^__docker_service_subcommand() {$/;"	f
+__docker_services	zsh/docker/completions.zsh	/^__docker_services() {$/;"	f
+__docker_stack_commands	zsh/docker/completions.zsh	/^__docker_stack_commands() {$/;"	f
+__docker_stack_complete_ps_filters	zsh/docker/completions.zsh	/^__docker_stack_complete_ps_filters() {$/;"	f
+__docker_stack_complete_services_filters	zsh/docker/completions.zsh	/^__docker_stack_complete_services_filters() {$/;"	f
+__docker_stack_subcommand	zsh/docker/completions.zsh	/^__docker_stack_subcommand() {$/;"	f
+__docker_stacks	zsh/docker/completions.zsh	/^__docker_stacks() {$/;"	f
+__docker_subcommand	zsh/docker/completions.zsh	/^__docker_subcommand() {$/;"	f
+__docker_swarm_commands	zsh/docker/completions.zsh	/^__docker_swarm_commands() {$/;"	f
+__docker_swarm_subcommand	zsh/docker/completions.zsh	/^__docker_swarm_subcommand() {$/;"	f
+__docker_system_commands	zsh/docker/completions.zsh	/^__docker_system_commands() {$/;"	f
+__docker_system_subcommand	zsh/docker/completions.zsh	/^__docker_system_subcommand() {$/;"	f
+__docker_volume_commands	zsh/docker/completions.zsh	/^__docker_volume_commands() {$/;"	f
+__docker_volume_complete_ls_filters	zsh/docker/completions.zsh	/^__docker_volume_complete_ls_filters() {$/;"	f
+__docker_volume_subcommand	zsh/docker/completions.zsh	/^__docker_volume_subcommand() {$/;"	f
+_docker	zsh/docker/completions.zsh	/^_docker() {$/;"	f
+_dockerd	zsh/docker/completions.zsh	/^_dockerd() {$/;"	f
+_enumerateGrailsScripts	zsh/grails/completions.zsh	/^_enumerateGrailsScripts() {$/;"	f
+_fzf_then_open_in_editor	zsh/functions.zsh	/^function _fzf_then_open_in_editor() {$/;"	f
+_grails	zsh/grails/completions.zsh	/^_grails() {$/;"	f
+_pip_completion	zsh/functions.zsh	/^function _pip_completion {$/;"	f
+_tmuxinator	zsh/tmux/completions.zsh	/^_tmuxinator() {$/;"	f
+a	zsh/functions.zsh	/^function a() {$/;"	f
+active-sprint	zsh/jira/terjira-alias.zsh	/^alias active-sprint="jira sprint active -b 2"$/;"	a
+afk	zsh/aliases.zsh	/^alias afk="\/System\/Library\/CoreServices\/Menu\\ Extras\/User.menu\/Contents\/Resources\/CGSes/;"	a
+airport	zsh/aliases.zsh	/^alias airport='\/System\/Library\/PrivateFrameworks\/Apple80211.framework\/Versions\/Current\/Re/;"	a
+ap	zsh/aliases.zsh	/^alias ap="ansible-playbook"$/;"	a
+ark	zsh/functions.zsh	/^function ark() {$/;"	f
+atom	zsh/aliases.zsh	/^alias atom="atom-beta"$/;"	a
+autoformat	config/nvim/after/ftplugin/terraform.vim	/^augroup autoformat$/;"	a
+badge	zsh/aliases.zsh	/^alias badge="tput bel"$/;"	a
+bi	zsh/aliases.zsh	/^alias bi="brew info"$/;"	a
+brewup	zsh/aliases.zsh	/^alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor;"$/;"	a
+bs	zsh/aliases.zsh	/^alias bs="brew -S"$/;"	a
+bw	zsh/aliases.zsh	/^alias bw="brew"$/;"	a
+bwi	zsh/aliases.zsh	/^alias bwi="brew install"$/;"	a
+bws	zsh/aliases.zsh	/^alias bws="brew -S"$/;"	a
+c	zsh/aliases.zsh	/^alias c="cd"$/;"	a
+cat	zsh/aliases.zsh	/^alias cat="vimcat"$/;"	a
+cc	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> cc :Cycle<CR>$/;"	m
+cdf	zsh/functions.zsh	/^function cdf() { # short for `cdfinder`$/;"	f
+ce	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> ce :Edit<CR>$/;"	m
+cf	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> cf :Fixup<CR>$/;"	m
+chex	zsh/aliases.zsh	/^alias chex"chmod +x"$/;"	a
+chromekill	zsh/aliases.zsh	/^alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | t/;"	a
+chromiumkill	zsh/aliases.zsh	/^alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v extension-process/;"	a
+ck	zsh/aliases.zsh	/^alias ck="chromekill"$/;"	a
+cleanup	zsh/aliases.zsh	/^alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"$/;"	a
+codepoint	zsh/functions.zsh	/^function codepoint() {$/;"	f
+copy	zsh/functions.zsh	/^function copy() {$/;"	f
+cp	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> cp :Pick<CR>$/;"	m
+cr	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> cr :Reword<CR>$/;"	m
+cs	config/nvim/after/ftplugin/gitrebase.vim	/^nnoremap <buffer> cs :Squash<CR>$/;"	m
+current_branch	zsh/git/functions.zsh	/^function current_branch() {$/;"	f
+cv	zsh/vim/aliases.zsh	/^alias cv="cd ~\/.config\/nvim"$/;"	a
+d1	zsh/aliases.zsh	/^alias d1="du -h -d 1"$/;"	a
+d1s	zsh/aliases.zsh	/^alias d1s="du -d 1 -k . | sort -n"$/;"	a
+dalias	zsh/docker/aliases.zsh	/^dalias() { alias | grep 'docker' | sed "s\/^\\([^=]*\\)=\\(.*\\)\/\\1 => \\2\/"| sed "s\/['|\\']/;"	f
+dataurl	zsh/functions.zsh	/^function dataurl() {$/;"	f
+dbash	zsh/docker/aliases.zsh	/^dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }$/;"	f
+dbu	zsh/docker/aliases.zsh	/^dbu() { docker build -t=$1 .; }$/;"	f
+dc	zsh/docker/aliases.zsh	/^alias dc="docker-compose"$/;"	a
+dct	zsh/docker/aliases.zsh	/^alias dct="docker container"$/;"	a
+deploy_grails	zsh/functions.zsh	/^function deploy_grails() {$/;"	f
+dev	zsh/aliases.zsh	/^alias dev="cd ~\/dev"$/;"	a
+dex	zsh/docker/aliases.zsh	/^alias dex="docker exec -i -t"$/;"	a
+di	zsh/docker/aliases.zsh	/^alias di="docker images"$/;"	a
+diff	zsh/functions.zsh	/^  function diff() {$/;"	f
+digga	zsh/functions.zsh	/^function digga() {$/;"	f
+dip	zsh/docker/aliases.zsh	/^alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"$/;"	a
+dit	zsh/docker/aliases.zsh	/^alias dit="docker run -it --rm -P"$/;"	a
+dk	zsh/docker/aliases.zsh	/^alias dk="docker"$/;"	a
+dkd	zsh/docker/aliases.zsh	/^alias dkd="docker run -d -P"$/;"	a
+dl	zsh/docker/aliases.zsh	/^alias dl="docker ps -l -q"$/;"	a
+dm	zsh/docker/aliases.zsh	/^alias dm="docker-machine"$/;"	a
+dots	zsh/aliases.zsh	/^alias dots="git --git-dir=\\"$HOME\\"\/.dotfiles --work-tree=\\"$HOME\\""$/;"	a
+dpa	zsh/docker/aliases.zsh	/^alias dpa="docker ps -a"$/;"	a
+dps	zsh/docker/aliases.zsh	/^alias dps="docker ps"$/;"	a
+dri	zsh/docker/aliases.zsh	/^dri() { docker rmi $(docker images -q); }$/;"	f
+drm	zsh/docker/aliases.zsh	/^drm() { docker rm $(docker ps -a -q); }$/;"	f
+drmf	zsh/docker/aliases.zsh	/^alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'$/;"	a
+dstop	zsh/docker/aliases.zsh	/^dstop() { docker stop $(docker ps -a -q); }$/;"	f
+dt	zsh/aliases.zsh	/^alias dt="dots"$/;"	a
+dt-sync	zsh/aliases.zsh	/^alias dt-sync='dots add -u . && dots commit -m "[commit message skipped]" && dots push origin'$/;"	a
+dts	zsh/aliases.zsh	/^alias dts="dots status"$/;"	a
+dup	zsh/docker/aliases.zsh	/^alias dup="open \/Applications\/Docker.app"$/;"	a
+egrep	zsh/aliases.zsh	/^alias egrep='egrep --color=auto'$/;"	a
+emptytrash	zsh/aliases.zsh	/^alias emptytrash="sudo rm -rfv \/Volumes\/*\/.Trashes; sudo rm -rfv ~\/.Trash; sudo rm -rfv \/pr/;"	a
+escape	zsh/functions.zsh	/^function escape() {$/;"	f
+escaped_lines=	zsh/git/functions.zsh	/^      escaped_lines=()$/;"	f
+expl	zsh/docker/completions.zsh	/^                        _wanted alias expl "Alias" compadd -E "" && ret=0$/;"	a
+fgrep	zsh/aliases.zsh	/^alias fgrep='fgrep --color=auto'$/;"	a
+files=	zsh/grails/completions.zsh	/^    files=()$/;"	f
+flush	zsh/aliases.zsh	/^alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"$/;"	a
+freewifi	zsh/aliases.zsh	/^alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's\/\\(..\\)\/\\1:\/g; s\/.$\//;"	a
+fs	zsh/functions.zsh	/^function fs() {$/;"	f
+fuck	zsh/aliases.zsh	/^alias fuck='eval $(thefuck $(fc -ln -1))'$/;"	a
+fv	zsh/aliases.zsh	/^alias fv="fzf | xargs nvim"$/;"	a
+g	zsh/git/aliases.zsh	/^alias g="git"$/;"	a
+g	zsh/git/functions.zsh	/^function g {$/;"	f
+g:html_indent_inctags	config/nvim/after/ftplugin/html.vim	/^let g:html_indent_inctags = 'html,body,head,tbody'$/;"	v
+ga	zsh/git/aliases.zsh	/^alias ga="git add -A"$/;"	a
+gacam	zsh/git/aliases.zsh	/^alias gacam="git add -u && git cam"$/;"	a
+gacm	zsh/git/aliases.zsh	/^alias gacm="git add -A && gcm"$/;"	a
+gacmp	zsh/git/aliases.zsh	/^function gacmp() {$/;"	f
+gad	zsh/aliases.zsh	/^alias gad='git add --all .'$/;"	a
+gag	zsh/aliases.zsh	/^alias gag='git add . && git commit --amend --no-edit && git push -f'$/;"	a
+gas	zsh/git/aliases.zsh	/^alias gas="git add -A && git status"$/;"	a
+gb	zsh/git/functions.zsh	/^gb() {$/;"	f
+gbc	zsh/aliases.zsh	/^alias gbc='gdc'$/;"	a
+gbmcleanup	zsh/git/functions.zsh	/^gbmcleanup() {$/;"	f
+gc	zsh/git/functions.zsh	/^function gc {$/;"	f
+gca	zsh/aliases.zsh	/^alias gca='git commit -a'$/;"	a
+gcaa	zsh/aliases.zsh	/^alias gcaa='git commit -a --amend -C HEAD'$/;"	a
+gci	zsh/git/aliases.zsh	/^alias gci="hub ci-status -v"$/;"	a
+gcl	zsh/aliases.zsh	/^alias gcl='git clone'$/;"	a
+gcm	zsh/aliases.zsh	/^alias gcm="git commit -m"$/;"	a
+gco	zsh/aliases.zsh	/^alias gco='git checkout'$/;"	a
+gcob	zsh/git/aliases.zsh	/^alias gcob="git checkout -b"$/;"	a
+gd	zsh/aliases.zsh	/^alias gd='git diff'$/;"	a
+gd	zsh/git/aliases.zsh	/^alias gd="git diff --staged"$/;"	a
+gdc	zsh/aliases.zsh	/^alias gdc='git diff --cached'$/;"	a
+gdm	zsh/aliases.zsh	/^alias gdm='git diff master'$/;"	a
+gds	zsh/git/aliases.zsh	/^alias gds="git diff --staged"$/;"	a
+getcertnames	zsh/functions.zsh	/^function getcertnames() {$/;"	f
+gg	zsh/aliases.zsh	/^alias gg='git lg'$/;"	a
+gh	zsh/aliases.zsh	/^alias gh="cd ~\/github"$/;"	a
+git-cleanup-merged-prs	zsh/git/aliases.zsh	/^alias git-cleanup-merged-prs="git fetch --prune; git branch -r --merged | grep origin | grep -v /;"	a
+git-done	zsh/git/functions.zsh	/^function git-done {$/;"	f
+git-new-remote-tracking	zsh/git/functions.zsh	/^function git-new-remote-tracking {$/;"	f
+git-nuke	zsh/git/functions.zsh	/^function git-nuke {$/;"	f
+git-on-master	zsh/git/functions.zsh	/^function git-on-master {$/;"	f
+git_branch_name	zsh/git/functions.zsh	/^function git_branch_name {$/;"	f
+git_current_branch	zsh/git/functions.zsh	/^function git_current_branch() {$/;"	f
+git_list_branches	zsh/functions.zsh	/^function git_list_branches() {$/;"	f
+gitio	zsh/functions.zsh	/^function gitio() {$/;"	f
+gl	zsh/aliases.zsh	/^alias gl="git log"$/;"	a
+glb	zsh/aliases.zsh	/^alias glb="git_list_branches"$/;"	a
+go-	zsh/git/aliases.zsh	/^alias go-="git checkout -"$/;"	a
+god	zsh/git/aliases.zsh	/^alias god="git checkout develop && git pull"$/;"	a
+gom	zsh/git/aliases.zsh	/^alias gom="git checkout master && git pull"$/;"	a
+gom-done	zsh/aliases.zsh	/^alias gom-done="git-on-master && gpf && git-done"$/;"	a
+gp	zsh/aliases.zsh	/^alias gp='git push'$/;"	a
+gpf	zsh/aliases.zsh	/^alias gpf='git push -f'$/;"	a
+gpf	zsh/git/aliases.zsh	/^alias gpf="git push --force-with-lease"$/;"	a
+gpr	zsh/aliases.zsh	/^alias gpr='git pull --rebase'$/;"	a
+gpush	zsh/aliases.zsh	/^alias gpush='echo "Use gp!" && git push'$/;"	a
+gr	zsh/aliases.zsh	/^alias gr="yes | grails run-app"$/;"	a
+grba	zsh/aliases.zsh	/^alias grba="git rebase --abort"$/;"	a
+grc	zsh/aliases.zsh	/^alias grc='git rebase --continue'$/;"	a
+grep	zsh/aliases.zsh	/^alias grep='grep --color=auto'$/;"	a
+grhh	zsh/aliases.zsh	/^alias grhh="git add -u && git reset --hard HEAD"$/;"	a
+grl	zsh/aliases.zsh	/^alias grl="ps -efw | ag '[g]rails'"$/;"	a
+gs	zsh/git/aliases.zsh	/^alias gs="git status"$/;"	a
+gst	zsh/git/aliases.zsh	/^alias gst="git stash save"$/;"	a
+gup	zsh/git/aliases.zsh	/^alias gup="git pull"$/;"	a
+gwip	zsh/aliases.zsh	/^alias gwip='git add -u . && git commit -m "[commit message skipped]" && repush'$/;"	a
+gz	zsh/functions.zsh	/^function gz() {$/;"	f
+h	zsh/aliases.zsh	/^alias h='sync'$/;"	a
+hd	zsh/aliases.zsh	/^command -v hd > \/dev\/null || alias hd="hexdump -C"$/;"	a
+hide	zsh/aliases.zsh	/^alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"$/;"	a
+hidedesktop	zsh/aliases.zsh	/^alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"$/;"	a
+hpr	zsh/aliases.zsh	/^alias hpr='hub pull-request'$/;"	a
+httpdump	zsh/aliases.zsh	/^alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \\"Host\\: .*|GET \\\/.*\\""$/;"	a
+hubci	zsh/git/aliases.zsh	/^alias hubci="hub ci-status -v"$/;"	a
+ifactive	zsh/aliases.zsh	/^alias ifactive="ifconfig | pcregrep -M -o '^[^\\t:]+:([^\\n]|\\n\\t)*status: active'"$/;"	a
+ip	zsh/aliases.zsh	/^alias ip="dig +short myip.opendns.com @resolver1.opendns.com"$/;"	a
+ips	zsh/aliases.zsh	/^alias ips="ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-/;"	a
+iterm2_print_user_vars	zsh/source.zsh	/^function iterm2_print_user_vars() {$/;"	f
+jas	zsh/jira/terjira-alias.zsh	/^alias jas="jira sprint active -b 2"$/;"	a
+jiracl	zsh/aliases.zsh	/^alias jiracl="node \/usr\/local\/lib\/node_modules\/jira-cl\/lib\/index.js"$/;"	a
+jsc	zsh/aliases.zsh	/^[ -e "${jscbin}" ] && alias jsc="${jscbin}";$/;"	a
+json	zsh/functions.zsh	/^function json() {$/;"	f
+kbz	zsh/aliases.zsh	/^alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"$/;"	a
+kg	zsh/aliases.zsh	/^alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"$/;"	a
+l	zsh/aliases.zsh	/^alias l="exa -l"$/;"	a
+la	zsh/aliases.zsh	/^alias la="exa -la --git-ignore --group-directories-first"$/;"	a
+laa	zsh/aliases.zsh	/^alias laa="exa -la --group-directories-first"$/;"	a
+lasd	zsh/aliases.zsh	/^alias lasd="exa -la -s date"$/;"	a
+lessme	zsh/aliases.zsh	/^alias lessme="less README.md"$/;"	a
+lg	zsh/git/aliases.zsh	/^alias lg="legit"$/;"	a
+loadGCP	zsh/gcp/config.zsh	/^function loadGCP() {$/;"	f
+localip	zsh/aliases.zsh	/^alias localip="ipconfig getifaddr en0"$/;"	a
+ls	zsh/aliases.zsh	/^alias ls="exa"$/;"	a
+lscleanup	zsh/aliases.zsh	/^alias lscleanup="\/System\/Library\/Frameworks\/CoreServices.framework\/Frameworks\/LaunchServic/;"	a
+lsd	zsh/aliases.zsh	/^alias lsd="exa -d"$/;"	a
+man	zsh/functions.zsh	/^function man() {$/;"	f
+map	zsh/aliases.zsh	/^alias map="xargs -n1"$/;"	a
+md5sum	zsh/aliases.zsh	/^command -v md5sum > \/dev\/null || alias md5sum="md5"$/;"	a
+mergepdf	zsh/aliases.zsh	/^alias mergepdf='\/System\/Library\/Automator\/Combine\\ PDF\\ Pages.action\/Contents\/Resources\//;"	a
+mkd	zsh/functions.zsh	/^function mkd() {$/;"	f
+mux	zsh/tmux/completions.zsh	/^alias mux="tmuxinator"$/;"	a
+myip	zsh/aliases.zsh	/^alias myip="ifconfig | sed -En 's\/127.0.0.1\/\/;s\/.*inet (addr:)?(([0-9]*\\.){3}[0-9]*).*\/\\2/;"	a
+nig	zsh/aliases.zsh	/^alias nig="npm install -g"$/;"	a
+npmig	zsh/aliases.zsh	/^alias npmig="npm install -g"$/;"	a
+npmup	zsh/aliases.zsh	/^alias npmup="ncu -u -a"$/;"	a
+nrd	zsh/aliases.zsh	/^alias nrd="npm run dev"$/;"	a
+nuke	zsh/functions.zsh	/^function nuke() {$/;"	f
+nv	zsh/aliases.zsh	/^alias nv="nvim"$/;"	a
+o	zsh/functions.zsh	/^function o() {$/;"	f
+pac	zsh/aliases.zsh	/^alias pac="nvim package.json"$/;"	a
+path	zsh/aliases.zsh	/^alias path='echo -e ${PATH\/\/:\/\\\\n} | sort'$/;"	a
+plistbuddy	zsh/aliases.zsh	/^alias plistbuddy="\/usr\/libexec\/PlistBuddy"$/;"	a
+pop	zsh/aliases.zsh	/^alias pop="git stash pop"$/;"	a
+pu	zsh/git/aliases.zsh	/^alias pu="hub pull"$/;"	a
+pull	zsh/git/aliases.zsh	/^alias pull="hub pull"$/;"	a
+push	zsh/git/aliases.zsh	/^alias push="hub push"$/;"	a
+q	config/nvim/after/ftplugin/qf.vim	/^nnoremap <buffer><silent> q :cclose<CR>$/;"	m
+ql-reset	zsh/aliases.zsh	/^alias ql-reset="qlmanage cache -r && qlmanage -r"$/;"	a
+rbid	zsh/git/aliases.zsh	/^alias rbid="git rebase -i develop"$/;"	a
+rbim	zsh/git/aliases.zsh	/^alias rbim="git rebase -i master"$/;"	a
+reload	zsh/aliases.zsh	/^alias reload="exec $SHELL -l"$/;"	a
+repush	zsh/aliases.zsh	/^alias repush="gpr && git push"$/;"	a
+retag	zsh/aliases.zsh	/^alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'$/;"	a
+review	zsh/aliases.zsh	/^alias review="git diff master"$/;"	a
+rl	zsh/aliases.zsh	/^alias rl="exec $SHELL -l"$/;"	a
+scripts=	zsh/grails/completions.zsh	/^    scripts=()$/;"	f
+server	zsh/functions.zsh	/^function server() {$/;"	f
+sf	zsh/functions.zsh	/^function sf() {$/;"	f
+sha1sum	zsh/aliases.zsh	/^command -v sha1sum > \/dev\/null || alias sha1sum="shasum"$/;"	a
+show	zsh/aliases.zsh	/^alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"$/;"	a
+showdesktop	zsh/aliases.zsh	/^alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"$/;"	a
+sniff	zsh/aliases.zsh	/^alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"$/;"	a
+spotoff	zsh/aliases.zsh	/^alias spotoff="sudo launchctl unload -w \/System\/Library\/LaunchDaemons\/com.apple.metadata.mds/;"	a
+spotoff	zsh/aliases.zsh	/^alias spotoff="sudo mdutil -a -i off"$/;"	a
+spoton	zsh/aliases.zsh	/^alias spoton="sudo launchctl load -w \/System\/Library\/LaunchDaemons\/com.apple.metadata.mds.pl/;"	a
+spoton	zsh/aliases.zsh	/^alias spoton="sudo mdutil -a -i on"$/;"	a
+sudo	zsh/aliases.zsh	/^alias sudo='sudo '$/;"	a
+sync	zsh/aliases.zsh	/^alias sync='git add -u . && git commit -m "[commit message automatically skipped]" && repush'$/;"	a
+system_update	zsh/functions.zsh	/^function system_update() {$/;"	f
+sz	zsh/aliases.zsh	/^alias sz="source ~\/.zshrc"$/;"	a
+take	zsh/git/functions.zsh	/^function take {$/;"	f
+targz	zsh/functions.zsh	/^function targz() {$/;"	f
+tf	zsh/aliases.zsh	/^alias tf="terraform"$/;"	a
+timer	zsh/aliases.zsh	/^alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'$/;"	a
+title	zsh/window.zsh	/^function title() {$/;"	f
+tmd	zsh/aliases.zsh	/^alias tmd="tmux detach"$/;"	a
+tmdown	zsh/aliases.zsh	/^alias tmdown="sudo sysctl debug.lowpri_throttle_enabled=1"$/;"	a
+tmup	zsh/aliases.zsh	/^alias tmup="sudo sysctl debug.lowpri_throttle_enabled=0"$/;"	a
+track	zsh/aliases.zsh	/^alias track='git checkout -t'$/;"	a
+tre	zsh/functions.zsh	/^function tre() {$/;"	f
+truecolor	zsh/functions.zsh	/^function truecolor() {$/;"	f
+unidecode	zsh/functions.zsh	/^function unidecode() {$/;"	f
+update	zsh/functions.zsh	/^alias update=system_update$/;"	a
+urlencode	zsh/aliases.zsh	/^alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'$/;"	a
+v	zsh/vim/aliases.zsh	/^alias v="nvim"$/;"	a
+vc	zsh/vim/aliases.zsh	/^alias vc="vrc"$/;"	a
+vgit	zsh/vim/aliases.zsh	/^alias vgit="vim ~\/.gitconfig"$/;"	a
+vham	zsh/vim/aliases.zsh	/^alias vham="vim ~\/.hammerspoon\/init.lua"$/;"	a
+vi	zsh/vim/aliases.zsh	/^alias vi="nvim"$/;"	a
+via	zsh/vim/aliases.zsh	/^alias via="vim ~\/.zsh\/aliases.zsh"$/;"	a
+vid	zsh/aliases.zsh	/^alias vid="vi Dockerfile"$/;"	a
+vidc	zsh/aliases.zsh	/^alias vidc="vi docker-compose.yml"$/;"	a
+vie	zsh/vim/aliases.zsh	/^alias vie="vim ~\/.config\/nvim\/etc.vimrc"$/;"	a
+vif	zsh/vim/aliases.zsh	/^alias vif="vim ~\/.zsh\/functions.zsh"$/;"	a
+vim	zsh/vim/aliases.zsh	/^alias vim="\/usr\/local\/bin\/nvim"$/;"	a
+vip	zsh/vim/aliases.zsh	/^alias vip="vim ~\/.config\/nvim\/plugins.vimrc"$/;"	a
+vipc	zsh/vim/aliases.zsh	/^alias vipc="vim ~\/.config\/nvim\/plugins-config.vimrc"$/;"	a
+vir	zsh/vim/aliases.zsh	/^alias vir="vim README.md"$/;"	a
+vis	zsh/vim/aliases.zsh	/^alias vis="vim ~\/.secrets"$/;"	a
+viv	zsh/vim/aliases.zsh	/^alias viv="vim ~\/.zsh\/vim\/aliases.zsh"$/;"	a
+vp	zsh/aliases.zsh	/^alias vp="vim package.json"$/;"	a
+vpk	zsh/vim/aliases.zsh	/^alias vpk="vim package.json"$/;"	a
+vprez	zsh/vim/aliases.zsh	/^alias vprez="vim ~\/.zpreztorc"$/;"	a
+vrc	zsh/vim/aliases.zsh	/^alias vrc="vim ~\/.config\/nvim\/init.vim"$/;"	a
+vt	zsh/vim/aliases.zsh	/^alias vt="vim ~\/.tmux.conf"$/;"	a
+vz	zsh/vim/aliases.zsh	/^alias vz="vim ~\/.zsh\/zshrc"$/;"	a
+w	zsh/aliases.zsh	/^alias w="nvim ~\/vimwiki\/index.wiki"$/;"	a
+webdev	zsh/aliases.zsh	/^alias webdev="CLIENT_ONLY=true API_ENV=dev npm run dev"$/;"	a
+webqa	zsh/aliases.zsh	/^alias webqa="CLIENT_ONLY=true API_ENV=qa npm run dev"$/;"	a
+week	zsh/aliases.zsh	/^alias week='date +%V'$/;"	a
+yga	zsh/aliases.zsh	/^alias yga="yarn global add"$/;"	a
+yrd	zsh/aliases.zsh	/^alias yrd="yarn run dev"$/;"	a
+z	zsh/aliases.zsh	/^alias z="source ~\/.zshrc"$/;"	a
+zS	config/nvim/after/ftplugin/vim.vim	/^nnoremap <buffer> zS :echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<'$/;"	m

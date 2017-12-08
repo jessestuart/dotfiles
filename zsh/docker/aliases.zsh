@@ -25,7 +25,7 @@ alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
-alias dit="docker run -i -t -P"
+alias dit="docker run -it --rm -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"

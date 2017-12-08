@@ -9,6 +9,10 @@ Plug 'reedes/vim-pencil'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'osyo-manga/vim-over'
+
+Plug 'andymass/vim-matchup'
+Plug 'tmhedberg/matchit'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -81,12 +85,19 @@ Plug 'wokalski/autocomplete-flow'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
+" ==========
+" Typescript
+" ==========
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+
 " -------------------------------------
 " Snippets.
 " -------------------------------------
-Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -145,7 +156,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-peekaboo'
-Plug 'mhinz/vim-startify'
 Plug 'Shougo/denite.nvim'
 Plug 'sjl/splice.vim'
 Plug 'rizzatti/dash.vim'
@@ -166,6 +176,7 @@ Plug 'prabirshrestha/asyncomplete-flow.vim'
 Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
+Plug 'maralla/completor.vim'
 
 Plug 'jceb/vim-orgmode'
 

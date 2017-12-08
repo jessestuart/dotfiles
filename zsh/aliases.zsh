@@ -8,7 +8,6 @@ alias fv="fzf | xargs nvim"
 alias dt="dots"
 alias dts="dots status"
 alias bs="brew -S"
-alias ark="tar czf Archive_$(date +'%s').tar.gz"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias pac="nvim package.json"
 alias glb="git_list_branches"
@@ -32,10 +31,7 @@ alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
 alias chex"chmod +x"
 alias bi="brew info"
-
-function copy() {
-  cat "$1" | pbcopy
-}
+alias vp="vim package.json"
 
 # Grails
 alias gr="yes | grails run-app"
@@ -113,21 +109,6 @@ alias week='date +%V'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
-
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm,
-# and their installed packages.
-function system_update() {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  brew cleanup
-  npm install npm -g
-  npm update -g
-  sudo gem update --system
-  sudo gem update
-  sudo gem cleanup
-}
-alias update=system_update
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
