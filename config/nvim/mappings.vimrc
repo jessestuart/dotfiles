@@ -14,7 +14,7 @@ map <leader><space> :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
 map <leader>pi <leader>sc:PlugInstall<CR>
 " Update all plugins with <leader>up
-nmap <leader>up <leader>sc:PlugInstall:PlugUpdate<CR>
+nmap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
 
 " ==========================================
 " Miscellaneous mappings I've grown to love.

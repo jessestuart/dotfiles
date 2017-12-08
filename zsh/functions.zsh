@@ -11,7 +11,7 @@ function cdf() { # short for `cdfinder`
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
   local tmpFile="${@%/}.tar";
-  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" &>/dev/null || return 1;
 
   size=$(
     stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
@@ -31,7 +31,7 @@ function targz() {
   fi;
 
   echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
-  "${cmd}" -v "${tmpFile}" || return 1;
+  "${cmd}" -v "${tmpFile}" &> /dev/null || return 1;
   [ -f "${tmpFile}" ] && rm "${tmpFile}";
 
   zippedSize=$(
@@ -279,43 +279,41 @@ function sf() {
   [[ -n "$files" ]] && ${EDITOR:-vim} $files
 }
 
-#
-# Log commit messages as a 'highlight' in RescueTime Premium
-#
-# To enable this hook:
-#
-# 1. Place this file in your project's .git/hooks directory and make sure its name is "post-commit".
-# 2. Make sure it has executable permissions (chmod +x post-commit)
-# 3. All commits will be automatically logged as highlight events.
-#
-function notify_rescuetime() {
-  # REQUIRED FIELDS - Today's date and commit message
-  API_KEY=B63AsFrL4ra6cfWMimglPJhspziQvxkhvuVsV4OL
-  MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-  DATE_TODAY=$(date +"%Y-%m-%d %H:%M:%S")
-
-  # OPTIONAL - Label
-  LABEL='code commit'
-
-  http post 'https://www.rescuetime.com/anapi/highlights_post' \
-    key=="$API_KEY" \
-    highlight_date=="$DATE_TODAY" \
-    description=="$MESSAGE" \
-    source=="$LABEL"
-}
-
 # Search a file with fzf and then open it in an editor
 function _fzf_then_open_in_editor() {
   fzf | xargs nvim
-  # file=`fzf`
-  # # Open the file if it exists
-  # if [ -n "$file" ]; then
-  #   # Use the default editor if it's defined, otherwise Vim
-  #   ${EDITOR:-nvim} "$file"
-  # fi
+  file=`fzf`
+  # Open the file if it exists
+  if [ -n "$file" ]; then
+    # Use the default editor if it's defined, otherwise Vim
+    ${EDITOR:-nvim} "$file"
+  fi
 }
 zle -N _fzf_then_open_in_editor
 bindkey '^[fzftoeditor' _fzf_then_open_in_editor
 
 bindkey -s '\ebl' 'l^M'
 
+function copy() {
+  cat "$1" | pbcopy
+}
+
+function ark() {
+  local file="$1"
+  archiver make "$file-$(date +"%Y%m%d_%H%M").tar.gz" $file
+}
+
+# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm,
+# and their installed packages.
+function system_update() {
+  sudo softwareupdate -i -a
+  brew update
+  brew upgrade
+  brew cleanup
+  npm install npm -g
+  npm update -g
+  sudo gem update --system
+  sudo gem update
+  sudo gem cleanup
+}
+alias update=system_update
