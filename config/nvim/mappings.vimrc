@@ -1,9 +1,15 @@
 scriptencoding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Custom mappings 💃
+" => Custom mappings 🗺
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" All about that, leader life.
-let g:mapleader = ','
+
+" All about that     leader life.
+" ...Space. Map leader to space. Then hit that sucka' with either thumb.
+" Makes `<leader` mappings even more comfortable.
+" The `map <space> \` dance here is to prevent <space> from triggering
+" unintended cursor movements when pressed by itself.
+let g:mapleader = '\'
+map <space> \
 
 " ==========================
 " vim-plug plugin management
@@ -72,6 +78,9 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Make the dot command work in visual mode. (h/t @danielmiessler)
 vnoremap . :norm.<CR>
 
+vnoremap <leader>s :sort<CR>
+vnoremap <leader>si :sort i<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around buffers, windows, & tabs.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,14 +127,14 @@ augroup tableave
   autocmd TabLeave * let g:lasttab = tabpagenr()
 augroup END
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
+" Opens a new tab with the current buffer's path --
+" Super useful when editing files in the same directory.
 map <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
 
-" Switch CWD to the directory of the open buffer
+" Switch CWD to the directory of the open buffer.
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" Specify the behavior when switching between buffers
+" Specify the behavior when switching between buffers.
 try
   set switchbuf=useopen,usetab,newtab
   set showtabline=2

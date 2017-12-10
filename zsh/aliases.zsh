@@ -4,37 +4,26 @@
 # they'll be grouped together / moved to a more appropriate place.
 # ============================================================================
 alias c="cd"
-alias fv="fzf | xargs nvim"
-alias dt="dots"
-alias dts="dots status"
-alias bs="brew -S"
-alias ql-reset="qlmanage cache -r && qlmanage -r"
-alias pac="nvim package.json"
-alias glb="git_list_branches"
-alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
-alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor;"
-alias npmup="ncu -u -a"
-alias gh="cd ~/github"
-alias dev="cd ~/dev"
-alias yrd="yarn run dev"
-alias nrd="npm run dev"
-alias grba="git rebase --abort"
-alias webdev="CLIENT_ONLY=true API_ENV=dev npm run dev"
-alias webqa="CLIENT_ONLY=true API_ENV=qa npm run dev"
-alias pop="git stash pop"
-alias gl="git log"
 alias cat="vimcat"
-alias grhh="git add -u && git reset --hard HEAD"
-alias w="nvim ~/vimwiki/index.wiki"
+alias chex="chmod +x"
 alias ck="chromekill"
-alias vidc="vi docker-compose.yml"
-alias vid="vi Dockerfile"
-alias chex"chmod +x"
-alias bi="brew info"
-alias vp="vim package.json"
+alias f="fzf | xargs nvim"
+alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
+alias ql-reset="qlmanage cache -r && qlmanage -r"
+alias w="nvim ~/vimwiki/index.wiki"
+
+# Yarn / NPM
+alias pac="nvim package.json"
 alias yad="yarn add"
 alias yadd="yarn add -D"
 alias lint="yarn lint"
+alias dev="yarn dev"
+alias build="yarn build"
+alias npmup="ncu -u -a"
+alias nrd="npm run dev"
+alias npmig="npm install -g"
+alias nig="npm install -g"
+alias yga="yarn global add"
 
 # Grails
 alias gr="yes | grails run-app"
@@ -42,9 +31,6 @@ alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
 alias grl="ps -efw | ag '[g]rails'"
 
 # Misc
-alias npmig="npm install -g"
-alias nig="npm install -g"
-alias yga="yarn global add"
 alias ap="ansible-playbook"
 alias atom="atom-beta"
 alias dots="git --git-dir=\"$HOME\"/.dotfiles --work-tree=\"$HOME\""
@@ -54,9 +40,6 @@ alias lessme="less README.md"
 alias nv="nvim"
 alias tf="terraform"
 alias tmd="tmux detach"
-alias bw="brew"
-alias bws="brew -S"
-alias bwi="brew install"
 
 # Display human-readable size of each child directory.
 alias d1="du -h -d 1"
@@ -207,32 +190,5 @@ alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v e
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
-
-alias gad='git add --all .'
-alias gag='git add . && git commit --amend --no-edit && git push -f'
-alias gbc='gdc'
-alias gca='git commit -a'
-alias gcaa='git commit -a --amend -C HEAD'
-alias gcl='git clone'
-alias gcm="git commit -m"
-alias gco='git checkout'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gdm='git diff master'
-alias gg='git lg'
-alias gom-done="git-on-master && gpf && git-done"
-alias gp='git push'
-alias gpf='git push -f'
-alias gpr='git pull --rebase'
-alias gpush='echo "Use gp!" && git push'
-alias grc='git rebase --continue'
-alias sync='git add -u . && git commit -m "[commit message automatically skipped]" && repush'
-alias h='sync'
-alias hpr='hub pull-request'
-alias repush="gpr && git push"
-alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
-alias review="git diff master"
-alias track='git checkout -t'
-alias gwip='git add -u . && git commit -m "[commit message skipped]" && repush'
 
 alias dt-sync='dots add -u . && dots commit -m "[commit message skipped]" && dots push origin'
