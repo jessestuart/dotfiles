@@ -1,27 +1,33 @@
-# Git Time Metrics.
-source $HOME/bin/gtm-plugin.sh
+# Git Time Metrics ⏱
+test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
 
-# Autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# FZF 🔎
+test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
 
-# FZF!
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# iTerm2 Shell Integration:
-test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
-# zsh: Place this in .zshrc after "source /Users/georgen/.iterm2_shell_integration.zsh".
-function iterm2_print_user_vars() {
-  iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+# Autojump 🚀
+function load_autojump() {
+  local MAC_ROOT="/usr/local/etc/profile.d/autojump.sh"
+  local LINUX_ROOT="/home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh"
+  test -e "$MAC_ROOT" && . "$MAC_ROOT"
+  test -e "$LINUX_ROOT" && . "$LINUX_ROOT"
 }
+load_autojump
 
 # SDKMAN!
-export SDKMAN_DIR="$HOME/.sdkman"
-local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
-[[ "$SDKMAN_INIT" ]] && . "$SDKMAN_INIT" &> /dev/null
+function load_sdkman() {
+  export SDKMAN_DIR="$HOME/.sdkman"
+  local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
+  test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
+}
+load_sdkman
 
-local GCP_ROOT="${HOME}/bin/google-cloud-sdk"
-[[ "$GCP_ROOT" ]] && . "$GCP_ROOT/path.zsh.inc" &>/dev/null
-[[ "$GCP_ROOT" ]] && . "$GCP_ROOT/completion.zsh.inc" &>/dev/null
+function load_google_cloud_platform_libs() {
+  # The next line updates PATH for the Google Cloud SDK.
+  local ROOT="$HOME/bin/google-cloud-sdk"
+  test -e "$HOME/path.zsh.inc" && . "$HOME/path.zsh.inc"
+  test -e "$HOME/path.zsh.inc" && . "$HOME/comletion.zsh.inc"
+}
+load_google_cloud_platform_libs
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -33,3 +39,10 @@ local GCP_ROOT="${HOME}/bin/google-cloud-sdk"
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
+
+# iTerm2 Shell Integration:
+test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
+# zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
+function iterm2_print_user_vars() {
+  iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+}
