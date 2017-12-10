@@ -24,8 +24,8 @@ load_sdkman
 function load_google_cloud_platform_libs() {
   # The next line updates PATH for the Google Cloud SDK.
   local ROOT="$HOME/bin/google-cloud-sdk"
-  test -e "$HOME/path.zsh.inc" && . "$HOME/path.zsh.inc"
-  test -e "$HOME/path.zsh.inc" && . "$HOME/comletion.zsh.inc"
+  test -e "$ROOT/path.zsh.inc" && . "$ROOT/path.zsh.inc"
+  test -e "$ROOT/completion.zsh.inc" && . "$ROOT/completion.zsh.inc"
 }
 load_google_cloud_platform_libs
 

@@ -32,6 +32,9 @@ alias vid="vi Dockerfile"
 alias chex"chmod +x"
 alias bi="brew info"
 alias vp="vim package.json"
+alias yad="yarn add"
+alias yadd="yarn add -D"
+alias lint="yarn lint"
 
 # Grails
 alias gr="yes | grails run-app"

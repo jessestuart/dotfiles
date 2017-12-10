@@ -18,8 +18,10 @@ let g:ale_linters = {
 
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier'],
+\   'javascript': ['eslint', 'prettier', 'prettier-eslint'],
 \   'python': ['isort', 'yapf'],
+\   'css': ['prettier', 'stylelint'],
+\   'scss': ['prettier', 'stylelint'],
 \   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
 \   'Dockerfile': ['hadolint']
 \}
