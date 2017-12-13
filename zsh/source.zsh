@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Git Time Metrics ⏱
 test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
 
@@ -24,21 +25,19 @@ load_sdkman
 function load_google_cloud_platform_libs() {
   # The next line updates PATH for the Google Cloud SDK.
   local ROOT="$HOME/bin/google-cloud-sdk"
-  test -e "$ROOT/path.zsh.inc" && . "$ROOT/path.zsh.inc"
-  test -e "$ROOT/completion.zsh.inc" && . "$ROOT/completion.zsh.inc"
+  test -e "$ROOT/path.zsh.inc" && . "$ROOT/path.zsh.inc" &> /dev/null
+  test -e "$ROOT/completion.zsh.inc" && . "$ROOT/completion.zsh.inc" &> /dev/null
 }
 load_google_cloud_platform_libs
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
+function load_tabtab() {
+  local TABTAB_ROOT=/usr/local/lib/node_modules/tabtab/.completions
+  test -e "$TABTAB_ROOT/serverless.zsh" && . "$TABTAB_ROOT/servless.zsh"
+  test -e "$TABTAB_ROOT/sls.zsh" && . "$TABTAB_ROOT/sls.zsh"
+  test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
+}
 
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"

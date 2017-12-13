@@ -1,8 +1,10 @@
-export GCP_ROOT='/usr/local/share/gcp/'
+#!/usr/bin/env zsh
 
-function loadGCP() {
-  [[ -f /usr/local/share/gcp/path.zsh.inc ]] && . "/usr/local/share/gcp/path.zsh.inc"
-  [[ -f /usr/local/share/gcp/completion.zsh.inc ]] && . "/usr/local/share/gcp/completion.zsh.inc"
+function load_gcp() {
+  local GCP_ROOT="$HOME/bin/google-cloud-sdk"
+  # shellcheck disable=SC1090
+  test -e "$GCP_ROOT" && . "$GCP_ROOT/path.zsh.inc"
+  # shellcheck disable=SC1090
+  test -e "$GCP_ROOT" && . "$GCP_ROOT/completion.zsh.inc"
 }
-
-async loadGCP
+load_gcp

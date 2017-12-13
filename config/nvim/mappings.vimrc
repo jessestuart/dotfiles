@@ -27,6 +27,7 @@ nmap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:Plug
 " ==========================================
 " I would be lost without FZF.
 nnoremap <leader>fz :FZF<CR>
+nnoremap <C-j> <CR>
 
 " Toggle Goyo for distraction-free editing.
 map <leader>zen :Goyo<CR>
@@ -62,6 +63,9 @@ imap <C-s> :w!<CR>
 nmap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
 nmap <leader>q :q!<CR>
+
+" Repeat macros with `<leader>2`.
+nnoremap <leader>2 @@
 
 " Open neovim config directory with <leader>ev.
 nnoremap <leader>ev :vsplit ~/.config/nvim/<CR>
@@ -180,3 +184,7 @@ let g:markdown_fenced_languages = [
 
 " Sane way to switch out of neovim's :term mode with <Esc>.
 tnoremap <Esc> <C-\><C-n>
+
+nmap <silent> y' yi'
+nmap <silent> yq yi'
+nmap <silent> yqq yi"

@@ -4,6 +4,7 @@
 
 source $HOME/.config/nvim/base.vimrc
 source $HOME/.config/nvim/files.vimrc
+source $HOME/.config/nvim/filetypes.vimrc
 source $HOME/.config/nvim/plugins.vimrc
 source $HOME/.config/nvim/colors.vimrc
 source $HOME/.config/nvim/functions.vimrc

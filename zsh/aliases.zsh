@@ -11,6 +11,9 @@ alias f="fzf | xargs nvim"
 alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias w="nvim ~/vimwiki/index.wiki"
+alias r="ranger"
+alias viag="nvim ~/.zsh/git/aliases.zsh"
+alias gqs="git-quick-stats"
 
 # Yarn / NPM
 alias pac="nvim package.json"

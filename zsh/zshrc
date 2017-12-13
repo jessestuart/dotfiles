@@ -1,7 +1,9 @@
 #!/bin/zsh
 
-# Shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.zsh
+
+export ZPLUG_HOME=/usr/local/opt/zplug
+test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
 
 typeset -U config_files
 local config_files=($HOME/.zsh/**/*.zsh)

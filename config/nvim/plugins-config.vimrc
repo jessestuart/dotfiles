@@ -11,7 +11,8 @@ let g:ale_linters = {
 \   'Dockerfile': ['hadolint'],
 \   'javascript': ['prettier', 'flow', 'eslint'],
 \   'python': ['isort', 'yapf'],
-\   'sh': ['shfmt'],
+\   'sh': ['shellcheck'],
+\   'zsh': ['shellcheck'],
 \   'vim': ['vint'],
 \   'yaml': ['yamllint', 'swaglint']
 \}

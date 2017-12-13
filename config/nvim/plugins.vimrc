@@ -29,7 +29,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'wellle/targets.vim'
 Plug 'wincent/ferret'
@@ -131,8 +130,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'modille/groovy.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'alcesleo/vim-uppercase-sql'
-Plug 'tpope/vim-fireplace'    " Closure
-Plug 'guns/vim-sexp'          " Closure
 Plug 'chrisbra/csv.vim'
 
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a

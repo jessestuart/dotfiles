@@ -23,7 +23,6 @@ alias ggo="git checkout -"
 alias gh="cd ~/github"
 alias gl="git log"
 alias glb="git_list_branches"
-alias go="git checkout -"
 alias god="git checkout develop && git pull"
 alias gom="git checkout master && git pull"
 alias gp="git push"
@@ -62,7 +61,7 @@ function gacp() {
 function git_push_work_in_progress() {
   git add -u .
   git commit -m '[commit message skipped]'
-  repush
+  git push
 }
 
 function git_cleanup_merged_prs() {

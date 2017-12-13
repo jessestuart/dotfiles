@@ -7,16 +7,19 @@ AppVeyor
 auth
 autofix
 AWK
+aws
+AWS
 Bento
 bento
 blog
-CircleCI
 circleci
+CircleCI
 CLI
 CMS
 codebase
 config
 db
+Debian
 dev
 Dokku
 dyn
@@ -30,6 +33,7 @@ github
 GoCD
 google
 gradle
+hammerspoon
 Homebrew
 https
 io
@@ -37,6 +41,7 @@ ip
 JDK
 JDS
 js
+JSON
 JWT
 Koa
 linters
@@ -47,6 +52,7 @@ Nginx
 nginx
 NPM
 offline
+OpenStack
 org
 OSS
 osx
@@ -54,6 +60,7 @@ playbooks
 Plugin
 plugins
 Ramda
+RancherOS
 Redux
 Repo
 repo
@@ -82,6 +89,7 @@ webpack
 Wiki
 wip
 workflow
+yaml
+yml
 zplug
 Zsh
-env
