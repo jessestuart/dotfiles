@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # --------------------------------------
 # Sets Prezto options.
 # --------------------------------------
@@ -102,7 +103,7 @@ zstyle ':prezto:module:pacman' frontend 'yaourt'
 zstyle ':prezto:module:prompt' theme 'pure'
 
 # Set how themes that use promptpwd function display the pwd, can be 'short', 'long', or 'full'
-# zstyle ':prezto:module:prompt' pwd-length 'short'
+zstyle ':prezto:module:prompt' pwd-length 'long'
 
 #
 # SSH

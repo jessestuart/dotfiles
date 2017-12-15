@@ -1,43 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Asynchronous Lint Engine (ALE), and other JS things.
+" JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_javascript_eslint_options = 'esversion: 6'
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 0
-
-let g:ale_linters = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'Dockerfile': ['hadolint'],
-\   'javascript': ['prettier', 'flow', 'eslint'],
-\   'python': ['isort', 'yapf'],
-\   'sh': ['shellcheck'],
-\   'zsh': ['shellcheck'],
-\   'vim': ['vint'],
-\   'yaml': ['yamllint', 'swaglint']
-\}
-
-" :ALEFix will attempt to fix your JS code using ESLint.
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier', 'prettier-eslint'],
-\   'python': ['isort', 'yapf'],
-\   'css': ['prettier', 'stylelint'],
-\   'scss': ['prettier', 'stylelint'],
-\   'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
-\   'Dockerfile': ['hadolint']
-\}
-" Fix files automatically on save. (This is off by default)
-nnoremap <leader>gaf :ALEFix<CR>
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '?'
-let g:ale_statusline_format = ['X %d', '? %d', '']
-" %linter% is the name of the linter that provided the message
-" %s is the error or warning message
-let g:ale_echo_msg_format = '%linter%: %s'
-" Map keys to navigate between lines with errors and warnings.
-nnoremap <leader>an :ALENextWrap<CR>
-nnoremap <leader>ap :ALEPreviousWrap<CR>
-
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 
