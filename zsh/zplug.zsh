@@ -12,4 +12,4 @@ if ! zplug check; then
 fi
 
 # Then, source plugins and add commands to $PATH
-# zplug load &>/dev/null
+$(zplug load)

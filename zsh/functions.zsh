@@ -1,14 +1,21 @@
+#!/usr/bin/env zsh
+# ===================================
 # Create a new directory and enter it
+# ===================================
 function mkd() {
   mkdir -p "$@" && cd "$_";
 }
 
+# ===============================================================
 # Change working directory to the top-most Finder window location
+# ===============================================================
 function cdf() { # short for `cdfinder`
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
+# ==========================================================================
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+# ==========================================================================
 function targz() {
   local tmpFile="${@%/}.tar";
   tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" &>/dev/null || return 1;
@@ -42,7 +49,9 @@ function targz() {
   echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
 }
 
+# =====================================================
 # Determine size of a file or total size of a directory
+# =====================================================
 function fs() {
   if du -b /dev/null > /dev/null 2>&1; then
     local arg=-sbh;
@@ -56,7 +65,9 @@ function fs() {
   fi;
 }
 
+# =====================================
 # Use Git’s colored diff when available
+# =====================================
 hash git &>/dev/null;
 if [ $? -eq 0 ]; then
   function diff() {
@@ -64,7 +75,9 @@ if [ $? -eq 0 ]; then
   }
 fi;
 
+# =============================
 # Create a data URL from a file
+# =============================
 function dataurl() {
   local mimeType=$(file -b --mime-type "$1");
   if [[ $mimeType == text/* ]]; then
@@ -73,7 +86,9 @@ function dataurl() {
   echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
+# =========================
 # Create a git.io short URL
+# =========================
 function gitio() {
   if [ -z "${1}" -o -z "${2}" ]; then
     echo "Usage: \`gitio slug url\`";
@@ -82,7 +97,11 @@ function gitio() {
   curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
 }
 
-# Start an HTTP server from a directory, optionally specifying the port
+# ======================================================================
+# Start an HTTP server from a directory, optionally specifying the port.
+# (Usually prefer something like _zeit's_ [`serve`](zeit-serve).)
+# [zeit-serve](https://github.com/zeit/serve)
+# ======================================================================
 function server() {
   local port="${1:-8000}";
   sleep 1 && open "http://localhost:${port}/" &
@@ -91,7 +110,9 @@ function server() {
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
 
+# ======================================
 # Compare original and gzipped file size
+# ======================================
 function gz() {
   local origsize=$(wc -c < "$1");
   local gzipsize=$(gzip -c "$1" | wc -c);
@@ -101,6 +122,7 @@ function gz() {
 }
 
 # Syntax-highlight JSON strings or files
+# TODO(20171214) Replace this with `jq`.
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
   if [ -t 0 ]; then # argument
@@ -110,12 +132,9 @@ function json() {
   fi;
 }
 
-# Run `dig` and display the most useful info
-function digga() {
-  dig +nocmd "$1" any +multiline +noall +answer;
-}
-
+# ========================================
 # UTF-8-encode a string of Unicode symbols
+# ========================================
 function escape() {
   printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
   # print a newline unless we’re piping the output to another program
@@ -124,7 +143,9 @@ function escape() {
   fi;
 }
 
+# ==============================================
 # Decode \x{ABCD}-style Unicode escape sequences
+# ==============================================
 function unidecode() {
   perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
   # print a newline unless we’re piping the output to another program
@@ -133,7 +154,9 @@ function unidecode() {
   fi;
 }
 
+# ====================================
 # Get a character’s Unicode code point
+# ====================================
 function codepoint() {
   perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
   # print a newline unless we’re piping the output to another program
@@ -142,8 +165,10 @@ function codepoint() {
   fi;
 }
 
+# ===============================================================
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
+# ===============================================================
 function getcertnames() {
   if [ -z "${1}" ]; then
     echo "ERROR: No domain specified.";
@@ -176,8 +201,10 @@ function getcertnames() {
   fi;
 }
 
+# ===========================================================================
 # `a` with no arguments opens the current directory in Atom Editor, otherwise
 # opens the given location
+# ===========================================================================
 function a() {
   if [ $# -eq 0 ]; then
     atom .;
@@ -186,8 +213,10 @@ function a() {
   fi;
 }
 
+# ============================================================================
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
+# ============================================================================
 function o() {
   if [ $# -eq 0 ]; then
     open .;
@@ -196,30 +225,23 @@ function o() {
   fi;
 }
 
+# =============================================================================
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
+# =============================================================================
 function tre() {
-  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+  tree -aC \
+    -I '.git|node_modules|bower_components' \
+    --dirsfirst "$@" \
+    | less -FRNX
 }
 
-# pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
-}
-compctl -K _pip_completion pip
-# pip zsh completion end
-
-function nuke() {
-  local result=$({ mv "$1" "$1.removing" && rm -rf "$1.removing" &> /dev/null } &;)
-  printf '\n'
-}
+# function nuke() {
+#   local result=$({ mv "$1" "$1.removing" && rm -rf "$1.removing" &> /dev/null } &;)
+#   printf '\n'
+# }
 
 function truecolor() {
   awk 'BEGIN{
@@ -251,12 +273,6 @@ function git_list_branches() {
     done | sort | tail -$limit_num_branches
 }
 
-function deploy_grails() {
-  if [ $# -eq 0 ]; then
-
-  fi
-}
-
 function man() {
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -272,25 +288,31 @@ function man() {
 function sf() {
   if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi
   printf -v search "%q" "$*"
-  include="yml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst"
-  exclude=".config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist"
-  rg_command='rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{'$include'}" -g "!{'$exclude'}/*"'
-  files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
-  [[ -n "$files" ]] && ${EDITOR:-vim} $files
+  local include="yml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst"
+  local exclude=".config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,dist,public,.cache"
+  local rg_command='
+    rg --column --line-number --no-heading --fixed-strings --ignore-case
+       --no-ignore --hidden --follow --color "always"
+       -g "*.{'$include'}" -g "!{'$exclude'}/*"
+  '
+  local files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
+  [[ -n "$files" ]] && "${EDITOR:-vim}" "$files"
 }
 
+# NOTE(20171214): Just use `f` (aliased to `fzf | xargs nvim`) for this.
+# editor
 # Search a file with fzf and then open it in an editor
-function _fzf_then_open_in_editor() {
-  fzf | xargs nvim
-  file=`fzf`
-  # Open the file if it exists
-  if [ -n "$file" ]; then
-    # Use the default editor if it's defined, otherwise Vim
-    ${EDITOR:-nvim} "$file"
-  fi
-}
-zle -N _fzf_then_open_in_editor
-bindkey '^[fzftoeditor' _fzf_then_open_in_editor
+# function _fzf_then_open_in_editor() {
+#   fzf | xargs nvim
+#   file=`fzf`
+#   # Open the file if it exists
+#   if [ -n "$file" ]; then
+#     # Use the default editor if it's defined, otherwise Vim
+#     ${EDITOR:-nvim} "$file"
+#   fi
+# }
+# zle -N _fzf_then_open_in_editor
+# bindkey '^[fzftoeditor' _fzf_then_open_in_editor
 
 bindkey -s '\ebl' 'l^M'
 
@@ -298,9 +320,29 @@ function copy() {
   cat "$1" | pbcopy
 }
 
+# ====================================================================
+# Utility function to tar and gzip a file or directory -- this creates
+# an archive in the current directory with a filename like
+# `${ORIGINAL_FILENAME}-{current-datetime}.tar.gz`.
+# ====================================================================
 function ark() {
-  local file="$1"
-  archiver make "$file-$(date +"%Y%m%d_%H%M").tar.gz" $file
+  local filename=$1
+  local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
+  archiver make $archive_filename $filename
+  echo $archive_filename
+}
+
+# ===========================================================================
+# Utility function to tar and gzip a file or directory, then move the created
+# archive to a given directory for automated backup -- in this case, I use
+# `~/Dropbox/Backup/Archive`.
+# ===========================================================================
+function arkcp() {
+  local input="$1"
+  local DROPBOX_BACKUP_ARCHIVE=~/Dropbox/Backup/Archive
+  echo "Compressing and copying '$input' to '$DROPBOX_BACKUP_ARCHIVE'."
+  local archive_file="$(ark $input)"
+  mv "$archive_file" "$DROPBOX_BACKUP_ARCHIVE"
 }
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm,
@@ -312,8 +354,5 @@ function system_update() {
   brew cleanup
   npm install npm -g
   npm update -g
-  sudo gem update --system
-  sudo gem update
-  sudo gem cleanup
 }
-alias update=system_update
+alias sysup=system_update

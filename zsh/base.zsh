@@ -1,3 +1,6 @@
+#!/bin/bash
+# Use bash in the shebang to get `shellformat` support in vim.
+
 # =====================================
 # Jesse does dotfiles: The ZSH edition.
 # =====================================
@@ -6,8 +9,8 @@
 # Base ZSH configuration.
 # --------------------------------------
 # Source Prezto.
-local ZPREZTO_INIT="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-if [[ -s "$ZPREZTO_INIT" ]]; then . "$ZPREZTO_INIT"; fi
+ZPREZTO_INIT="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+test -e "$ZPREZTO_INIT" && . "$ZPREZTO_INIT"
 unset ZPREZTO_INIT
 
 # Enable "fast deletion" of nested folder structures.
@@ -19,7 +22,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # Reload aliases in case any got clobbered by zprezto.
-source "${HOME}/.zsh/aliases.zsh"
+source "$HOME/.zsh/aliases.zsh"
 
 # --------------------------------------
 # Miscellany.

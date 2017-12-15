@@ -11,8 +11,8 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'osyo-manga/vim-over'
 
-Plug 'andymass/vim-matchup'
-Plug 'tmhedberg/matchit'
+" Plug 'andymass/vim-matchup'
+" Plug 'tmhedberg/matchit'
 
 " -------------------------------------
 " File management, searching, etc.

@@ -27,7 +27,7 @@ let g:ale_fixers = {
 \   'Dockerfile': ['hadolint']
 \}
 " Fix files automatically on save. (This is off by default)
-nnoremap <leader>gaf :ALEFix<cr>
+nnoremap <leader>gaf :ALEFix<CR>
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '?'
 let g:ale_statusline_format = ['X %d', '? %d', '']
@@ -35,8 +35,8 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter%: %s'
 " Map keys to navigate between lines with errors and warnings.
-nnoremap <leader>an :ALENextWrap<cr>
-nnoremap <leader>ap :ALEPreviousWrap<cr>
+nnoremap <leader>an :ALENextWrap<CR>
+nnoremap <leader>ap :ALEPreviousWrap<CR>
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
@@ -62,10 +62,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " but we can co-opt it to display search results from Ag with: <leader>cc
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>ne :cn<cr>
-map <leader>pe :cp<cr>
+map <leader>cc :botright cope<CR>
+map <leader>co ggVGy:tabnew<CR>:set syntax=qf<CR>pgg
+map <leader>ne :cn<CR>
+map <leader>pe :cp<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -171,3 +171,22 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" ==================
+" Mappings for `fzy`
+" ==================
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
+nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>

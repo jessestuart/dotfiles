@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Make vim the default editor.
 export EDITOR='nvim';
 export TERM='xterm-256color';
@@ -47,7 +48,9 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
-export PAGER=vimpager
+export PAGER=/usr/local/bin/vimpager
+alias less=$PAGER
+alias zless=$PAGER
 
 # export DOCKER_HOST=tcp://192.168.64.3:2376
 # export DOCKER_CERT_PATH=/Users/jesse/.docker/machine/machines/dinghy

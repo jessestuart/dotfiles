@@ -14,6 +14,7 @@ alias w="nvim ~/vimwiki/index.wiki"
 alias r="ranger"
 alias viag="nvim ~/.zsh/git/aliases.zsh"
 alias gqs="git-quick-stats"
+alias hcl="hub clone"
 
 # Yarn / NPM
 alias pac="nvim package.json"
@@ -190,8 +191,8 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
 
-alias dt-sync='dots add -u . && dots commit -m "[commit message skipped]" && dots push origin'
+alias man="viman"

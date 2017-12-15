@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # ===========================================================
 # Log commit messages as a 'highlight' in RescueTime Premium.
@@ -12,8 +12,8 @@
 function notify_rescuetime() {
   # REQUIRED FIELDS - Today's date and commit message
   MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-  DATE_TODAY=$(date +"%Y-%m-%d %H:%M:%S")
-  LABEL="code commit" # (optional)
+  DATE_TODAY=$(date +'%Y-%m-%d %H:%M:%S')
+  LABEL='code commit' # (optional)
 
   http post 'https://www.rescuetime.com/anapi/highlights_post' \
     key=="$RESCUETIME_API_KEY" \

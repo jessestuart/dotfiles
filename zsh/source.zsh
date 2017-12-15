@@ -39,6 +39,9 @@ function load_tabtab() {
   test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
 }
 
+# Jump!
+eval "$(jump shell)"
+
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
 # zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
