@@ -1,0 +1,8 @@
+[ver:1,total:3330]
+zsh/git/functions.zsh:1110,1513422000:660,1513425600:450,m
+config/nvim/filetypes.vimrc:900,1513490400:240,1513497600:180,1513501200:480,m
+git-templates/hooks/post-commit:330,1513368000:180,1513515600:150,m
+zsh/functions.zsh:300,1513512000:300,m
+config/nvim/ale.vimrc:240,1513360800:180,1513368000:60,m
+config/nvim/spell/en.utf-8.add:240,1513512000:240,m
+gitconfig:210,1513515600:210,m
