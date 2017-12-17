@@ -35,7 +35,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 ###
 # ANSIBLE
 ###
-export ANSIBLE_HOSTS=/etc/ansible/ec2.py
 export EC2_INI_PATH=/etc/ansible/ec2.ini
 
 # Sorry `cowsay` -- turn this noisy shit off.
@@ -48,11 +47,8 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
-export PAGER=/usr/local/bin/vimpager
-alias less=$PAGER
-alias zless=$PAGER
-
-# export DOCKER_HOST=tcp://192.168.64.3:2376
-# export DOCKER_CERT_PATH=/Users/jesse/.docker/machine/machines/dinghy
-# export DOCKER_TLS_VERIFY=1
-# export DOCKER_MACHINE_NAME=dinghy
+if (hash vimpager&>/dev/null); then
+  export PAGER=/usr/local/bin/vimpager
+  alias less=$PAGER
+  alias zless=$PAGER
+fi

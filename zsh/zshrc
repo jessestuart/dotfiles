@@ -5,6 +5,8 @@ export ZSH=$HOME/.zsh
 export ZPLUG_HOME=/usr/local/opt/zplug
 test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
 
+ulimit -n 2048
+
 typeset -U config_files
 local config_files=($HOME/.zsh/**/*.zsh)
 
@@ -23,3 +25,5 @@ fpath=(/usr/local/share/zsh-completions ~/bin/zsh-completions $fpath)
 autoload -Uz compinit && compinit -i
 
 unset config_files
+
+compinit

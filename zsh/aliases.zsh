@@ -33,6 +33,9 @@ alias hcl="hub clone"
 alias gitter="gitter-cli"
 alias viassh="$EDITOR ~/.ssh/config"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
+alias vag="vagrant"
+alias vagup="vagrant up"
+alias vagpr="vagrant provision"
 
 # ============================================
 # Shell essentials. `ls`, `du`, `source`, etc.

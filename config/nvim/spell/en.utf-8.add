@@ -5,6 +5,7 @@ API
 app
 AppVeyor
 auth
+Autocompletion
 autofix
 AWK
 aws
@@ -31,6 +32,7 @@ env
 envs
 flexbox
 gaearon
+GDB
 GitHub
 github
 GoCD
@@ -63,6 +65,7 @@ osx
 playbooks
 Plugin
 plugins
+Quickstart
 Ramda
 RancherOS
 Redux
@@ -95,6 +98,7 @@ v2
 Vagrantfile
 VirtualBox
 virtualization
+VM
 VSCode
 webpack
 Wiki
