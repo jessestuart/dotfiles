@@ -110,7 +110,13 @@ zstyle ':prezto:module:prompt' pwd-length 'long'
 #
 
 # Set the SSH identities to load into the agent.
-zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github_rsa'
+zstyle ':prezto:module:ssh:load' identities \
+  'aws_rsa' \
+  'do_rsa' \
+  'gcp_rsa' \
+  'github_rsa' \
+  'gitlab_rsa' \
+  'id_rsa'
 
 #
 # Syntax Highlighting

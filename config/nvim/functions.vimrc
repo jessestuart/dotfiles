@@ -1,12 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe 'menu Foo.Bar :' . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute 'normal! vgvy'

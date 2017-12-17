@@ -28,9 +28,6 @@ source "$HOME/.zsh/aliases.zsh"
 # Miscellany.
 # --------------------------------------
 
-eval "$(ssh-agent)" &> /dev/null
-ssh-add -K -A ~/.ssh/*_rsa &> /dev/null
-
 # Support for signing git commits w/ GPG.
 export GPG_TTY=$(tty)
 

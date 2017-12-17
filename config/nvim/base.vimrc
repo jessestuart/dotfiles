@@ -161,3 +161,10 @@ augroup rm_trailing_whitespace
   autocmd!
   autocmd BufWrite * :call DeleteTrailingWS()
 augroup END
+
+function! DeleteTabs()
+  exe 'normal mz'
+  exe ':%s/\t/  /g'
+  exe 'normal `z'
+  exe ':delmarks z'
+endfunction
