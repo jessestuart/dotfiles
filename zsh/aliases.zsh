@@ -1,50 +1,42 @@
+#!/usr/bin/env bash
+# =============================
+# << I ALIAS ALL THE THINGS. >>
+# =============================
+
+# << A PRELUDE >>
+# Sometimes I work on systems that don't have neovim. I know, right?
+# Provide a fallback here so the aliases still work.
+if (hash nvim &>/dev/null); then
+  export EDITOR='nvim'
+elif (hash vim &>/dev/null); then
+  export EDITOR='vim'
+else
+  export EDITOR='vi'
+fi
+
 # ============================================================================
 # << ALIAS INBOX >>
-# These get added as they come to me.  If I end up continuing to use them,
+# These get added as they come to me. If I end up continuing to use them,
 # they'll be grouped together / moved to a more appropriate place.
 # ============================================================================
 alias c="cd"
-alias cat="vimcat"
 alias chex="chmod +x"
 alias ck="chromekill"
-alias f="fzf | xargs nvim"
+alias f="fzf | xargs $EDITOR"
 alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
-alias w="nvim ~/vimwiki/index.wiki"
+alias w="$EDITOR ~/vimwiki/index.wiki"
 alias r="ranger"
-alias viag="nvim ~/.zsh/git/aliases.zsh"
+alias viag="$EDITOR ~/.zsh/git/aliases.zsh"
 alias gqs="git-quick-stats"
 alias hcl="hub clone"
+alias gitter="gitter-cli"
+alias viassh="$EDITOR ~/.ssh/config"
+alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
 
-# Yarn / NPM
-alias pac="nvim package.json"
-alias yad="yarn add"
-alias yadd="yarn add -D"
-alias lint="yarn lint"
-alias dev="yarn dev"
-alias build="yarn build"
-alias npmup="ncu -u -a"
-alias nrd="npm run dev"
-alias npmig="npm install -g"
-alias nig="npm install -g"
-alias yga="yarn global add"
-
-# Grails
-alias gr="yes | grails run-app"
-alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
-alias grl="ps -efw | ag '[g]rails'"
-
-# Misc
-alias ap="ansible-playbook"
-alias atom="atom-beta"
-alias dots="git --git-dir=\"$HOME\"/.dotfiles --work-tree=\"$HOME\""
-alias fuck='eval $(thefuck $(fc -ln -1))'
-alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
-alias lessme="less README.md"
-alias nv="nvim"
-alias tf="terraform"
-alias tmd="tmux detach"
-
+# ============================================
+# Shell essentials. `ls`, `du`, `source`, etc.
+# ============================================
 # Display human-readable size of each child directory.
 alias d1="du -h -d 1"
 # List folders in directory, and sort by size.
@@ -52,28 +44,68 @@ alias d1s="du -d 1 -k . | sort -n"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
-alias rl="exec $SHELL -l"
+alias rl=reload
+alias sz="source ~/.zshrc"
+alias z="source ~/.zshrc"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n} | sort'
 
-alias sz="source ~/.zshrc"
-alias z="source ~/.zshrc"
+# Enable aliases to be sudo’ed.
+alias sudo='sudo '
+
+if (hash vimcat&>/dev/null); then alias cat="vimcat"; fi
 
 #--------------------------------------
-# Alias `ls` to use `exa`.
+# << LISTING THINGS! >>
+# Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
-# List all files colorized in long format
-alias l="exa -l"
-# List all files colorized in long format, including dot files
-alias la="exa -la --git-ignore --group-directories-first"
-alias laa="exa -la --group-directories-first"
-# List only directories
-alias lsd="exa -d"
-# Always use color output for `ls`
-alias ls="exa"
-# List sorted by date.
-alias lasd="exa -la -s date"
+if (hash exa &>/dev/null); then
+  alias ls="exa"
+  # List all files colorized in long format
+  alias l="exa -l"
+  # List all files colorized in long format, including dot files
+  alias la="exa -la --git-ignore --group-directories-first"
+  # Same as above, but don't hide gitignored files.
+  alias laa="exa -la --group-directories-first"
+  # List all sorted by size.
+  alias las="la -s size"
+  # List all sorted by date.
+  alias lad="la -s date"
+  # List only directories.
+  alias ladir="exa -d"
+else
+  alias ll="ls -l"
+  alias la="ls -al"
+fi
+
+# =================
+# Yarn / NPM / etc.
+# =================
+alias build="yarn build"
+alias dev="yarn dev"
+alias lint="yarn lint"
+alias nig="npm install -g"
+alias npmig="npm install -g"
+alias nrd="npm run dev"
+alias pac="$EDITOR package.json"
+alias pacup="ncu -u -a"
+alias yad="yarn add"
+alias yadd="yarn add -D"
+alias yga="yarn global add"
+
+# Misc
+alias ap="ansible-playbook"
+alias atom="atom-beta"
+alias fuck='eval $(thefuck $(fc -ln -1))'
+alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
+alias tf="terraform"
+alias tmd="tmux detach"
+
+# Grails
+alias gr="yes | grails run-app"
+alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
+alias grl="ps -efw | ag '[g]rails'"
 
 # ===================================================
 
@@ -90,9 +122,6 @@ alias tmdown="sudo sysctl debug.lowpri_throttle_enabled=1"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
 
 # Get week number
 alias week='date +%V'
@@ -130,20 +159,15 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
 # JavaScriptCore REPL
-jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
-[ -e "${jscbin}" ] && alias jsc="${jscbin}";
-unset jscbin;
+jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
+[ -e "$jscbin" ] && alias jsc="$jscbin"
+unset jscbin
 
 # Trim new lines and copy to clipboard
 # alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"

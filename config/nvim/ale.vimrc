@@ -34,7 +34,6 @@ let g:ale_linters = {
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
       \  'css': ['prettier', 'stylelint'],
-      \  'Dockerfile': ['hadolint'],
       \  'javascript': ['eslint', 'prettier', 'prettier-eslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],

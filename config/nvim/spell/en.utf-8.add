@@ -16,6 +16,7 @@ CDN
 circleci
 CircleCI
 CLI
+Clojure
 CMS
 codebase
 config
@@ -65,6 +66,8 @@ plugins
 Ramda
 RancherOS
 Redux
+reflow
+REPL
 Repo
 repo
 repos
@@ -96,6 +99,7 @@ VSCode
 webpack
 Wiki
 wip
+wordwrap
 workflow
 yaml
 yml

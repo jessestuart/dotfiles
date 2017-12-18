@@ -1,6 +1,10 @@
+.classpath
 .DS_Store
 .gtm/
+.project
+.settings/
 .tern-port
+codealike.json
 node_modules
 tags
 tags.lock

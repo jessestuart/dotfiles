@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # ===========================================================
 # Log commit messages as a 'highlight' in RescueTime Premium.
@@ -9,21 +9,22 @@
 # 2. Make sure it has executable permissions (chmod +x post-commit)
 # 3. All commits will be automatically logged as highlight events.
 # ===========================================================
-function notify_rescuetime() {
-  # REQUIRED FIELDS - Today's date and commit message
-  MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-  DATE_TODAY=$(date +'%Y-%m-%d %H:%M:%S')
-  LABEL='code commit' # (optional)
+notify_rescuetime() {
+	# REQUIRED FIELDS - Today's date and commit message
+	MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+	DATE_TODAY=$(date +'%Y-%m-%d %H:%M:%S')
+	LABEL='code commit' # (optional)
 
-  http post 'https://www.rescuetime.com/anapi/highlights_post' \
-    key=="$RESCUETIME_API_KEY" \
-    highlight_date=="$DATE_TODAY" \
-    description=="$MESSAGE" \
-    source=="$LABEL"
+	http post 'https://www.rescuetime.com/anapi/highlights_post' \
+		key=="$RESCUETIME_API_KEY" \
+		highlight_date=="$DATE_TODAY" \
+		description=="$MESSAGE" \
+		source=="$LABEL"
 }
 
 git-hooks run "$0" "$@"
 gtm commit --yes || /usr/local/bin/gtm commit --yes
-notify_rescuetime     >/dev/null 2>&1 &
-git pushgtm           >/dev/null 2>&1 &
-.git/hooks/ctags      >/dev/null 2>&1 &
+
+notify_rescuetime >/dev/null 2>&1 &
+git pushgtm >/dev/null 2>&1 &
+.git/hooks/ctags >/dev/null 2>&1 &

@@ -25,6 +25,30 @@ function current_branch() {
   git_current_branch
 }
 
+function take {
+  mkdir $1
+  cd $1
+}
+
+# Allows commit message without typing quotes (can't have quotes in the commit
+# msg though).
+function gc {
+  git commit -m "$*"
+}
+
+function ghcl() {
+  local REPO_URL=$1
+  local GITHUB_ROOT="$HOME/github"
+  local FOLDER_NAME="$(echo $REPO_URL | sed 's:.*/::')"
+  local FOLDER_PATH="$GITHUB_ROOT/$FOLDER_NAME"
+  pushd $GITHUB_ROOT
+  hub clone $REPO_URL
+  echo "Cloned repository to $FOLDER_PATH."
+  echo "The absolute path has been copied to your clipboard."
+  echo $FOLDER_PATH | pbcopy
+  popd
+}
+
 # Function for "git branch", handling the "list" case, by sorting it according
 # to committerdate, and displaying it.
 gb() {
@@ -194,7 +218,7 @@ gb() {
     done
 
     # Display it using "less", but only to cut at $COLUMNS.
-    echo ${${(j:\n:)lines}} | less --no-init --chop-long-lines --QUIT-AT-EOF
+    echo ${${(j:\n:)lines}} | \less --no-init --chop-long-lines --QUIT-AT-EOF
   fi
 }
 compdef -e 'words=(git branch "${(@)words[2,-1]}"); ((CURRENT++)); _normal' gb
@@ -383,12 +407,3 @@ function git-on-master {
   git rebase master && git push -f
 }
 
-function take {
-  mkdir $1
-  cd $1
-}
-
-# Allows commit message without typing quotes (can't have quotes in the commit msg though).
-function gc {
-  git commit -m "$*"
-}

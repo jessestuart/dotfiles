@@ -66,6 +66,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 let g:pandoc#modules#disabled = ['folding']
+let g:pandoc#filetypes#handled = ['pandoc', 'rst', 'textile', 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GTM
@@ -153,3 +154,7 @@ endfunction
 nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)

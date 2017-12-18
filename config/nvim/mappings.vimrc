@@ -33,7 +33,7 @@ nnoremap <C-j> <CR>
 map <leader>zen :Goyo<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
-map <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " I like wrapping comments in blocks of '=' characters.
 nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
@@ -56,13 +56,13 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
 " Fast saving / closing.
 " ======================
 " Write buffer with <leader>w or ctrl+s. The latter works in insert mode too!
-nmap <leader>w :w!<CR>
-map <C-s> :w!<CR>
-imap <C-s> :w!<CR>
+nnoremap <leader>w :w!<CR>
+nnoremap <C-s> :w!<CR>
+inoremap <C-s> :w!<CR>
 " Write and close buffer with <leader>1.
-nmap <leader>1 :wq!<CR>
+nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
-nmap <leader>q :q!<CR>
+nnoremap <leader>q :q!<CR>
 
 " Repeat macros with `<leader>2`.
 nnoremap <leader>2 @@
@@ -70,7 +70,7 @@ nnoremap <leader>2 @@
 " Open neovim config directory with <leader>ev.
 nnoremap <leader>ev :vsplit ~/.config/nvim/<CR>
 
-map <Leader>gw :!git add . && git commit -m '[wip]'<CR>
+nnoremap <Leader>gw :!git add . && git commit -m '[wip]'<CR>
 
 "-----------------------------
 " => Visual mode-related

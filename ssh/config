@@ -13,6 +13,11 @@ Host drone
   Hostname 138.197.106.242
   IdentityFile /Users/jesse/.docker/machine/machines/drone/id_rsa
   User jesse
+Host pi
+  ForwardAgent yes
+  Hostname 192.168.0.104
+  IdentityFile ~/.ssh/id_rsa
+  User pi
 
 # Google Compute Engine Section
 #

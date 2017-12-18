@@ -1,23 +1,29 @@
+#!/usr/bin/env bash
 # ============
 # Vim aliases.
 # ============
-alias cv="cd ~/.config/nvim"
-alias v="nvim"
-alias vc="vrc"
-alias vgit="vim ~/.gitconfig"
-alias vham="vim ~/.hammerspoon/init.lua"
-alias vi="nvim"
-alias via="vim ~/.zsh/aliases.zsh"
-alias vif="vim ~/.zsh/functions.zsh"
-alias vim="/usr/local/bin/nvim"
-alias vimap="vim ~/.config/nvim/mappings.vimrc"
-alias vip="vim ~/.config/nvim/plugins.vimrc"
-alias vipc="vim ~/.config/nvim/plugins-config.vimrc"
-alias vir="vim README.md"
-alias vis="vim ~/.secrets"
-alias viv="vim ~/.zsh/vim/aliases.zsh"
-alias vpk="vim package.json"
-alias vprez="vim ~/.zpreztorc"
-alias vrc="vim ~/.config/nvim/init.vim"
-alias vt="vim ~/.tmux.conf"
-alias vz="vim ~/.zsh/zshrc"
+if (hash nvim &>/dev/null); then
+  export EDITOR='nvim'
+elif (hash vim &>/dev/null); then
+  export EDITOR='vim'
+else
+  export EDITOR='vi'
+fi
+
+alias cdv="cd ~/.config/nvim"
+alias v="$EDITOR"
+alias vgit="$EDITOR ~/.gitconfig"
+alias vham="$EDITOR ~/.hammerspoon/init.lua"
+alias vi="$EDITOR"
+alias via="$EDITOR ~/.zsh/aliases.zsh"
+alias vif="$EDITOR ~/.zsh/functions.zsh"
+alias vimap="$EDITOR ~/.config/nvim/mappings.vimrc"
+alias vip="$EDITOR ~/.config/nvim/plugins.vimrc"
+alias vipc="$EDITOR ~/.config/nvim/plugins-config.vimrc"
+alias vir="$EDITOR README.md"
+alias vis="$EDITOR ~/.secrets"
+alias viv="$EDITOR ~/.zsh/vim/aliases.zsh"
+alias vpk="$EDITOR package.json"
+alias vprez="$EDITOR ~/.zpreztorc"
+alias vt="$EDITOR ~/.tmux.conf"
+alias vz="$EDITOR ~/.zsh/zshrc"

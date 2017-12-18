@@ -257,6 +257,5 @@
   keepBackup = true
 [commit]
   gpgsign = true
-  template = /Users/jesse/.stCommitMsg
 [gpg]
   program = gpg

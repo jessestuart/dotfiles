@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # ======================================
 # Git aliases -- because who needs GUIs?
 # ======================================
@@ -18,7 +19,7 @@ alias gd="git diff --staged"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gdm="git diff master"
-alias gds="git diff --staged"
+alias gds="git add -A && git diff --staged"
 alias ggo="git checkout -"
 alias gh="cd ~/github"
 alias gl="git log"
@@ -32,7 +33,7 @@ alias gpr="git pull --rebase"
 alias grba="git rebase --abort"
 alias grc="git rebase --continue"
 alias grhh="git add -u && git reset --hard HEAD"
-alias gs="git status"
+alias gs="git add -u && git status"
 alias gst="git stash save"
 alias gwip="git_push_work_in_progress"
 alias hpr="hub pull-request"

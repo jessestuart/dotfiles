@@ -10,6 +10,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'osyo-manga/vim-over'
+Plug 'christoomey/vim-sort-motion'
 
 " Plug 'andymass/vim-matchup'
 " Plug 'tmhedberg/matchit'
@@ -19,7 +20,8 @@ Plug 'osyo-manga/vim-over'
 " Getting around.
 " -------------------------------------
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'haya14busa/is.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -53,7 +55,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'airblade/vim-gitgutter'
 Plug 'codegram/vim-codereview'
 Plug 'jreybert/vimagit'
-Plug 'junegunn/vim-github-dashboard'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 Plug 'junkblocker/patchreview-vim'
 Plug 'mattn/webapi-vim' " Required for vim-github-comment
 Plug 'mmozuras/vim-github-comment'
@@ -61,25 +63,24 @@ Plug 'mmozuras/vim-github-comment'
 " -------------------------------------
 " WebDev -- javascript, CSS, etc.
 " -------------------------------------
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'pandoc']
-  \}
+Plug 'prettier/vim-prettier',
+      \{ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'pandoc']
+      \}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags tern-coffee --save-dev' }
-Plug 'othree/tern_for_vim_coffee'
-Plug 'Galooshi/vim-import-js' " This may not work?
-Plug 'alampros/vim-styled-jsx'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev', 'for': 'javascript' }
+Plug 'Galooshi/vim-import-js', { 'for': 'javascript' } " This may not work?
+Plug 'alampros/vim-styled-jsx', { 'for': 'javascript' }
 Plug 'mattn/emmet-vim'
 " ----
 " Place deoplete first, then autocomplete-flow
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'wokalski/autocomplete-flow'
+Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 " You will also need the following for function argument completion:
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -93,8 +94,8 @@ Plug 'leafgarland/typescript-vim'
 " -------------------------------------
 " Snippets.
 " -------------------------------------
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
+Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
+Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 
@@ -102,7 +103,7 @@ Plug 'SirVer/ultisnips'
 " Tmux-related plugins.
 " -------------------------------------
 Plug 'christoomey/vim-tmux-navigator' " Nav b/t tmux panes & vim splits
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
@@ -110,7 +111,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'hashivim/vim-packer'
 Plug 'hashivim/vim-terraform'
 Plug 'hashivim/vim-vagrant'
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 
 " -------------------------------------
 " Visual styling / theming.
@@ -125,12 +126,12 @@ Plug 'KeitaNakamura/neodark.vim'
 " -------------------------------------
 " Misc. language support.
 " -------------------------------------
-Plug 'fatih/vim-go'
-Plug 'sheerun/vim-polyglot'
-Plug 'modille/groovy.vim'
+Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'modille/groovy.vim', { 'for': 'groovy' }
 Plug 'plasticboy/vim-markdown'
-Plug 'alcesleo/vim-uppercase-sql'
-Plug 'chrisbra/csv.vim'
+Plug 'sheerun/vim-polyglot'
 
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
 " number of over the messy original from `vim-scripts`.
