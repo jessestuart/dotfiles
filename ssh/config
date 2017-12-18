@@ -1,7 +1,9 @@
+IgnoreUnknown UseKeychain,AddKeysToAgent
+
 Host *
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_rsa
-  IgnoreUnknown UseKeychain
+  UseKeychain yes
 Host linode
   ForwardAgent yes
   Hostname 45.33.76.162

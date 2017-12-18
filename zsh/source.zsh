@@ -30,17 +30,29 @@ function load_google_cloud_platform_libs() {
 }
 load_google_cloud_platform_libs
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
 function load_tabtab() {
   local TABTAB_ROOT=/usr/local/lib/node_modules/tabtab/.completions
   test -e "$TABTAB_ROOT/serverless.zsh" && . "$TABTAB_ROOT/servless.zsh"
   test -e "$TABTAB_ROOT/sls.zsh" && . "$TABTAB_ROOT/sls.zsh"
   test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
 }
+load_tabtab
 
 # Jump!
-eval "$(jump shell)"
+hash jump &>/dev/null && eval "$(jump shell)"
+
+# ===================
+# OS-specific sources
+# ===================
+PLATFORM=`uname`
+
+function load_linuxbrew() {
+  local LINUXBREW_HOME=$(readlink -f /home/linuxbrew)
+  if [ -e "$LINUXBREW_HOME" ]; then
+    export PATH="$LINUXBREW_HOME/.linuxbrew/bin:$LINUXBREW_HOME/.linuxbrew/sbin:$PATH"
+  fi
+}
+if [ "$PLATFORM" = 'Linux' ]; then load_linuxbrew; fi
 
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
@@ -48,3 +60,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_inte
 function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
+
