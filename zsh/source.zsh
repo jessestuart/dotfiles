@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 # Git Time Metrics ⏱
 test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
+test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.sh"
 
 # FZF 🔎
 test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"

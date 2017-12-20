@@ -16,8 +16,8 @@ Host drone
 Host pi
   ForwardAgent yes
   Hostname 192.168.0.104
-  IdentityFile ~/.ssh/id_rsa
-  User pi
+  IdentityFile ~/.ssh/ubuntuone_rsa
+  User jessestuart
 
 # Google Compute Engine Section
 #

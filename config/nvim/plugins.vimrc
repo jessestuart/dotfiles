@@ -103,6 +103,7 @@ Plug 'SirVer/ultisnips'
 " Tmux-related plugins.
 " -------------------------------------
 Plug 'christoomey/vim-tmux-navigator' " Nav b/t tmux panes & vim splits
+Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " Plug 'edkolev/tmuxline.vim'
 
 " -------------------------------------

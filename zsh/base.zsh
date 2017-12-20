@@ -39,4 +39,6 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 # Set right-hand prompt via zsh's RPROMPT.
-export RPROMPT='$(echo $GTM_STATUS)'
+if [ -n "$TMUX" ]; then
+  export RPROMPT='%F$(test -e .gtm && gtm status -total-only -long-duration)'
+fi

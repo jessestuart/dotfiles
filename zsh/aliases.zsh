@@ -36,6 +36,18 @@ alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
 alias vag="vagrant"
 alias vagup="vagrant up"
 alias vagpr="vagrant provision"
+alias vagd="vagrant destroy -f"
+alias vd="vagrant destroy -f"
+alias viav="$EDITOR Vagrantfile"
+alias vdup="vagrant destroy && vagrant up"
+
+function swap() {
+  local file1=$1
+  local file2=$2
+  mv $file1 "$file1.bak"
+  mv $file2 $file1
+  mv "$file1.bak" $file2
+}
 
 # ============================================
 # Shell essentials. `ls`, `du`, `source`, etc.
