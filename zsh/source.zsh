@@ -55,6 +55,16 @@ function load_linuxbrew() {
 }
 if [ "$PLATFORM" = 'Linux' ]; then load_linuxbrew; fi
 
+function load_virtualenv() {
+  export WORKON_HOME=~/.virtualenvs
+  mkdir -p $WORKON_HOME
+  source ~/.local/bin/virtualenvwrapper.sh
+}
+
+function load_conda() {
+  test -e "$HOME/bin/miniconda3" && . "$HOME/bin/miniconda3/bin/activate"
+}
+
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
 # zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.

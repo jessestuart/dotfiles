@@ -8,7 +8,7 @@ test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
 ulimit -n 2048
 
 typeset -U config_files
-local config_files=($HOME/.zsh/**/*.zsh)
+config_files=($HOME/.zsh/**/*.zsh)
 
 # 1) Load zprezto configuration.
 for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done

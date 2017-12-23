@@ -14,7 +14,7 @@ set autoread
 
 " Enable line numbers. Make 'em relative.
 set number
-set relativenumber
+" set relativenumber
 
 " Show a colored gutter at 80 columns.
 set colorcolumn=80
@@ -24,6 +24,9 @@ augroup gitcommit
   autocmd!
   autocmd FileType gitcommit set colorcolumn+=51
 augroup END
+
+" Enable omnifunc.
+set omnifunc=syntaxcomplete#Complete
 
 function! RestoreCursor()
   if line("'\"") <= line('$')

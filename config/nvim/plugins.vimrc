@@ -112,7 +112,8 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 Plug 'hashivim/vim-packer'
 Plug 'hashivim/vim-terraform'
 Plug 'hashivim/vim-vagrant'
-Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'pearofducks/ansible-vim'
+Plug 'hejack0207/ansible.vim'
 
 " -------------------------------------
 " Visual styling / theming.
@@ -133,6 +134,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'modille/groovy.vim', { 'for': 'groovy' }
 Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-jdaddy'
 
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
 " number of over the messy original from `vim-scripts`.
