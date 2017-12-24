@@ -1,1 +1,15 @@
 [ver:1,total:0]
+
+[ver:1,total:60]
+.git/rebase-merge/git-rebase-todo:30,1514134800:30,r
+.git/COMMIT_EDITMSG:30,1514134800:30,r
+
+[ver:1,total:1140]
+zsh/path.zsh:810,1514131200:810,m
+zsh/go/source.zsh:240,1514098800:180,1514131200:60,d
+tmux.conf:90,1514131200:30,1514134800:60,m
+
+[ver:1,total:1140]
+zsh/path.zsh:810,1514131200:810,m
+zsh/go/source.zsh:240,1514098800:180,1514131200:60,d
+tmux.conf:90,1514131200:30,1514134800:60,m
