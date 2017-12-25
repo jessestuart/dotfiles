@@ -1,3 +1,7 @@
 [ver:1,total:120]
 gitconfig:60,1514160000:60,m
 .git/COMMIT_EDITMSG:60,1514160000:60,r
+
+[ver:1,total:660]
+zsh/exports.zsh:420,1514152800:180,1514156400:240,r
+gitconfig:240,1514152800:240,m
