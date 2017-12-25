@@ -142,7 +142,9 @@ Plug 'tpope/vim-jdaddy'
 " -------------------------------------
 " Time tracking, etc.
 " -------------------------------------
-Plug 'git-time-metric/gtm-vim-plugin'
+if has('gtm')
+  Plug 'git-time-metric/gtm-vim-plugin'
+endif
 Plug 'wakatime/vim-wakatime', {'on': []}
 augroup LoadDuringHold_Targets
     autocmd!

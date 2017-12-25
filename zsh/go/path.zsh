@@ -7,4 +7,3 @@ if [ "$(uname)" = 'Darwin' ]; then
   export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
   export PATH="$PATH:$GOROOT/bin"
 fi
-
