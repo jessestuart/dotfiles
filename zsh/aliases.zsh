@@ -33,6 +33,10 @@ alias hcl="hub clone"
 alias gitter="gitter-cli"
 alias viassh="$EDITOR ~/.ssh/config"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
+
+# =======
+# Vagrant
+# =======
 alias vag="vagrant"
 alias vagup="vagrant up"
 alias vagpr="vagrant provision"
@@ -40,6 +44,8 @@ alias vagd="vagrant destroy -f"
 alias vd="vagrant destroy -f"
 alias viav="$EDITOR Vagrantfile"
 alias vdup="vagrant destroy && vagrant up"
+alias vp="vagrant provision"
+alias vssh="vagrant ssh"
 
 function swap() {
   local file1=$1
