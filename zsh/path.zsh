@@ -17,7 +17,11 @@ export PATH=$PATH:$MONGO_PATH/bin
 # Python.
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+# Yarn.
 export PATH="$PATH:/usr/local/opt/yarn/bin"
+
+# Rust.
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export PATH="$PATH:~/dotfiles/**/*.sh"
 

@@ -165,9 +165,18 @@ augroup rm_trailing_whitespace
   autocmd BufWrite * :call DeleteTrailingWS()
 augroup END
 
+" Automatically reload vimrc on save
+augroup ReloadVimrcGroup
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
 function! DeleteTabs()
   exe 'normal mz'
   exe ':%s/\t/  /g'
   exe 'normal `z'
   exe ':delmarks z'
 endfunction
+
+" Switch to the directory files are in automatically.
+set autochdir

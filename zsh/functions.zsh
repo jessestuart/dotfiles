@@ -345,8 +345,10 @@ function arkcp() {
   mv "$archive_file" "$DROPBOX_BACKUP_ARCHIVE"
 }
 
+# ==========================================================================
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm,
 # and their installed packages.
+# ==========================================================================
 function system_update() {
   sudo softwareupdate -i -a
   brew update
@@ -367,4 +369,8 @@ function empty_trash() {
   sudo rm -rfv ~/.Trash
   sudo rm -rfv /private/var/log/asl/*.asl
   sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'
+}
+
+function timestamp() {
+  echo "$(date +%s)"
 }

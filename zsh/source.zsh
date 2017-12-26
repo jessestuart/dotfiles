@@ -65,10 +65,13 @@ function load_conda() {
   test -e "$HOME/bin/miniconda3" && . "$HOME/bin/miniconda3/bin/activate"
 }
 
+function load_doctl() {
+  eval "$(doctl completion zsh)"
+}
+
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
 # zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
 function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
-

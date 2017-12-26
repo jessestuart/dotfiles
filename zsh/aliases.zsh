@@ -33,6 +33,7 @@ alias hcl="hub clone"
 alias gitter="gitter-cli"
 alias viassh="$EDITOR ~/.ssh/config"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
+alias fb="messer"
 
 # =======
 # Vagrant
@@ -82,19 +83,19 @@ if (hash vimcat&>/dev/null); then alias cat="vimcat"; fi
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
 if (hash exa &>/dev/null); then
-  alias ls="exa"
+  alias ls="exa --git"
   # List all files colorized in long format
-  alias l="exa -l"
+  alias l="exa -l --git"
   # List all files colorized in long format, including dot files
-  alias la="exa -la --git-ignore --group-directories-first"
+  alias la="exa -la --git --git-ignore --group-directories-first --color-scale"
   # Same as above, but don't hide gitignored files.
-  alias laa="exa -la --group-directories-first"
+  alias laa="exa -la --git --group-directories-first"
   # List all sorted by size.
-  alias las="la -s size"
+  alias las="la -s size --git"
   # List all sorted by date.
-  alias lad="la -s date"
+  alias lad="la -s date --git"
   # List only directories.
-  alias ladir="exa -d"
+  alias ladir="exa -d --git"
 else
   alias ll="ls -l"
   alias la="ls -al"

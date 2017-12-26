@@ -18,4 +18,6 @@ function load_zplug() {
   # Then, source plugins and add commands to $PATH
   $(zplug load)
 }
-load_zplug
+# TODO: Uncomment when I figure out why this is slowing down my shell
+#       startup time so much.
+# load_zplug

@@ -47,7 +47,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-speeddating'
 
 " -------------------------------------
 " Git/Github-related plugins.
@@ -142,7 +141,7 @@ Plug 'tpope/vim-jdaddy'
 " -------------------------------------
 " Time tracking, etc.
 " -------------------------------------
-if has('gtm')
+if executable('gtm')
   Plug 'git-time-metric/gtm-vim-plugin'
 endif
 Plug 'wakatime/vim-wakatime', {'on': []}
