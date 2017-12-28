@@ -51,7 +51,7 @@ function ghcl() {
 
 # Function for "git branch", handling the "list" case, by sorting it according
 # to committerdate, and displaying it.
-gb() {
+function gb() {
   setopt localoptions rcexpandparam
   local refs limit=100
 

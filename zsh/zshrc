@@ -2,8 +2,10 @@
 
 export ZSH=$HOME/.zsh
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
+# export ZPLUG_HOME=/usr/local/opt/zplug
+# test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
+
+autoload -Uz async && async
 
 ulimit -n 2048
 
@@ -11,7 +13,7 @@ typeset -U config_files
 config_files=($HOME/.zsh/**/*.zsh)
 
 # 1) Load zprezto configuration.
-for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done
+# for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done
 # 2) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
@@ -19,11 +21,13 @@ for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}; do . $file; done
 for file in ${(M)config_files:#*/completions.zsh}; do . $file; done
 
-fpath=(/usr/local/share/zsh-completions ~/bin/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh-completions ~/bin/zsh-completions async $fpath)
 
 # 4) Initialize autocomplete here, otherwise functions won't be loaded.
 autoload -Uz compinit && compinit -i
 
-unset config_files
+## Get pure. 🙏
+autoload -U promptinit; promptinit
+prompt pure
 
-compinit
+unset config_files

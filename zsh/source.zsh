@@ -1,10 +1,7 @@
 #!/usr/bin/env zsh
-# Git Time Metrics ⏱
-test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
-test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.sh"
 
-# FZF 🔎
-test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
+async_init
+async_start_worker source_worker
 
 # Autojump 🚀
 function load_autojump() {
@@ -13,7 +10,6 @@ function load_autojump() {
   test -e "$MAC_ROOT" && . "$MAC_ROOT"
   test -e "$LINUX_ROOT" && . "$LINUX_ROOT"
 }
-load_autojump
 
 # SDKMAN!
 function load_sdkman() {
@@ -21,7 +17,6 @@ function load_sdkman() {
   local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
   test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
 }
-load_sdkman
 
 function load_google_cloud_platform_libs() {
   # The next line updates PATH for the Google Cloud SDK.
@@ -29,7 +24,6 @@ function load_google_cloud_platform_libs() {
   test -e "$ROOT/path.zsh.inc" && . "$ROOT/path.zsh.inc" &> /dev/null
   test -e "$ROOT/completion.zsh.inc" && . "$ROOT/completion.zsh.inc" &> /dev/null
 }
-load_google_cloud_platform_libs
 
 function load_tabtab() {
   local TABTAB_ROOT=/usr/local/lib/node_modules/tabtab/.completions
@@ -37,10 +31,6 @@ function load_tabtab() {
   test -e "$TABTAB_ROOT/sls.zsh" && . "$TABTAB_ROOT/sls.zsh"
   test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
 }
-load_tabtab
-
-# Jump!
-hash jump &>/dev/null && eval "$(jump shell)"
 
 # ===================
 # OS-specific sources
@@ -69,9 +59,28 @@ function load_doctl() {
   eval "$(doctl completion zsh)"
 }
 
+
+function load_everything() {
+  # Git Time Metrics ⏱
+  test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
+  test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.sh"
+
+  # FZF 🔎
+  test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
+
+  load_tabtab
+  load_google_cloud_platform_libs
+  load_sdkman
+  load_autojump
+  hash jump &>/dev/null && eval "$(jump shell)"
+}
+async_job source_worker load_everything
+
+# =========================
 # iTerm2 Shell Integration:
+# =========================
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
-# zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
+# Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
 function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }

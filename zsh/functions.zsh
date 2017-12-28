@@ -374,3 +374,10 @@ function empty_trash() {
 function timestamp() {
   echo "$(date +%s)"
 }
+
+function install_circlci_cli() {
+  local circleci_cli_url='https://circle-downloads.s3.amazonaws.com/releases/build_agent_wrapper/circleci'
+  local circleci_install=/usr/local/bin/circleci
+  curl -o $circleci_install $circleci_cli_url
+  chmod +x $circleci_install
+}

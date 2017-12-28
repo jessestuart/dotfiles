@@ -18,7 +18,7 @@ let g:ale_echo_msg_format = '%linter%: %s'
 
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \  'ansible': ['ansible'],
+      \  'ansible': ['ansible', 'yamllint'],
       \  'Dockerfile': ['hadolint'],
       \  'javascript': ['prettier', 'flow', 'eslint'],
       \  'markdown': ['prettier'],
