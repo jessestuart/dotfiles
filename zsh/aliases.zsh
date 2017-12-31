@@ -39,12 +39,13 @@ alias fb="messer"
 # Vagrant
 # =======
 alias vag="vagrant"
-alias vagup="vagrant up"
-alias vagpr="vagrant provision"
 alias vagd="vagrant destroy -f"
+alias vagpr="vagrant provision"
+alias vagst="vagrant status"
+alias vagup="vagrant up"
 alias vd="vagrant destroy -f"
-alias viav="$EDITOR Vagrantfile"
 alias vdup="vagrant destroy && vagrant up"
+alias viav="$EDITOR Vagrantfile"
 alias vp="vagrant provision"
 alias vssh="vagrant ssh"
 

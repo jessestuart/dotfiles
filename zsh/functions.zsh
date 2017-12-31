@@ -365,9 +365,9 @@ alias sysup=system_update
 # Finally, clear download history from quarantine. https://mths.be/bum
 # ====================================================================
 function empty_trash() {
-  sudo rm -rfv /Volumes/*/.Trashes
-  sudo rm -rfv ~/.Trash
-  sudo rm -rfv /private/var/log/asl/*.asl
+  sudo \rm -rfv /Volumes/*/.Trashes
+  sudo \rm -rfv ~/.Trash
+  sudo \rm -rfv /private/var/log/asl/*.asl
   sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'
 }
 

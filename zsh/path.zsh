@@ -25,6 +25,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 export PATH="$PATH:~/dotfiles/**/*.sh"
 
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+
 # =============
 # ~* Secrets *~
 # =============

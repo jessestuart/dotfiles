@@ -28,6 +28,7 @@ alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
 alias dit="docker run -it --rm -P"
+alias ditrm="docker run -it --rm -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"

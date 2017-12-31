@@ -40,7 +40,7 @@ function load_tabtab() {
 load_tabtab
 
 # Jump!
-hash jump &>/dev/null && eval "$(jump shell)"
+# hash jump &>/dev/null && eval "$(jump shell)"
 
 # ===================
 # OS-specific sources

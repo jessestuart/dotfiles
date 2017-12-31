@@ -5,6 +5,8 @@ export ZSH=$HOME/.zsh
 export ZPLUG_HOME=/usr/local/opt/zplug
 test -e $ZPLUG_HOME && . $ZPLUG_HOME/init.zsh
 
+test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
+
 ulimit -n 2048
 
 typeset -U config_files
