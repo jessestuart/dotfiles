@@ -29,3 +29,6 @@ autoload -Uz compinit && compinit -i
 unset config_files
 
 compinit
+
+# Finally, cleanup $PATH to remove duplicates.
+PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

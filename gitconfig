@@ -231,7 +231,7 @@
 [user]
   name = Jesse Stuart
   email = jdstuart@icloud.com
-  signingkey = 437413457EB38E28
+  signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
   helper = osxkeychain
 [filter "hawser"]
@@ -258,4 +258,4 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = gpg
+  program = gpg2

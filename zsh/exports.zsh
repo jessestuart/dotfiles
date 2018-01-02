@@ -47,8 +47,6 @@ export ANSIBLE_NOCOWS=1
 
 # Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
-# Neovim cursor shape support
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
