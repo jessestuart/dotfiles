@@ -22,7 +22,7 @@ set fileformats=unix,dos,mac
 set expandtab
 
 " Be smart when we *have* to use tabs.
-set smarttab
+" set smarttab
 
 " 1 tab == 2 spaces by default.
 set shiftwidth=2

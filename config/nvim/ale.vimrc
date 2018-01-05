@@ -20,7 +20,7 @@ let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'ansible': ['ansible'],
       \  'Dockerfile': ['hadolint'],
-      \  'javascript': ['prettier', 'flow', 'eslint'],
+      \  'javascript': ['flow', 'eslint', 'prettier'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],

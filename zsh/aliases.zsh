@@ -34,6 +34,10 @@ alias gitter="gitter-cli"
 alias viassh="$EDITOR ~/.ssh/config"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
 alias fb="messer"
+alias h="hyper"
+alias hc="hyper compose"
+alias hcup="hyper compose up"
+alias hcdown="hyper compose down"
 
 # =======
 # Vagrant

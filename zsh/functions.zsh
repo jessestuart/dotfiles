@@ -273,18 +273,6 @@ function git_list_branches() {
     done | sort | tail -$limit_num_branches
 }
 
-function man() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;31m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-            man "$@"
-}
-
 function sf() {
   if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi
   printf -v search "%q" "$*"
@@ -373,4 +361,13 @@ function empty_trash() {
 
 function timestamp() {
   echo "$(date +%s)"
+}
+
+# TEMP
+function convert_icon() {
+  file=$1
+  name=$2
+  path=$HOME/dev/js-gatsby-hurtling/src/components/Icons/$name
+  rm -f $path
+  $(which svgr) --no-semi --icon $file > $path
 }

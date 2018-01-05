@@ -230,7 +230,7 @@
 ###
 [user]
   name = Jesse Stuart
-  email = jdstuart@icloud.com
+  email = hi@jessestuart.com
   signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
   helper = osxkeychain
@@ -258,4 +258,4 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = gpg2
+  program = gpg

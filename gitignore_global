@@ -1,12 +1,12 @@
 *.log
+./codealike.json
+./tags
+./tags.lock
+./tags.temp
 .classpath
 .DS_Store
 .gtm/
 .project
 .settings/
 .tern-port
-codealike.json
-node_modules
-tags
-tags.lock
-tags.temp
+/node_modules/

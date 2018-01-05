@@ -38,10 +38,6 @@ function gc {
 
 function ghcl() {
   local REPO_URL=$1
-  if ! test -z "$REPO_URL"; then
-    lg error "No repo provided."
-    return 1
-  fi
   local GITHUB_ROOT="$HOME/github"
   local FOLDER_NAME="$(echo $REPO_URL | sed 's:.*/::')"
   local FOLDER_PATH="$GITHUB_ROOT/$FOLDER_NAME"

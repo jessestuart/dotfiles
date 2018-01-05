@@ -116,7 +116,7 @@ set laststatus=2
 set timeoutlen=500
 
 " Don't automatically continue comments after newline
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+" autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Display whitespace characters.
 set list listchars=tab:›\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
@@ -160,7 +160,7 @@ function! DeleteTrailingWS()
   " Then delete the mark to clean up after ourselves.
   exe ':delmarks z'
 endfunction
-augroup rm_trailing_whitespace
+augroup DeleteTrailingWhitespace
   autocmd!
   autocmd BufWrite * :call DeleteTrailingWS()
 augroup END
@@ -172,11 +172,19 @@ augroup ReloadVimrcGroup
 augroup END
 
 function! DeleteTabs()
-  exe 'normal mz'
-  exe ':%s/\t/  /g'
-  exe 'normal `z'
-  exe ':delmarks z'
+  try
+    exe 'normal mz'
+    exe '%s/\t/  /g'
+    exe 'normal `z'
+    exe ':delmarks z'
+  catch
+  endtry
 endfunction
+augroup DeleteTabs
+  autocmd!
+  autocmd BufWrite * :call DeleteTabs()
+augroup END
 
 " Switch to the directory files are in automatically.
-set autochdir
+" set autochdir
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor

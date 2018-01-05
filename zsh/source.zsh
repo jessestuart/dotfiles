@@ -39,8 +39,8 @@ function load_tabtab() {
 }
 load_tabtab
 
-# Jump!
-# hash jump &>/dev/null && eval "$(jump shell)"
+# Load `awless` completions.
+source /usr/local/share/zsh/site-functions/_awless
 
 # ===================
 # OS-specific sources
@@ -68,6 +68,13 @@ function load_conda() {
 function load_doctl() {
   eval "$(doctl completion zsh)"
 }
+load_doctl
+
+function load_bashmarks() {
+  local bashmarks="$HOME/.local/bin/bashmarks.sh"
+  test -e $bashmarks && . $bashmarks
+}
+load_bashmarks
 
 # iTerm2 Shell Integration:
 test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
@@ -75,3 +82,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_inte
 function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
+
