@@ -172,6 +172,9 @@ augroup ReloadVimrcGroup
 augroup END
 
 function! DeleteTabs()
+  if &ft =~ 'make'
+    return
+  endif
   try
     exe 'normal mz'
     exe '%s/\t/  /g'

@@ -7,4 +7,3 @@ function load_gcp() {
   # shellcheck disable=SC1090
   test -e "$GCP_ROOT" && . "$GCP_ROOT/completion.zsh.inc"
 }
-load_gcp

@@ -7,13 +7,20 @@ test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.s
 test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
 
 # Autojump 🚀
-function load_autojump() {
-  local MAC_ROOT="/usr/local/etc/profile.d/autojump.sh"
-  local LINUX_ROOT="/home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh"
-  test -e "$MAC_ROOT" && . "$MAC_ROOT"
-  test -e "$LINUX_ROOT" && . "$LINUX_ROOT"
+function j() {
+  (( $+commands[brew] )) && {
+      local pfx=$(brew --prefix)
+      [[ -f "$pfx/etc/autojump.sh" ]] && . "$pfx/etc/autojump.sh"
+      j "$@"
+  }
 }
-load_autojump
+# function load_autojump() {
+#   local MAC_ROOT="/usr/local/etc/profile.d/autojump.sh"
+#   local LINUX_ROOT="/home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh"
+#   test -e "$MAC_ROOT" && . "$MAC_ROOT"
+#   test -e "$LINUX_ROOT" && . "$LINUX_ROOT"
+# }
+# load_autojump
 
 # SDKMAN!
 function load_sdkman() {
@@ -21,26 +28,20 @@ function load_sdkman() {
   local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
   test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
 }
-load_sdkman
+# load_sdkman
 
-function load_google_cloud_platform_libs() {
-  # The next line updates PATH for the Google Cloud SDK.
-  local ROOT="$HOME/bin/google-cloud-sdk"
-  test -e "$ROOT/path.zsh.inc" && . "$ROOT/path.zsh.inc" &> /dev/null
-  test -e "$ROOT/completion.zsh.inc" && . "$ROOT/completion.zsh.inc" &> /dev/null
-}
-load_google_cloud_platform_libs
-
-function load_tabtab() {
-  local TABTAB_ROOT=/usr/local/lib/node_modules/tabtab/.completions
-  test -e "$TABTAB_ROOT/serverless.zsh" && . "$TABTAB_ROOT/servless.zsh"
-  test -e "$TABTAB_ROOT/sls.zsh" && . "$TABTAB_ROOT/sls.zsh"
-  test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
-}
-load_tabtab
+# function load_tabtab() {
+#   local TABTAB_ROOT=/usr/local/lib/node_modules/tabtab/.completions
+#   test -e "$TABTAB_ROOT/serverless.zsh" && . "$TABTAB_ROOT/servless.zsh"
+#   test -e "$TABTAB_ROOT/sls.zsh" && . "$TABTAB_ROOT/sls.zsh"
+#   test -e "$TABTAB_ROOT/yarn.zsh" && . "$TABTAB_ROOT/yarn.zsh"
+# }
+# load_tabtab
 
 # Load `awless` completions.
-source /usr/local/share/zsh/site-functions/_awless
+function load_awless() {
+  source /usr/local/share/zsh/site-functions/_awless
+}
 
 # ===================
 # OS-specific sources
@@ -68,7 +69,7 @@ function load_conda() {
 function load_doctl() {
   eval "$(doctl completion zsh)"
 }
-load_doctl
+# load_doctl
 
 function load_bashmarks() {
   local bashmarks="$HOME/.local/bin/bashmarks.sh"

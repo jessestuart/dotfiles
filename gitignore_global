@@ -1,8 +1,5 @@
 *.log
 ./codealike.json
-./tags
-./tags.lock
-./tags.temp
 .classpath
 .DS_Store
 .gtm/
@@ -10,3 +7,6 @@
 .settings/
 .tern-port
 /node_modules/
+tags
+tags.lock
+tags.temp

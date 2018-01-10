@@ -27,31 +27,22 @@ alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias w="$EDITOR ~/vimwiki/index.wiki"
 alias r="ranger"
-alias viag="$EDITOR ~/.zsh/git/aliases.zsh"
-alias gqs="git-quick-stats"
-alias hcl="hub clone"
+alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
 alias gitter="gitter-cli"
-alias viassh="$EDITOR ~/.ssh/config"
+alias vissh="$EDITOR ~/.ssh/config"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
 alias fb="messer"
 alias h="hyper"
 alias hc="hyper compose"
 alias hcup="hyper compose up"
 alias hcdown="hyper compose down"
+alias clobber="set +C"
 
-# =======
-# Vagrant
-# =======
-alias vag="vagrant"
-alias vagd="vagrant destroy -f"
-alias vagpr="vagrant provision"
-alias vagst="vagrant status"
-alias vagup="vagrant up"
-alias vd="vagrant destroy -f"
-alias vdup="vagrant destroy && vagrant up"
-alias viav="$EDITOR Vagrantfile"
-alias vp="vagrant provision"
-alias vssh="vagrant ssh"
+# *Advanced SSH Config* --
+# @see https://github.com/moul/advanced-ssh-config
+alias ssh="assh wrapper ssh"
+alias vash="$EDITOR ~/.ssh/assh.yml"
+alias ashup="assh config build > ~/.ssh/config"
 
 function swap() {
   local file1=$1
@@ -233,7 +224,7 @@ alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+  alias "$method"="lwp-request -m '$method'"
 done
 
 # Kill all the tabs in Chrome to free up memory.

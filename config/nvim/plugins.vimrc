@@ -182,6 +182,7 @@ Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
 Plug 'maralla/completor.vim'
+Plug 'janko-m/vim-test'
 
 Plug 'jceb/vim-orgmode'
 Plug 'aaronbieber/vim-quicktask'

@@ -259,3 +259,5 @@
   gpgsign = true
 [gpg]
   program = gpg
+[ghq]
+  root=~/gh

@@ -51,6 +51,12 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
+export PURE_PROMPT_SYMBOL="λ"
+
+# For Timing.app
+PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
+
 if (hash vimpager&>/dev/null); then
   export PAGER="$(which vimpager)"
   alias less=$PAGER
