@@ -74,15 +74,15 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 "       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'pandoc']
 "       \}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev', 'for': 'javascript' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'Galooshi/vim-import-js', { 'for': 'javascript' } " This may not work?
 Plug 'alampros/vim-styled-jsx', { 'for': 'javascript' }
 Plug 'mattn/emmet-vim'
 " ----
 " Place deoplete first, then autocomplete-flow
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -98,15 +98,15 @@ Plug 'leafgarland/typescript-vim'
 " -------------------------------------
 Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
-Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Shougo/neocomplete'
 
 " -------------------------------------
 " Tmux-related plugins.
 " -------------------------------------
 Plug 'christoomey/vim-tmux-navigator' " Nav b/t tmux panes & vim splits
 Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
-" Plug 'edkolev/tmuxline.vim'
 
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
@@ -122,10 +122,10 @@ Plug 'hejack0207/ansible.vim'
 " -------------------------------------
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'itchyny/lightline.vim'
 
 " -------------------------------------
 " Misc. language support.
@@ -135,8 +135,9 @@ Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'modille/groovy.vim', { 'for': 'groovy' }
 Plug 'plasticboy/vim-markdown'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-jdaddy'
+Plug 'jparise/vim-graphql'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'tpope/vim-jdaddy'
 
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
 " number of over the messy original from `vim-scripts`.
@@ -186,6 +187,11 @@ Plug 'janko-m/vim-test'
 
 Plug 'jceb/vim-orgmode'
 Plug 'aaronbieber/vim-quicktask'
+Plug 'sjl/gundo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'Chiel92/vim-autoformat'
+" Plug 'rhysd/vim-fixjson', { 'for': 'json' }
+Plug 'vim-scripts/dbext.vim'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
 " Plug 'kshenoy/vim-signature'

@@ -314,9 +314,19 @@ function copy() {
 # `${ORIGINAL_FILENAME}-{current-datetime}.tar.gz`.
 # ====================================================================
 function ark() {
-  local filename=$1
-  local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
-  archiver make $archive_filename $filename
+  if [ $# -eq 1 ]; then
+    local filename=$1
+    local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
+    archiver make $archive_filename $filename
+  fi
+  if [ $# -eq 2 ]; then
+    local archive_filename=$1
+    local filename=$2
+    (
+      set noclobber
+      archiver make $archive_filename $filename
+    )
+  fi
   echo $archive_filename
 }
 
@@ -370,4 +380,18 @@ function convert_icon() {
   path=$HOME/dev/js-gatsby-hurtling/src/components/Icons/$name
   rm -f $path
   $(which svgr) --no-semi --icon $file > $path
+}
+
+function fuck() {
+  TF_PYTHONIOENCODING=$PYTHONIOENCODING;
+  export TF_ALIAS=fuck;
+  export TF_SHELL_ALIASES=$(alias);
+  export TF_HISTORY="$(fc -ln -10)";
+  export PYTHONIOENCODING=utf-8;
+  TF_CMD=$(
+      thefuck THEFUCK_ARGUMENT_PLACEHOLDER $@
+  ) && eval $TF_CMD;
+  unset TF_HISTORY;
+  export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
+  test -n "$TF_CMD" && print -s $TF_CMD
 }

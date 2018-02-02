@@ -229,8 +229,8 @@
 # Further customizations.
 ###
 [user]
-  name = Jesse Stuart
-  email = hi@jessestuart.com
+	name = Jesse Stuart
+	email = hi@jessestuart.com
   signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
   helper = osxkeychain
@@ -240,8 +240,8 @@
   required = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
   required = true
 [fetch]
   prune = true

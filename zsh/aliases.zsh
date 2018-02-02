@@ -37,19 +37,35 @@ alias hc="hyper compose"
 alias hcup="hyper compose up"
 alias hcdown="hyper compose down"
 alias clobber="set +C"
+alias net="netlifyctl"
+alias hcp="hub create -p"
+alias vimake="$EDITOR Makefile"
+alias lrdo="login_restic_do"
+alias tfp="terraform plan -out tf.plan"
+alias tfa="terraform apply tf.plan"
+alias lrd="login_restic_do"
+
+alias emacs="TERM='xterm-24bit' $HOME/github/emacs/src/emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
-alias ssh="assh wrapper ssh"
+# alias ssh="assh wrapper ssh"
 alias vash="$EDITOR ~/.ssh/assh.yml"
 alias ashup="assh config build > ~/.ssh/config"
 
 function swap() {
   local file1=$1
   local file2=$2
-  mv $file1 "$file1.bak"
-  mv $file2 $file1
-  mv "$file1.bak" $file2
+  mv "$file1" "$file1.bak"
+  mv "$file2" "$file1"
+  mv "$file1.bak" "$file2"
+}
+
+function rm() {
+  if hash trash&>/dev/null
+  then trash "$@"
+  else rm "$@"
+  fi
 }
 
 # ============================================
@@ -92,6 +108,8 @@ if (hash exa &>/dev/null); then
   alias lad="la -s date --git"
   # List only directories.
   alias ladir="exa -d --git"
+  # Sometimes I button-mash.
+  alias lka="la"
 else
   alias ll="ls -l"
   alias la="ls -al"

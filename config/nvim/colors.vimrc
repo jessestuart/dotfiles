@@ -11,11 +11,13 @@ set termencoding=utf-8
 " Configure 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 " (h/t @joshdick)
 " @see http://sunaku.github.io/tmux-24bit-color.html#usage
-if (has('nvim'))
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+
+" if (has('nvim'))
+"   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
+
 if (has('termguicolors'))
   set termguicolors
 endif
@@ -26,10 +28,11 @@ endif
 " `cterm` is the color code used in 256-color mode
 " `cterm16` is the color code used in 16-color mode
 if (has('autocmd') && !has('gui_running'))
+  set t_Co=256
   augroup onedark
     autocmd!
-    let s:white = { 'gui': '#ABB2BF', 'cterm': '145', 'cterm16' : '7' }
     autocmd ColorScheme * call onedark#set_highlight('Normal', { 'fg': s:white })
+    let s:white = { 'gui': '#ABB2BF', 'cterm': '145', 'cterm16' : '7' }
     let g:airline_powerline_fonts=1
     let g:airline_theme='onedark'
     let g:onedark_termcolors=24

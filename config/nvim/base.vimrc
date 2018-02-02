@@ -119,7 +119,7 @@ set timeoutlen=500
 " autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Display whitespace characters.
-set list listchars=tab:›\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
+" set list listchars=tab:›\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
 " Or alternatively:
 " set list listchars=tab:→\ ,trail:·
 " set list listchars=tab:»\ ,trail:·

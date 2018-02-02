@@ -37,21 +37,20 @@ function gc {
 }
 
 function ghcl() {
-  local REPO_URL=$1
+  local REPO_URL
+  if [ $# -eq 0 ]; then REPO_URL=$(pbpaste); else REPO_URL=$1; fi
   local GITHUB_ROOT="$HOME/github"
   local FOLDER_NAME="$(echo $REPO_URL | sed 's:.*/::')"
   local FOLDER_PATH="$GITHUB_ROOT/$FOLDER_NAME"
-  pushd $GITHUB_ROOT
-  hub clone $REPO_URL
+  hub clone $REPO_URL $FOLDER_PATH
   echo "Cloned repository to $FOLDER_PATH."
   echo "The absolute path has been copied to your clipboard."
   echo $FOLDER_PATH | pbcopy
-  popd
 }
 
 # Function for "git branch", handling the "list" case, by sorting it according
 # to committerdate, and displaying it.
-gb() {
+function gb() {
   setopt localoptions rcexpandparam
   local refs limit=100
 

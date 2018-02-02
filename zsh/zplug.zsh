@@ -9,7 +9,7 @@ function load_zplug() {
   fi
   zplug 'zplug/zplug', hook-build:'zplug --self-manage'
   zplug 'wbinglee/zsh-wakatime'
-  zplug 'Tarrasch/zsh-functional' from:github
+  # zplug 'Tarrasch/zsh-functional' from:github
 
   # Install plugins if there are plugins that have not been installed
   if ! zplug check; then

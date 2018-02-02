@@ -6,7 +6,8 @@
 .project
 .settings/
 .tern-port
-/node_modules/
+.vscode/
+node_modules
 tags
 tags.lock
 tags.temp

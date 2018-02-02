@@ -18,9 +18,9 @@ let g:ale_echo_msg_format = '%linter%: %s'
 
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \  'ansible': ['ansible'],
+      \  'ansible': ['ansible-lint'],
       \  'Dockerfile': ['hadolint'],
-      \  'javascript': ['flow', 'eslint', 'prettier'],
+      \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
@@ -28,23 +28,26 @@ let g:ale_linters = {
       \  'vim': ['vint'],
       \  'yaml': ['yamllint', 'swaglint'],
       \  'zsh': ['shellcheck'],
-      \  'css': ['prettier', 'stylelint'],
-      \  'scss': ['prettier', 'stylelint']
+      \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
+      \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
+      \  'ruby': ['rubocop']
       \}
 
 " :ALEFix will attempt to fix your JS code using ESLint.
 let g:ale_fixers = {
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
       \  'javascript': ['eslint', 'prettier', 'prettier-eslint'],
-      \  'json': ['eslint', 'prettier', 'prettier-eslint'],
+      \  'json': ['fixjson'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
       \  'scss': ['prettier', 'stylelint'],
-      \  'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace']
+      \  'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
+      \  'ruby': ['rubocop']
       \}
 
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<CR>
 nnoremap <leader>ap :ALEPreviousWrap<CR>
-nnoremap <leader>gaf :ALEFix<CR>
+nnoremap <leader>af :ALEFix<CR>

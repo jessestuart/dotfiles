@@ -10,6 +10,9 @@ let g:jsx_ext_required = 0
 let g:tern#is_show_argument_hints_enabled = 1
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
+let g:deoplete#enable_at_startup = 1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -17,7 +20,7 @@ let g:tern_map_keys=1
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ag and put the cursor in the right position
-map <leader>ag :Ag
+map <leader>ag :Ag<space>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
@@ -26,7 +29,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
 map <leader>cc :botright cope<CR>
-map <leader>co ggVGy:tabnew<CR>:set syntax=qf<CR>pgg
+map <leader>co ggyG:tabnew<CR>:set syntax=qf<CR>pgg
 map <leader>ne :cn<CR>
 map <leader>pe :cp<CR>
 
@@ -160,38 +163,100 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-
+let g:prettier#autoformat = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql, PrettierAsync
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
-
 " number of spaces per indentation level
 let g:prettier#config#tab_width = 2
-
 " use tabs over spaces
 let g:prettier#config#use_tabs = 'false'
-
 " print semicolons
-" let g:prettier#config#semi = 'false'
-
+let g:prettier#config#semi = 'false'
 " single quotes over double quotes
 let g:prettier#config#single_quote = 'true'
-
 " print spaces between brackets
 let g:prettier#config#bracket_spacing = 'true'
-
 " put > on the last line instead of new line
 let g:prettier#config#jsx_bracket_same_line = 'false'
-
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
-
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
 let g:prettier#config#parser = 'flow'
-
 " cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'prefer-file'
-
+let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \ 'left':  [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+function! s:goyo_enter()
+  set showmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  Limelight!
+endfunction
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 2
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+" let g:limelight_priority = -1
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+      \ <SID>isAtStartOfLine('\|\|') ?
+      \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+      \ <SID>isAtStartOfLine('__') ?
+      \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+

@@ -16,7 +16,7 @@ map <space> \
 " ==========================
 " Reload configuration with <leader>sc
 map <leader>sc :source ~/.config/nvim/init.vim<CR>
-map <leader><space> :source ~/.config/nvim/init.vim<CR>
+map <leader>, :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
 map <leader>pi <leader>sc:PlugInstall<CR>
 " Update all plugins with <leader>up

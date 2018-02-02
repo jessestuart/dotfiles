@@ -74,6 +74,11 @@ zstyle ':prezto:module:git:status:ignore' submodules 'untracked'
 zstyle ':prezto:module:gnu-utility' prefix 'g'
 
 #
+# Utility Module
+#
+zstyle ':prezto:module:utility' safe-ops 'no'
+
+#
 # History Substring Search
 #
 

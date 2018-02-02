@@ -7,3 +7,7 @@ function vim_profile_startup() {
     -c 'profdel file *' \
     -c 'qa!'
 }
+
+function rgv() {
+  rg --files-with-matches $1 | xargs $EDITOR
+}

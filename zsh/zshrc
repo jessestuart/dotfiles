@@ -7,13 +7,14 @@ export ZSH=$HOME/.zsh
 
 test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
 
-ulimit -n 2048
+ulimit -n 8192
 
 typeset -U config_files
 config_files=($HOME/.zsh/**/*.zsh)
 
 # 1) Load zprezto configuration.
-for file in ${(M)config_files:#*/zpreztorc.zsh}; do . $file; done
+test -e $ZSH/zpreztorc.zsh && . $ZSH/zpreztorc.zsh
+
 # 2) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
