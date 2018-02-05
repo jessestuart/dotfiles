@@ -61,12 +61,15 @@ function swap() {
   mv "$file1.bak" "$file2"
 }
 
-function rm() {
-  if hash trash&>/dev/null
-  then trash "$@"
-  else rm "$@"
-  fi
-}
+if [ "$(uname)" = 'Darwin' ]; then
+  function rm() {
+    if hash trash&>/dev/null; then
+      trash "$@"
+    else
+      rm "$@"
+    fi
+  }
+fi
 
 # ============================================
 # Shell essentials. `ls`, `du`, `source`, etc.
