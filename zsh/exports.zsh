@@ -38,6 +38,8 @@ export MANPAGER='less -X'
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+export PYENV_ROOT="$HOME/.pyenv"
+
 ###
 # ANSIBLE
 ###
@@ -47,7 +49,6 @@ export ANSIBLE_NOCOWS=1
 
 # Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
@@ -64,3 +65,5 @@ if (hash vimpager&>/dev/null); then
 fi
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
+
+export HOWDOI_COLORIZE=1

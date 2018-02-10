@@ -6,7 +6,7 @@ let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 
 " Fix files automatically on save. (This is off by default)
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '?'
@@ -16,6 +16,7 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter%: %s'
 
+" \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'ansible': ['ansible-lint'],
@@ -37,8 +38,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
-      \  'javascript': ['eslint', 'prettier', 'prettier-eslint'],
-      \  'json': ['fixjson'],
+      \  'javascript': ['prettier-eslint'],
+      \  'json': ['prettier-eslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],

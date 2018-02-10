@@ -30,7 +30,7 @@ alias r="ranger"
 alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
 alias gitter="gitter-cli"
 alias vissh="$EDITOR ~/.ssh/config"
-alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").org"
+alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias fb="messer"
 alias h="hyper"
 alias hc="hyper compose"
@@ -44,6 +44,14 @@ alias lrdo="login_restic_do"
 alias tfp="terraform plan -out tf.plan"
 alias tfa="terraform apply tf.plan"
 alias lrd="login_restic_do"
+alias ci="hub ci-status -v"
+alias ctags="/usr/local/bin/ctags"
+alias cra="create-react-app"
+alias nrt="npm run test"
+
+# Kubernetes
+# TODO: Move these into their own file.
+alias k="kubectl"
 
 alias emacs="TERM='xterm-24bit' $HOME/github/emacs/src/emacs -nw"
 
@@ -51,7 +59,7 @@ alias emacs="TERM='xterm-24bit' $HOME/github/emacs/src/emacs -nw"
 # @see https://github.com/moul/advanced-ssh-config
 # alias ssh="assh wrapper ssh"
 alias vash="$EDITOR ~/.ssh/assh.yml"
-alias ashup="assh config build > ~/.ssh/config"
+alias ashup="clobber && assh config build > ~/.ssh/config"
 
 function swap() {
   local file1=$1
@@ -83,7 +91,6 @@ alias d1s="du -d 1 -k . | sort -n"
 alias reload="exec $SHELL -l"
 alias rl=reload
 alias sz="source ~/.zshrc"
-alias z="source ~/.zshrc"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n} | sort'
@@ -143,8 +150,11 @@ alias tmd="tmux detach"
 
 # Grails
 alias gr="yes | grails run-app"
-alias kg="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
+alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
 alias grl="ps -efw | ag '[g]rails'"
+
+# Gatsby
+alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
 
 # ===================================================
 
@@ -259,3 +269,9 @@ alias afk="/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
 
 alias man="viman"
+
+kubectl() {
+  # shellcheck disable=SC1090,SC2039
+  source <(command kubectl completion zsh)
+  command kubectl "$@"
+}

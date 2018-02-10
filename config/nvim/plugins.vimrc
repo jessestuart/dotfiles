@@ -12,8 +12,19 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'osyo-manga/vim-over'
 Plug 'christoomey/vim-sort-motion'
 
-" Plug 'andymass/vim-matchup'
-" Plug 'tmhedberg/matchit'
+" ============================
+" Linting / fixing. Must have.
+" ============================
+Plug 'w0rp/ale'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" ----
+" Place deoplete first, then autocomplete-flow
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'wokalski/autocomplete-flow'
+" You will also need the following for function argument completion:
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -64,28 +75,21 @@ Plug 'mmozuras/vim-github-comment'
 " -------------------------------------
 " WebDev -- javascript, CSS, etc.
 " -------------------------------------
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" Plug 'prettier/vim-prettier',
-"       \{ 'do': 'yarn install',
-"       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'pandoc']
-"       \}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
-Plug 'Galooshi/vim-import-js', { 'for': 'javascript' } " This may not work?
-Plug 'alampros/vim-styled-jsx', { 'for': 'javascript' }
+Plug 'Galooshi/vim-import-js' " This may not work?
+Plug 'alampros/vim-styled-jsx'
 Plug 'mattn/emmet-vim'
-" ----
-" Place deoplete first, then autocomplete-flow
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'wokalski/autocomplete-flow'
-" You will also need the following for function argument completion:
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+" Plug 'yami-beta/asyncomplete-omni.vim'
+" Plug 'prabirshrestha/asyncomplete-flow.vim'
+" Plug 'prabirshrestha/asyncomplete-necovim.vim'
+" Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 " ==========
 " Typescript
@@ -175,11 +179,6 @@ Plug 'sunaku/vim-shortcut'
 Plug 'ktonga/vim-follow-my-lead'
 
 Plug 'Shougo/neco-vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/asyncomplete-flow.vim'
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
 Plug 'maralla/completor.vim'
@@ -188,10 +187,12 @@ Plug 'janko-m/vim-test'
 Plug 'jceb/vim-orgmode'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'sjl/gundo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'Chiel92/vim-autoformat'
-" Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 Plug 'vim-scripts/dbext.vim'
+Plug 'kassio/neoterm'
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
+Plug 'jpalardy/vim-slime'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
 " Plug 'kshenoy/vim-signature'

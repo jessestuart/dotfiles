@@ -21,7 +21,8 @@ function load_sdkman() {
   local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
   test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
 }
-load_sdkman
+# Slows down ZSH startup time by ~250ms. Ugh.
+# load_sdkman
 
 # Load `awless` completions.
 function load_awless() {
@@ -62,11 +63,14 @@ function load_bashmarks() {
 }
 load_bashmarks
 
-function load_asdf() {
-  local asdf_init=/usr/local/opt/asdf/asdf.sh
-  test -e $asdf_init && . $asdf_init
-}
-load_asdf
+# function load_asdf() {
+#   local asdf_init=/usr/local/opt/asdf/asdf.sh
+#   test -e $asdf_init && . $asdf_init
+# }
+# load_asdf
+
+if (hash zaw&>/dev/null); then . $(which zaw); fi
+test -e ~/github/z/z.sh && . ~/github/z/z.sh
 
 if [ "$PLATFORM" = 'Darwin' ]; then
   # iTerm2 Shell Integration:

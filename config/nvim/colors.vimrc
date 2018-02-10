@@ -37,9 +37,9 @@ if (has('autocmd') && !has('gui_running'))
     let g:airline_theme='onedark'
     let g:onedark_termcolors=24
     let g:onedark_terminal_italics=1
-    let g:enable_bold_font=1
   augroup END
 end
+let g:enable_bold_font=1
 
 highlight Comment cterm=italic
 

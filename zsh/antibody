@@ -1,0 +1,12 @@
+robbyrussell/oh-my-zsh folder:plugins/aws
+jessestuart/dotfiles folder:zsh/* branch:jesse/replace_prezto
+Dbz/zsh-kubernetes
+djui/alias-tips
+mafredri/zsh-async
+
+# These are order-dependent.
+sindresorhus/pure
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
