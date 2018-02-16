@@ -3,7 +3,9 @@
 # Add the bins.
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH='/usr/local/sbin':$PATH
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/sbin:$PATH"
+export PATH="/sbin:$PATH"
 
 # Couple special `bin` directories for [dash](https://github.com/IFTTT/dash)
 # + some nifty commands from [Zach Holman](https://github.com/holman/dotfiles)
@@ -31,6 +33,14 @@ export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/Users/jestuart/bin/miniconda3/bin:$PATH"
 
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+
+if [ $(uname -s) = 'GNU/Linux' ]; then
+  export GOPATH=$HOME/go
+  export GOROOT=/usr/local/go
+  export PATH=$PATH:/usr/local/go/bin:~/go/bin
+  export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+  export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
+fi
 
 # =============
 # ~* Secrets *~

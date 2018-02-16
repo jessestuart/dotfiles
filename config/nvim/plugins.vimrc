@@ -181,7 +181,6 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'Shougo/neco-vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
-Plug 'maralla/completor.vim'
 Plug 'janko-m/vim-test'
 
 Plug 'jceb/vim-orgmode'
