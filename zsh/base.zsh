@@ -13,7 +13,7 @@ autoload zsh/files
 
 # Get pure. 🙏
 autoload -Uz promptinit; promptinit
-prompt pure
+# prompt pure
 
 # --------------------------------------
 # Miscellany.

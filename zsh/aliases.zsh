@@ -121,8 +121,9 @@ if (hash exa &>/dev/null); then
   # Sometimes I button-mash.
   alias lka="la"
 else
-  alias ll="ls -l"
-  alias la="ls -al"
+  alias ls="ls --color --group-directories-first"
+  alias ll="ls -lh"
+  alias la="ls -alh"
 fi
 
 # =================
