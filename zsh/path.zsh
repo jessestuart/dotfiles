@@ -34,6 +34,9 @@ export PATH="/Users/jestuart/bin/miniconda3/bin:$PATH"
 
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
+export PATH="$HOME/github/emacs/src:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 if [ $(uname -s) = 'GNU/Linux' ]; then
   export GOPATH=$HOME/go
   export GOROOT=/usr/local/go
@@ -41,6 +44,9 @@ if [ $(uname -s) = 'GNU/Linux' ]; then
   export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
 fi
+
+# export PATH="$HOME/dev/heketi-client/bin:$PATH"
+export PATH="$HOME/bin/heketi-client/bin:$PATH"
 
 # =============
 # ~* Secrets *~

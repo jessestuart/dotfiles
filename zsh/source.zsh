@@ -81,3 +81,6 @@ if [ "$PLATFORM" = 'Darwin' ]; then
     iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   }
 fi
+
+xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zsh/_tmux-xpanes"
+test -e $xpanes_completions && . $xpanes_completions

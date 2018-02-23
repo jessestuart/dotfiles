@@ -14,6 +14,10 @@ autoload zsh/files
 # Get pure. 🙏
 autoload -Uz promptinit; promptinit
 
+# Avoid "file/directory already exists" warnings.
+# I know what I'm doing. 🔥
+set clobber
+
 # --------------------------------------
 # Miscellany.
 # --------------------------------------

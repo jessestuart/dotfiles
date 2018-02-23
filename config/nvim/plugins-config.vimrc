@@ -1,3 +1,10 @@
+let g:deoplete#enable_at_startup = 1
+let g:tern#is_show_argument_hints_enabled = 1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -6,13 +13,6 @@ let g:javascript_plugin_flow = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
-
-let g:tern#is_show_argument_hints_enabled = 1
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
-" let g:deoplete#enable_at_startup = 1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -154,7 +154,7 @@ function! FzyCommand(choice_command, vim_command)
     exec a:vim_command . ' ' . output
   endif
 endfunction
-nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 

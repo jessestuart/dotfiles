@@ -38,6 +38,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
+      \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['prettier-eslint'],
       \  'json': ['prettier-eslint'],
       \  'markdown': ['prettier'],

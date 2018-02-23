@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # =============================
 # << I ALIAS ALL THE THINGS. >>
 # =============================
@@ -48,12 +48,17 @@ alias ci="hub ci-status -v"
 alias ctags="/usr/local/bin/ctags"
 alias cra="create-react-app"
 alias nrt="npm run test"
+alias vianti="vi ~/dotfiles/zsh/antibody"
+alias deps="yarn update; git add -A; gcm '[deps] Bump dependencies.'"
+alias org="cd ~/Dropbox/org"
+alias e="exit"
+alias kgpaw="kubectl get pods --all-namespaces -w"
 
 # Kubernetes
 # TODO: Move these into their own file.
 alias k="kubectl"
 
-alias emacs="TERM='xterm-24bit' $HOME/github/emacs/src/emacs -nw"
+alias emacs="TERM=xterm-24bit emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
@@ -88,8 +93,7 @@ alias d1="du -h -d 1"
 alias d1s="du -d 1 -k . | sort -n"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
-alias rl=reload
+alias rl="exec $SHELL -l"
 alias sz="source ~/.zshrc"
 
 # Print each PATH entry on a separate line
@@ -98,16 +102,20 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 # Enable aliases to be sudo’ed.
 alias sudo='sudo '
 
-if (hash vimcat&>/dev/null); then alias cat="vimcat"; fi
+if ($commands[ccat]); then alias cat="ccat";
+elif (hash vimcat&>/dev/null); then alias cat="vimcat";
+fi
+
+if (hash viman&>/dev/null); then alias man="viman"; fi
 
 #--------------------------------------
 # << LISTING THINGS! >>
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
 if (hash exa &>/dev/null); then
-  alias ls="exa --git"
+  alias ls="exa --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format
-  alias l="exa -l --git"
+  alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format, including dot files
   alias la="exa -la --git --git-ignore --group-directories-first --color-scale"
   # Same as above, but don't hide gitignored files.
@@ -159,14 +167,6 @@ alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
 
 # ===================================================
 
-# Enable/Disable Spotlight
-alias spotoff="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-alias spoton="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-
-# Enable/Disable Time Machine throttling
-alias tmup="sudo sysctl debug.lowpri_throttle_enabled=0"
-alias tmdown="sudo sysctl debug.lowpri_throttle_enabled=1"
-
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
@@ -190,9 +190,6 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
@@ -208,42 +205,11 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
-# JavaScriptCore REPL
-jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
-[ -e "$jscbin" ] && alias jsc="$jscbin"
-unset jscbin
-
 # Trim new lines and copy to clipboard
 # alias c="tr -d '\n' | pbcopy"
 
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
-# Merge PDF files
-# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
-alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
-
-# Disable Spotlight
-alias spotoff="sudo mdutil -a -i off"
-# Enable Spotlight
-alias spoton="sudo mdutil -a -i on"
-
-# PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
-alias plistbuddy="/usr/libexec/PlistBuddy"
-
-# Airport CLI alias
-alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
@@ -259,17 +225,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
 
-# Kill all the tabs in Chrome to free up memory.
-# @see http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession -suspend"
-
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
-
-alias man="viman"
 
 kubectl() {
   # shellcheck disable=SC1090,SC2039
