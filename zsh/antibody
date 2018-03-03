@@ -1,0 +1,15 @@
+Dbz/zsh-kubernetes
+djui/alias-tips
+felixr/docker-zsh-completion
+jessestuart/dotfiles folder:bin/* branch:jesse/replace_prezto
+jessestuart/dotfiles folder:zsh/* branch:jesse/replace_prezto
+mafredri/zsh-async
+robbyrussell/oh-my-zsh folder:plugins/aws
+robbyrussell/oh-my-zsh folder:plugins/docker
+
+# These are order-dependent.
+sindresorhus/pure
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search

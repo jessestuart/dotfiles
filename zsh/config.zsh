@@ -7,7 +7,7 @@ setopt LOCAL_TRAPS # allow functions to have local traps
 setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
+# setopt IGNORE_EOF
 
 setopt auto_cd
 cdpath=($HOME/tt $HOME/dev $HOME/Downloads)

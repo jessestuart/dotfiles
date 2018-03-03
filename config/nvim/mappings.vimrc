@@ -15,10 +15,10 @@ map <space> \
 " vim-plug plugin management
 " ==========================
 " Reload configuration with <leader>sc
-map <leader>sc :source ~/.config/nvim/init.vim<CR>
-map <leader>, :source ~/.config/nvim/init.vim<CR>
+noremap <leader>sc :source ~/.config/nvim/init.vim<CR>
+noremap <leader>, :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
-map <leader>pi <leader>sc:PlugInstall<CR>
+nnoremap <leader>pi :PlugInstall<CR>
 " Update all plugins with <leader>up
 nmap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
 
@@ -30,7 +30,7 @@ nnoremap <leader>fz :FZF<CR>
 nnoremap <C-j> <CR>
 
 " Toggle Goyo for distraction-free editing.
-map <leader>zen :Goyo<CR>
+noremap <leader>zen :Goyo<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -39,10 +39,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
 " Disable highlight with <leader><CR>.
-map <silent> <leader><CR> :noh<CR>
+noremap <silent> <leader><CR> :noh<CR>
 
 " Shortcut to begin a substitution with
-map <Leader>re :%s/
+noremap <Leader>re :%s/
 
 " Quickly move current line:
 nnoremap ]e  :<c-u>execute 'move +'. v:count1<CR>
@@ -93,35 +93,35 @@ nnoremap <leader>i :vsplit<CR>
 " Horizontal Split
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.
-map <leader>z <C-W>T<CR>
+noremap <leader>z <C-W>T<CR>
 
-map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-map <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
-map <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+noremap <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
 " The only sane way to move between windows --- ctrl+{h|j|k|l}.
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " Close the current buffer.
-map <leader>bd :Bclose<CR>:tabclose<CR>gT
+noremap <leader>bd :Bclose<CR>:tabclose<CR>gT
 " Close all buffers.
-map <leader>ba :bufdo bd<CR>
+noremap <leader>ba :bufdo bd<CR>
 " Switch between next/previous buffers with <leader>l or <leader>h.
-map <leader>l :bnext<CR>
-map <leader>h :bprevious<CR>
+noremap <leader>l :bnext<CR>
+noremap <leader>h :bprevious<CR>
 
 " ============
 " Manage tabs.
 " ============
-map <leader>tn :tabnew<CR>
-map <leader>to :tabonly<CR>
-map <leader>tc :tabclose<CR>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext<CR>
-map <leader>tp :tabprevious<CR>
+noremap <leader>tn :tabnew<CR>
+noremap <leader>to :tabonly<CR>
+noremap <leader>tc :tabclose<CR>
+noremap <leader>tm :tabmove
+noremap <leader>t<leader> :tabnext<CR>
+noremap <leader>tp :tabprevious<CR>
 
 let g:lasttab = 1
 " Let 'tl' toggle between this and the last accessed tab
@@ -133,10 +133,11 @@ augroup END
 
 " Opens a new tab with the current buffer's path --
 " Super useful when editing files in the same directory.
-map <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+noremap <leader>e :tabedit <c-r>=expand("%:p:h")<CR>/
 
 " Switch CWD to the directory of the open buffer.
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
+noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Specify the behavior when switching between buffers.
 try
@@ -149,7 +150,7 @@ endtry
 " Editing mappings.
 " =================
 " Remap VIM 0 to first non-blank character
-map 0 ^
+noremap 0 ^
 
 " Move a line of text using ALT+[jk].
 nmap <M-j> mz:m+<CR>`z
@@ -167,13 +168,13 @@ endif
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<CR>
+noremap <leader>ss :setlocal spell!<CR>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From Upcase
@@ -185,6 +186,17 @@ let g:markdown_fenced_languages = [
 " Sane way to switch out of neovim's :term mode with <Esc>.
 tnoremap <Esc> <C-\><C-n>
 
-nmap <silent> y' yi'
-nmap <silent> yq yi'
-nmap <silent> yqq yi"
+nnoremap <silent> y' yi'
+nnoremap <silent> yq yi'
+nnoremap <silent> yqq yi"
+
+augroup GolangCommands
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.go nnoremap <leader>gr :GoRun<CR>
+augroup END
+
+" ============================================
+" --------------- EXPERIMENTAL ---------------
+" ============================================
+nnoremap <silent> H ^
+nnoremap <silent> L $

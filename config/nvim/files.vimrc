@@ -3,10 +3,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
-set backup
-set backupdir   =$HOME/.config/nvim/files/backup/
-set backupext   =-vimbackup
-set backupskip  =
+set nobackup
+" set backupdir   =$HOME/.config/nvim/files/backup/
+" set backupext   =-vimbackup
+" set backupskip  =
 set directory   =$HOME/.config/nvim/files/swap/
 set updatecount =100
 set undofile

@@ -1,3 +1,10 @@
+let g:deoplete#enable_at_startup = 1
+let g:tern#is_show_argument_hints_enabled = 1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -6,13 +13,6 @@ let g:javascript_plugin_flow = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
-
-let g:tern#is_show_argument_hints_enabled = 1
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
-let g:deoplete#enable_at_startup = 1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -154,7 +154,7 @@ function! FzyCommand(choice_command, vim_command)
     exec a:vim_command . ' ' . output
   endif
 endfunction
-nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
@@ -188,56 +188,45 @@ let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
+" let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
+" function! UpdateStatusBar(timer)
+"   execute 'let &ro = &ro'
+" endfunction
+
+" Not necessary to show the `--INSERT--` text anymore. This hides it.
+" h/t https://github.com/itchyny/lightline.vim
+set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
       \ 'left':  [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'modified' ] ],
-      \ 'right': [ [ 'lineinfo' ],
+      \ 'right': [  ['datetime'],
+      \             [ 'lineinfo' ],
       \             [ 'percent' ],
-      \             [ 'filetype'] ]
+      \             [ 'filetype']]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+let g:lightline.tabline = {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['close'] ]
+  \ }
+set showtabline=2  " Show tabline
+set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  set noshowcmd
+  set number
   set scrolloff=999
-  Limelight
 endfunction
 
 function! s:goyo_leave()
   set showmode
   set showcmd
-  Limelight!
 endfunction
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 2
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-" let g:limelight_priority = -1
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
@@ -260,3 +249,27 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" ========
+" Neoterm.
+" ========
+let g:neoterm_position = 'vertical'
+let g:neoterm_automap_keys = ',tt'
+" Use gx{text-objects} such as gxip
+nmap gx <Plug>(neoterm-repl-send)
+xmap gx <Plug>(neoterm-repl-send)
+nmap gxx <Plug>(neoterm-repl-send-line)
+" hide/close terminal
+nnoremap <silent> ,th :call neoterm#close()<cr>
+" clear terminal
+nnoremap <silent> ,tl :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+nnoremap <silent> ,tc :call neoterm#kill()<cr>
+
+if executable('flow-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'flow-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+        \ 'whitelist': ['javascript', 'javascript.jsx'],
+        \ })
+endif

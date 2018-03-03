@@ -11,10 +11,11 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside.
 set autoread
+set autowrite
 
 " Enable line numbers. Make 'em relative.
 set number
-" set relativenumber
+set relativenumber
 
 " Show a colored gutter at 80 columns.
 set colorcolumn=80
@@ -137,6 +138,7 @@ nnoremap Ub :<C-u>Merginal<CR>
 nnoremap UB :<C-u>Gblame<CR>
 nnoremap Uc :<C-u>Gcommit<CR>
 nnoremap Uu :<C-u>Gpull<CR>
+nmap     US Us
 nmap     UU Uu
 
 cabbrev G  Git
@@ -144,6 +146,7 @@ cabbrev G! Git!
 
 " Expand abbreviations on enter.
 inoremap <CR> <C-]><CR>
+
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set grepformat=%f:%l:%c:%m,%f:%l%m,%f\ \ %l%m
@@ -189,5 +192,10 @@ augroup DeleteTabs
 augroup END
 
 " Switch to the directory files are in automatically.
+" NOTE: Not supported by Dirvish (?)
 " set autochdir
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+" Get word completion for free -- the following command will let us press
+" CTRL-N or CTRL-P in insert-mode to complete the word we’re typing.
+set complete+=kspell

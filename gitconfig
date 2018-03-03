@@ -158,7 +158,7 @@
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
   # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
   precomposeunicode = false
-  pager = (hash diff-so-fancy&>/dev/null) && (diff-so-fancy | less --tabs=4 -RFX) || (less --tabs=4 -RFX)
+  pager = less --tabs=4 -RFX
 
 [color]
   ui = auto
@@ -229,8 +229,8 @@
 # Further customizations.
 ###
 [user]
-	name = Jesse Stuart
-	email = hi@jessestuart.com
+  name = Jesse Stuart
+  email = hi@jessestuart.com
   signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
   helper = osxkeychain

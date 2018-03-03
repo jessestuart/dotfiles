@@ -7,6 +7,7 @@ alias dm="docker-machine"
 alias dup="open /Applications/Docker.app"
 alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
+alias dki="docker images"
 
 # Get latest container ID
 alias dl="docker ps -l -q"

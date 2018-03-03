@@ -1,2 +1,3 @@
 #!/bin/sh
+if hash nvim; then EDITOR=nvim; else EDITOR=vim; fi
 nvim -c "Man $1 $2" -c 'silent only'
