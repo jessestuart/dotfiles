@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # =============================
 # << I ALIAS ALL THE THINGS. >>
 # =============================
@@ -84,6 +84,8 @@ if [ "$(uname)" = 'Darwin' ]; then
   }
 fi
 
+if (hash ccat&>/dev/null); then alias cat="ccat"; fi
+
 # ============================================
 # Shell essentials. `ls`, `du`, `source`, etc.
 # ============================================
@@ -102,9 +104,6 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 # Enable aliases to be sudo’ed.
 alias sudo='sudo '
 
-if ($commands[ccat]); then alias cat="ccat";
-elif (hash vimcat&>/dev/null); then alias cat="vimcat";
-fi
 
 if (hash viman&>/dev/null); then alias man="viman"; fi
 
