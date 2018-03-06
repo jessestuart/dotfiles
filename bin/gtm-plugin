@@ -3,7 +3,7 @@
 export GTM_STATUS=''
 export GTM_NEXT_UPDATE=0
 # Commented out because it was messing with my $PROMPT.
-# export GTM_LAST_DIR="$(PWD)"
+export GTM_LAST_DIR="$(pwd)"
 
 function gtm_record_terminal() {
   local install_gtm_error_msg="
@@ -13,16 +13,15 @@ function gtm_record_terminal() {
   "
 
   let epoch=$(date +%s)
-  if [ "${GTM_LAST_DIR}" != "${PWD}" ] || \
-     [ $epoch -ge $GTM_NEXT_UPDATE ];
-  then
-    export GTM_NEXT_UPDATE=$(( $epoch + 30 ))
+  if [ "${GTM_LAST_DIR}" != "$(pwd)" ] ||
+    [ $epoch -ge $GTM_NEXT_UPDATE ]; then
+    export GTM_NEXT_UPDATE=$(($epoch + 30))
     # Commented out because it was messing with my $PROMPT.
-    # export GTM_LAST_DIR="${PWD}"
+    # export GTM_LAST_DIR="${pwd}"
     if [ "$GTM_STATUS_ONLY" = true ]; then
-        GTM_STATUS=$(gtm status -total-only)
+      GTM_STATUS=$(gtm status -total-only)
     else
-        GTM_STATUS=$(gtm record -terminal -status)
+      GTM_STATUS=$(gtm record -terminal -status)
     fi
     if [ $? -ne 0 ]; then echo $install_gtm_error_msg; fi
   fi

@@ -66,7 +66,7 @@ fi
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
 
-export HEKETI_CLI_SERVER="http://192.168.0.55:32155"
+# export HEKETI_CLI_SERVER="http://192.168.0.55:32155"
 
 export HOWDOI_COLORIZE=1
 

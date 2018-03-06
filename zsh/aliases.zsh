@@ -52,11 +52,11 @@ alias vianti="vi ~/dotfiles/zsh/antibody"
 alias deps="yarn update; git add -A; gcm '[deps] Bump dependencies.'"
 alias org="cd ~/Dropbox/org"
 alias e="exit"
-alias kgpaw="kubectl get pods --all-namespaces -w"
 
 # Kubernetes
 # TODO: Move these into their own file.
 alias k="kubectl"
+alias kgpaw="kubectl get pods --all-namespaces -w"
 
 alias emacs="TERM=xterm-24bit emacs -nw"
 
