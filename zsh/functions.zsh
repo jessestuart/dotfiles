@@ -250,7 +250,7 @@ function truecolor() {
 function git_list_branches() {
   local limit_num_branches=0
   if [ $# -eq 0 ]; then
-    limit_num_branches=10
+    limit_num_branches=30
   else
     limit_num_branches=$1
   fi

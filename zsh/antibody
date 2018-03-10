@@ -1,8 +1,8 @@
 Dbz/zsh-kubernetes
 djui/alias-tips
 felixr/docker-zsh-completion
-jessestuart/dotfiles folder:bin/* branch:jesse/replace_prezto
-jessestuart/dotfiles folder:zsh/* branch:jesse/replace_prezto
+jessestuart/dotfiles folder:bin/*
+jessestuart/dotfiles folder:zsh/*
 mafredri/zsh-async
 robbyrussell/oh-my-zsh folder:plugins/aws
 robbyrussell/oh-my-zsh folder:plugins/docker
