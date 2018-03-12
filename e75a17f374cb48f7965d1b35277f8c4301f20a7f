@@ -1,0 +1,10 @@
+[ver:1,total:5940]
+zsh/kubernetes/aliases.zsh:1620,1520661600:1620,m
+zsh/config.zsh:1590,1520740800:900,1520744400:690,m
+zsh/zstyle.zsh:660,1520740800:660,d
+zsh/git/aliases.zsh:560,1520816400:560,m
+zsh/zpreztorc.zsh.bak:510,1520740800:360,1520744400:150,r
+zsh/rpi/functions.zsh:360,1520780400:360,m
+zsh/kubernetes/functions.zsh:290,1520816400:290,m
+zsh/path.zsh:180,1520704800:180,m
+zsh/vim/aliases.zsh:170,1520816400:170,m
