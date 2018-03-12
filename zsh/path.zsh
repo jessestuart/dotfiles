@@ -30,7 +30,7 @@ export PATH="$PATH:~/dotfiles/**/*.sh"
 
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
-export PATH="/Users/jestuart/bin/miniconda3/bin:$PATH"
+# export PATH="/Users/jestuart/bin/miniconda3/bin:$PATH"
 
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 

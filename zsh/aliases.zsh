@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
+
 # =============================
 # << I ALIAS ALL THE THINGS. >>
 # =============================
 
 # << A PRELUDE >>
 # Sometimes I work on systems that don't have neovim. I know, right?
-# Provide a fallback here so the aliases still work.
+# Provide a fallback here so $EDITOR aliases still work.
 if (hash nvim &>/dev/null); then
   export EDITOR='nvim'
 elif (hash vim &>/dev/null); then
@@ -19,7 +20,7 @@ fi
 # These get added as they come to me. If I end up continuing to use them,
 # they'll be grouped together / moved to a more appropriate place.
 # ============================================================================
-alias c="cd"
+alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias chex="chmod +x"
 alias ck="chromekill"
 alias f="fzf | xargs $EDITOR"
@@ -27,44 +28,46 @@ alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias w="$EDITOR ~/vimwiki/index.wiki"
 alias r="ranger"
-alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
 alias gitter="gitter-cli"
-alias vissh="$EDITOR ~/.ssh/config"
-alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias fb="messer"
-alias h="hyper"
-alias hc="hyper compose"
-alias hcup="hyper compose up"
-alias hcdown="hyper compose down"
 alias clobber="set +C"
 alias net="netlifyctl"
-alias hcp="hub create -p"
-alias vimake="$EDITOR Makefile"
 alias lrdo="login_restic_do"
 alias tfp="terraform plan -out tf.plan"
 alias tfa="terraform apply tf.plan"
 alias lrd="login_restic_do"
-alias ci="hub ci-status -v"
 alias ctags="/usr/local/bin/ctags"
-alias cra="create-react-app"
-alias nrt="npm run test"
-alias vianti="vi ~/dotfiles/zsh/antibody"
-alias deps="yarn update; git add -A; gcm '[deps] Bump dependencies.'"
 alias org="cd ~/Dropbox/org"
 alias e="exit"
-
-# Kubernetes
-# TODO: Move these into their own file.
-alias k="kubectl"
-alias kgpaw="kubectl get pods --all-namespaces -w"
+alias mani="manifest-tool"
+alias dkut="diskutil"
+alias dkutl="diskutil list"
+alias dkute="diskutil eject"
 
 alias emacs="TERM=xterm-24bit emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
-# alias ssh="assh wrapper ssh"
-alias vash="$EDITOR ~/.ssh/assh.yml"
 alias ashup="clobber && assh config build > ~/.ssh/config"
+alias vash="$EDITOR ~/.ssh/assh.yml"
+
+# ============================================
+# Shell essentials. `ls`, `du`, `source`, etc.
+# ============================================
+# Display human-readable size of each child directory.
+alias d1="du -h -d 1"
+# List folders in directory, and sort by size.
+alias d1s="du -d 1 -k . | sort -n"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias rl="exec $SHELL -l"
+alias sz="source ~/.zshrc"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n} | sort'
+
+# Enable aliases to be sudo’ed.
+alias sudo='sudo '
 
 function swap() {
   local file1=$1
@@ -85,27 +88,18 @@ if [ "$(uname)" = 'Darwin' ]; then
 fi
 
 if (hash ccat&>/dev/null); then alias cat="ccat"; fi
-
-# ============================================
-# Shell essentials. `ls`, `du`, `source`, etc.
-# ============================================
-# Display human-readable size of each child directory.
-alias d1="du -h -d 1"
-# List folders in directory, and sort by size.
-alias d1s="du -d 1 -k . | sort -n"
-
-# Reload the shell (i.e. invoke as a login shell)
-alias rl="exec $SHELL -l"
-alias sz="source ~/.zshrc"
-
-# Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n} | sort'
-
-# Enable aliases to be sudo’ed.
-alias sudo='sudo '
-
-
 if (hash viman&>/dev/null); then alias man="viman"; fi
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# ==========
+# Flush DNS.
+# ==========
+alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 #--------------------------------------
 # << LISTING THINGS! >>
@@ -133,20 +127,25 @@ else
   alias la="ls -alh"
 fi
 
-# =================
-# Yarn / NPM / etc.
-# =================
+# ============================
+# Web dev -- Yarn / NPM / etc.
+# ============================
 alias build="yarn build"
+alias cra="create-react-app"
+alias deps="yarn update; git add -A; gcm '[deps] Bump dependencies.'"
 alias dev="yarn dev"
 alias lint="yarn lint"
 alias nig="npm install -g"
 alias npmig="npm install -g"
 alias nrd="npm run dev"
+alias nrt="npm run test"
 alias pac="$EDITOR package.json"
 alias pacup="ncu -u -a"
 alias yad="yarn add"
 alias yadd="yarn add -D"
 alias yga="yarn global add"
+# Gatsby
+alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
 
 # Misc
 alias ap="ansible-playbook"
@@ -156,21 +155,20 @@ alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
 alias tf="terraform"
 alias tmd="tmux detach"
 
+# ========
+# hyper.sh
+# ========
+alias h="hyper"
+alias hc="hyper compose"
+alias hcup="hyper compose up"
+alias hcdown="hyper compose down"
+
 # Grails
 alias gr="yes | grails run-app"
 alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
 alias grl="ps -efw | ag '[g]rails'"
 
-# Gatsby
-alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
-
 # ===================================================
-
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 # Get week number
 alias week='date +%V'
@@ -225,9 +223,3 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
-
-kubectl() {
-  # shellcheck disable=SC1090,SC2039
-  source <(command kubectl completion zsh)
-  command kubectl "$@"
-}

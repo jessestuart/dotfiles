@@ -22,3 +22,9 @@ function ktmp() {
 
   pssh -t2 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
 }
+
+kubectl() {
+  # shellcheck disable=SC1090,SC2039
+  source <(command kubectl completion zsh)
+  command kubectl "$@"
+}

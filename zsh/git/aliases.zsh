@@ -50,7 +50,15 @@ alias review="git diff master"
 alias track="git checkout -t"
 
 alias gqs="git-quick-stats"
+
+# ===============================================
+# Hub aliases.
+# NB: some of these features requiring building
+#     from HEAD at time of writing.
+# ===============================================
 alias hcl="hub clone"
+alias hcp="hub create -p"
+alias ci="hub ci-status -v"
 
 function gacp() {
   if [[ "$#" == 0 ]]; then
