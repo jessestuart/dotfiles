@@ -22,6 +22,7 @@ auth
 Autocompletion
 autofix
 AWK
+awk
 AWS
 aws
 AWS's
@@ -33,6 +34,7 @@ BG
 Bind9
 blog
 Bluetooth
+Bukowski
 cancelable
 cancellable
 CDN
@@ -209,6 +211,7 @@ mailto
 md
 Mesos
 metadata
+MetalLB
 mgmt
 Minio
 Minio's
@@ -324,6 +327,7 @@ strconv
 stylesheets
 SVG
 Symlink
+Synology
 systemd
 t
 tempdir
@@ -403,6 +407,3 @@ zplug
 zpreztorc
 Zsh
 zsh
-Bukowski
-Synology
-MetalLB

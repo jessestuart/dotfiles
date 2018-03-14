@@ -43,6 +43,7 @@ alias mani="manifest-tool"
 alias dkut="diskutil"
 alias dkutl="diskutil list"
 alias dkute="diskutil eject"
+alias cl="clear && pwd && la"
 
 alias emacs="TERM=xterm-24bit emacs -nw"
 
@@ -223,3 +224,9 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
+
+alias awk1="awk '{print \$1}'"
+alias awk2="awk '{print \$2}'"
+alias awk3="awk '{print \$3}'"
+alias awk4="awk '{print \$4}'"
+alias awk5="awk '{print \$5}'"

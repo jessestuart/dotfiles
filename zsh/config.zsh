@@ -12,7 +12,6 @@ setopt NO_LIST_BEEP
 setopt LOCAL_OPTIONS # allow functions to have local options
 setopt LOCAL_TRAPS # allow functions to have local traps
 setopt PROMPT_SUBST
-setopt CORRECT
 setopt COMPLETE_IN_WORD
 # I'd like to use Ctrl+D to exit my shell, thank you.
 unsetopt IGNORE_EOF
@@ -34,8 +33,6 @@ setopt LIST_TYPES
 # 16.2.6 -- Input/Output
 # ======================
 setopt ALIASES
-setopt CORRECT
-setopt CORRECT_ALL
 
 ##
 # Completion

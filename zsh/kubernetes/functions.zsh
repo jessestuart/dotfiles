@@ -20,7 +20,7 @@ function ktmp() {
   local remote_command='printf "%s\t\t%s\n" $(hostname) $(cat /sys/class/thermal/thermal_zone0/temp)'
   local hosts_file="$HOME/dev/pik8s/.pssh_hosts_all"
 
-  pssh -t2 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
+  pssh -t5 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
 }
 
 kubectl() {

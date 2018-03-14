@@ -159,6 +159,8 @@
   # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
   precomposeunicode = false
   pager = less --tabs=4 -RFX
+  eol = lf
+  autocrlf = input
 
 [color]
   ui = auto
@@ -240,8 +242,8 @@
   required = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
   required = true
 [fetch]
   prune = true
