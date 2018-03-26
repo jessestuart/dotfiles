@@ -219,12 +219,13 @@ set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  set number
+  " set number
   set scrolloff=999
 endfunction
 
 function! s:goyo_leave()
   set showmode
+  set number
   set showcmd
 endfunction
 
@@ -252,7 +253,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " ========
 " Neoterm.
 " ========
-let g:neoterm_position = 'vertical'
 let g:neoterm_automap_keys = ',tt'
 " Use gx{text-objects} such as gxip
 nmap gx <Plug>(neoterm-repl-send)
@@ -273,3 +273,15 @@ if executable('flow-language-server')
         \ 'whitelist': ['javascript', 'javascript.jsx'],
         \ })
 endif
+
+" =========
+" UltiSnips
+" =========
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsListSnippets="<c-e> <c-e>"

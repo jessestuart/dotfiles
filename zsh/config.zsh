@@ -51,7 +51,6 @@ setopt CORRECT
 # complete as much of a completion until it gets ambiguous.
 setopt LIST_AMBIGUOUS
 
-
 zmodload -i zsh/complist
 
 WORDCHARS=''
@@ -89,3 +88,4 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # bindkey '^[[5C' end-of-line
 # bindkey '^[[3~' delete-char
 # bindkey '^?' backward-delete-char
+

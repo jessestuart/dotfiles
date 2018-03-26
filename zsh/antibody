@@ -1,11 +1,11 @@
 Dbz/zsh-kubernetes
 djui/alias-tips
 felixr/docker-zsh-completion
-jessestuart/dotfiles folder:bin/*
-jessestuart/dotfiles folder:zsh/*
 mafredri/zsh-async
 robbyrussell/oh-my-zsh folder:plugins/aws
 robbyrussell/oh-my-zsh folder:plugins/docker
+sobolevn/wakatime-zsh-plugin
+zdharma/zsh-diff-so-fancy
 
 # These are order-dependent.
 sindresorhus/pure
