@@ -2,7 +2,7 @@
 
 export ZSH=$HOME/.zsh
 
-source <(antibody init)
+source <(/mnt/data/go/bin/antibody init)
 antibody bundle < "$ZSH/antibody"
 
 # Hack to make zsh load more quickly by not regenerating completion data

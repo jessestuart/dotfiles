@@ -35,6 +35,7 @@ Bind9
 blog
 Bluetooth
 Bukowski
+Bukowski
 cancelable
 cancellable
 CDN
@@ -123,6 +124,7 @@ gatsbyjs
 GCE
 gcloud
 GCP
+GD2
 GDB
 GH
 GitHub
@@ -135,6 +137,7 @@ GitPython
 GKE
 Globbing
 gluster
+glusterd
 GlusterFS
 glusterfs
 GoCD
@@ -152,6 +155,7 @@ Hashicorp
 Hashicorp's
 healthcheck,
 heketi
+Heptio
 Homebrew
 hostname
 htop
@@ -211,6 +215,7 @@ mailto
 md
 Mesos
 metadata
+MetalLB
 MetalLB
 mgmt
 Minio
@@ -327,6 +332,7 @@ strconv
 stylesheets
 SVG
 Symlink
+Synology
 Synology
 systemd
 t

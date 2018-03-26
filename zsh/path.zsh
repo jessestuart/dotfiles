@@ -38,9 +38,13 @@ export PATH="$HOME/github/emacs/src:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ] ; then
-  export GOPATH=$HOME/go
+  if test -e "$HOME/go"; then
+    export GOPATH="$HOME/go"
+  elif test -e "/mnt/data/go"; then
+    export GOPATH="/mnt/data/go"
+  fi
   export GOROOT=/usr/local/go
-  export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+  export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:/mnt/data/go/bin
   export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
 fi

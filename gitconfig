@@ -163,7 +163,7 @@
   autocrlf = input
 
 [color]
-  ui = auto
+	ui = true
   branch = auto
   diff = auto
   status = auto
@@ -174,11 +174,13 @@
   remote = green
 
 [color "diff"]
-  meta = yellow
-  frag = magenta
-  old = red bold
-  new = green
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
   plain = white
+	commit = yellow bold
+	whitespace = red reverse
 
 [color "status"]
   added = yellow

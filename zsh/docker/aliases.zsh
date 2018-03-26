@@ -29,7 +29,8 @@ alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
 alias dit="docker run -it --rm -P"
-alias ditrm="docker run -it --rm -P"
+alias drit="docker run -it --rm -P"
+alias drrm="docker run --rm -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"
@@ -49,7 +50,7 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 dri() { docker rmi $(docker images -q); }
 
 # Dockerfile build, e.g., $dbu tcnksm/test
-dbu() { docker build -t=$1 .; }
+dkb() { docker build -t=$1 .; }
 
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }

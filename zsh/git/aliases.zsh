@@ -16,7 +16,6 @@ alias gcl="git clone"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
-alias gd='git diff --staged origin/$(git_current_branch)'
 alias gdc="git diff --cached"
 alias gdm="git diff master"
 alias gds="git add -A && git diff --staged"
