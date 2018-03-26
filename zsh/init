@@ -2,8 +2,14 @@
 
 export ZSH=$HOME/.zsh
 
-source <(/mnt/data/go/bin/antibody init)
-antibody bundle < "$ZSH/antibody"
+# 1) Load the path file(s).
+for file in ${(M)config_files:#*/path.zsh}; do . $file; done
+
+# 2) Initialize antibody, a lightweight, git-based "plugin" manager.
+if (hash antibody &>/dev/null); then
+  source <(antibody init)
+  antibody bundle < "$ZSH/antibody"
+fi
 
 # Hack to make zsh load more quickly by not regenerating completion data
 # on every shell init.
@@ -28,12 +34,6 @@ ulimit -n 8192
 
 typeset -U config_files
 config_files=($HOME/.zsh/**/*.zsh)
-
-# 1) Load zprezto configuration.
-# test -e $ZSH/zpreztorc.zsh && . $ZSH/zpreztorc.zsh
-
-# 2) Load the path file(s).
-for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
 # 3) Load everything else. Order is important here for autocompletion to work.
 for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}; do . $file; done

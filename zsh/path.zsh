@@ -49,7 +49,13 @@ if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ] ; then
   export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
 fi
 
+if [ "$(uname -s)" = "Darwin" ]; then
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/coreutils/libexec/gnuman:$PATH"
+fi
+
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
+export PATH="$HOME/bin/nvim-osx64/bin:$PATH"
 
 # =============
 # ~* Secrets *~

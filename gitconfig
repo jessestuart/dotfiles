@@ -6,6 +6,7 @@
   cam = !git add -A && git commit --amend
   chpk = cherry-pick
   fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+  r = reset
 
   # ===============
   # Rebase is life.
@@ -158,7 +159,7 @@
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
   # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
   precomposeunicode = false
-  pager = less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=4 -RFX
   eol = lf
   autocrlf = input
 
@@ -265,3 +266,10 @@
   program = gpg
 [ghq]
   root=~/gh
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[diff-so-fancy]
+  markEmptyLines = false

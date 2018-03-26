@@ -11,6 +11,8 @@ bindkey -v
 # @see https://unix.stackexchange.com/questions/277203/whats-the-fastest-way-to-remove-all-files-subfolders-in-a-directory
 autoload zsh/files
 
+autoload zsh/zle
+
 # Get pure. 🙏
 autoload -Uz promptinit; promptinit
 
@@ -28,13 +30,13 @@ export GPG_TTY="$(tty)"
 # Use Ctrl+P / Ctrl+N to navigate through history, à l'emacs.
 bindkey "^N" down-line-or-search
 bindkey "^P" up-line-or-search
-bindkey '^?' backward-delete-char
-bindkey '^H' backward-delete-char
+# bindkey '^?' backward-delete-char
+# bindkey '^H' backward-delete-char
 bindkey '^W' backward-kill-word
 
 # zle -N zle-line-init
 # zle -N zle-keymap-select
-# export KEYTIMEOUT=1
+export KEYTIMEOUT=1
 
 # Set right-hand prompt via zsh's RPROMPT.
 if [ -n "$TMUX" ]; then

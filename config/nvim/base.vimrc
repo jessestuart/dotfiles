@@ -175,7 +175,7 @@ augroup ReloadVimrcGroup
 augroup END
 
 function! DeleteTabs()
-  if &ft =~ 'make'
+  if &ft =~ 'make' || &ft =~ 'gitconfig'
     return
   endif
   try

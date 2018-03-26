@@ -90,6 +90,7 @@ Plug 'prabirshrestha/asyncomplete-necovim.vim'
 " Typescript
 " ==========
 Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-dtsm'
 Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
@@ -129,6 +130,7 @@ Plug 'jparise/vim-graphql'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'jaspervdj/stylish-haskell'
+
 " This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
 " number of over the messy original from `vim-scripts`.
 
@@ -146,6 +148,7 @@ Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/vimproc'
 
 " -------------------------------------
 " Time tracking, etc.
@@ -182,9 +185,11 @@ Plug 'jceb/vim-orgmode'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'sjl/gundo.vim'
 Plug 'Chiel92/vim-autoformat'
-Plug 'vim-scripts/dbext.vim'
+" Plug 'vim-scripts/dbext.vim'
 Plug 'kassio/neoterm'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'elzr/vim-json'
+Plug 'majutsushi/tagbar'
 
 Plug 'jpalardy/vim-slime'
 
@@ -204,16 +209,16 @@ Plug 'jpalardy/vim-slime'
 " Plug 'maralla/completor.vim'
 " Plug 'Shougo/denite.nvim'
 " Plug 'fmoralesc/vim-tutor-mode'
-" Plug 'majutsushi/tagbar'
 " Plug 'sheerun/vim-polyglot'
 " Plug 'tpope/vim-jdaddy'
 "
 " -------------------------------------
 " Snippets.
 " -------------------------------------
-" Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
-" Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
+Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
+Plug 'honza/vim-snippets'
+Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 call plug#end()

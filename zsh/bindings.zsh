@@ -30,7 +30,7 @@ bindkey -M visual S add-surround
 # (neo)vim buffer. Nifty.
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey -M vicmd "^V" edit-command-line
 
 ## http://www.zsh.org/mla/users/2010/msg00769.html
 function rationalise-dot() {
@@ -45,3 +45,13 @@ function rationalise-dot() {
 zle -N rationalise-dot
 bindkey . rationalise-dot
 bindkey -M isearch . self-insert
+# h/t http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search

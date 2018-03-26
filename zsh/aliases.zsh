@@ -44,6 +44,8 @@ alias dkut="diskutil"
 alias dkutl="diskutil list"
 alias dkute="diskutil eject"
 alias cl="clear && pwd && la"
+alias manti="manifest-tool inspect"
+alias count="wc -l"
 
 alias emacs="TERM=xterm-24bit emacs -nw"
 
