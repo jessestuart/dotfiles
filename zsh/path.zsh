@@ -56,6 +56,7 @@ fi
 
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
 export PATH="$HOME/bin/nvim-osx64/bin:$PATH"
+export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
 # =============
 # ~* Secrets *~
