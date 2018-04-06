@@ -1,3 +1,35 @@
+" =================================================
+" Functions to help enable lazy-loading of plugins.
+" @see https://www.reddit.com/r/vim/comments/7datnj/vimplug_cursorhold_and_ondemand_loading/
+" =================================================
+function! LoadAndDestroy(plugin, ...) abort
+  call plug#load(a:plugin)
+  execute 'autocmd! Defer_'.a:plugin
+  if a:0
+    execute a:1
+  endif
+endfunction
+
+function! Defer(github_ref, ...) abort
+  if !has('vim_starting')
+    return
+  endif
+  let plug_args = a:0 ? a:1 : {}
+  call extend(plug_args, { 'on': [] })
+  call plug#(a:github_ref, plug_args)
+  let plugin = a:github_ref[stridx(a:github_ref, '/') + 1:]
+  let lad_args = '"'.plugin.'"'
+  if a:0 > 1
+    let lad_args .= ', "'.a:2.'"'
+  endif
+  let call_loadAndDestroy = 'call LoadAndDestroy('.lad_args.')'
+  execute 'augroup Defer_'.plugin.' |'
+        \ '  autocmd CursorHold,CursorHoldI * '.call_loadAndDestroy.' | '
+        \ 'augroup end'
+endfunction
+
+command! -nargs=+ DeferPlug call Defer(<args>)
+
 call plug#begin()
 " -------------------------------------
 " Text Editing.
@@ -16,7 +48,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Linting / fixing. Must have.
 " ============================
 Plug 'w0rp/ale'
-" ----
 
 " -------------------------------------
 " File management, searching, etc.
@@ -64,6 +95,7 @@ Plug 'junkblocker/patchreview-vim'
 Plug 'mattn/webapi-vim' " Required for vim-github-comment
 Plug 'mmozuras/vim-github-comment'
 Plug 'idanarye/vim-merginal'
+Plug 'cohama/agit.vim'
 
 " -------------------------------------
 " WebDev.
@@ -78,20 +110,20 @@ Plug 'Galooshi/vim-import-js' " This may not work?
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'mattn/emmet-vim'
 
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/asyncomplete-flow.vim'
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
+DeferPlug 'prabirshrestha/async.vim'
+DeferPlug 'prabirshrestha/vim-lsp'
+DeferPlug 'yami-beta/asyncomplete-omni.vim'
+DeferPlug 'prabirshrestha/asyncomplete-flow.vim'
+DeferPlug 'prabirshrestha/asyncomplete-necovim.vim'
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 " ==========
 " Typescript
 " ==========
-Plug 'Quramy/tsuquyomi'
-Plug 'Quramy/vim-dtsm'
-Plug 'leafgarland/typescript-vim'
+DeferPlug 'Quramy/tsuquyomi'
+DeferPlug 'Quramy/vim-dtsm'
+DeferPlug 'leafgarland/typescript-vim'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -102,53 +134,58 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
 " -------------------------------------
-Plug 'hashivim/vim-packer'
-Plug 'hashivim/vim-terraform'
-Plug 'hashivim/vim-vagrant'
-Plug 'pearofducks/ansible-vim'
-Plug 'hejack0207/ansible.vim'
+DeferPlug 'hashivim/vim-packer'
+DeferPlug 'hashivim/vim-terraform'
+DeferPlug 'hashivim/vim-vagrant'
+DeferPlug 'pearofducks/ansible-vim'
+DeferPlug 'hejack0207/ansible.vim'
 
 " -------------------------------------
 " Visual styling / theming.
 " -------------------------------------
-Plug 'junegunn/goyo.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'itchyny/lightline.vim'
+DeferPlug 'junegunn/goyo.vim'
+DeferPlug 'ryanoasis/vim-devicons'
+DeferPlug 'rakr/vim-one'
+DeferPlug 'KeitaNakamura/neodark.vim'
+DeferPlug 'itchyny/lightline.vim'
 
 " -------------------------------------
 " Misc. language support.
 " -------------------------------------
-Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'modille/groovy.vim', { 'for': 'groovy' }
-Plug 'plasticboy/vim-markdown'
-Plug 'jparise/vim-graphql'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'jaspervdj/stylish-haskell'
+Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
+Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
+DeferPlug 'plasticboy/vim-markdown'
+DeferPlug 'jparise/vim-graphql'
+DeferPlug 'ekalinin/Dockerfile.vim'
+DeferPlug 'neovimhaskell/haskell-vim'
+DeferPlug 'jaspervdj/stylish-haskell'
+" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
-" This groovy.vim ^ is the most up-to-date of the several on GitHub, with a
-" number of over the messy original from `vim-scripts`.
+" [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
+" a number of improvements over the messy original from `vim-scripts`.
 
 " ========================
 " Autocomplete / Snippets.
 " ========================
+Plug 'SirVer/ultisnips'
+Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
+Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
+Plug 'honza/vim-snippets'
+Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 " Place deoplete first, then autocomplete-flow
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neocomplete'
-Plug 'Shougo/neco-vim'
+DeferPlug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+DeferPlug 'Shougo/neocomplete'
+DeferPlug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
 Plug 'Shougo/neco-syntax'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimproc'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/vimproc'
 
 " -------------------------------------
 " Time tracking, etc.
@@ -156,11 +193,18 @@ Plug 'Shougo/vimproc'
 if executable('gtm')
   Plug 'git-time-metric/gtm-vim-plugin'
 endif
-Plug 'wakatime/vim-wakatime', {'on': []}
-augroup LoadDuringHold_Targets
-    autocmd!
-    autocmd CursorHold,CursorHoldI * call plug#load('vim-wakatime') | autocmd! LoadDuringHold_Targets
-augroup end
+Plug 'wakatime/vim-wakatime'
+" augroup LoadDuringHold_Targets
+"     autocmd!
+"     autocmd CursorHold,CursorHoldI * call plug#load('vim-wakatime') | autocmd! LoadDuringHold_Targets
+" augroup end
+
+" -------------------------------------
+" Kubernetes, etc.
+" -------------------------------------
+DeferPlug 'c9s/vikube.vim'
+DeferPlug 'mustache/vim-mustache-handlebars'
+DeferPlug 'andrewstuart/vim-kubernetes'
 
 " -------------------------------------
 " Experimentation. Inbox.
@@ -169,27 +213,27 @@ augroup end
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-peekaboo'
-Plug 'sjl/splice.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'vimwiki/vimwiki'
-Plug 'aaronbieber/vim-quicktask'
-Plug 'sunaku/vim-shortcut'
-Plug 'ktonga/vim-follow-my-lead'
-Plug 'wesQ3/vim-windowswap'
-Plug 'thaerkh/vim-workspace'
-Plug 'janko-m/vim-test'
+DeferPlug 'junegunn/vim-peekaboo'
+DeferPlug 'sjl/splice.vim'
+DeferPlug 'rizzatti/dash.vim'
+DeferPlug 'scrooloose/nerdcommenter'
+DeferPlug 'vimwiki/vimwiki'
+DeferPlug 'aaronbieber/vim-quicktask'
+DeferPlug 'sunaku/vim-shortcut'
+DeferPlug 'ktonga/vim-follow-my-lead'
+DeferPlug 'wesQ3/vim-windowswap'
+DeferPlug 'thaerkh/vim-workspace'
+DeferPlug 'janko-m/vim-test'
 
-Plug 'jceb/vim-orgmode'
-Plug 'aaronbieber/vim-quicktask'
-Plug 'sjl/gundo.vim'
-Plug 'Chiel92/vim-autoformat'
+DeferPlug 'jceb/vim-orgmode'
+DeferPlug 'aaronbieber/vim-quicktask'
+DeferPlug 'sjl/gundo.vim'
+DeferPlug 'Chiel92/vim-autoformat'
 " Plug 'vim-scripts/dbext.vim'
-Plug 'kassio/neoterm'
-Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'elzr/vim-json'
-Plug 'majutsushi/tagbar'
+DeferPlug 'kassio/neoterm'
+DeferPlug 'kristijanhusak/vim-carbon-now-sh'
+DeferPlug 'elzr/vim-json'
+DeferPlug 'majutsushi/tagbar'
 
 Plug 'jpalardy/vim-slime'
 
@@ -212,13 +256,5 @@ Plug 'jpalardy/vim-slime'
 " Plug 'sheerun/vim-polyglot'
 " Plug 'tpope/vim-jdaddy'
 "
-" -------------------------------------
-" Snippets.
-" -------------------------------------
-Plug 'SirVer/ultisnips'
-Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
-Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
-Plug 'honza/vim-snippets'
-Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 call plug#end()

@@ -246,10 +246,6 @@ inoreabbrev <expr> __
       \ <SID>isAtStartOfLine('__') ?
       \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " ========
 " Neoterm.
 " ========
@@ -274,13 +270,13 @@ if executable('flow-language-server')
         \ })
 endif
 
-" =========
-" UltiSnips
-" =========
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" " =========
+" " UltiSnips
+" " =========
+" " Trigger configuration.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"

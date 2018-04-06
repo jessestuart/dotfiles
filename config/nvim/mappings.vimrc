@@ -36,6 +36,7 @@ noremap <leader>zen :Goyo<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 
 " I like wrapping comments in blocks of '=' characters.
+" vim-foo is fun.
 nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
 " Disable highlight with <leader><CR>.
@@ -200,3 +201,5 @@ augroup END
 " ============================================
 nnoremap <silent> H ^
 nnoremap <silent> L $
+nnoremap <M-tab> :tabprevious<CR>
+nnoremap <M-q> :tabnext<CR>

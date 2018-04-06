@@ -33,8 +33,8 @@ function get_pods_colorized() {
       | sed "s/Running/${green}Running${normal}/g" \
       | sed "s/Pending/${yellow}Pending${normal}/g" \
       | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed "s/Error/${red}Error${normal}/g" \
-      | sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g" \
+      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
+      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
       | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g"
 }
 

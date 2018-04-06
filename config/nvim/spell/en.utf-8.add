@@ -1,3 +1,4 @@
+ADHD
 admins
 aggregator
 alexellis
@@ -35,7 +36,6 @@ Bind9
 blog
 Bluetooth
 Bukowski
-Bukowski
 cancelable
 cancellable
 CDN
@@ -61,9 +61,13 @@ cloudfront
 CloudFront
 CloudWatch
 CMS Cancelable
+CNI
 codebase
 CodeCov
 Codecov
+colorscheme
+Colorschemes
+colorschemes
 config
 const
 CoreOS
@@ -99,6 +103,8 @@ e
 e.g.
 EC2
 ECMAScript
+Elisp
+eng
 env
 envs
 etc
@@ -171,6 +177,7 @@ IntelliJ
 io
 iOS
 ip
+iPad
 iTerm
 Javascript
 JDK
@@ -187,10 +194,13 @@ json
 JWT
 k
 K8S
+Kana
 keybindings
 keypair
 Koa
 Koans
+Kubeless
+kubeless
 Kubernetes
 kubernetes
 Lavagna
@@ -216,7 +226,6 @@ md
 Mesos
 metadata
 MetalLB
-MetalLB
 mgmt
 Minio
 Minio's
@@ -231,9 +240,11 @@ nameserver
 namespace
 Namespaces
 nanobox
+neckbeards
 neovim
 netdata
 netes
+Netgear
 Netlify
 Nginx
 nginx
@@ -241,7 +252,9 @@ nodejs
 NPM
 npm
 nvim
+OCD
 offline
+omnicompletion
 OpenFaaS
 OpenRC
 OpenShift
@@ -288,6 +301,7 @@ Quickstart
 rak8s
 Ramda
 RancherOS
+RBAC
 RCM
 README
 Redux
@@ -299,6 +313,7 @@ Repo
 repo
 repos
 RESTful
+restic
 reusability
 rspec
 rustc
@@ -306,6 +321,7 @@ RVM
 s
 S3
 s3
+sandboxed
 Scaleway
 screenshot
 Screenshots
@@ -333,7 +349,6 @@ stylesheets
 SVG
 Symlink
 Synology
-Synology
 systemd
 t
 tempdir
@@ -348,9 +363,11 @@ Tmux
 TodayTix
 TODO
 TODO's
+TP
 Traefik
 Trashable
 trashable
+TRENDNet
 truthy
 TT
 Ubuntu
@@ -359,6 +376,7 @@ UI
 ui
 uncollapse
 uninstall
+Uninstalling
 unix
 unpulled
 unpushed
@@ -389,6 +407,8 @@ VPS
 VSCode
 Vultr
 w
+webhook
+webhooks
 webpack
 webpage
 WiFi
@@ -400,6 +420,7 @@ Woah
 wordwrap
 workflow
 Workflows
+workflows
 www
 x64
 XCode
@@ -413,13 +434,3 @@ zplug
 zpreztorc
 Zsh
 zsh
-Kubeless
-kubeless
-workflows
-iPad
-restic
-webhook
-webhooks
-Colorschemes
-colorschemes
-colorscheme

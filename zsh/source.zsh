@@ -63,6 +63,9 @@ function load_bashmarks() {
 }
 load_bashmarks
 
+# added by travis gem
+[ -f /Users/jestuart/.travis/travis.sh ] && source /Users/jestuart/.travis/travis.sh
+
 # function load_asdf() {
 #   local asdf_init=/usr/local/opt/asdf/asdf.sh
 #   test -e $asdf_init && . $asdf_init

@@ -37,6 +37,8 @@ export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOME/github/emacs/src:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
+export PATH="/opt/etcher:$PATH"
+
 if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ] ; then
   if test -e "$HOME/go"; then
     export GOPATH="$HOME/go"

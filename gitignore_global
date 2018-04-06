@@ -7,6 +7,7 @@
 .settings/
 .tern-port
 .vscode/
+.wakatime-project
 node_modules
 tags
 tags.lock

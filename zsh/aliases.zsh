@@ -46,6 +46,11 @@ alias dkute="diskutil eject"
 alias cl="clear && pwd && la"
 alias manti="manifest-tool inspect"
 alias count="wc -l"
+alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
+
+function bak() {
+  mv "$1" "$1.bak"
+}
 
 alias emacs="TERM=xterm-24bit emacs -nw"
 

@@ -4,7 +4,7 @@ felixr/docker-zsh-completion
 mafredri/zsh-async
 robbyrussell/oh-my-zsh folder:plugins/aws
 robbyrussell/oh-my-zsh folder:plugins/docker
-sobolevn/wakatime-zsh-plugin
+# sobolevn/wakatime-zsh-plugin
 zdharma/zsh-diff-so-fancy
 
 # These are order-dependent.
