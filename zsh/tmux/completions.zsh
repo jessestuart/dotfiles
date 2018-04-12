@@ -183,6 +183,6 @@ _tmux() {
       return 0
 
 }
-complete -F _tmux tmux
+(hash complete &>/dev/null) && complete -F _tmux tmux
 
 # END tmux completion
