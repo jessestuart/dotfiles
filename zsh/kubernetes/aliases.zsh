@@ -1,8 +1,13 @@
 #!/usr/bin/env zsh
-alias kgp="get_pods_colorized"
-alias kdp="kubectl describe pods"
-alias k="kubectl"
-
+alias kgp="get_pods_colorized "
+alias kp="get_pods_colorized "
+alias kgpo="get_pods_colorized -owide"
+alias kgpw="get_pods_colorized -owide --all-namespaces "
+alias kdp="kubectl describe pods "
+alias k="kubectl "
+alias kns="kubens "
+alias es-health="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
+alias esh="es-health"
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
@@ -27,7 +32,22 @@ function load_colors() {
   fi
 }
 
+function colorize_stdout() {
+  load_colors
+  input="$@"
+  echo $input \
+      | sed "s/Running/${green}Running${normal}/g" \
+      | sed "s/Pending/${yellow}Pending${normal}/g" \
+      | sed "s/Completed/${blue}Completed${normal}/g" \
+      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
+      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
+      | sed -E "s/([a-zA-Z]+)Killed/${red}\1BackOff${normal}/g" \
+      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
+      | sed -E "s/(10.*)/${cyan}\1${normal}/g"
+}
+
 function get_pods_colorized() {
+  # kubectl get pods "$@" |
   load_colors
   kubectl get pods "$@" \
       | sed "s/Running/${green}Running${normal}/g" \
@@ -35,7 +55,8 @@ function get_pods_colorized() {
       | sed "s/Completed/${blue}Completed${normal}/g" \
       | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
       | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g"
+      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
+      | sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g"
 }
 
 function describe_pods_colorized() {
@@ -58,7 +79,7 @@ alias kex='kubectl exec -i -t'
 alias ksysex='kubectl --namespace=kube-system exec -i -t'
 alias klo='kubectl logs -f'
 alias ksyslo='kubectl --namespace=kube-system logs -f'
-alias kp='kubectl proxy'
+# alias kp='kubectl proxy'
 alias kg='kubectl get'
 alias ksysg='kubectl --namespace=kube-system get'
 alias kd='kubectl describe'
@@ -67,7 +88,6 @@ alias krm='kubectl delete'
 alias ksysrm='kubectl --namespace=kube-system delete'
 alias krun='kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
 alias ksysrun='kubectl --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
-alias kgpo='get_pods_colorized'
 alias ksysgpo='get_pods_colorized --namespace=kube-system'
 alias kdpo='kubectl describe pods'
 alias ksysdpo='kubectl --namespace=kube-system describe pods'

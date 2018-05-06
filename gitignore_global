@@ -1,4 +1,5 @@
 *.log
+*.swp
 ./codealike.json
 .classpath
 .DS_Store
@@ -10,5 +11,6 @@
 .wakatime-project
 node_modules
 tags
+tags.files
 tags.lock
 tags.temp

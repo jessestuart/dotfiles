@@ -40,8 +40,9 @@ function ghcl() {
   local REPO_URL
   if [ $# -eq 0 ]; then REPO_URL=$(pbpaste); else REPO_URL=$1; fi
   local GITHUB_ROOT="$HOME/github"
-  local FOLDER_NAME="$(echo $REPO_URL | sed 's:.*/::')"
+  local FOLDER_NAME="$(echo $REPO_URL | sed 's#https://github.com/##')"
   local FOLDER_PATH="$GITHUB_ROOT/$FOLDER_NAME"
+  mkdir -p $FOLDER_PATH
   hub clone $REPO_URL $FOLDER_PATH
   echo "Cloned repository to $FOLDER_PATH."
   echo "The absolute path has been copied to your clipboard."
@@ -220,7 +221,7 @@ function gb() {
     echo ${${(j:\n:)lines}} | \less --no-init --chop-long-lines --QUIT-AT-EOF
   fi
 }
-compdef -e 'words=(git branch "${(@)words[2,-1]}"); ((CURRENT++)); _normal' gb
+# compdef -e 'words=(git branch "${(@)words[2,-1]}"); ((CURRENT++)); _normal' gb
 
 # Delete or list merged branched.
 gbmcleanup() {
@@ -397,7 +398,7 @@ function git-done {
 function git-nuke {
   git branch -D $1 && git push origin :$1
 }
-compdef _git git-nuke=git-checkout
+# compdef _git git-nuke=git-checkout
 
 function git-on-master {
   branch=`git_branch_name`
@@ -406,3 +407,24 @@ function git-on-master {
   git rebase master && git push -f
 }
 
+function gh-latest() {
+  if test -z $1; then
+    echo "[ERROR] latest-release accepts exactly one parameter: repository name."
+    return 1
+  fi
+  local github_repo=$1
+  local auth_header="Authorization: token $GITHUB_TOKEN"
+  local github_url="https://api.github.com/repos/$github_repo/releases/latest"
+  curl -s -H $auth_header $github_url | jq -r ".tag_name"
+}
+
+function gh-releases() {
+  if test -z $1; then
+    echo "[ERROR] latest-release accepts exactly one parameter: repository name."
+    return 1
+  fi
+  local github_repo=$1
+  local auth_header="Authorization: token $GITHUB_TOKEN"
+  local github_url="https://api.github.com/repos/$github_repo/releases"
+  curl -s -H $auth_header $github_url | jq -r ".[].tag_name"
+}

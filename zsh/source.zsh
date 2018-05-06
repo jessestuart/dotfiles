@@ -61,7 +61,10 @@ function load_bashmarks() {
   local bashmarks="$HOME/.local/bin/bashmarks.sh"
   test -e $bashmarks && . $bashmarks
 }
-load_bashmarks
+# load_bashmarks
+
+xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zsh/_tmux-xpanes"
+test -e $xpanes_completions && . $xpanes_completions
 
 # added by travis gem
 [ -f /Users/jestuart/.travis/travis.sh ] && source /Users/jestuart/.travis/travis.sh
@@ -72,8 +75,8 @@ load_bashmarks
 # }
 # load_asdf
 
-if (hash zaw&>/dev/null); then . $(which zaw); fi
-test -e ~/github/z/z.sh && . ~/github/z/z.sh
+# if (hash zaw&>/dev/null); then . $(which zaw); fi
+# test -e ~/github/z/z.sh && . ~/github/z/z.sh
 
 if [ "$PLATFORM" = 'Darwin' ]; then
   # iTerm2 Shell Integration:
@@ -85,5 +88,3 @@ if [ "$PLATFORM" = 'Darwin' ]; then
   }
 fi
 
-xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zsh/_tmux-xpanes"
-test -e $xpanes_completions && . $xpanes_completions

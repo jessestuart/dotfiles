@@ -14,13 +14,11 @@ map <space> \
 " ==========================
 " vim-plug plugin management
 " ==========================
-" Reload configuration with <leader>sc
-noremap <leader>sc :source ~/.config/nvim/init.vim<CR>
 noremap <leader>, :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
-nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pi :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>
 " Update all plugins with <leader>up
-nmap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
+nnoremap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
 
 " ==========================================
 " Miscellaneous mappings I've grown to love.
@@ -56,7 +54,8 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
 " ======================
 " Fast saving / closing.
 " ======================
-" Write buffer with <leader>w or ctrl+s. The latter works in insert mode too!
+" Write buffer with <leader>w or <C-s>.
+" The latter works in insert mode too, and will place you back in normal mode.
 nnoremap <leader>w :w!<CR>
 nnoremap <C-s> :w!<CR>
 inoremap <C-s> :w!<CR>
@@ -203,3 +202,13 @@ nnoremap <silent> H ^
 nnoremap <silent> L $
 nnoremap <M-tab> :tabprevious<CR>
 nnoremap <M-q> :tabnext<CR>
+
+" Opens up the fzf buffer search to navigate between open buffers.
+noremap <Leader>b :Buffers<CR>
+" FZF most-recently-used file search.
+noremap <Leader>h :History<CR>
+" FZF :Ag search. (NB: customized elsewhere to use ripgrep)
+noremap <Leader>f :Ag<CR>
+" Searches the word under the cursor through the project tree using fzf and
+" Ag.
+noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>

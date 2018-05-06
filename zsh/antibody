@@ -2,10 +2,10 @@ Dbz/zsh-kubernetes
 djui/alias-tips
 felixr/docker-zsh-completion
 mafredri/zsh-async
-robbyrussell/oh-my-zsh folder:plugins/aws
-robbyrussell/oh-my-zsh folder:plugins/docker
 # sobolevn/wakatime-zsh-plugin
 zdharma/zsh-diff-so-fancy
+# robbyrussell/oh-my-zsh folder:plugins/aws
+robbyrussell/oh-my-zsh folder:plugins/docker
 
 # These are order-dependent.
 sindresorhus/pure

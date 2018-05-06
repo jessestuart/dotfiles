@@ -47,12 +47,13 @@ alias cl="clear && pwd && la"
 alias manti="manifest-tool inspect"
 alias count="wc -l"
 alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
+alias etcher="sudo etcher"
 
 function bak() {
   mv "$1" "$1.bak"
 }
 
-alias emacs="TERM=xterm-24bit emacs -nw"
+alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
@@ -237,7 +238,16 @@ alias awk2="awk '{print \$2}'"
 alias awk3="awk '{print \$3}'"
 alias awk4="awk '{print \$4}'"
 alias awk5="awk '{print \$5}'"
+alias awk6="awk '{print \$6}'"
+alias awk7="awk '{print \$7}'"
+alias awk8="awk '{print \$8}'"
+alias awk9="awk '{print \$9}'"
+alias awk1,2="awk '{print \$1,\$2}'"
 
 alias apts="sudo apt search"
-alias apti="sudo apt install"
-alias aptup="sudo apt update"
+alias apti="sudo apt install -yq"
+alias aptup="sudo apt update && apt list --upgradeable"
+alias aptupg="sudo apt upgrade -yq"
+
+# Allow alias expansion for `watch` command.
+alias watch="watch --color "

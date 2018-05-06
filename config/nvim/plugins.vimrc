@@ -106,7 +106,8 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
-Plug 'Galooshi/vim-import-js' " This may not work?
+" Plug 'Galooshi/vim-import-js' " This may not work?
+Plug 'heavenshell/vim-jsdoc'
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'mattn/emmet-vim'
 
@@ -137,18 +138,16 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 DeferPlug 'hashivim/vim-packer'
 DeferPlug 'hashivim/vim-terraform'
 DeferPlug 'hashivim/vim-vagrant'
-DeferPlug 'pearofducks/ansible-vim'
-DeferPlug 'hejack0207/ansible.vim'
+Plug 'pearofducks/ansible-vim'
+Plug 'hejack0207/ansible.vim'
 
 " -------------------------------------
 " Visual styling / theming.
 " -------------------------------------
 Plug 'joshdick/onedark.vim'
-DeferPlug 'junegunn/goyo.vim'
-DeferPlug 'ryanoasis/vim-devicons'
-DeferPlug 'rakr/vim-one'
-DeferPlug 'KeitaNakamura/neodark.vim'
-DeferPlug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'itchyny/lightline.vim'
 
 " -------------------------------------
 " Misc. language support.
@@ -156,11 +155,12 @@ DeferPlug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
-DeferPlug 'plasticboy/vim-markdown'
+" DeferPlug 'plasticboy/vim-markdown'
 DeferPlug 'jparise/vim-graphql'
 DeferPlug 'ekalinin/Dockerfile.vim'
 DeferPlug 'neovimhaskell/haskell-vim'
 DeferPlug 'jaspervdj/stylish-haskell'
+DeferPlug 'kchmck/vim-coffee-script'
 " Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
 " [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with

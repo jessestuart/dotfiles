@@ -43,6 +43,9 @@ endfunction
 if (has('autocmd') && !has('gui_running'))
   if !exists("g:colors_name")
     augroup onedark
+      autocmd!
+      " highlight EndOfBuffer guifg=black
+      hi! EndOfBuffer ctermbg=282c34 ctermfg=282c34 guibg=282c34 guifg=282c34
       call InitializeColorscheme()
     augroup END
   endif

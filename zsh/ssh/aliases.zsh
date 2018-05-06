@@ -20,3 +20,6 @@ alias pscpgluster="pscp -h ~/.pssh/gluster"
 
 alias pshrock="pssh -i -h ~/.pssh/rock"
 alias pscprock="pscp -h ~/.pssh/rock"
+
+alias pshff="pssh -i -h ~/.pssh/ff"
+alias pscpff="pscp -h ~/.pssh/ff"

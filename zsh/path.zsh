@@ -11,6 +11,7 @@ export PATH="/sbin:$PATH"
 # + some nifty commands from [Zach Holman](https://github.com/holman/dotfiles)
 export PATH="$HOME/bin/dash:$PATH"
 export PATH="$HOME/bin/holman:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # MongoDB
 export MONGO_PATH=/usr/local/mongodb
@@ -54,10 +55,12 @@ fi
 if [ "$(uname -s)" = "Darwin" ]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/coreutils/libexec/gnuman:$PATH"
+  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 fi
 
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
-export PATH="$HOME/bin/nvim-osx64/bin:$PATH"
+# export PATH="$HOME/bin/nvim-osx64/bin:$PATH"
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
 # =============

@@ -284,7 +284,7 @@ function copy() {
 # an archive in the current directory with a filename like
 # `${ORIGINAL_FILENAME}-{current-datetime}.tar.gz`.
 # ====================================================================
-function ark() {
+function arkit() {
   if [ $# -eq 1 ]; then
     local filename=$1
     local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
@@ -437,3 +437,6 @@ function transfer() {
   # cleanup
   rm -f $tmpfile
 }
+
+# Allow sudo invocation of custom functions.
+zsudo() sudo zsh -c "$functions[$1]" "$@"
