@@ -8,7 +8,8 @@ zdharma/zsh-diff-so-fancy
 robbyrussell/oh-my-zsh folder:plugins/docker
 
 # These are order-dependent.
-sindresorhus/pure
+# sindresorhus/pure
+jessestuart/spaceship-prompt
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
