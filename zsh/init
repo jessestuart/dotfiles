@@ -7,6 +7,8 @@ config_files=($ZSH/**/*.zsh)
 # 1) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
+source $ZSH/prompt/config.zsh
+
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
 if (hash antibody &>/dev/null); then
   source <(antibody init)
