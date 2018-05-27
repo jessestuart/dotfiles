@@ -269,3 +269,8 @@ alias dkcu='docker-compose up'
 alias dkcU='docker-compose up -d'
 alias dkcv='docker-compose version'
 alias dkcx='docker-compose stop'
+
+# ============================
+# docker-hub cli tool aliases.
+# ============================
+alias dh="docker-hub"

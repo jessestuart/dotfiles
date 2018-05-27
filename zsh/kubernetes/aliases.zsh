@@ -6,8 +6,7 @@ alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kdp="kubectl describe pods "
 alias k="kubectl "
 alias kns="kubens "
-alias es-health="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
-alias esh="es-health"
+alias esh="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065

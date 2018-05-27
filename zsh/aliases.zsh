@@ -57,7 +57,7 @@ alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
-alias ashup="clobber && assh config build > ~/.ssh/config"
+alias ash="clobber && assh config build > ~/.ssh/config"
 alias vash="$EDITOR ~/.ssh/assh.yml"
 
 # ============================================

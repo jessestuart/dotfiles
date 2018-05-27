@@ -23,13 +23,6 @@ function ktmp() {
   pssh -t5 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
 }
 
-function ktmp() {
-  local remote_command='printf "%s\t%s\n" $(hostname) $(cat /sys/class/thermal/thermal_zone0/temp)'
-  local hosts_file="$HOME/.pssh/all"
-
-  pssh -t5 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
-}
-
 function kmem() {
   local remote_command="free -h | head -n2 | tail -n1 | awk '{print \$7}' | xargs printf \"\$(hostname)\t\t%s\n\""
   local hosts_file="$HOME/.pssh/all"
@@ -39,12 +32,16 @@ function kmem() {
 # ======================================
 # Get all dead / crashing / etc. pods :(
 # ======================================
-function kgpok() {
-  get_pods_colorized --all-namespaces | tail -n+2 # | grep -v Running | sort
+function kgerr() {
+  get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Creating | sort -k8
 }
 
-kubectl() {
-  # shellcheck disable=SC1090,SC2039
-  source <(command kubectl completion zsh)
-  command kubectl "$@"
+function krmerr() {
+  kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | awk '{print $1,$2}' | xargs kubectl delete pod $2 -n $1
 }
+
+# kubectl() {
+#   # shellcheck disable=SC1090,SC2039
+#   source <(command kubectl completion zsh)
+#   command kubectl "$@"
+# }

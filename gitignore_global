@@ -1,5 +1,6 @@
 *.log
 *.swp
+*.bak
 ./codealike.json
 .classpath
 .DS_Store

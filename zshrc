@@ -4,3 +4,5 @@
 # zmodload zsh/zprof
 source "$HOME/.zsh/init"
 # zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

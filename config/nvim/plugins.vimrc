@@ -175,9 +175,9 @@ Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
 Plug 'honza/vim-snippets'
 Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 " Place deoplete first, then autocomplete-flow
-DeferPlug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-DeferPlug 'Shougo/neocomplete'
-DeferPlug 'Shougo/neco-vim'
+" DeferPlug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" DeferPlug 'Shougo/neocomplete'
+" DeferPlug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
 Plug 'Shougo/neco-syntax'
 Plug 'autozimu/LanguageClient-neovim'
@@ -193,7 +193,9 @@ Plug 'wokalski/autocomplete-flow'
 if executable('gtm')
   Plug 'git-time-metric/gtm-vim-plugin'
 endif
-Plug 'wakatime/vim-wakatime'
+if executable('wakatime')
+  Plug 'wakatime/vim-wakatime'
+endif
 " augroup LoadDuringHold_Targets
 "     autocmd!
 "     autocmd CursorHold,CursorHoldI * call plug#load('vim-wakatime') | autocmd! LoadDuringHold_Targets
@@ -213,11 +215,11 @@ DeferPlug 'andrewstuart/vim-kubernetes'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
+Plug 'vimwiki/vimwiki'
 DeferPlug 'junegunn/vim-peekaboo'
 DeferPlug 'sjl/splice.vim'
 DeferPlug 'rizzatti/dash.vim'
 DeferPlug 'scrooloose/nerdcommenter'
-DeferPlug 'vimwiki/vimwiki'
 DeferPlug 'aaronbieber/vim-quicktask'
 DeferPlug 'sunaku/vim-shortcut'
 DeferPlug 'ktonga/vim-follow-my-lead'
