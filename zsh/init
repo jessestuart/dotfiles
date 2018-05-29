@@ -41,12 +41,12 @@ for file in ${${config_files:#*/path.zsh}:#*/zpreztorc.zsh}; do . $file; done
 
 for file in ${(M)config_files:#*/completions.zsh}; do . $file; done
 
-fpath=( \
-  /usr/local/share/zsh/site-functions \
-  /usr/local/share/zsh-completions \
-  ~/bin/zsh-completions \
-  $fpath \
-)
+# fpath=( \
+#   /usr/local/share/zsh/site-functions \
+#   /usr/local/share/zsh-completions \
+#   ~/bin/zsh-completions \
+#   $fpath \
+# )
 source $fpath
 
 unset config_files

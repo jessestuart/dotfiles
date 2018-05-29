@@ -8,6 +8,9 @@ alias k="kubectl "
 alias kns="kubens "
 alias esh="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
 
+# Get all pods, sorted by number of restarts.
+alias kgreb="kgpw | sort -n -k5"
+
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
   # if stdout is a terminal
