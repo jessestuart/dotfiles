@@ -8,6 +8,10 @@ alias k="kubectl "
 alias kns="kubens "
 alias esh="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
 
+alias knsl="kubens logging"
+alias knsm="kubens monitoring"
+alias knss="kubens kube-system"
+
 # Get all pods, sorted by number of restarts.
 alias kgreb="kgpw | sort -n -k5"
 
