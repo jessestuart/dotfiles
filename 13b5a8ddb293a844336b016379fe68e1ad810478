@@ -2,3 +2,7 @@
 zsh/git/aliases.zsh:510,1528664400:510,m
 gitconfig:90,1528664400:90,r
 zsh/brew/aliases.zsh:60,1528664400:60,m
+
+[ver:1,total:300]
+zsh/docker/aliases.zsh:240,1528171200:240,m
+zsh/ssh/aliases.zsh:60,1528520400:60,m
