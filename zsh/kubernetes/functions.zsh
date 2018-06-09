@@ -29,13 +29,16 @@ function kmem() {
   pssh -t10 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
 }
 
+function clustup() {
+  local remote_command="uptime"
+  local hosts_file="$HOME/.pssh/all"
+  pssh -t10 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
+}
+
 # ======================================
 # Get all dead / crashing / etc. pods :(
 # ======================================
-alias kgerr="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Creating | sort -k8"
-# function kgerr() {
-#   get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Creating | sort -k8
-# }
+alias kgerr="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8"
 
 function krmerr() {
   kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | awk '{print $1,$2}' | xargs kubectl delete pod $2 -n $1

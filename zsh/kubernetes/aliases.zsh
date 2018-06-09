@@ -6,14 +6,14 @@ alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kdp="kubectl describe pods "
 alias k="kubectl "
 alias kns="kubens "
-alias esh="http http://elasticsearch.internal.jesses.io/_cluster/health | jq"
+alias esh="http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
 
 alias knsl="kubens logging"
 alias knsm="kubens monitoring"
 alias knss="kubens kube-system"
 
 # Get all pods, sorted by number of restarts.
-alias kgreb="kgpw | sort -n -k5"
+alias kgcrash="kgpw | sort -n -k5"
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065

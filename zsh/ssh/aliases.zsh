@@ -6,20 +6,20 @@
 # for issuing one-off commands across a cluster it hits the sweet
 # spot in terms of simplicity and trasparency.
 
-alias pshal="pssh -i -h ~/.pssh/all"
-alias pscpal="pscp -h ~/.pssh/all"
+alias pshal="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/all"
+alias pscpal="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/all"
 
-alias pshpis="pssh -i -h ~/.pssh/rpis"
-alias pscppis="pscp -h ~/.pssh/rpis"
+alias pshpis="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/rpis"
+alias pscppis="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/rpis"
 
-alias pshwrk="pssh -i -h ~/.pssh/wrk"
-alias pscpwrk="pscp -h ~/.pssh/wrk"
+alias pshwrk="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/wrk"
+alias pscpwrk="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/wrk"
 
-alias pshgluster="pssh -i -h ~/.pssh/gluster"
-alias pscpgluster="pscp -h ~/.pssh/gluster"
+alias pshgluster="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/gluster"
+alias pscpgluster="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/gluster"
 
-alias pshrock="pssh -i -h ~/.pssh/rock"
-alias pscprock="pscp -h ~/.pssh/rock"
+alias pshrock="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/rock"
+alias pscprock="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/rock"
 
-alias pshff="pssh -i -h ~/.pssh/ff"
-alias pscpff="pscp -h ~/.pssh/ff"
+alias pshff="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/ff"
+alias pscpff="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/ff"

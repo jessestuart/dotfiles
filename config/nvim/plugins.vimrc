@@ -106,7 +106,7 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
-" Plug 'Galooshi/vim-import-js' " This may not work?
+Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
 Plug 'heavenshell/vim-jsdoc'
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'mattn/emmet-vim'

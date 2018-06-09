@@ -10,6 +10,7 @@ alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
 alias dki="docker images"
 alias dkspr="docker system prune"
+alias dih="docker images | tail -n+2 | head -n10"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
