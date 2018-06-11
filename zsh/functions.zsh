@@ -371,7 +371,7 @@ function dut {
   (( $# == 0 )) && set -- *
 
   if grep -q -i 'GNU' < <(du --version 2>&1); then
-    du -khsc "$@" | sort -h -r
+    sudo du -khsc "$@" | sort -h -r
   else
     local line size name
     local -a record
@@ -381,7 +381,7 @@ function dut {
       size="$(($record[1] / 1024.0))"
       name="$record[2,-1]"
       printf "%9.1LfM    %s\n" "$size" "$name"
-    done < <(du -kcs "$@") | sort -n
+    done < <(sudo du -kcs "$@") | sort -n
   fi
 }
 

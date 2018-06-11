@@ -16,10 +16,41 @@ alias dih="docker images | tail -n+2 | head -n10"
 alias dl="docker ps -l -q"
 
 # Get container process
-alias dps="docker ps"
+# alias dps="docker ps"
+function dps() {
+  if (hash rainbow &>/dev/null); then
+    docker ps | \
+      # REmove the column headers
+      tail -n+2 | \
+      grep -v k8s_POD | \
+      sed -e 's/k8s_POD_/(POD) /g' | \
+      # Highlight container name/id in green
+      # Highlight 'Exited' containers in red
+      # Highlight kubernetes-managed "k8s_POD` containers
+      rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
+  else
+    docker ps | grep -v POD
+fi
+}
 
 # Get process included stop container
-alias dpa="docker ps -a"
+# Get container process
+# alias dps="docker ps"
+function dpa() {
+  if (hash rainbow &>/dev/null); then
+    docker ps -a | \
+      # REmove the column headers
+      tail -n+2 | \
+      sed -e 's/k8s_POD_/(POD) /g' | \
+      # Highlight container name/id in green
+      # Highlight 'Exited' containers in red
+      # Highlight kubernetes-managed "k8s_POD` containers
+      rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
+  else
+    docker ps | grep -v POD
+fi
+}
+
 
 # Get images
 alias di="docker images"
@@ -275,3 +306,10 @@ alias dkcx='docker-compose stop'
 # docker-hub cli tool aliases.
 # ============================
 alias dh="docker-hub"
+function dhr() {
+  docker-hub repos -o $1
+}
+
+function dht() {
+  docker-hub tags -o $1 -r $2
+}

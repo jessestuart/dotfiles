@@ -8,6 +8,12 @@ alias k="kubectl "
 alias kns="kubens "
 alias esh="http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
 
+alias syskr="sudo systemctl restart kubelet"
+alias sysks="sudo systemctl status kubelet"
+alias sysdr="sudo systemctl restart docker"
+alias sysdst="sudo systemctl stop docker"
+alias sysdarl="sudo systemctl daemon-reload"
+
 alias knsl="kubens logging"
 alias knsm="kubens monitoring"
 alias knss="kubens kube-system"

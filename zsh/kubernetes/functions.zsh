@@ -44,6 +44,17 @@ function krmerr() {
   kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | awk '{print $1,$2}' | xargs kubectl delete pod $2 -n $1
 }
 
+function ketcdctl() {
+   docker run --rm -it --net host \
+     -v /etc/kubernetes:/etc/kubernetes \
+     "$VOLUMES" \
+     jessestuart/etcd \
+     etcdctl
+     --cert-file /etc/kubernetes/pki/etcd/peer.crt --key-file /etc/kubernetes/pki/etcd/peer.key --ca-file /etc/kubernetes/pki/etcd/ca.crt
+     --endpoints https://10.10.10.100:2379 "$@"
+      # k8s.gcr.io/etcd-arm:3.1.12 \
+}
+
 # kubectl() {
 #   # shellcheck disable=SC1090,SC2039
 #   source <(command kubectl completion zsh)
