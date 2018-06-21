@@ -45,7 +45,7 @@ alias repush="gpr && git push"
 alias retag="ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *"
 alias review="git diff master"
 alias track="git checkout -t"
-
+alias hbr="hub browse"
 alias gqs="git-quick-stats"
 alias gstats="git-quick-stats"
 

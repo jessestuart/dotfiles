@@ -16,9 +16,6 @@ alias vgit="$EDITOR ~/.gitconfig"
 alias vham="$EDITOR ~/.hammerspoon/init.lua"
 alias vi.="$EDITOR ."
 alias vi="$EDITOR"
-alias via="$EDITOR ~/.zsh/aliases.zsh"
-alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
-alias vianti="vi ~/dotfiles/zsh/antibody"
 alias vici="$EDITOR .circleci/config.yml"
 alias vif="$EDITOR ~/.zsh/functions.zsh"
 alias vik="$EDITOR ~/.zsh/kubernetes"
@@ -39,3 +36,12 @@ alias vt="$EDITOR ~/.tmux.conf"
 alias vz="$EDITOR ~/.zsh/zshrc"
 alias vihost="sudo $EDITOR /etc/hosts"
 alias vidk="$EDITOR ~/dotfiles/zsh/docker"
+
+# ======================
+# **/aliases.zsh shortcuts
+# ======================
+alias via="$EDITOR ~/.zsh/aliases.zsh"
+alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
+alias vianti="vi ~/dotfiles/zsh/antibody"
+alias viak="$EDITOR ~/.zsh/kubernetes/aliases.zsh"
+alias viad="$EDITOR ~/.zsh/docker/aliases.zsh"

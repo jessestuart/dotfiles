@@ -281,3 +281,5 @@ endif
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<c-e> <c-e>"
+
+let g:flow#showquickfix = 0

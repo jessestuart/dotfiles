@@ -1,25 +1,58 @@
 #!/usr/bin/env zsh
+# alias load_colors="$HOME/.bin/load_colors"
+# alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
+alias esh="http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
+alias eshw="watch http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
+alias k="kubectl "
+alias kdp="kubectl describe pods "
 alias kgp="get_pods_colorized "
-alias kp="get_pods_colorized "
 alias kgpo="get_pods_colorized -owide"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
-alias kdp="kubectl describe pods "
-alias k="kubectl "
 alias kns="kubens "
-alias esh="http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
+alias kp="get_pods_colorized "
+
+# Get all pods, sorted by number of restarts.
+alias kgcrash="kgpw | sort -n -k5"
+
+# =========================================================================
+# Generate a table of all LoadBalancer services, ordered by IP (ascending),
+# and with service name and service namespace in the second and third columns.
+# Example output:
+# ```console
+# 10.10.10.10  coredns                           kube-system
+# 10.10.10.10  coredns-tcp                       kube-system
+# 10.10.10.11  cerebro                           logging
+# 10.10.10.12  elasticsearch-hq                  logging
+# 10.10.10.13  traefik-consul-ui                 kube-system
+# 10.10.10.14  elasticsearch                     logging
+# 10.10.10.15  grafana                           monitoring
+# 10.10.10.16  prometheus-k8s                    monitoring
+# 10.10.10.17  stash                             stash
+# 10.10.10.18  kibana                            logging
+# 10.10.10.20  traefik-ingress-service-external  kube-system
+# 10.10.10.21  traefik-ingress-service           kube-system
+# ```
+# =========================================================================
+alias kglb="kgsvcall | grep Load | awk '{print $5,$2,$1}' | sort -k1 -d | column -t"
+
+# Aliases for `kubens` for quickly switching between common namespaces.
+alias knsl="kubens logging"
+alias knsm="kubens monitoring"
+alias knss="kubens kube-system"
+
+alias krmpom="kubectl delete pods --namespace monitoring"
+alias kdpom="kubectl describe pods --namespace monitoring"
+alias kgpom="get_pods_colorized --namespace monitoring -owide"
+
+alias krmpol="kubectl delete pods --namespace logging"
+alias kdpol="kubectl describe pods --namespace logging"
+alias kgpol="get_pods_colorized --namespace logging -owide"
 
 alias syskr="sudo systemctl restart kubelet"
 alias sysks="sudo systemctl status kubelet"
 alias sysdr="sudo systemctl restart docker"
 alias sysdst="sudo systemctl stop docker"
 alias sysdarl="sudo systemctl daemon-reload"
-
-alias knsl="kubens logging"
-alias knsm="kubens monitoring"
-alias knss="kubens kube-system"
-
-# Get all pods, sorted by number of restarts.
-alias kgcrash="kgpw | sort -n -k5"
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
@@ -44,22 +77,21 @@ function load_colors() {
   fi
 }
 
-function colorize_stdout() {
-  load_colors
-  input="$@"
-  echo $input \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
-      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-      | sed -E "s/([a-zA-Z]+)Killed/${red}\1BackOff${normal}/g" \
-      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
-      | sed -E "s/(10.*)/${cyan}\1${normal}/g"
-}
+# function colorize_stdout() {
+#   load_colors
+#   input="$@"
+#   echo $input \
+#       | sed "s/Running/${green}Running${normal}/g" \
+#       | sed "s/Pending/${yellow}Pending${normal}/g" \
+#       | sed "s/Completed/${blue}Completed${normal}/g" \
+#       | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
+#       | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
+#       | sed -E "s/([a-zA-Z]+)Killed/${red}\1BackOff${normal}/g" \
+#       | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
+#       | sed -E "s/(10.*)/${cyan}\1${normal}/g"
+# }
 
 function get_pods_colorized() {
-  # kubectl get pods "$@" |
   load_colors
   kubectl get pods "$@" \
       | sed "s/Running/${green}Running${normal}/g" \
@@ -569,9 +601,9 @@ alias kdl='kubectl describe -l'
 alias ksysdl='kubectl --namespace=kube-system describe -l'
 alias krml='kubectl delete -l'
 alias ksysrml='kubectl --namespace=kube-system delete -l'
-alias kgpol='get_pods_colorized -l'
+alias kgpoll='get_pods_colorized -l'
 alias ksysgpol='get_pods_colorized --namespace=kube-system -l'
-alias kdpol='kubectl describe pods -l'
+alias kdpoll='kubectl describe pods -l'
 alias ksysdpol='kubectl --namespace=kube-system describe pods -l'
 alias krmpol='kubectl delete pods -l'
 alias ksysrmpol='kubectl --namespace=kube-system delete pods -l'

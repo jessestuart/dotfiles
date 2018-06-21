@@ -61,7 +61,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -69,6 +68,9 @@ Plug 'vim-scripts/bufexplorer.zip'
 Plug 'wellle/targets.vim'
 Plug 'wincent/ferret'
 Plug 'yegappan/mru'
+if executable('ctags')
+  Plug 'ludovicchabant/vim-gutentags'
+endif
 
 " -------------------------------------
 " Pope.
@@ -114,8 +116,8 @@ Plug 'heavenshell/vim-jsdoc'
 DeferPlug 'prabirshrestha/async.vim'
 DeferPlug 'prabirshrestha/vim-lsp'
 DeferPlug 'yami-beta/asyncomplete-omni.vim'
-DeferPlug 'prabirshrestha/asyncomplete-flow.vim'
-DeferPlug 'prabirshrestha/asyncomplete-necovim.vim'
+" DeferPlug 'prabirshrestha/asyncomplete-flow.vim'
+" DeferPlug 'prabirshrestha/asyncomplete-necovim.vim'
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
@@ -152,12 +154,12 @@ Plug 'itchyny/lightline.vim'
 " -------------------------------------
 " Misc. language support.
 " -------------------------------------
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 " DeferPlug 'plasticboy/vim-markdown'
 DeferPlug 'jparise/vim-graphql'
-DeferPlug 'ekalinin/Dockerfile.vim'
 DeferPlug 'neovimhaskell/haskell-vim'
 DeferPlug 'jaspervdj/stylish-haskell'
 DeferPlug 'kchmck/vim-coffee-script'
@@ -174,18 +176,25 @@ Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
 Plug 'honza/vim-snippets'
 Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
+
 " Place deoplete first, then autocomplete-flow
-" DeferPlug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " DeferPlug 'Shougo/neocomplete'
 " DeferPlug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
 Plug 'Shougo/neco-syntax'
-Plug 'autozimu/LanguageClient-neovim'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-" Plug 'Shougo/vimproc'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/vimproc'
+Plug 'flowtype/vim-flow'
 
 " -------------------------------------
 " Time tracking, etc.
