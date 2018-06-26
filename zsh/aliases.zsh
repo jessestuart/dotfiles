@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # =============================
 # << I ALIAS ALL THE THINGS. >>
@@ -96,7 +96,10 @@ if [ "$(uname)" = 'Darwin' ]; then
   }
 fi
 
-if (hash ccat&>/dev/null); then alias cat="ccat"; fi
+if (hash bat&>/dev/null); then alias cat="bat";
+elif (hash ccat&>/dev/null); then alias cat="ccat";
+fi
+
 if (hash viman&>/dev/null); then alias man="viman"; fi
 
 # Always enable colored `grep` output
@@ -136,26 +139,6 @@ else
   alias la="ls -alh"
 fi
 
-# ============================
-# Web dev -- Yarn / NPM / etc.
-# ============================
-alias build="yarn build"
-alias cra="create-react-app"
-alias deps="yarn update; git add -A; gcm '[deps] Bump dependencies.'"
-alias dev="yarn dev"
-alias lint="yarn lint"
-alias nig="npm install -g"
-alias npmig="npm install -g"
-alias nrd="npm run dev"
-alias nrt="npm run test"
-alias pac="$EDITOR package.json"
-alias pacup="ncu -u -a"
-alias yad="yarn add"
-alias yadd="yarn add -D"
-alias yga="yarn global add"
-# Gatsby
-alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
-
 # Misc
 alias ap="ansible-playbook"
 alias atom="atom-beta"
@@ -173,9 +156,9 @@ alias hcup="hyper compose up"
 alias hcdown="hyper compose down"
 
 # Grails
-alias gr="yes | grails run-app"
-alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
-alias grl="ps -efw | ag '[g]rails'"
+# alias gr="yes | grails run-app"
+# alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
+# alias grl="ps -efw | ag '[g]rails'"
 
 # ===================================================
 
@@ -224,7 +207,7 @@ alias badge="tput bel"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
-alias map="xargs -n1"
+# alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
@@ -243,11 +226,6 @@ alias awk7="awk '{print \$7}'"
 alias awk8="awk '{print \$8}'"
 alias awk9="awk '{print \$9}'"
 alias awk1,2="awk '{print \$1,\$2}'"
-
-alias apts="sudo apt search"
-alias apti="sudo apt install -yq"
-alias aptup="sudo apt update && apt list --upgradeable"
-alias aptupg="sudo apt upgrade -yq"
 
 # Allow alias expansion for `watch` command.
 alias watch="watch --color "

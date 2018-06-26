@@ -48,6 +48,7 @@ alias track="git checkout -t"
 alias hbr="hub browse"
 alias gqs="git-quick-stats"
 alias gstats="git-quick-stats"
+alias gr="git remotes"
 
 # ===============================================
 # Hub aliases.

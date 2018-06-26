@@ -14,6 +14,10 @@ alias kp="get_pods_colorized "
 # Get all pods, sorted by number of restarts.
 alias kgcrash="kgpw | sort -n -k5"
 
+alias abg="ark backup get"
+alias abdel="yes | ark backup delete"
+alias abd="ark backup describe"
+
 # =========================================================================
 # Generate a table of all LoadBalancer services, ordered by IP (ascending),
 # and with service name and service namespace in the second and third columns.
@@ -33,7 +37,7 @@ alias kgcrash="kgpw | sort -n -k5"
 # 10.10.10.21  traefik-ingress-service           kube-system
 # ```
 # =========================================================================
-alias kglb="kgsvcall | grep Load | awk '{print $5,$2,$1}' | sort -k1 -d | column -t"
+alias kglb="kgsvcall | grep Load | awk '{print \$5,\$2,\$1}' | sort -k1 -d | column -t"
 
 # Aliases for `kubens` for quickly switching between common namespaces.
 alias knsl="kubens logging"

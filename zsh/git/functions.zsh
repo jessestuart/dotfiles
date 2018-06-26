@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function g {
   if [[ $# > 0 ]]; then
     git $@
@@ -45,8 +47,10 @@ function ghcl() {
   mkdir -p $FOLDER_PATH
   hub clone $REPO_URL $FOLDER_PATH
   echo "Cloned repository to $FOLDER_PATH."
-  echo "The absolute path has been copied to your clipboard."
-  echo $FOLDER_PATH | pbcopy
+  if (hash pbcopy &>/dev/null); then
+    echo $FOLDER_PATH | pbcopy
+    echo "The absolute path has been copied to your clipboard."
+  fi
 }
 
 # Function for "git branch", handling the "list" case, by sorting it according

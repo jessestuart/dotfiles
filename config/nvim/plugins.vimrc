@@ -178,7 +178,7 @@ Plug 'honza/vim-snippets'
 Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 " Place deoplete first, then autocomplete-flow
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " DeferPlug 'Shougo/neocomplete'
 " DeferPlug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm

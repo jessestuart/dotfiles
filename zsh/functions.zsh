@@ -395,7 +395,7 @@ function transfer() {
   # check arguments
   if [ $# -eq 0 ];
   then
-    echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+    echo "No arguments specified. Usage:\ntransfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
     return 1
   fi
 
@@ -439,4 +439,14 @@ function transfer() {
 }
 
 # Allow sudo invocation of custom functions.
-zsudo() sudo zsh -c "$functions[$1]" "$@"
+zsudo() {
+  sudo zsh -c "$functions[$1]" "$@"
+}
+
+profile() {
+  local iterations=$1
+  test -z $iterations && iterations=10
+  for i in $(seq 1 $iterations); do
+    /usr/bin/time zsh -ic exit
+  done
+}

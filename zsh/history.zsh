@@ -1,9 +1,10 @@
+#!/usr/bin/env zsh
 # --------------------------------------
 # History configuration
 # --------------------------------------
 export HISTFILE="$HOME/.zhistory"
-export HISTSIZE=10000000
-export SAVEHIST=10000000
+export HISTSIZE=100000000
+export SAVEHIST=100000000
 # Treat the '!' character specially during expansion.
 setopt BANG_HIST
 # Write the history file in the ":start:elapsed;command" format.

@@ -11,6 +11,10 @@ scriptencoding
 let g:mapleader = '\'
 map <space> \
 
+" TODO: Trying this out.
+nnoremap ; :
+nnoremap : ;
+
 " ==========================
 " vim-plug plugin management
 " ==========================

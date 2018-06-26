@@ -164,7 +164,7 @@
   autocrlf = input
 
 [color]
-	ui = true
+  ui = true
   branch = auto
   diff = auto
   status = auto
@@ -175,13 +175,13 @@
   remote = green
 
 [color "diff"]
-	meta = yellow
-	frag = magenta bold
-	old = red bold
-	new = green bold
+  meta = yellow
+  frag = magenta bold
+  old = red bold
+  new = green bold
   plain = white
-	commit = yellow bold
-	whitespace = red reverse
+  commit = yellow bold
+  whitespace = red reverse
 
 [color "status"]
   added = yellow
@@ -235,7 +235,7 @@
 ###
 [user]
   name = Jesse Stuart
-	email = hi@jessestuart.com
+  email = hi@jessestuart.com
   signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
   helper = osxkeychain
@@ -267,9 +267,9 @@
 [ghq]
   root=~/gh
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [diff-so-fancy]
   markEmptyLines = false
