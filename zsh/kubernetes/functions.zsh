@@ -39,7 +39,7 @@ function clustup() {
 # Get all dead / crashing / etc. pods :(
 # ======================================
 alias kgerr="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8"
-alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8"
+alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8 -d"
 
 function krmerr() {
   kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | awk '{print $1,$2}' | xargs kubectl delete pod $2 -n $1

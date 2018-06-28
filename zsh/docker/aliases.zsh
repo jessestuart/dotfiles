@@ -47,7 +47,7 @@ function dpa() {
       # Highlight kubernetes-managed "k8s_POD` containers
       rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
   else
-    docker ps | grep -v POD
+    docker ps -a
 fi
 }
 

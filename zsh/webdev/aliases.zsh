@@ -17,6 +17,6 @@ alias yad="yarn add"
 alias yadd="yarn add -D"
 alias yga="yarn global add"
 # Gatsby
-alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
+# alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"
 
 alias yl="yarn lint"

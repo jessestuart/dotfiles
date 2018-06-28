@@ -28,7 +28,7 @@ function! Defer(github_ref, ...) abort
         \ 'augroup end'
 endfunction
 
-command! -nargs=+ DeferPlug call Defer(<args>)
+command! -nargs=+ Plug call Defer(<args>)
 
 call plug#begin()
 " -------------------------------------
@@ -113,20 +113,20 @@ Plug 'heavenshell/vim-jsdoc'
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'mattn/emmet-vim'
 
-DeferPlug 'prabirshrestha/async.vim'
-DeferPlug 'prabirshrestha/vim-lsp'
-DeferPlug 'yami-beta/asyncomplete-omni.vim'
-" DeferPlug 'prabirshrestha/asyncomplete-flow.vim'
-" DeferPlug 'prabirshrestha/asyncomplete-necovim.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'yami-beta/asyncomplete-omni.vim'
+" Plug 'prabirshrestha/asyncomplete-flow.vim'
+" Plug 'prabirshrestha/asyncomplete-necovim.vim'
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 " ==========
 " Typescript
 " ==========
-DeferPlug 'Quramy/tsuquyomi'
-DeferPlug 'Quramy/vim-dtsm'
-DeferPlug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-dtsm'
+Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -137,9 +137,9 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
 " -------------------------------------
-DeferPlug 'hashivim/vim-packer'
-DeferPlug 'hashivim/vim-terraform'
-DeferPlug 'hashivim/vim-vagrant'
+Plug 'hashivim/vim-packer'
+Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-vagrant'
 Plug 'pearofducks/ansible-vim'
 Plug 'hejack0207/ansible.vim'
 
@@ -154,16 +154,15 @@ Plug 'itchyny/lightline.vim'
 " -------------------------------------
 " Misc. language support.
 " -------------------------------------
+Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
-" DeferPlug 'plasticboy/vim-markdown'
-DeferPlug 'jparise/vim-graphql'
-DeferPlug 'neovimhaskell/haskell-vim'
-DeferPlug 'jaspervdj/stylish-haskell'
-DeferPlug 'kchmck/vim-coffee-script'
-" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'jparise/vim-graphql'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'jaspervdj/stylish-haskell'
+Plug 'kchmck/vim-coffee-script'
 
 " [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
 " a number of improvements over the messy original from `vim-scripts`.
@@ -171,7 +170,7 @@ DeferPlug 'kchmck/vim-coffee-script'
 " ========================
 " Autocomplete / Snippets.
 " ========================
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
 Plug 'honza/vim-snippets'
@@ -179,8 +178,8 @@ Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 " Place deoplete first, then autocomplete-flow
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" DeferPlug 'Shougo/neocomplete'
-" DeferPlug 'Shougo/neco-vim'
+" Plug 'Shougo/neocomplete'
+" Plug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
 Plug 'Shougo/neco-syntax'
 
@@ -213,9 +212,9 @@ endif
 " -------------------------------------
 " Kubernetes, etc.
 " -------------------------------------
-DeferPlug 'c9s/vikube.vim'
-DeferPlug 'mustache/vim-mustache-handlebars'
-DeferPlug 'andrewstuart/vim-kubernetes'
+Plug 'c9s/vikube.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'andrewstuart/vim-kubernetes'
 
 " -------------------------------------
 " Experimentation. Inbox.
@@ -225,26 +224,26 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
-DeferPlug 'junegunn/vim-peekaboo'
-DeferPlug 'sjl/splice.vim'
-DeferPlug 'rizzatti/dash.vim'
-DeferPlug 'scrooloose/nerdcommenter'
-DeferPlug 'aaronbieber/vim-quicktask'
-DeferPlug 'sunaku/vim-shortcut'
-DeferPlug 'ktonga/vim-follow-my-lead'
-DeferPlug 'wesQ3/vim-windowswap'
-DeferPlug 'thaerkh/vim-workspace'
-DeferPlug 'janko-m/vim-test'
+Plug 'junegunn/vim-peekaboo'
+Plug 'sjl/splice.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'aaronbieber/vim-quicktask'
+Plug 'sunaku/vim-shortcut'
+Plug 'ktonga/vim-follow-my-lead'
+Plug 'wesQ3/vim-windowswap'
+Plug 'thaerkh/vim-workspace'
+Plug 'janko-m/vim-test'
 
-DeferPlug 'jceb/vim-orgmode'
-DeferPlug 'aaronbieber/vim-quicktask'
-DeferPlug 'sjl/gundo.vim'
-DeferPlug 'Chiel92/vim-autoformat'
+Plug 'jceb/vim-orgmode'
+Plug 'aaronbieber/vim-quicktask'
+Plug 'sjl/gundo.vim'
+Plug 'Chiel92/vim-autoformat'
 " Plug 'vim-scripts/dbext.vim'
-DeferPlug 'kassio/neoterm'
-DeferPlug 'kristijanhusak/vim-carbon-now-sh'
-DeferPlug 'elzr/vim-json'
-DeferPlug 'majutsushi/tagbar'
+" Plug 'kassio/neoterm'
+Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'elzr/vim-json'
+Plug 'majutsushi/tagbar'
 
 Plug 'jpalardy/vim-slime'
 
@@ -264,8 +263,9 @@ Plug 'jpalardy/vim-slime'
 " Plug 'maralla/completor.vim'
 " Plug 'Shougo/denite.nvim'
 " Plug 'fmoralesc/vim-tutor-mode'
-" Plug 'sheerun/vim-polyglot'
 " Plug 'tpope/vim-jdaddy'
+" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+" Plug 'plasticboy/vim-markdown'
 "
 
 call plug#end()

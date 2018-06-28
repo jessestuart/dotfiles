@@ -310,7 +310,7 @@ function arkcp() {
   local input="$1"
   local DROPBOX_BACKUP_ARCHIVE=~/Dropbox/Backup/Archive
   echo "Compressing and copying '$input' to '$DROPBOX_BACKUP_ARCHIVE'."
-  local archive_file="$(ark $input)"
+  local archive_file="$(arch $input)"
   mv "$archive_file" "$DROPBOX_BACKUP_ARCHIVE"
 }
 
