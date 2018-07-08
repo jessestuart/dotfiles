@@ -450,3 +450,17 @@ profile() {
     /usr/bin/time zsh -ic exit
   done
 }
+
+function bak() {
+  mv "$1" "$1.bak"
+}
+
+function swap() {
+  set noclobber
+  local file1=$1
+  local file2=$2
+  mv "$file1" "$file1.bak"
+  mv "$file2" "$file1"
+  mv "$file1.bak" "$file2"
+  set clobber
+}

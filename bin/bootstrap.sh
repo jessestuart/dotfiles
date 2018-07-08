@@ -7,9 +7,9 @@
 
 set -e
 
-ARCH=$ARCH
-USER=$USER
-HOSTNAME=$HOSTNAME
+ARCH=arm64
+USER=pi
+HOSTNAME=pik8s-rock1
 echo "ARCH: $ARCH, USER: $USER"
 if test -z "$ARCH"; then ARCH=arm64; fi
 if test -z "$USER"; then USER=jesse; fi
@@ -30,6 +30,9 @@ function print_header() {
   echo '============================'
   echo "$1"
   echo '============================'
+}
+function print_progress() {
+  echo "-- $1"
 }
 
 # ==========================
@@ -57,6 +60,7 @@ if cmd_missing go && ! test -d /usr/local/go; then
   print_header 'Installing Go...'
   curl -sL https://storage.googleapis.com/golang/go$GO_VERSION.linux-$ARCH.tar.gz | tar xz
   sudo mv go /usr/local
+  print_progress 'golang installed successfully.'
 fi
 
 # ====================
@@ -66,6 +70,7 @@ if cmd_missing docker; then
   print_header 'Installing Docker...'
   curl -fsSL get.docker.com | sudo sh
   sudo usermod -aG docker "$USER"
+  print_progress 'docker installed successfully.'
 fi
 
 # ======================
@@ -87,6 +92,7 @@ if cmd_missing antibody; then
   esac
   curl -sL https://github.com/getantibody/antibody/releases/download/v${ANTIBODY_VERSION}/antibody_Linux_${antibody_arch}.tar.gz | tar xz
   sudo mv antibody /usr/local/bin/
+  print_progress 'antibody installed successfully.'
 fi
 
 # =================
@@ -99,6 +105,7 @@ if cmd_missing rcup; then
   ./configure && make && sudo make install
   popd
   rm -rf rcm*
+  print_progress 'RCM installed successfully.'
 fi
 
 # ===========================
@@ -112,29 +119,60 @@ if cmd_missing diff-so-fancy; then
   sudo unzip v${DIFF_SO_FANCY_VERSION}
   sudo cp -r diff-so-fancy-${DIFF_SO_FANCY_VERSION}/ "$USER_HOME"/bin/diff-so-fancy
   sudo rm -rf v${DIFF_SO_FANCY_VERSION}
-fi
-
-if ! test -d "$USER_HOME/.config/nvim/plugged"; then
-  sudo curl -fLo "$USER_HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  print_progress 'diff-so-fancy installed successfully.'
 fi
 
 # ==========================
 # Unleash the ~* dotfiles *~
 # ==========================
+print_header 'Installing dotfiles...'
+cd "$USER_HOME"
 if ! test -d "$USER_HOME"/dotfiles; then
-  print_header 'Installing dotfiles...'
-  cd "$USER_HOME"
   sudo git clone https://github.com/jessestuart/dotfiles
-  sudo rcup -d dotfiles
-  sudo chown -R "$USER:" "$USER_HOME"
-  sudo chsh -s /bin/zsh $USER
+fi
+sudo chown -R "$USER:" "$USER_HOME"
+pushd dotfiles && git stash save && git pull && git stash pop && popd
+rcup -d dotfiles
+sudo chsh -s /bin/zsh $USER
+print_progress 'Finished syncing dotfiles.'
+
+if ! test -d "$USER_HOME/.config/nvim/plugged"; then
+  print_header 'Installing nvim plugins...'
+  sudo curl -fLo "$USER_HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  nvim "+PlugInstall --sync" +qa
 fi
 
 if ! test -z $HOSTNAME; then
+  print_header 'Updating hostname.'
   sudo hostnamectl set-hostname "$HOSTNAME"
   sudo hostname "$HOSTNAME"
 fi
 
+print_header 'Installating additionally binaries.'
+if cmd_missing exa; then
+  print_progress 'Installing exa...'
+  wget 'arm64.j3s.co/exa'
+  sudo mv exa /usr/local/bin/
+  libhttp_package=$(apt-cache search libhttp-parser2 --names-only | head -n1 | awk '{print $1}')
+  sudo apt install -yq "$libhttp_package"
+  if ! (echo $libhttp_package | grep -q '2.1'); then
+    sudo ln -s /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.7.1 \
+      /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.1
+  fi
+fi
+
+if cmd_missing fd; then
+  print_progress 'Installing fd...'
+  wget 'arm64.j3s.co/fd'
+  sudo mv fd /usr/local/bin/
+fi
+
+if cmd_missing rg; then
+  print_progress 'Installing rg...'
+  wget 'arm64.j3s.co/rg'
+  sudo mv rg /usr/local/bin/
+fi
+
+
 echo "Setup complete -- start a new shell to initialize ZSH plugins."
-# sudo ln -s /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.7.1 /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.1

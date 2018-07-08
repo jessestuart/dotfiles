@@ -49,10 +49,6 @@ alias count="wc -l"
 alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
 alias etcher="sudo etcher"
 
-function bak() {
-  mv "$1" "$1.bak"
-}
-
 alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
 # *Advanced SSH Config* --
@@ -77,14 +73,6 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 
 # Enable aliases to be sudo’ed.
 alias sudo='sudo '
-
-function swap() {
-  local file1=$1
-  local file2=$2
-  mv "$file1" "$file1.bak"
-  mv "$file2" "$file1"
-  mv "$file1.bak" "$file2"
-}
 
 if [ "$(uname)" = 'Darwin' ]; then
   function rm() {
@@ -117,7 +105,7 @@ alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # << LISTING THINGS! >>
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
-if (hash exa &>/dev/null); then
+if test -e /usr/local/bin/exa; then
   alias ls="exa --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format
   alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
