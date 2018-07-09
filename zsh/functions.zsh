@@ -1,16 +1,9 @@
 #!/usr/bin/env zsh
-# ===================================
-# Create a new directory and enter it
-# ===================================
+# ====================================
+# Create a new directory and enter it.
+# ====================================
 function mkd() {
   mkdir -p "$@" && cd "$_";
-}
-
-# ===============================================================
-# Change working directory to the top-most Finder window location
-# ===============================================================
-function cdf() { # short for `cdfinder`
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # ==========================================================================
@@ -64,16 +57,6 @@ function fs() {
     du $arg .[^.]* ./*;
   fi;
 }
-
-# # =====================================
-# # Use Git’s colored diff when available
-# # =====================================
-# hash git &>/dev/null;
-# if [ $? -eq 0 ]; then
-#   function diff() {
-#     git diff --no-index --color-words "$@";
-#   }
-# fi;
 
 # =============================
 # Create a data URL from a file
@@ -255,10 +238,9 @@ function git_list_branches() {
     limit_num_branches=$1
   fi
 
-  for branch in `git branch -r | grep -v HEAD`;
-    do
-      echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch;
-    done | sort | tail -$limit_num_branches
+  for branch in `git branch -r | grep -v HEAD`; do
+    echo -e $(git show --format="%ci %cr" $branch | head -n 1) \\t$branch;
+  done | sort | tail -$limit_num_branches
 }
 
 function sf() {
@@ -385,22 +367,18 @@ function dut {
   fi
 }
 
-#
+# ==============================================================================
 # Defines transfer alias and provides easy command line file and folder sharing.
-#
-# Authors:
-#   Remco Verhoef <remco@dutchcoders.io>
-#
+# ==============================================================================
 function transfer() {
   # check arguments
-  if [ $# -eq 0 ];
-  then
+  if [ $# -eq 0 ]; then
     echo "No arguments specified. Usage:\ntransfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
     return 1
   fi
 
   # get temporarily filename, output is written to this file show progress can be showed
-  tmpfile=$( mktemp -t transferXXX )
+  tmpfile=$(mktemp -t transferXXX)
 
   # upload stdin or file
   file=$1
@@ -439,11 +417,11 @@ function transfer() {
 }
 
 # Allow sudo invocation of custom functions.
-zsudo() {
+function zsudo() {
   sudo zsh -c "$functions[$1]" "$@"
 }
 
-profile() {
+function profile() {
   local iterations=$1
   test -z $iterations && iterations=10
   for i in $(seq 1 $iterations); do
@@ -463,4 +441,9 @@ function swap() {
   mv "$file2" "$file1"
   mv "$file1.bak" "$file2"
   set clobber
+}
+
+function sum() {
+  sum=0
+  while read i; do sum=$(($sum+$i)); done; echo $sum
 }

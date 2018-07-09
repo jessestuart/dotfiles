@@ -20,6 +20,11 @@ autoload -Uz promptinit; promptinit
 # I know what I'm doing. 🔥
 set clobber
 
+# Immediately insert first possible match.
+setopt MENU_COMPLETE
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 # --------------------------------------
 # Miscellany.
 # --------------------------------------

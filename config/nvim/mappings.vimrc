@@ -37,8 +37,10 @@ noremap <leader>zen :Goyo<CR>
 " Toggle NERDTree. Call it a guilty pleasure.
 nnoremap <leader>n :NERDTreeToggle<CR>
 
+" =====================================================
 " I like wrapping comments in blocks of '=' characters.
 " vim-foo is fun.
+" =====================================================
 nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
 " Disable highlight with <leader><CR>.
@@ -153,28 +155,25 @@ endtry
 " =================
 " Editing mappings.
 " =================
-" Remap VIM 0 to first non-blank character
+" Remap `0` to first non-blank character.
 noremap 0 ^
 
 " Move a line of text using ALT+[jk].
-nmap <M-j> mz:m+<CR>`z
-nmap <M-k> mz:m-2<CR>`z
-vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
-if has('mac') || has('macunix')
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
+" nmap <M-j> mz:m+<CR>`z
+" nmap <M-k> mz:m-2<CR>`z
+" vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
+" vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
+" if has('mac') || has('macunix')
+"   nmap <D-j> <M-j>
+"   nmap <D-k> <M-k>
+"   vmap <D-j> <M-j>
+"   vmap <D-k> <M-k>
+" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<CR>
-
-" Shortcuts using <leader>
 noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
@@ -216,3 +215,6 @@ noremap <Leader>f :Ag<CR>
 " Searches the word under the cursor through the project tree using fzf and
 " Ag.
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
+
+nnoremap <Leader>gg :GitGutterToggle<CR>
+nnoremap <Leader>gb :Gblame<CR>

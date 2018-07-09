@@ -212,7 +212,7 @@ let g:lightline = {
       \ }
 let g:lightline.tabline = {
   \   'left': [ ['tabs'] ],
-  \   'right': [ ['close'] ]
+  \   'right': []
   \ }
 set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
@@ -283,3 +283,8 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<c-e> <c-e>"
 
 let g:flow#showquickfix = 0
+
+" Keep that hella legible 'conceal' option. I'm sure there's a way to do this
+" built in.
+" @see https://github.com/elzr/vim-json
+let g:polyglot_disabled = ['json']

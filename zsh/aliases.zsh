@@ -26,7 +26,6 @@ alias ck="chromekill"
 alias f="fzf | xargs $EDITOR"
 alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
 alias ql-reset="qlmanage cache -r && qlmanage -r"
-alias w="$EDITOR ~/vimwiki/index.wiki"
 alias r="ranger"
 alias gitter="gitter-cli"
 alias fb="messer"
@@ -44,10 +43,15 @@ alias dkut="diskutil"
 alias dkutl="diskutil list"
 alias dkute="diskutil eject"
 alias cl="clear && pwd && la"
-alias manti="manifest-tool inspect"
 alias count="wc -l"
 alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
 alias etcher="sudo etcher"
+alias toggle-app="osascript ~/dotfiles/bin/toggle-app.applescript "
+
+function sum() {
+  sum=0
+  while read i; do sum=$(($sum+$i)); done; echo $sum
+}
 
 alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
@@ -121,6 +125,8 @@ if test -e /usr/local/bin/exa; then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
+  # ...And sometimes I just can't be bothered.
+  alias a="la"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"

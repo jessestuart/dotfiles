@@ -3,6 +3,8 @@
 # alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
 alias esh="http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
 alias eshw="watch http --pretty=all -b http://elasticsearch.internal.jesses.io/_cluster/health"
+# alias esh="http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
+# alias eshw="watch http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
 alias k="kubectl "
 alias kdp="kubectl describe pods "
 alias kgp="get_pods_colorized "
@@ -10,6 +12,8 @@ alias kgpo="get_pods_colorized -owide"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
 alias kp="get_pods_colorized "
+alias st="stern"
+alias fa="faas"
 
 # Get all pods, sorted by number of restarts.
 alias kgcrash="kgpw | sort -n -k5"
@@ -17,27 +21,6 @@ alias kgcrash="kgpw | sort -n -k5"
 alias abg="ark backup get"
 alias abdel="yes | ark backup delete"
 alias abd="ark backup describe"
-
-# =========================================================================
-# Generate a table of all LoadBalancer services, ordered by IP (ascending),
-# and with service name and service namespace in the second and third columns.
-# Example output:
-# ```console
-# 10.10.10.10  coredns                           kube-system
-# 10.10.10.10  coredns-tcp                       kube-system
-# 10.10.10.11  cerebro                           logging
-# 10.10.10.12  elasticsearch-hq                  logging
-# 10.10.10.13  traefik-consul-ui                 kube-system
-# 10.10.10.14  elasticsearch                     logging
-# 10.10.10.15  grafana                           monitoring
-# 10.10.10.16  prometheus-k8s                    monitoring
-# 10.10.10.17  stash                             stash
-# 10.10.10.18  kibana                            logging
-# 10.10.10.20  traefik-ingress-service-external  kube-system
-# 10.10.10.21  traefik-ingress-service           kube-system
-# ```
-# =========================================================================
-alias kglb="kgsvcall | grep Load | awk '{print \$5,\$2,\$1}' | sort -k1 -d | column -t"
 
 # Aliases for `kubens` for quickly switching between common namespaces.
 alias knsl="kubens logging"

@@ -1,0 +1,61 @@
+version: 2.0
+
+# build_jobs: &build_jobs
+#   jobs:
+#     - build-amd64
+#     - build-arm64
+#     - build-armhf
+#     - push-manifest:
+#         requires:
+#           - build-amd64
+#           - build-arm64
+#           - build-armhf
+
+# workflows:
+#   version: 2
+#   commit:
+#     <<: *build_jobs
+#   nightly:
+#     <<: *build_jobs
+#     triggers:
+#       - schedule:
+#           cron: "0 0 * * *"
+#           filters:
+#             branches:
+#               only:
+#                 - master
+
+# shared: &shared
+#   docker:
+#     - image: debian:stretch
+#   steps:
+#     - checkout
+#     - run:
+#         name: Test bootstrap script.
+#         command: |
+#           ./dotfiles/bin/bootstrap.sh
+
+jobs:
+  docker:
+    - image: debian:stretch
+  steps:
+    - checkout
+    - run:
+        name: Test bootstrap script.
+        command: |
+          ./dotfiles/bin/bootstrap.sh
+  # build-amd64:
+  #   <<: *shared
+  #   environment:
+  #     TARGET: amd64
+  #     QEMU_ARCH: amd64
+  # build-arm64:
+  #   <<: *shared
+  #   environment:
+  #     TAG: arm64
+  #     TARGET: arm64v8
+  # build-armhf:
+  #   <<: *shared
+  #   environment:
+  #     TAG: arm
+  #     TARGET: arm32v6

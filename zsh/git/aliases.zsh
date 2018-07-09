@@ -49,6 +49,7 @@ alias hbr="hub browse"
 alias gqs="git-quick-stats"
 alias gstats="git-quick-stats"
 alias gr="git remotes"
+alias gfa="git fetch --all"
 
 # ===============================================
 # Hub aliases.

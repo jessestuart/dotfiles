@@ -7,7 +7,7 @@
 
 set -e
 
-ARCH=arm64
+ARCH=amd64
 USER=pi
 HOSTNAME=pik8s-rock1
 echo "ARCH: $ARCH, USER: $USER"
@@ -41,7 +41,7 @@ function print_progress() {
 # ==========================
 if cmd_missing sudo; then apt update -yq && apt install -yq sudo; fi
 sudo apt update -yq
-sudo apt install -yq bash bash-completion curl git htop make man neovim tree unzip vim wget zsh
+sudo apt install -yq bash bash-completion curl git htop make man neovim python tree unzip vim wget zsh
 
 print_header 'Creating non-root user...'
 if ! (sudo useradd -G sudo -m -s /bin/bash $USER); then
@@ -117,7 +117,7 @@ if cmd_missing diff-so-fancy; then
   cd "$USER_HOME/bin"
   sudo wget https://github.com/so-fancy/diff-so-fancy/archive/v${DIFF_SO_FANCY_VERSION}.zip
   sudo unzip v${DIFF_SO_FANCY_VERSION}
-  sudo cp -r diff-so-fancy-${DIFF_SO_FANCY_VERSION}/ "$USER_HOME"/bin/diff-so-fancy
+  sudo cp -rf diff-so-fancy-${DIFF_SO_FANCY_VERSION}/ "$USER_HOME"/bin/diff-so-fancy
   sudo rm -rf v${DIFF_SO_FANCY_VERSION}
   print_progress 'diff-so-fancy installed successfully.'
 fi
@@ -143,36 +143,37 @@ if ! test -d "$USER_HOME/.config/nvim/plugged"; then
   nvim "+PlugInstall --sync" +qa
 fi
 
-if ! test -z $HOSTNAME; then
+if ! test -z $HOSTNAME && (hash hostnamectl &> /dev/null); then
   print_header 'Updating hostname.'
   sudo hostnamectl set-hostname "$HOSTNAME"
   sudo hostname "$HOSTNAME"
 fi
 
-print_header 'Installating additionally binaries.'
-if cmd_missing exa; then
-  print_progress 'Installing exa...'
-  wget 'arm64.j3s.co/exa'
-  sudo mv exa /usr/local/bin/
-  libhttp_package=$(apt-cache search libhttp-parser2 --names-only | head -n1 | awk '{print $1}')
-  sudo apt install -yq "$libhttp_package"
-  if ! (echo $libhttp_package | grep -q '2.1'); then
-    sudo ln -s /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.7.1 \
-      /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.1
+if test "$(uname -m)" == 'aarch64'; then
+  if cmd_missing exa; then
+    print_header 'Installing exa...'
+    wget 'arm64.j3s.co/exa'
+    sudo mv exa /usr/local/bin/
+    libhttp_package=$(apt-cache search libhttp-parser2 --names-only | head -n1 | awk '{print $1}')
+    sudo apt install -yq "$libhttp_package"
+    # exa expects v2.1 of the `libhttp-parser` package.
+    if ! (echo $libhttp_package | grep -q '2.1'); then
+      sudo ln -s /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.7.1 \
+        /usr/lib/aarch64-linux-gnu/libhttp_parser.so.2.1
+    fi
+  fi
+
+  if cmd_missing fd; then
+    print_header 'Installing fd...'
+    wget 'arm64.j3s.co/fd'
+    sudo mv fd /usr/local/bin/
+  fi
+
+  if cmd_missing rg; then
+    print_header 'Installing rg...'
+    wget 'arm64.j3s.co/rg'
+    sudo mv rg /usr/local/bin/
   fi
 fi
-
-if cmd_missing fd; then
-  print_progress 'Installing fd...'
-  wget 'arm64.j3s.co/fd'
-  sudo mv fd /usr/local/bin/
-fi
-
-if cmd_missing rg; then
-  print_progress 'Installing rg...'
-  wget 'arm64.j3s.co/rg'
-  sudo mv rg /usr/local/bin/
-fi
-
 
 echo "Setup complete -- start a new shell to initialize ZSH plugins."

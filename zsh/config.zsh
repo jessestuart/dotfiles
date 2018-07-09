@@ -37,9 +37,9 @@ setopt ALIASES
 ##
 # Completion
 ##
-autoload -U compinit
-compinit
-zmodload -i zsh/complist
+# autoload -U compinit
+# compinit
+# zmodload -i zsh/complist
 # hash everything before completion
 setopt HASH_LIST_ALL
 # when completing from the middle of a word, move the cursor to the end of the word

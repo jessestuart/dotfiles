@@ -8,9 +8,43 @@ alias dm="docker-machine"
 alias dup="open /Applications/Docker.app"
 alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
-alias dki="docker images"
 alias dkspr="docker system prune"
 alias dih="docker images | tail -n+2 | head -n10"
+# alias manti="manifest-tool inspect"
+
+function mantool-inspect() {
+  manifest-tool inspect $1 | grep -vi -e layer -e digest -e 'manifest type'
+}
+
+function manti() {
+  if ! (hash reg &>/dev/null); then
+    mantool-inspect $1
+  else
+    local manifest=$(reg manifest $1)
+    echo $manifest | grep -q 'platform' &>/dev/null
+    if ! [ $? -eq 0 ]; then
+      mantool-inspect $1
+    else
+      reg manifest $1 \
+        | jq '.manifests[].platform | .os, .architecture' -r \
+        | xargs -L2 echo
+    fi
+  fi
+}
+
+function dki() {
+  local image=$1
+  local org
+  local repo
+  manti $image
+   # &>/dev/null
+  if (echo $image | grep -q "/" &>/dev/null); then
+    org=$(echo $image | cut -d'/' -f1)
+    repo=$(echo $image | cut -d'/' -f2)
+    echo "org: $org $repo"
+  fi
+}
+
 
 # Get latest container ID
 alias dl="docker ps -l -q"
@@ -84,7 +118,7 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 dri() { docker rmi $(docker images -q); }
 
 # Dockerfile build, e.g., $dbu tcnksm/test
-dkb() { docker build -t=$1 .; }
+# dkb() { docker build -t=$1 .; }
 
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
@@ -149,7 +183,6 @@ alias dkdf='docker system df'
 alias dke='docker exec'
 alias dkE='docker exec -it'
 alias dkh='docker history'
-alias dki='docker images'
 alias dkin='docker inspect'
 alias dkim='docker import'
 alias dkk='docker kill'
@@ -207,7 +240,6 @@ alias dkCP='docker container unpause'
 alias dkCup='docker container update'
 alias dkCw='docker container wait'
 
-alias dkI='docker image'
 alias dkIb='docker image build'
 alias dkIh='docker image history'
 alias dkIim='docker image import'

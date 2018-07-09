@@ -140,8 +140,8 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 Plug 'hashivim/vim-packer'
 Plug 'hashivim/vim-terraform'
 Plug 'hashivim/vim-vagrant'
-Plug 'pearofducks/ansible-vim'
-Plug 'hejack0207/ansible.vim'
+" Plug 'pearofducks/ansible-vim'
+" Plug 'hejack0207/ansible.vim'
 
 " -------------------------------------
 " Visual styling / theming.
@@ -244,6 +244,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'elzr/vim-json'
 Plug 'majutsushi/tagbar'
+Plug 'rhysd/clever-f.vim'
 
 Plug 'jpalardy/vim-slime'
 
