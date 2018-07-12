@@ -1,4 +1,16 @@
 #!/usr/bin/env zsh
+
+alias ck="chromekill"
+alias dkut="diskutil"
+alias dkute="diskutil eject"
+alias dkutl="diskutil list"
+alias etcher="sudo etcher"
+alias ql-reset="qlmanage cache -r && qlmanage -r"
+alias toggle-app="osascript ~/dotfiles/bin/toggle-app.applescript "
+
+# =============================================================================
+# =============================================================================
+
 # Enable/Disable Spotlight
 alias spotoff="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 alias spoton="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"

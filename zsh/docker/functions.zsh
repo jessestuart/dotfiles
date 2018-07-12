@@ -142,5 +142,12 @@ function dhr() {
 }
 
 function dht() {
-  docker-hub tags -o $1 -r $2
+  if $(echo $1 | grep -q '/'); then
+    repo=$(echo $1 | cut -d'/' -f1)
+    image=$(echo $1 | cut -d'/' -f2)
+  else
+    repo=$1
+    image=$2
+  fi
+  docker-hub tags -o $repo -r $image
 }

@@ -4,17 +4,6 @@
 # << I ALIAS ALL THE THINGS. >>
 # =============================
 
-# << A PRELUDE >>
-# Sometimes I work on systems that don't have neovim. I know, right?
-# Provide a fallback here so $EDITOR aliases still work.
-if (hash nvim &>/dev/null); then
-  export EDITOR='nvim'
-elif (hash vim &>/dev/null); then
-  export EDITOR='vim'
-else
-  export EDITOR='vi'
-fi
-
 # ============================================================================
 # << ALIAS INBOX >>
 # These get added as they come to me. If I end up continuing to use them,
@@ -22,13 +11,8 @@ fi
 # ============================================================================
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias chex="chmod +x"
-alias ck="chromekill"
 alias f="fzf | xargs $EDITOR"
-alias jiracl="node /usr/local/lib/node_modules/jira-cl/lib/index.js"
-alias ql-reset="qlmanage cache -r && qlmanage -r"
 alias r="ranger"
-alias gitter="gitter-cli"
-alias fb="messer"
 alias clobber="set +C"
 alias net="netlifyctl"
 alias lrdo="login_restic_do"
@@ -37,16 +21,9 @@ alias tfa="terraform apply tf.plan"
 alias lrd="login_restic_do"
 alias ctags="/usr/local/bin/ctags"
 alias org="cd ~/Dropbox/org"
-alias e="exit"
-alias mani="manifest-tool"
-alias dkut="diskutil"
-alias dkutl="diskutil list"
-alias dkute="diskutil eject"
 alias cl="clear && pwd && la"
 alias count="wc -l"
 alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
-alias etcher="sudo etcher"
-alias toggle-app="osascript ~/dotfiles/bin/toggle-app.applescript "
 
 function sum() {
   sum=0

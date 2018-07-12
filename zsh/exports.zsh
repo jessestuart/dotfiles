@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Make neovim the default editor if it exists in PATH, otherwise
-# fall back to vi.
-if (hash nvim&>/dev/null); then
-  export EDITOR='nvim'
-else
-  export EDITOR='vi'
-fi
 export TERM='xterm-256color'
 # export TERM=xterm-256color-italic
 
@@ -32,7 +25,7 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 # Highlight section titles in manual pages.
-if ! [ hash vimpager &>/dev/null ]; then
+if ! hash vimpager &>/dev/null; then
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
   export LESS_TERMCAP_me=$'\e[0m'
@@ -56,9 +49,6 @@ export EC2_INI_PATH=/etc/ansible/ec2.ini
 # Sorry `cowsay` -- turn this noisy shit off.
 export ANSIBLE_NOCOWS=1
 
-# Neovim true color support
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 export TODO_DB_PATH="$HOME/Dropbox/Apps/todo/todo.json"
 
 export PURE_PROMPT_SYMBOL="λ"
@@ -67,7 +57,7 @@ export PURE_PROMPT_SYMBOL="λ"
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 
-if (hash vimpager&>/dev/null); then
+if hash vimpager&>/dev/null; then
   export PAGER="$(which vimpager)"
   alias less=$PAGER
   alias zless=$PAGER

@@ -41,7 +41,7 @@ function print_progress() {
 # ==========================
 if cmd_missing sudo; then apt update -yq && apt install -yq sudo; fi
 sudo apt update -yq
-sudo apt install -yq bash bash-completion curl git htop make man neovim python tree unzip vim wget zsh
+sudo apt install -yq bash bash-completion curl git htop make man neovim nfs-common python tree unzip vim wget zsh
 
 print_header 'Creating non-root user...'
 if ! (sudo useradd -G sudo -m -s /bin/bash $USER); then
