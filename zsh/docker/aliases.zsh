@@ -10,81 +10,9 @@ alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
 alias dkspr="docker system prune"
 alias dih="docker images | tail -n+2 | head -n10"
-# alias manti="manifest-tool inspect"
-
-function mantool-inspect() {
-  manifest-tool inspect $1 | grep -vi -e layer -e digest -e 'manifest type'
-}
-
-function manti() {
-  if ! (hash reg &>/dev/null); then
-    mantool-inspect $1
-  else
-    local manifest=$(reg manifest $1)
-    echo $manifest | grep -q 'platform' &>/dev/null
-    if ! [ $? -eq 0 ]; then
-      mantool-inspect $1
-    else
-      reg manifest $1 \
-        | jq '.manifests[].platform | .os, .architecture' -r \
-        | xargs -L2 echo
-    fi
-  fi
-}
-
-function dki() {
-  local image=$1
-  local org
-  local repo
-  manti $image
-   # &>/dev/null
-  if (echo $image | grep -q "/" &>/dev/null); then
-    org=$(echo $image | cut -d'/' -f1)
-    repo=$(echo $image | cut -d'/' -f2)
-    echo "org: $org $repo"
-  fi
-}
-
 
 # Get latest container ID
 alias dl="docker ps -l -q"
-
-# Get container process
-# alias dps="docker ps"
-function dps() {
-  if (hash rainbow &>/dev/null); then
-    docker ps | \
-      # REmove the column headers
-      tail -n+2 | \
-      grep -v k8s_POD | \
-      sed -e 's/k8s_POD_/(POD) /g' | \
-      # Highlight container name/id in green
-      # Highlight 'Exited' containers in red
-      # Highlight kubernetes-managed "k8s_POD` containers
-      rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
-  else
-    docker ps | grep -v POD
-fi
-}
-
-# Get process included stop container
-# Get container process
-# alias dps="docker ps"
-function dpa() {
-  if (hash rainbow &>/dev/null); then
-    docker ps -a | \
-      # REmove the column headers
-      tail -n+2 | \
-      sed -e 's/k8s_POD_/(POD) /g' | \
-      # Highlight container name/id in green
-      # Highlight 'Exited' containers in red
-      # Highlight kubernetes-managed "k8s_POD` containers
-      rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
-  else
-    docker ps -a
-fi
-}
-
 
 # Get images
 alias di="docker images"
@@ -97,7 +25,6 @@ alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
 alias dit="docker run -it --rm -P"
-alias drit="docker run -it --rm -P"
 alias drrm="docker run --rm -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
@@ -127,54 +54,6 @@ dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/[
 dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
 
 # =============================================================================
-#
-# Functions
-#
-
-# Set Docker Machine environment
-function dkme {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
-
-    eval $(docker-machine env $1)
-}
-
-# Set Docker Machine default machine
-function dkmd {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
-
-    pushd ~/.docker/machine/machines
-
-    if [[ ! -d $1 ]]; then
-        echo "Docker machine '$1' does not exists. Abort."
-        popd
-        return 1
-    fi
-
-    if [[ -L default ]]; then
-        eval $(rm -f default)
-    elif [[ -d default ]]; then
-        echo "A default manchine already exists. Abort."
-        popd
-        return 1
-    elif [[ -e default ]]; then
-        echo "A file named 'default' already exists. Abort."
-        popd
-        return 1
-    fi
-
-    eval $(ln -s $1 default)
-    popd
-}
-
-#
-# Aliases
-#
-
-# Docker
 alias dk='docker'
 alias dka='docker attach'
 alias dkb='docker build'
@@ -338,10 +217,3 @@ alias dkcx='docker-compose stop'
 # docker-hub cli tool aliases.
 # ============================
 alias dh="docker-hub"
-function dhr() {
-  docker-hub repos -o $1
-}
-
-function dht() {
-  docker-hub tags -o $1 -r $2
-}

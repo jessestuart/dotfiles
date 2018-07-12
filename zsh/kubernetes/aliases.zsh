@@ -12,8 +12,11 @@ alias kgpo="get_pods_colorized -owide"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
 alias kp="get_pods_colorized "
-alias st="stern"
 alias fa="faas"
+
+alias st="stern"
+alias stfl="stern fluent-bit --tail=100 --namespace=logging"
+alias stes="stern es-full --tail=100 --namespace=logging"
 
 # Get all pods, sorted by number of restarts.
 alias kgcrash="kgpw | sort -n -k5"

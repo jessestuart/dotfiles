@@ -2,6 +2,7 @@ Dbz/zsh-kubernetes
 djui/alias-tips
 felixr/docker-zsh-completion
 mafredri/zsh-async
+git-time-metric/gtm-terminal-plugin
 # sobolevn/wakatime-zsh-plugin
 zdharma/zsh-diff-so-fancy
 # robbyrussell/oh-my-zsh folder:plugins/aws

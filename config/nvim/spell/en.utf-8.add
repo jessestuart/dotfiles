@@ -47,6 +47,8 @@ Bind9
 blog
 Bluetooth
 Bukowski
+busybox
+C2
 C2's
 Caddyfile
 cancelable
@@ -54,6 +56,7 @@ cancellable
 CDN
 CentOS
 centos
+Changelog
 cheatsheet
 Cheatsheets
 Chromeless
@@ -84,6 +87,9 @@ Colorschemes
 colorschemes
 composeable
 config
+configMap
+ConfigMap
+configMaps
 const
 CoreOS
 CRA
@@ -108,7 +114,9 @@ distros
 dl
 DNS
 Dockerfile
+Dockerfiles
 DockerHub
+DockerHub's
 Dokku
 dotfile
 dotfiles
@@ -120,9 +128,11 @@ e
 e.g.
 EC2
 ECMAScript
+ECR
 elasticsearch
 Elisp
 eng
+entrypoint
 env
 envs
 etc
@@ -145,9 +155,12 @@ gaearon
 gatsby
 GatsbyJS
 gatsbyjs
+GCB
 GCE
 gcloud
 GCP
+GCR
+GCS
 GD2
 GDB
 GH
@@ -169,11 +182,15 @@ golang
 google
 googling
 Goss
+gosu
 Govendor
 govendor
 gradle
 Grafana
 GraphQL
+gsutil
+gVisor
+hadolint
 haha
 hammerspoon
 Hashicorp
@@ -187,10 +204,13 @@ Homebrew
 hostname
 htop
 https
+HypriotOS
 i.e.
 IaC
 IAM
+ifconfig
 img
+incentived
 InfluxDB
 Influxdb
 infographic
@@ -221,6 +241,7 @@ JWT
 k
 K8S
 Kana
+kaniko
 keybindings
 keypair
 Kibana
@@ -271,6 +292,7 @@ nameserver
 namespace
 Namespaces
 namespaces
+namespacing
 nanobox
 neckbeards
 neovim
@@ -321,6 +343,7 @@ POSIX
 PostCSS
 Powerpack
 PR's
+prebuilt
 precompiled
 preinstalled
 preloading
@@ -328,6 +351,7 @@ Prisma
 ProfileFooter
 Provisioners
 provisioners
+ps
 PV
 px
 pyenv
@@ -339,6 +363,7 @@ QuickStart
 rak8s
 Ramda
 RancherOS
+Raspbian
 RBAC
 RCM
 README
@@ -353,8 +378,13 @@ repos
 RESTful
 restic
 reusability
+rk3328
+roc
+Rock64
 Rock64's
+RPi
 RPi's
+RPi3
 rspec
 rustc
 RVM
@@ -362,6 +392,7 @@ s
 S3
 s3
 sandboxed
+SBCs
 Scaleway
 screenshot
 Screenshots
@@ -390,6 +421,7 @@ STDIN
 stracktraces
 strconv
 stylesheets
+sudo
 SVG
 Symlink
 Synology
@@ -412,6 +444,7 @@ TP
 Traefik
 Trashable
 trashable
+TravisCI
 TRENDNet
 truthy
 TT
@@ -434,6 +467,7 @@ url
 URLs
 Username
 username
+userspace
 usr
 util
 utils
@@ -444,6 +478,7 @@ Vagrant
 Vagrantfile
 ve
 Verizon
+vim
 vimmer
 VirtualBox
 Virtualbox
@@ -470,6 +505,7 @@ wip
 Wixted
 Woah
 wordwrap
+WORKDIR
 workflow
 Workflows
 workflows
@@ -477,6 +513,7 @@ www
 x64
 XCode
 Xmonad
+XU4
 yaml
 yml
 zaw
@@ -486,25 +523,3 @@ zplug
 zpreztorc
 Zsh
 zsh
-Changelog
-TravisCI
-DockerHub's
-kaniko
-userspace
-GCS
-gsutil
-configMaps
-gVisor
-GCR
-GCB
-ECR
-configMap
-busybox
-entrypoint
-Dockerfiles
-namespacing
-Rock64
-HypriotOS
-roc
-rk3328
-XU4

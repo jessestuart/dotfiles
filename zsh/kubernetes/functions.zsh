@@ -22,6 +22,10 @@ function ktmp() {
   pssh -t10 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
 }
 
+function ktmps() {
+  ktmp | sort -k2r
+}
+
 function kmem() {
   local remote_command="free -h | head -n2 | tail -n1 | awk '{print \$7}' | xargs printf \"\$(hostname)\t\t%s\n\""
   local hosts_file="$HOME/.pssh/all"
@@ -85,7 +89,6 @@ function kglb() {
     | sort -k1 -d \
     | column -t
 }
-
 
 # kubectl() {
 #   # shellcheck disable=SC1090,SC2039
