@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # =============================
-# << I ALIAS ALL THE THINGS. >>
+# < I alias all the things. >>
 # =============================
 
 # ============================================================================
@@ -9,21 +9,21 @@
 # These get added as they come to me. If I end up continuing to use them,
 # they'll be grouped together / moved to a more appropriate place.
 # ============================================================================
-alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias chex="chmod +x"
-alias f="fzf | xargs $EDITOR"
-alias r="ranger"
-alias clobber="set +C"
-alias net="netlifyctl"
-alias lrdo="login_restic_do"
-alias tfp="terraform plan -out tf.plan"
-alias tfa="terraform apply tf.plan"
-alias lrd="login_restic_do"
-alias ctags="/usr/local/bin/ctags"
-alias org="cd ~/Dropbox/org"
 alias cl="clear && pwd && la"
+alias clobber="set +C"
 alias count="wc -l"
-alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
+alias ctags="/usr/local/bin/ctags"
+alias f="fzf | xargs $EDITOR"
+alias lrd="login_restic_do"
+alias lrdo="login_restic_do"
+alias net="netlifyctl"
+alias org="cd ~/Dropbox/org"
+alias r="ranger"
+alias tfa="terraform apply tf.plan"
+alias tfp="terraform plan -out tf.plan"
+alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
+alias jd="cd $HOME/dotfiles"
 
 function sum() {
   sum=0
