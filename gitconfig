@@ -1,275 +1,275 @@
 [alias]
-  ###
-  # Adding / commiting / cherry-picking.
-  ###
-  aa = !git add -A
-  cam = !git add -A && git commit --amend
-  chpk = cherry-pick
-  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
-  r = reset
+	###
+	# Adding / commiting / cherry-picking.
+	###
+	aa = !git add -A
+	cam = !git add -A && git commit --amend
+	chpk = cherry-pick
+	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	r = reset
 
-  # ===============
-  # Rebase is life.
-  # ===============
-  rbc = !"git add .; git rebase --continue"
-  rbm = rebase master
-  rbd = rebase develop
-  rbi = rebase -i
-  rbid = rebase -i develop
-  rbim = rebase -i master
+	# ===============
+	# Rebase is life.
+	# ===============
+	rbc = !"git add .; git rebase --continue"
+	rbm = rebase master
+	rbd = rebase develop
+	rbi = rebase -i
+	rbid = rebase -i develop
+	rbim = rebase -i master
 
-  # ===========
-  # Stash / pop
-  # ===========
-  st = stash
-  pop = stash pop
+	# ===========
+	# Stash / pop
+	# ===========
+	st = stash
+	pop = stash pop
 
-  # ===================
-  # Push push push push
-  # ===================
-  fp = !git push -f
-  pushgtm-gitlab = fetch gitlab refs/notes/gtm-data:refs/notes/gtm-data
-  fetchgtm-gitlab = fetch gitlab refs/notes/gtm-data:refs/notes/gtm-data
+	# ===================
+	# Push push push push
+	# ===================
+	fp = !git push -f
+	pushgtm-gitlab = fetch gitlab refs/notes/gtm-data:refs/notes/gtm-data
+	fetchgtm-gitlab = fetch gitlab refs/notes/gtm-data:refs/notes/gtm-data
 
-  # ==================
-  # Branch management.
-  # ==================
-  # Switch to a branch, creating it if necessary
-  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-  # Remove branches that have already been merged with master
-  # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-  # Find branches containing commit
-  fb = "!f() { git branch -a --contains $1; }; f"
-  # Show the branches I've been working on and when they were created
-  mybranches = "!f() { if test $# = 0 ; then set -- refs/remotes ; fi ; git for-each-ref --format='%(authordate:relative)\t%(refname:short)\t%(authoremail)' --sort=authordate \"$@\" | grep -v gitlab | sed -ne \"s/\t<$(git config user.email)>//p\" | column -s '\t' -t ; } ; f"
-  create = "!f() { echo 'Did you mean to create a private repo with `hub create -p`?'; }"
+	# ==================
+	# Branch management.
+	# ==================
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	# Find branches containing commit
+	fb = "!f() { git branch -a --contains $1; }; f"
+	# Show the branches I've been working on and when they were created
+	mybranches = "!f() { if test $# = 0 ; then set -- refs/remotes ; fi ; git for-each-ref --format='%(authordate:relative)\t%(refname:short)\t%(authoremail)' --sort=authordate \"$@\" | grep -v gitlab | sed -ne \"s/\t<$(git config user.email)>//p\" | column -s '\t' -t ; } ; f"
+	create = "!f() { echo 'Did you mean to create a private repo with `hub create -p`?'; }"
 
-  ###
-  # -----------------------------------
-  ###
+	###
+	# -----------------------------------
+	###
 
-  # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-  # View the current working tree status using the short format
-  s = status -s
+	# View the current working tree status using the short format
+	s = status -s
 
-  # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
-  # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
-  # Pull in remote changes for the current repository and all its submodules
-  p = !"git pull; git submodule foreach git pull origin master"
+	# Pull in remote changes for the current repository and all its submodules
+	p = !"git pull; git submodule foreach git pull origin master"
 
-  # Clone a repository including all submodules
-  c = clone --recursive
+	# Clone a repository including all submodules
+	c = clone --recursive
 
-  # Commit all changes
-  ca = !git add -A && git commit -av
+	# Commit all changes
+	ca = !git add -A && git commit -av
 
-  # Show verbose output about tags, branches or remotes
-  tags = tag -l
-  branches = !legit branches
-  remotes = remote -v
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = !legit branches
+	remotes = remote -v
 
-  # Amend the currently staged files to the latest commit
-  amend = commit --amend --reuse-message=HEAD
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
 
-  # Credit an author on the latest commit
-  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	# Credit an author on the latest commit
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 
-  # Remove the old tag with this name and tag the latest commit with it.
-  retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+	# Remove the old tag with this name and tag the latest commit with it.
+	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
 
-  # Find tags containing commit
-  ft = "!f() { git describe --always --contains $1; }; f"
+	# Find tags containing commit
+	ft = "!f() { git describe --always --contains $1; }; f"
 
-  # Find commits by source code
-  fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
-  # Find commits by commit message
-  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-  # List contributors with number of commits
-  contributors = shortlog --summary --numbered
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
 
-  # Merge GitHub pull request on top of the current branch or,
-  # if a branch name is specified, on top of the specified branch
-  mpr = "!f() { \
-    declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-    declare branch=\"${2:-$currentBranch}\"; \
-    if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-    git fetch origin refs/pull/$1/head:pr/$1 && \
-    git checkout -B $branch && \
-    git rebase $branch pr/$1 && \
-    git checkout -B $branch && \
-    git merge pr/$1 && \
-    git branch -D pr/$1 && \
-    git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-    fi \
-    }; f"
+	# Merge GitHub pull request on top of the current branch or,
+	# if a branch name is specified, on top of the specified branch
+	mpr = "!f() { \
+	declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
+	declare branch=\"${2:-$currentBranch}\"; \
+	if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+	git fetch origin refs/pull/$1/head:pr/$1 && \
+	git checkout -B $branch && \
+	git rebase $branch pr/$1 && \
+	git checkout -B $branch && \
+	git merge pr/$1 && \
+	git branch -D pr/$1 && \
+	git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+	fi \
+	}; f"
 
-  # Get legit. Get it?
-  graft = !legit graft
-  harvest = !legit harvest
-  publish = !legit publish
-  unpublish = !legit unpublish
-  sprout = !legit sprout
-  sync = !legit sync
-  switch = !legit switch
-  resync = !legit resync
-  undo = !legit undo
+	# Get legit. Get it?
+	graft = !legit graft
+	harvest = !legit harvest
+	publish = !legit publish
+	unpublish = !legit unpublish
+	sprout = !legit sprout
+	sync = !legit sync
+	switch = !legit switch
+	resync = !legit resync
+	undo = !legit undo
 
-  # Show the log with stats, but without merges
-  lc = log ORIG_HEAD.. --stat --no-merges
+	# Show the log with stats, but without merges
+	lc = log ORIG_HEAD.. --stat --no-merges
 
-  # See a tree graph of your git history
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  # List files known to Git
-  ls = ls-files
+	# See a tree graph of your git history
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	# List files known to Git
+	ls = ls-files
 
-  # update all submodules in a project
-  subs = submodule foreach git pull origin master
+	# update all submodules in a project
+	subs = submodule foreach git pull origin master
 
-  # Pull all branches from the remote that can be merged with fast-forward
-  up = "!git remote update -p; git merge --ff-only @{u}"
+	# Pull all branches from the remote that can be merged with fast-forward
+	up = "!git remote update -p; git merge --ff-only @{u}"
 
 [apply]
-  # Detect whitespace errors when applying a patch
-  whitespace = fix
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
 
 [core]
-  editor = /usr/local/bin/nvim
-  # Use custom `.gitignore` and `.gitattributes`
-  excludesfile = ~/.gitignore_global
-  attributesfile = ~/.gitattributes
+	editor = /usr/local/bin/nvim
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
 
-  # Treat spaces before tabs and all kinds of trailing whitespace as an error
-  # [default] trailing-space: looks for spaces at the end of a line
-  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-  # Make `git rebase` safer on macOS
-  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-  trustctime = false
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
 
-  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
-  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-  precomposeunicode = false
-  pager = diff-so-fancy | less --tabs=4 -RFX
-  eol = lf
-  autocrlf = input
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	eol = lf
+	autocrlf = input
 
 [color]
-  ui = true
-  branch = auto
-  diff = auto
-  status = auto
+	ui = true
+	branch = auto
+	diff = auto
+	status = auto
 
 [color "branch"]
-  current = red reverse
-  local = blue
-  remote = green
+	current = red reverse
+	local = blue
+	remote = green
 
 [color "diff"]
-  meta = yellow
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  plain = white
-  commit = yellow bold
-  whitespace = red reverse
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	plain = white
+	commit = yellow bold
+	whitespace = red reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [diff]
-  # Detect copies as well as renames
-  renames = copies
+	# Detect copies as well as renames
+	renames = copies
 
 [diff "bin"]
-  # Use `hexdump` to diff binary files
-  textconv = hexdump -v -C
+	# Use `hexdump` to diff binary files
+	textconv = hexdump -v -C
 
 [help]
-  # Automatically correct and execute mistyped commands
-  autocorrect = 1
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
 
 [merge]
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 
 [push]
-  # > Push the current branch to update a branch with the same name on the
-  # > receiving end.
-  # AKA never see that --set-upstream nonsense again -- just `git push` away.
-  default = current
-  # Make `git push` push relevant annotated tags when pushing branches out.
-  followTags = true
+	# > Push the current branch to update a branch with the same name on the
+	# > receiving end.
+	# AKA never see that --set-upstream nonsense again -- just `git push` away.
+	default = current
+	# Make `git push` push relevant annotated tags when pushing branches out.
+	followTags = true
 
 # URL shorthands
 
 [url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-  insteadOf = "github:"
+	insteadOf = "github:"
 
 [url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
-  insteadOf = "gist:"
+	insteadOf = "gist:"
 
 ###
 # Further customizations.
 ###
 [user]
-  name = Jesse Stuart
-  email = hi@jessestuart.com
-  signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
+	name = Jesse Stuart
+	email = hi@jessestuart.com
+	signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 [filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [fetch]
-  prune = true
+	prune = true
 [rebase]
-  autosquash = true
+	autosquash = true
 [init]
-  templatedir = ~/.git-templates
+	templatedir = ~/.git-templates
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [rerere]
-  enabled = true
+	enabled = true
 [mergetool]
-  keepBackup = true
+	keepBackup = true
 [commit]
-  gpgsign = true
+	gpgsign = true
 [gpg]
-  program = gpg
+	program = gpg
 [ghq]
-  root=~/gh
+	root=~/gh
 [color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [diff-so-fancy]
-  markEmptyLines = false
+	markEmptyLines = false
