@@ -4,8 +4,7 @@
 # Convenience function to quickly get the CPU temp of each node in a cluster
 # simply using pssh.
 #
-# Usage:
-
+# Example output:
 # ```shell
 # $ ktmp
 # pik8s-master     49000
@@ -46,7 +45,11 @@ alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Runn
 alias kgenum="kge | wc -l"
 
 function krmerr() {
-  kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | awk '{print $1,$2}' | xargs kubectl delete pod '$2' -n '$1'
+  kgerr | while read err_pod; do
+    local namespace=$(echo $err_pod | awk1)
+    local podname=$(echo $err_pod | awk2)
+    nohup kubectl --namespace $namespace delete pod $podname &
+  done
 }
 
 function ketcdctl() {
@@ -75,11 +78,11 @@ function ketcdctl() {
 # 10.10.10.13  traefik-consul-ui                 kube-system
 # 10.10.10.14  elasticsearch                     logging
 # 10.10.10.15  grafana                           monitoring
-# 10.10.10.16  prometheus-k8s                    monitoring
+# 10.10.10.16  prometheus                        monitoring
 # 10.10.10.17  stash                             stash
 # 10.10.10.18  kibana                            logging
-# 10.10.10.20  traefik-ingress-service-external  kube-system
-# 10.10.10.21  traefik-ingress-service           kube-system
+# 10.10.10.20  traefik-external                  kube-system
+# 10.10.10.21  traefik                           kube-system
 # ```
 # =========================================================================
 function kglb() {
@@ -88,6 +91,10 @@ function kglb() {
     | awk '{print $5,$2,$1}' \
     | sort -k1 -d \
     | column -t
+}
+
+function krg() {
+  kgpw | rg $1
 }
 
 # kubectl() {

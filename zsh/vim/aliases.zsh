@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+
+if hash nvim &>/dev/null; then
+	export EDITOR='nvim'
+elif hash vim &>/dev/null; then
+	export EDITOR='vim'
+else
+	export EDITOR='vi'
+fi
+
 # ============
 # Vim aliases.
 # ============
@@ -13,6 +22,7 @@ alias vif="$EDITOR ~/.zsh/functions.zsh"
 alias vik="$EDITOR ~/.zsh/kubernetes"
 alias vikf="$EDITOR ~/.zsh/kubernetes/functions.zsh"
 alias vimake="$EDITOR Makefile"
+alias vmk="$EDITOR Makefile"
 alias vimap="$EDITOR ~/.config/nvim/mappings.vimrc"
 alias vip="$EDITOR ~/.config/nvim/plugins.vimrc"
 alias vipale="$EDITOR ~/.config/nvim/ale.vimrc"

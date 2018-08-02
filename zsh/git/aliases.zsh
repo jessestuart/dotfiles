@@ -22,7 +22,7 @@ alias gdm="git diff master"
 alias gds="git add -A && git diff --staged"
 alias ggo="git checkout -"
 # alias gh="cd ~/github"
-alias gl="git log --pretty=oneline -n 20 --graph --abbrev-commit"
+alias gl="git log --pretty=oneline -n20 --abbrev-commit --reverse"
 alias glb="git_list_branches"
 alias god="git checkout develop && git pull"
 alias gom="git checkout master && git pull"
@@ -78,9 +78,9 @@ function git_push_work_in_progress() {
 
 function git_cleanup_merged_prs() {
   git fetch --prune
-  git branch -r --merged | \
-    grep origin | \
-    grep -Ev 'master|develop|>' | \
-    sed 's/origin\///g' | \
+  git branch -r --merged |
+    grep origin |
+    grep -Ev 'master|develop|>' |
+    sed 's/origin\///g' |
     xargs git push origin --delete
 }

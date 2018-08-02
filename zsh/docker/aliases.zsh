@@ -10,6 +10,7 @@ alias vidc="vi docker-compose.yml"
 alias vid="vi Dockerfile"
 alias dkspr="docker system prune"
 alias dih="docker images | tail -n+2 | head -n10"
+alias dcp="docker container prune -f"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
@@ -48,7 +49,7 @@ dri() { docker rmi $(docker images -q); }
 # dkb() { docker build -t=$1 .; }
 
 # Show all alias related docker
-dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/" | sed "s/['|\']//g" | sort; }
 
 # Bash into running container
 dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }

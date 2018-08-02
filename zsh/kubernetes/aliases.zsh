@@ -13,6 +13,7 @@ alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
 alias kp="get_pods_colorized "
 alias fa="faas"
+alias cm="helm push . js"
 
 alias st="stern"
 alias stfl="stern fluent-bit --tail=100 --namespace=logging"

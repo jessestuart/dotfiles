@@ -3,6 +3,16 @@
 # =============================
 # < I alias all the things. >>
 # =============================
+# << A PRELUDE >>
+# Sometimes I work on systems that don't have neovim. I know, right?
+# Provide a fallback here so $EDITOR aliases still work.
+if hash nvim &>/dev/null; then
+  export EDITOR='nvim'
+elif hash vim &>/dev/null; then
+  export EDITOR='vim'
+else
+  export EDITOR='vi'
+fi
 
 # ============================================================================
 # << ALIAS INBOX >>
@@ -24,10 +34,18 @@ alias tfa="terraform apply tf.plan"
 alias tfp="terraform plan -out tf.plan"
 alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
+alias V="cd /Volumes"
+alias scid="ssh-copy-id"
+alias weather="curl wttr.in"
+
+alias nr="npm run"
+alias y="yarn"
+alias yt="yarn test"
 
 function sum() {
   sum=0
-  while read i; do sum=$(($sum+$i)); done; echo $sum
+  while read i; do sum=$(($sum + $i)); done
+  echo $sum
 }
 
 alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
@@ -57,7 +75,7 @@ alias sudo='sudo '
 
 if [ "$(uname)" = 'Darwin' ]; then
   function rm() {
-    if hash trash&>/dev/null; then
+    if hash trash &>/dev/null; then
       trash "$@"
     else
       rm "$@"
@@ -65,11 +83,13 @@ if [ "$(uname)" = 'Darwin' ]; then
   }
 fi
 
-if (hash bat&>/dev/null); then alias cat="bat";
-elif (hash ccat&>/dev/null); then alias cat="ccat";
+if (hash bat &>/dev/null); then
+  alias cat="bat"
+elif (hash ccat &>/dev/null); then
+  alias cat="ccat"
 fi
 
-if (hash viman&>/dev/null); then alias man="viman"; fi
+if (hash viman &>/dev/null); then alias man="viman"; fi
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -155,13 +175,13 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
+command -v hd >/dev/null || alias hd="hexdump -C"
 
 # macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
+command -v md5sum >/dev/null || alias md5sum="md5"
 
 # macOS has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum"
+command -v sha1sum >/dev/null || alias sha1sum="shasum"
 
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
@@ -185,7 +205,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
 
-alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
+alias freewifi="sudo ifconfig en0 ether $(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')"
 
 alias awk1="awk '{print \$1}'"
 alias awk2="awk '{print \$2}'"

@@ -82,7 +82,6 @@ function dki() {
     | column -t
 }
 
-
 function dkir() {
   local images=$(docker images)
   for image in $(dps | tail -n+2 | awk2); do
@@ -150,4 +149,18 @@ function dht() {
     image=$2
   fi
   docker-hub tags -o $repo -r $image
+}
+
+function mantp() {
+  local registry=jessestuart
+  local image=$1
+  local version=$2
+  local platforms=$3
+  local target=$4
+  manifest-tool \
+    --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD \
+    push from-args \
+    --platforms "$platforms" \
+    --template "$registry/$image:$version-ARCH" \
+    --target "$registry/$image:$target"
 }
