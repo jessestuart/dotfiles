@@ -8,10 +8,7 @@ if [ "$ZPROFILE" -eq 1 ]; then
   unset ZPROFILE
 fi
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
