@@ -260,10 +260,10 @@
 	enabled = true
 [mergetool]
 	keepBackup = true
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
+; [commit]
+; 	gpgsign = true
+; [gpg]
+; 	program = gpg
 [ghq]
 	root=~/gh
 [color "diff-highlight"]

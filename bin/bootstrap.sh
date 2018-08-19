@@ -8,8 +8,8 @@
 set -e
 
 ARCH=amd64
-USER=pi
-HOSTNAME=pik8s-rock1
+USER=jesse
+HOSTNAME=js-nuc
 echo "ARCH: $ARCH, USER: $USER"
 if test -z "$ARCH"; then ARCH=arm64; fi
 if test -z "$USER"; then USER=jesse; fi
@@ -39,9 +39,10 @@ function print_progress() {
 # Let's get this show goin'.
 # Ensure some base debian deps are installed.
 # ==========================
-if cmd_missing sudo; then apt update -yq && apt install -yq sudo; fi
-sudo apt update -yq
-sudo apt install -yq bash bash-completion curl git htop make man neovim nfs-common python tree unzip vim wget zsh
+# if cmd_missing sudo; then apt update -yq && apt install -yq sudo; fi
+# sudo apt update -yq
+# sudo apt install -yq bash bash-completion curl git htop make neovim python tree unzip vim wget zsh
+brew install bash bash-completion curl git htop make neovim python tree unzip wget zsh
 
 print_header 'Creating non-root user...'
 if ! (sudo useradd -G sudo -m -s /bin/bash $USER); then
@@ -66,12 +67,12 @@ fi
 # ====================
 # Docker installation.
 # ====================
-if cmd_missing docker; then
-  print_header 'Installing Docker...'
-  curl -fsSL get.docker.com | sudo sh
-  sudo usermod -aG docker "$USER"
-  print_progress 'docker installed successfully.'
-fi
+# if cmd_missing docker; then
+  # print_header 'Installing Docker...'
+  # curl -fsSL get.docker.com | sudo sh
+  # sudo usermod -aG docker "$USER"
+  # print_progress 'docker installed successfully.'
+# fi
 
 # ======================
 # Antibody installation.

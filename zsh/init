@@ -10,11 +10,11 @@ for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 source $ZSH/prompt/config.zsh
 
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
-# if (hash antibody &>/dev/null); then
+if (hash antibody &>/dev/null); then
 source <(antibody init)
 antibody bundle < "$ZSH/antibody.conf"
 . "$ZSH/antibody/config.zsh"
-# fi
+fi
 
 # Hack to make zsh load more quickly by not regenerating completion data
 # on every shell init.
