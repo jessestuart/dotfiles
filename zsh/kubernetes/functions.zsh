@@ -41,11 +41,20 @@ function clustup() {
 # Get all dead / crashing / etc. pods :(
 # ======================================
 alias kgerr="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8"
-alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Running | sort -k8 -d"
+alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -Ev 'Running|Completed' | sort -k8 -d"
 alias kgenum="kge | wc -l"
 
 function krmerr() {
-  kgerr | while read err_pod; do
+  kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Completed |
+    while read err_pod; do
+      local namespace=$(echo $err_pod | awk1)
+      local podname=$(echo $err_pod | awk2)
+      kubectl --namespace $namespace delete pod $podname
+    done
+}
+
+function krmcomp() {
+  kgpw | grep Completed | while read err_pod; do
     local namespace=$(echo $err_pod | awk1)
     local podname=$(echo $err_pod | awk2)
     nohup kubectl --namespace $namespace delete pod $podname &
@@ -53,14 +62,14 @@ function krmerr() {
 }
 
 function ketcdctl() {
-   docker run --rm -it --net host \
-     -v /etc/kubernetes:/etc/kubernetes \
-     "$VOLUMES" \
-     jessestuart/etcd \
-     etcdctl
-     --cert-file /etc/kubernetes/pki/etcd/peer.crt --key-file /etc/kubernetes/pki/etcd/peer.key --ca-file /etc/kubernetes/pki/etcd/ca.crt
-     --endpoints https://10.10.10.100:2379 "$@"
-      # k8s.gcr.io/etcd-arm:3.1.12 \
+  docker run --rm -it --net host \
+    -v /etc/kubernetes:/etc/kubernetes \
+    "$VOLUMES" \
+    jessestuart/etcd \
+    etcdctl
+  --cert-file /etc/kubernetes/pki/etcd/peer.crt --key-file /etc/kubernetes/pki/etcd/peer.key --ca-file /etc/kubernetes/pki/etcd/ca.crt
+  --endpoints https://10.10.10.100:2379 "$@"
+  # k8s.gcr.io/etcd-arm:3.1.12 \
 }
 
 # =========================================================================
@@ -86,11 +95,11 @@ function ketcdctl() {
 # ```
 # =========================================================================
 function kglb() {
-  kubectl get svc --all-namespaces \
-    | grep LoadBalancer \
-    | awk '{print $5,$2,$1}' \
-    | sort -k1 -d \
-    | column -t
+  kubectl get svc --all-namespaces |
+    grep LoadBalancer |
+    awk '{print $5,$2,$1}' |
+    sort -k1 -d |
+    column -t
 }
 
 function krg() {

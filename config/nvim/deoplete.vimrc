@@ -11,7 +11,7 @@ let g:deoplete#sources#ternjs#types = 1
 " Whether to include the distance (in scopes for variables, in prototypes for
 " properties) between the completions and the origin position in the result
 " data. Default: 0
-let g:deoplete#sources#ternjs#depths = 1
+" let g:deoplete#sources#ternjs#depths = 1
 
 " Whether to include documentation strings (if found) in the result data.
 " Default: 0
@@ -29,10 +29,10 @@ let g:deoplete#sources#ternjs#case_insensitive = 1
 " When completing a property and no completions are found, Tern will use some
 " heuristics to try and return some properties anyway. Set this to 0 to
 " turn that off. Default: 1
-let g:deoplete#sources#ternjs#guess = 0
+let g:deoplete#sources#ternjs#guess = 1
 
 " Determines whether the result set will be sorted. Default: 1
-let g:deoplete#sources#ternjs#sort = 0
+let g:deoplete#sources#ternjs#sort = 1
 
 " When disabled, only the text before the given position is considered part of
 " the word. When enabled (the default), the whole variable name that the cursor
@@ -57,3 +57,6 @@ let g:deoplete#sources#ternjs#filetypes = ['js', 'jsx', 'js.es6']
 let g:deoplete#complete_method = 'complete'
 
 let g:deoplete#enable_at_startup = 1
+
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]

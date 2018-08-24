@@ -9,6 +9,12 @@ augroup markdown_formatting
   autocmd BufRead,BufNewFile *.wiki setlocal textwidth=80
 augroup END
 
+augroup sass_kubernetes
+  autocmd!
+  autocmd BufRead,BufNewFile *.sass setlocal tabstop=4
+  autocmd BufRead,BufNewFile *.sass setlocal noexpandtab
+augroup END
+
 augroup gitconfig
   autocmd!
   function! SetGitConfigOptions()

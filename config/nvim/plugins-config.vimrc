@@ -1,9 +1,5 @@
 let g:deoplete#enable_at_startup = 1
-let g:tern#is_show_argument_hints_enabled = 1
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
@@ -14,13 +10,19 @@ let g:javascript_plugin_flow = 1
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
 
+let g:tern#is_show_argument_hints_enabled = 1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ag and put the cursor in the right position
-map <leader>ag :Ag<space>
+noremap <leader>ag :Ag<space><CR>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
@@ -128,7 +130,8 @@ augroup asyncomplete_register_sources
         \ }))
 augroup END
 
-let g:closetag_filenames = '*.html,*.php,*.jsx,*.js'
+" TODO(jesse): This was getting annoying w/ JSX; maybe reenable this?
+" let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:user_emmet_install_global = 1
 
 nnoremap <leader>tw :ToggleWorkspace<CR>
@@ -138,7 +141,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
 
 " ==================
 " Mappings for `fzy`
@@ -163,16 +165,16 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql, PrettierAsync
+" let g:prettier#autoformat = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
-let g:prettier#config#print_width = 80
+" let g:prettier#config#print_width = 80
 " number of spaces per indentation level
 let g:prettier#config#tab_width = 2
 " use tabs over spaces
 let g:prettier#config#use_tabs = 'false'
 " print semicolons
-let g:prettier#config#semi = 'false'
+" let g:prettier#config#semi = 'false'
 " single quotes over double quotes
 let g:prettier#config#single_quote = 'true'
 " print spaces between brackets
@@ -182,11 +184,15 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'flow'
+" let g:prettier#config#parser = 'flow'
 " cli-override|file-override|prefer-file
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
+
+let g:prettier#quickfix_enabled = 0
+
+" autocmd BufWritePre *.js Neoformat
 
 " let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
 " function! UpdateStatusBar(timer)
@@ -261,14 +267,14 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
-if executable('flow-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'flow-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx'],
-        \ })
-endif
+" if executable('flow-language-server')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'flow-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
+"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+"         \ 'whitelist': ['javascript', 'javascript.jsx'],
+"         \ })
+" endif
 
 " " =========
 " " UltiSnips
@@ -279,12 +285,14 @@ endif
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsListSnippets="<c-e> <c-e>"
+" let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsListSnippets="<c-e> <c-e>"
 
-let g:flow#showquickfix = 0
+" let g:flow#showquickfix = 0
 
 " Keep that hella legible 'conceal' option. I'm sure there's a way to do this
 " built in.
 " @see https://github.com/elzr/vim-json
 let g:polyglot_disabled = ['json']
+
+let g:LanguageClient_autoStart = 1

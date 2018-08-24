@@ -51,6 +51,7 @@ alias gqs="git-quick-stats"
 alias gstats="git-quick-stats"
 alias gr="git remotes"
 alias gfa="git fetch --all"
+alias gcanon="git commit --amend --no-edit --no-verify"
 
 # ===============================================
 # Hub aliases.

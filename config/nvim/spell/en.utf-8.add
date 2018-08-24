@@ -11,6 +11,7 @@ AMD
 amd64
 AMD64
 AMIs
+and
 Ansible
 ansible
 Ansible's
@@ -21,6 +22,7 @@ app
 app's
 apps
 AppVeyor
+aptible
 args
 arm64
 ARM64
@@ -39,11 +41,13 @@ AWS
 aws
 AWS's
 AWX
+b
 backend
 Bento
 bento
 BG
 Bind9
+bizzare
 blog
 Bluetooth
 Bukowski
@@ -82,6 +86,8 @@ codebase
 CodeCov
 Codecov
 codepath
+codepush
+Cognito
 colorscheme
 Colorschemes
 colorschemes
@@ -129,8 +135,10 @@ e.g.
 EC2
 ECMAScript
 ECR
+edenhealth
 elasticsearch
 Elisp
+EMR
 eng
 entrypoint
 env
@@ -148,8 +156,10 @@ Firefox's
 flexbox
 fmt
 frontend
+frontends
 frontmatter
 fu
+FWIW
 g
 gaearon
 gatsby
@@ -167,6 +177,7 @@ GH
 GitHub
 github
 GitHub's
+Github's
 GitLab
 gitlab
 GitLab
@@ -188,6 +199,7 @@ govendor
 gradle
 Grafana
 GraphQL
+grdn
 gsutil
 gVisor
 hadolint
@@ -205,6 +217,7 @@ hostname
 htop
 https
 HypriotOS
+i
 i.e.
 IaC
 IAM
@@ -232,6 +245,7 @@ jesse
 jesses
 jessestuart
 jestuart
+JIRA
 JPEG
 jQuery
 js
@@ -253,6 +267,7 @@ kubeless
 Kubernetes
 kubernetes
 Lavagna
+Leiningen
 letsencrypt
 libexec
 libgit2
@@ -269,6 +284,7 @@ lodash
 lolol
 lsp
 LVM
+lymph
 MacOS
 macOS
 mailto
@@ -322,6 +338,7 @@ osx
 PaaS
 pacman
 PagerDuty
+passwordless
 Paypal
 performant
 Perkeep
@@ -329,6 +346,7 @@ PersistentVolumeClaim
 PhotographyGridSection
 PHP
 pics
+PIIA
 Pingdom
 playbook
 playbooks
@@ -352,6 +370,7 @@ ProfileFooter
 Provisioners
 provisioners
 ps
+Pubnub
 PV
 px
 pyenv
@@ -367,6 +386,9 @@ Raspbian
 RBAC
 RCM
 README
+READMEs
+Redis
+redis
 Redux
 refactor
 refactored
@@ -431,6 +453,7 @@ tempdir
 Terraform
 Testinfra
 tf
+then
 Thoughtbot's
 timeframe
 timestamp
@@ -474,6 +497,8 @@ utils
 UUID
 v1
 v2
+V4
+V5
 Vagrant
 Vagrantfile
 ve
@@ -523,8 +548,11 @@ zplug
 zpreztorc
 Zsh
 zsh
-i
-b
-Github's
-FWIW
-PIIA
+candid82
+clojure
+codecov
+apiblueprint
+UGC
+reprioritize
+Standup
+EdenHealth

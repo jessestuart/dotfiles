@@ -207,7 +207,7 @@ nnoremap <M-tab> :tabprevious<CR>
 nnoremap <M-q> :tabnext<CR>
 
 " Opens up the fzf buffer search to navigate between open buffers.
-noremap <Leader>b :Buffers<CR>
+nnoremap <Leader>bf :Buffers<CR>
 " FZF most-recently-used file search.
 noremap <Leader>h :History<CR>
 " FZF :Ag search. (NB: customized elsewhere to use ripgrep)
@@ -217,4 +217,4 @@ noremap <Leader>f :Ag<CR>
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 nnoremap <Leader>gg :GitGutterToggle<CR>
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>b :Gblame<CR>

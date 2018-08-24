@@ -36,11 +36,15 @@ alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
 alias V="cd /Volumes"
 alias scid="ssh-copy-id"
-alias weather="curl wttr.in"
+# alias weather="curl wttr.in"
+alias gojira="~/go/bin/jira"
+alias dfh="df -h"
+alias dcp="docker container prune -f"
 
 alias nr="npm run"
 alias y="yarn"
 alias yt="yarn test"
+alias ywip="yarn willitpass"
 
 function sum() {
   sum=0
@@ -134,7 +138,7 @@ fi
 alias ap="ansible-playbook"
 alias atom="atom-beta"
 alias fuck='eval $(thefuck $(fc -ln -1))'
-alias kbz="ps -efw | ag 'bz' | awk '{print $2}' | sudo xargs kill"
+alias kbz="ps aux | grep '[B]ackblaze' -i | awk '{print $2}' | sudo xargs kill -9"
 alias tf="terraform"
 alias tmd="tmux detach"
 

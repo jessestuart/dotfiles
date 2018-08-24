@@ -64,10 +64,10 @@ Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'vim-scripts/bufexplorer.zip'
-Plug 'wellle/targets.vim'
+" Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'wellle/targets.vim'
 Plug 'wincent/ferret'
-Plug 'yegappan/mru'
+" Plug 'yegappan/mru'
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
@@ -75,6 +75,7 @@ endif
 " -------------------------------------
 " Pope.
 " -------------------------------------
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -90,43 +91,54 @@ Plug 'tpope/vim-unimpaired'
 " Git/Github-related plugins.
 " -------------------------------------
 Plug 'airblade/vim-gitgutter'
-Plug 'codegram/vim-codereview'
 Plug 'jreybert/vimagit'
-Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-Plug 'junkblocker/patchreview-vim'
-Plug 'mattn/webapi-vim' " Required for vim-github-comment
-Plug 'mmozuras/vim-github-comment'
-Plug 'idanarye/vim-merginal'
-Plug 'cohama/agit.vim'
+" Plug 'codegram/vim-codereview'
+" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+" Plug 'junkblocker/patchreview-vim'
+" Plug 'mattn/webapi-vim' " Required for vim-github-comment
+" Plug 'mmozuras/vim-github-comment'
+" Plug 'idanarye/vim-merginal'
+" Plug 'cohama/agit.vim'
 
 " -------------------------------------
 " WebDev.
 " -------------------------------------
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
 Plug 'heavenshell/vim-jsdoc'
+
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'mattn/emmet-vim'
 
-Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'yami-beta/asyncomplete-omni.vim'
-" Plug 'prabirshrestha/asyncomplete-flow.vim'
-" Plug 'prabirshrestha/asyncomplete-necovim.vim'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+Plug 'prabirshrestha/asyncomplete-flow.vim'
+Plug 'prabirshrestha/asyncomplete-necovim.vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" For Denite features
+Plug 'Shougo/denite.nvim'
 
 " ==========
 " Typescript
 " ==========
-Plug 'Quramy/tsuquyomi'
-Plug 'Quramy/vim-dtsm'
-Plug 'leafgarland/typescript-vim'
+" Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/vim-dtsm'
+" Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -157,12 +169,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
+" Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'jaspervdj/stylish-haskell'
-Plug 'kchmck/vim-coffee-script'
+" Plug 'neovimhaskell/haskell-vim'
+" Plug 'jaspervdj/stylish-haskell'
+" Plug 'kchmck/vim-coffee-script'
 
 " [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
 " a number of improvements over the messy original from `vim-scripts`.
@@ -171,29 +183,29 @@ Plug 'kchmck/vim-coffee-script'
 " Autocomplete / Snippets.
 " ========================
 " Plug 'SirVer/ultisnips'
-Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
-Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
-Plug 'honza/vim-snippets'
-Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
+" Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
+" Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
+" Plug 'honza/vim-snippets'
+" Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 " Place deoplete first, then autocomplete-flow
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/neocomplete'
 " Plug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
-Plug 'Shougo/neco-syntax'
+" Plug 'Shougo/neco-syntax'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
-Plug 'wokalski/autocomplete-flow'
+" Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimproc'
-Plug 'flowtype/vim-flow'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+
+" Plug 'flowtype/vim-flow'
 
 " -------------------------------------
 " Time tracking, etc.
@@ -218,15 +230,13 @@ Plug 'andrewstuart/vim-kubernetes'
 
 " -------------------------------------
 " Experimentation. Inbox.
-" TODO: Organize these.
-" -------------------------------------
 Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/splice.vim'
-Plug 'rizzatti/dash.vim'
+" Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'sunaku/vim-shortcut'
@@ -234,19 +244,20 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
 Plug 'janko-m/vim-test'
+Plug 'zivyangll/git-blame.vim'
 
 Plug 'jceb/vim-orgmode'
-Plug 'aaronbieber/vim-quicktask'
 Plug 'sjl/gundo.vim'
 Plug 'Chiel92/vim-autoformat'
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'kassio/neoterm'
-Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'elzr/vim-json'
+" Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/clever-f.vim'
 
 Plug 'jpalardy/vim-slime'
+
+Plug 'sbdchd/neoformat'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
 " Plug 'kshenoy/vim-signature'

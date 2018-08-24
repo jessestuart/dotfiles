@@ -60,6 +60,10 @@ fi
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+# export ANDROID_HOME="$HOME/"
+
 # =============
 # ~* Secrets *~
 # =============

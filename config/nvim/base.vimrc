@@ -27,7 +27,13 @@ augroup gitcommit
 augroup END
 
 " Enable omnifunc.
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 function! RestoreCursor()
   if line("'\"") <= line('$')
@@ -46,7 +52,7 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keep cursor in the middle when moving vertically using j/k.
 set scrolloff=9999
-" Hypen is part of the keyword.
+" Hyphen is part of the keyword.
 set iskeyword+=-
 
 " Turn on the WiLd menu.
