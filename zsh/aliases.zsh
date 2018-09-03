@@ -40,6 +40,12 @@ alias scid="ssh-copy-id"
 alias gojira="~/go/bin/jira"
 alias dfh="df -h"
 alias dcp="docker container prune -f"
+alias cci="circleci"
+
+alias rgh="rg --hidden"
+alias rghig="rg --hidden --no-ignore"
+alias rgig="rg --no-ignore"
+alias rgfwm="rg --files-with-matches"
 
 alias nr="npm run"
 alias y="yarn"
@@ -115,7 +121,7 @@ if test -e /usr/local/bin/exa; then
   # List all files colorized in long format
   alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format, including dot files
-  alias la="exa -la --git --git-ignore --group-directories-first --color-scale"
+  alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
   # Same as above, but don't hide gitignored files.
   alias laa="exa -la --git --group-directories-first"
   # List all sorted by size.
@@ -126,8 +132,7 @@ if test -e /usr/local/bin/exa; then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
-  # ...And sometimes I just can't be bothered.
-  alias a="la"
+  alias a="exa -la --git --git-ignore --group-directories-first --color-scale"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"
@@ -149,11 +154,6 @@ alias h="hyper"
 alias hc="hyper compose"
 alias hcup="hyper compose up"
 alias hcdown="hyper compose down"
-
-# Grails
-# alias gr="yes | grails run-app"
-# alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
-# alias grl="ps -efw | ag '[g]rails'"
 
 # ===================================================
 

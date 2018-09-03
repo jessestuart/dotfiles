@@ -67,7 +67,10 @@ xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zs
 test -e $xpanes_completions && . $xpanes_completions
 
 # added by travis gem
-[ -f /Users/jestuart/.travis/travis.sh ] && source /Users/jestuart/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# Fastlane
+[ -f ~/.fastlane/completions/completion.sh ] && . ~/.fastlane/completions/completion.sh
 
 # function load_asdf() {
 #   local asdf_init=/usr/local/opt/asdf/asdf.sh
@@ -75,7 +78,6 @@ test -e $xpanes_completions && . $xpanes_completions
 # }
 # load_asdf
 
-# if (hash zaw&>/dev/null); then . $(which zaw); fi
 # test -e ~/github/z/z.sh && . ~/github/z/z.sh
 
 if [ "$PLATFORM" = 'Darwin' ]; then
@@ -87,4 +89,3 @@ if [ "$PLATFORM" = 'Darwin' ]; then
     iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   }
 fi
-

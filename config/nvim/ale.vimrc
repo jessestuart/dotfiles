@@ -2,7 +2,7 @@
 " Asynchronous Lint Engine (ALE) configuration.
 " =============================================
 let g:ale_javascript_eslint_options = 'esversion: 9'
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
@@ -27,6 +27,8 @@ let g:ale_linters = {
       \  'ansible': ['ansible-lint'],
       \  'Dockerfile': ['hadolint'],
       \  'javascript': ['prettier', 'prettier-eslint', 'flow', 'eslint'],
+      \  'typescript': ['prettier', 'tslint'],
+      \  'typescript.tsx': ['prettier', 'tslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
@@ -46,6 +48,8 @@ let g:ale_fixers = {
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'prettier-eslint', 'prettier-standard', 'eslint'],
       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'prettier-standard', 'eslint'],
+      \  'typescript': ['prettier', 'tslint'],
+      \  'typescript.tsx': ['prettier', 'tslint'],
       \  'json': ['eslint', 'prettier-eslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],

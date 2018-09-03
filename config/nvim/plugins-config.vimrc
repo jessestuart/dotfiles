@@ -1,6 +1,5 @@
 let g:deoplete#enable_at_startup = 1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,7 +164,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-" let g:prettier#autoformat = 1
+let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
 " let g:prettier#config#print_width = 80
@@ -184,7 +183,7 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-" let g:prettier#config#parser = 'flow'
+let g:prettier#config#parser = 'babylon'
 " cli-override|file-override|prefer-file
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
@@ -296,3 +295,22 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>
 let g:polyglot_disabled = ['json']
 
 let g:LanguageClient_autoStart = 1
+
+" =============================================================================
+" nmc2
+" =============================================================================
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+" inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

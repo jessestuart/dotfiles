@@ -54,10 +54,10 @@ function krmerr() {
 }
 
 function krmcomp() {
-  kgpw | grep Completed | while read err_pod; do
-    local namespace=$(echo $err_pod | awk1)
-    local podname=$(echo $err_pod | awk2)
-    nohup kubectl --namespace $namespace delete pod $podname &
+  kgpw | grep Completed | while read completed_pod; do
+    local namespace=$(echo $completed_pod | awk1)
+    local podname=$(echo $completed_pod | awk2)
+    kubectl  -n $namespace delete pod $podname
   done
 }
 

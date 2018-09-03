@@ -57,12 +57,23 @@ if [ "$(uname -s)" = "Darwin" ]; then
   export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 fi
 
+export PATH="$PATH:/opt/etcher-cli"
+
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
-# export ANDROID_HOME="$HOME/"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/bin/sonar-scanner/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+PATH=$PATH:$ANDROID_HOME/emulator
+PATH=$PATH:$ANDROID_HOME/tools
+PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH=$PATH:$ANDROID_HOME/tools/bin
 
 # =============
 # ~* Secrets *~
