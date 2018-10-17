@@ -12,6 +12,7 @@ export PATH="/sbin:$PATH"
 export PATH="$HOME/bin/dash:$PATH"
 export PATH="$HOME/bin/holman:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.bin/:$PATH"
 
 # MongoDB
 export MONGO_PATH=/usr/local/mongodb

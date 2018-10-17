@@ -22,7 +22,7 @@ function load_sdkman() {
   test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
 }
 # Slows down ZSH startup time by ~250ms. Ugh.
-# load_sdkman
+load_sdkman
 
 # Load `awless` completions.
 function load_awless() {
