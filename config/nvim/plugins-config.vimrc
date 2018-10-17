@@ -115,20 +115,20 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-augroup asyncomplete_register_sources
-  au!
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-        \ 'name': 'omni',
-        \ 'whitelist': ['*'],
-        \ 'blacklist': ['html', 'html.javascript'],
-        \ 'completor': function('asyncomplete#sources#omni#completor')
-        \  }))
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
-        \ 'name': 'necovim',
-        \ 'whitelist': ['vim'],
-        \ 'completor': function('asyncomplete#sources#necovim#completor'),
-        \ }))
-augroup END
+" augroup asyncomplete_register_sources
+"   au!
+"   au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+"         \ 'name': 'omni',
+"         \ 'whitelist': ['*'],
+"         \ 'blacklist': ['html', 'html.javascript'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor')
+"         \  }))
+"   autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+"         \ 'name': 'necovim',
+"         \ 'whitelist': ['vim'],
+"         \ 'completor': function('asyncomplete#sources#necovim#completor'),
+"         \ }))
+" augroup END
 
 " TODO(jesse): This was getting annoying w/ JSX; maybe reenable this?
 " let g:closetag_filenames = '*.html,*.jsx,*.js'
