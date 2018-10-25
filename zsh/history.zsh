@@ -25,6 +25,7 @@ setopt HIST_REDUCE_BLANKS
 # Do not execute immediately upon history expansion.
 setopt HIST_VERIFY
 setopt HIST_BEEP
+setopt HIST_FIND_NO_DUPS
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys

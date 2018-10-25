@@ -10,11 +10,3 @@
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# function _fzf_to_editor() {
-#   zle kill-whole-line
-#   zle -U "fzf | xargs nvim"
-#   zle accept-line
-# }
-# zle -N _fzf_to_editor
-# bindkey '^P' _fzf_to_editor
