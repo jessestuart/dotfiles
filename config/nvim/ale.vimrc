@@ -7,11 +7,11 @@ let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
 " Fix files automatically on save. (This is off by default)
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_enter = 1
 
 let g:ale_statusline_format = ['X %d', '? %d', '']
 
@@ -22,43 +22,46 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 
 " \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
+" , 'prettier-eslint', 'flow', 'eslint'],
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'ansible': ['ansible-lint'],
       \  'Dockerfile': ['hadolint'],
-      \  'javascript': ['prettier', 'prettier-eslint', 'flow', 'eslint'],
-      \  'typescript': ['prettier', 'tslint'],
-      \  'typescript.tsx': ['prettier', 'tslint'],
+      \  'javascript': ['prettier', 'standard', 'flow'],
+      \  'json': ['prettier'],
+      \  'typescript': ['prettier', 'tsc', 'tslint'],
+      \  'typescript.tsx': ['prettier', 'tsc', 'tslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
-      \  'sh': ['shellcheck'],
+      \  'sh': ['shfmt', 'shellcheck'],
       \  'vim': ['vint'],
-      \  'yaml': ['yamllint', 'swaglint'],
+      \  'yaml': ['yamllint', 'swaglint', 'prettier'],
       \  'zsh': ['shellcheck'],
       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'ruby': ['rubocop']
       \}
 
-" :ALEFix will attempt to fix your JS code using ESLint.
+      " \  'javascript.jsx': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
-      \  'javascript': ['importjs', 'prettier-eslint', 'prettier-standard', 'eslint'],
-      \  'javascript.jsx': ['importjs', 'prettier-eslint', 'prettier-standard', 'eslint'],
+      \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      \  'javascript.jsx': ['importjs', 'standard'],
       \  'typescript': ['prettier', 'tslint'],
       \  'typescript.tsx': ['prettier', 'tslint'],
-      \  'json': ['eslint', 'prettier-eslint'],
+      \  'json': ['prettier'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
       \  'scss': ['prettier', 'stylelint'],
-      \  'sh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
-      \  'bash': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
-      \  'zsh': ['shfmt', 'remove_trailing_lines', 'trim_whitespace'],
-      \  'ruby': ['rubocop']
+      \  'sh': ['shfmt'],
+      \  'bash': ['shfmt'],
+      \  'zsh': ['shfmt'],
+      \  'ruby': ['rubocop'],
+      \  'yaml': ['prettier']
       \}
 
 " Map keys to navigate between lines with errors and warnings.

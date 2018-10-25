@@ -432,3 +432,14 @@ function gh-releases() {
   local github_url="https://api.github.com/repos/$github_repo/releases"
   curl -s -H $auth_header $github_url | jq -r ".[].tag_name"
 }
+
+function gpurbid() {
+  echo '[INFO] Checking out develop branch.'
+  git checkout dev
+  echo '[INFO] Pulling from HEAD.'
+  git pull --rebase
+  echo '[INFO] Switching back to upstream branch.'
+  git checkout -
+  echo '[INFO] Beginning rebase onto dev'
+  git rebase -i dev
+}

@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-if hash nvim &>/dev/null; then
-	export EDITOR='nvim'
-elif hash vim &>/dev/null; then
-	export EDITOR='vim'
-else
-	export EDITOR='vi'
-fi
+load_editor
 
 # ============
 # Vim aliases.

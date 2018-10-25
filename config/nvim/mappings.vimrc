@@ -32,7 +32,7 @@ nnoremap <leader>fz :FZF<CR>
 nnoremap <C-j> <CR>
 
 " Toggle Goyo for distraction-free editing.
-noremap <leader>zen :Goyo<CR>
+nnoremap <leader>z :Goyo<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -99,7 +99,7 @@ nnoremap <leader>i :vsplit<CR>
 " Horizontal Split
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.
-noremap <leader>z <C-W>T<CR>
+noremap <leader>Z <C-W>T<CR>
 
 noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
@@ -218,3 +218,5 @@ noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 nnoremap <Leader>gg :GitGutterToggle<CR>
 nnoremap <Leader>b :Gblame<CR>
+
+nnoremap <leader>t :TagbarToggle<CR>

@@ -44,6 +44,8 @@ alias kgerr="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -v Ru
 alias kge="get_pods_colorized --all-namespaces -owide | tail -n+2 | grep -Ev 'Running|Completed' | sort -k8 -d"
 alias kgenum="kge | wc -l"
 
+alias kgpo_nods="kgpww | grep -v -e arm-exporter -e fluent-bit -e kube-flannel-ds -e kube-proxy -e local-volume-provisioner -e metallb-speaker -e node-exporter -e restic"
+
 function krmerr() {
   kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Completed |
     while read err_pod; do

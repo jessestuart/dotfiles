@@ -19,6 +19,6 @@ function start_ssh_agent() {
   fi
 }
 
-start_ssh_agent
+# start_ssh_agent
 
-ssh-add "$HOME/.ssh/github_rsa" &>/dev/null
+# ssh-add "$HOME/.ssh/github_rsa" &>/dev/null

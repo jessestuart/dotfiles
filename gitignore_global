@@ -16,3 +16,9 @@ tags.files
 tags.lock
 tags.temp
 flow-typed/
+google-play-service-account-key.json
+*.log
+
+*.bundle*
+
+.tern-project

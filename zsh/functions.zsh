@@ -447,3 +447,9 @@ function sum() {
   sum=0
   while read i; do sum=$(($sum+$i)); done; echo $sum
 }
+
+function nag() {
+  local cmd="$@"
+  echo $cmd
+  while true; do $cmd; sleep 1; done
+}

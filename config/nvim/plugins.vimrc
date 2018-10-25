@@ -64,10 +64,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'wincent/ferret'
 " Plug 'vim-scripts/bufexplorer.zip'
 " Plug 'wellle/targets.vim'
-Plug 'wincent/ferret'
 " Plug 'yegappan/mru'
+
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
@@ -80,12 +81,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-projectionist'
 
 " -------------------------------------
 " Git/Github-related plugins.
@@ -105,39 +106,48 @@ Plug 'jreybert/vimagit'
 " -------------------------------------
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-" Plug 'jelera/vim-javascript-syntax'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', {
+\ 'do': 'yarn install',
+\ 'for': ['javascript', 'typescript', 'css',
+\         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
+\         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
+\]}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
 Plug 'heavenshell/vim-jsdoc'
-
-" Plug 'alampros/vim-styled-jsx'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'alampros/vim-styled-jsx'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'mattn/emmet-vim'
 
-" Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/vim-lsp'
 Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'prabirshrestha/async.vim'
 
-Plug 'prabirshrestha/asyncomplete-flow.vim'
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
+" Plug 'prabirshrestha/asyncomplete-flow.vim'
+" Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
 " ==========
 " Typescript
 " ==========
-" Plug 'Quramy/tsuquyomi'
-" Plug 'Quramy/vim-dtsm'
+
+Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-dtsm'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'jason0x43/vim-js-indent'
+Plug 'HerringtonDarkholme/yats.vim'
+
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
@@ -161,7 +171,8 @@ Plug 'hashivim/vim-vagrant'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 " -------------------------------------
 " Misc. language support.
@@ -169,9 +180,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
-" Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
+" Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'jaspervdj/stylish-haskell'
 " Plug 'kchmck/vim-coffee-script'
@@ -195,10 +206,10 @@ Plug 'jparise/vim-graphql'
 " Syntax source for neocomplete/deoplete/ncm
 " Plug 'Shougo/neco-syntax'
 
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
@@ -211,8 +222,8 @@ Plug 'jparise/vim-graphql'
 " Time tracking, etc.
 " -------------------------------------
 if executable('gtm')
-  Plug 'git-time-metric/gtm-vim-plugin'
 endif
+Plug 'git-time-metric/gtm-vim-plugin'
 if executable('wakatime')
   Plug 'wakatime/vim-wakatime'
 endif
@@ -254,10 +265,17 @@ Plug 'Chiel92/vim-autoformat'
 " Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/clever-f.vim'
+Plug 'gregsexton/gitv'
 
 " Plug 'jpalardy/vim-slime'
 
+" Plug 'eraserhd/parinfer-rust'
+
 Plug 'sbdchd/neoformat'
+
+Plug 'jaawerth/nrun.vim'
+
+" Plug 'wincent/command-t'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
 " Plug 'kshenoy/vim-signature'
