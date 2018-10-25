@@ -19,6 +19,7 @@ export HISTFILESIZE="${HISTSIZE}"
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth'
 export HISTTIMEFORMAT="%h %d %H:%M:%S> "
+export HIST_FIND_NO_DUPS=true
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
