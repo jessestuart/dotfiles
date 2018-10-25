@@ -15,7 +15,7 @@
 	rbm = rebase master
 	rbd = rebase develop
 	rbi = rebase -i
-	rbid = rebase -i develop
+	rbid = rebase -i dev
 	rbim = rebase -i master
 
 	# ===========
@@ -144,7 +144,7 @@
 [core]
 	editor = /usr/local/bin/nvim
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jesse/.gitignore_global
 	attributesfile = ~/.gitattributes
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -260,10 +260,10 @@
 	enabled = true
 [mergetool]
 	keepBackup = true
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
+; [commit]
+; 	gpgsign = true
+; [gpg]
+; 	program = gpg
 [ghq]
 	root=~/gh
 [color "diff-highlight"]
@@ -273,3 +273,9 @@
 	newHighlight = green bold 22
 [diff-so-fancy]
 	markEmptyLines = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree-Beta.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

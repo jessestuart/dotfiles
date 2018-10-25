@@ -6,13 +6,7 @@
 # << A PRELUDE >>
 # Sometimes I work on systems that don't have neovim. I know, right?
 # Provide a fallback here so $EDITOR aliases still work.
-if hash nvim &>/dev/null; then
-  export EDITOR='nvim'
-elif hash vim &>/dev/null; then
-  export EDITOR='vim'
-else
-  export EDITOR='vi'
-fi
+load_editor
 
 # ============================================================================
 # << ALIAS INBOX >>
@@ -36,21 +30,21 @@ alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
 alias V="cd /Volumes"
 alias scid="ssh-copy-id"
-# alias weather="curl wttr.in"
 alias gojira="~/go/bin/jira"
 alias dfh="df -h"
 alias dcp="docker container prune -f"
 alias cci="circleci"
+alias ys="yarn -s"
+alias fl="bundle exec fastlane"
+alias jv="load_sdkman"
+alias jdn="cd ~/dev/native/"
+alias jen="cd ~/github/edenhealth/native/"
 
+alias rgi="rg -i"
 alias rgh="rg --hidden"
 alias rghig="rg --hidden --no-ignore"
 alias rgig="rg --no-ignore"
 alias rgfwm="rg --files-with-matches"
-
-alias nr="npm run"
-alias y="yarn"
-alias yt="yarn test"
-alias ywip="yarn willitpass"
 
 function sum() {
   sum=0
@@ -58,7 +52,7 @@ function sum() {
   echo $sum
 }
 
-alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
+# alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config

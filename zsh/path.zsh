@@ -1,18 +1,21 @@
 #!/usr/bin/env zsh
 
 # Add the bins.
+export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/sbin:$PATH"
-export PATH="/sbin:$PATH"
 
 # Couple special `bin` directories for [dash](https://github.com/IFTTT/dash)
 # + some nifty commands from [Zach Holman](https://github.com/holman/dotfiles)
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin/dash:$PATH"
 export PATH="$HOME/bin/holman:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bin/:$PATH"
+export PATH="$HOME/bin/ykpers/bin:$PATH"
 
 # MongoDB
 export MONGO_PATH=/usr/local/mongodb
@@ -39,7 +42,7 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export PATH="/opt/etcher:$PATH"
 
-if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ] ; then
+if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ]; then
   if test -e "$HOME/go"; then
     export GOPATH="$HOME/go"
   elif test -e "/mnt/data/go"; then
@@ -58,7 +61,8 @@ if [ "$(uname -s)" = "Darwin" ]; then
   export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 fi
 
-export PATH="$PATH:/opt/etcher-cli"
+# export PATH="$PATH:/opt/etcher-cli"
+export PATH="$PATH:$HOME/bin/etcher/"
 
 export PATH="$HOME/bin/heketi-client/bin:$PATH"
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
@@ -66,6 +70,8 @@ export PATH="$HOME/bin/diff-so-fancy:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.5.0/gems/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/bin/sonar-scanner/bin:$PATH"

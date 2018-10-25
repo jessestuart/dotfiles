@@ -164,6 +164,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
+let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
@@ -183,13 +184,14 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'babylon'
+let g:prettier#config#parser = 'flow'
 " cli-override|file-override|prefer-file
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
-let g:prettier#quickfix_enabled = 0
+let g:prettier#quickfix_enabled = 1
+let g:prettier#quickfix_auto_focus = 0
 
 " autocmd BufWritePre *.js Neoformat
 
@@ -215,16 +217,16 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
-let g:lightline.tabline = {
-  \   'left': [ ['tabs'] ],
-  \   'right': []
-  \ }
-set showtabline=2  " Show tabline
+" let g:lightline.tabline = {
+"   \   'left': [ ['tabs'] ],
+"   \   'right': []
+"   \ }
+" set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  " set number
+  set relativenumber
   set scrolloff=999
 endfunction
 
@@ -237,19 +239,19 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
+" function! s:isAtStartOfLine(mapping)
+"   let text_before_cursor = getline('.')[0 : col('.')-1]
+"   let mapping_pattern = '\V' . escape(a:mapping, '\')
+"   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+"   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+" endfunction
 
-inoreabbrev <expr> <bar><bar>
-      \ <SID>isAtStartOfLine('\|\|') ?
-      \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-      \ <SID>isAtStartOfLine('__') ?
-      \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+" inoreabbrev <expr> <bar><bar>
+"       \ <SID>isAtStartOfLine('\|\|') ?
+"       \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+" inoreabbrev <expr> __
+"       \ <SID>isAtStartOfLine('__') ?
+"       \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 " ========
 " Neoterm.
@@ -266,14 +268,16 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
-" if executable('flow-language-server')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'flow-language-server',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
-"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-"         \ 'whitelist': ['javascript', 'javascript.jsx'],
-"         \ })
-" endif
+let g:flow#enable = 1
+let g:flow#omnifunc = 1
+if executable('flow-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'flow-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+        \ 'whitelist': ['javascript', 'javascript.jsx'],
+        \ })
+endif
 
 " " =========
 " " UltiSnips
@@ -295,16 +299,32 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>
 let g:polyglot_disabled = ['json']
 
 let g:LanguageClient_autoStart = 1
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+set completefunc=LanguageClient#complete
+" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " =============================================================================
 " nmc2
 " =============================================================================
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
 " found' messages
-set shortmess+=c
+" set shortmess+=c
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-" inoremap <c-c> <ESC>
+inoremap <c-c> <ESC>
 
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
@@ -314,3 +334,9 @@ set shortmess+=c
 " Use <TAB> to select the popup menu:
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+
+set rtp+=/usr/local/opt/fzf
+
+let g:ctrlp_user_command = 'git ls-files'
