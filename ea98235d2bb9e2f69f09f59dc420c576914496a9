@@ -1,0 +1,11 @@
+[ver:1,total:5160]
+.gtm/terminal.app:3180,1539802800:180,1539918000:180,1539925200:240,1540008000:434,1540011600:1486,1540015200:540,1540508400:120,r
+zsh/vim/aliases.zsh:1006,1540008000:796,1540011600:210,m
+zsh/wakatime/zsh-wakatime-plugin.zsh:432,1540011600:432,d
+zsh/exports.zsh:240,1540011600:240,m
+zsh/fzf/config.zsh:140,1540011600:140,m
+zsh/history.zsh:72,1540011600:72,m
+config/nvim/base.vimrc:30,1540011600:30,r
+zsh/builtins/aliases.zsh:30,1540008000:30,r
+zsh/mind/README.md:15,1540011600:15,r
+zsh/mind/functions.zsh:15,1540011600:15,r
