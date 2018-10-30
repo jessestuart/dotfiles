@@ -6,13 +6,7 @@
 # << A PRELUDE >>
 # Sometimes I work on systems that don't have neovim. I know, right?
 # Provide a fallback here so $EDITOR aliases still work.
-if hash nvim &>/dev/null; then
-  export EDITOR='nvim'
-elif hash vim &>/dev/null; then
-  export EDITOR='vim'
-else
-  export EDITOR='vi'
-fi
+load_editor
 
 # ============================================================================
 # << ALIAS INBOX >>
@@ -36,15 +30,21 @@ alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
 alias V="cd /Volumes"
 alias scid="ssh-copy-id"
-# alias weather="curl wttr.in"
 alias gojira="~/go/bin/jira"
 alias dfh="df -h"
 alias dcp="docker container prune -f"
+alias cci="circleci"
+alias ys="yarn -s"
+alias fl="bundle exec fastlane"
+alias jv="load_sdkman"
+alias jdn="cd ~/dev/native/"
+alias jen="cd ~/github/edenhealth/native/"
 
-alias nr="npm run"
-alias y="yarn"
-alias yt="yarn test"
-alias ywip="yarn willitpass"
+alias rgi="rg -i"
+alias rgh="rg --hidden"
+alias rghig="rg --hidden --no-ignore"
+alias rgig="rg --no-ignore"
+alias rgfwm="rg --files-with-matches"
 
 function sum() {
   sum=0
@@ -52,7 +52,7 @@ function sum() {
   echo $sum
 }
 
-alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
+# alias emacs="TERM=xterm-24bit /usr/local/bin/emacs -nw"
 
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
@@ -115,7 +115,7 @@ if test -e /usr/local/bin/exa; then
   # List all files colorized in long format
   alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format, including dot files
-  alias la="exa -la --git --git-ignore --group-directories-first --color-scale"
+  alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
   # Same as above, but don't hide gitignored files.
   alias laa="exa -la --git --group-directories-first"
   # List all sorted by size.
@@ -126,8 +126,7 @@ if test -e /usr/local/bin/exa; then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
-  # ...And sometimes I just can't be bothered.
-  alias a="la"
+  alias a="exa -la --git --git-ignore --group-directories-first --color-scale"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"
@@ -149,11 +148,6 @@ alias h="hyper"
 alias hc="hyper compose"
 alias hcup="hyper compose up"
 alias hcdown="hyper compose down"
-
-# Grails
-# alias gr="yes | grails run-app"
-# alias kgr="ps -efw | ag '[g]rails' | awk '{print $2}' | xargs kill"
-# alias grl="ps -efw | ag '[g]rails'"
 
 # ===================================================
 

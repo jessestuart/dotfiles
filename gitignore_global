@@ -4,7 +4,7 @@
 ./codealike.json
 .classpath
 .DS_Store
-.gtm
+.gtm/
 .project
 .settings
 .tern-port
@@ -15,3 +15,10 @@ tags
 tags.files
 tags.lock
 tags.temp
+flow-typed/
+google-play-service-account-key.json
+*.log
+
+*.bundle*
+
+.tern-project

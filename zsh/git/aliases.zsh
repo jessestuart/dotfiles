@@ -8,7 +8,7 @@ alias gacam="git add -u && git cam"
 alias gacm="git add -A && gcm"
 alias gag="git add . && git commit --amend --no-edit && git push -f"
 alias gas="git add -A && git status -s"
-alias gbr="git checkout -b jesse/$(date -I | sed 's/-//g')"
+alias gbr='git checkout -b jesse/$(date "+%Y%m%d")'
 alias gbrd="git branch -D"
 alias gca="git commit -a"
 alias gcaa="git commit -a --amend -C HEAD"
@@ -24,7 +24,7 @@ alias ggo="git checkout -"
 # alias gh="cd ~/github"
 alias gl="git log --pretty=oneline -n20 --abbrev-commit --reverse"
 alias glb="git_list_branches"
-alias god="git checkout develop && git pull"
+alias god="git checkout dev && git pull"
 alias gom="git checkout master && git pull"
 alias gp="git push"
 alias gpf="git push --force-with-lease"
@@ -40,7 +40,7 @@ alias hubci="hub ci-status -v"
 alias pop="git stash pop"
 alias pu="git pull"
 alias pull="git pull"
-alias rbid="git rebase -i develop"
+alias grbid="git rebase -i dev"
 alias rbim="git rebase -i master"
 alias repush="gpr && git push"
 alias retag="ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *"
@@ -52,6 +52,7 @@ alias gstats="git-quick-stats"
 alias gr="git remotes"
 alias gfa="git fetch --all"
 alias gcanon="git commit --amend --no-edit --no-verify"
+alias gwe="git reset --hard HEAD"
 
 # ===============================================
 # Hub aliases.
@@ -73,7 +74,7 @@ function gacp() {
 
 function git_push_work_in_progress() {
   git add -u .
-  git commit -m '[commit message skipped]'
+  git commit -m '[commit message skipped]' --no-verify
   git push
 }
 
@@ -81,7 +82,7 @@ function git_cleanup_merged_prs() {
   git fetch --prune
   git branch -r --merged |
     grep origin |
-    grep -Ev 'master|develop|>' |
+    grep -Ev 'master|dev|>' |
     sed 's/origin\///g' |
     xargs git push origin --delete
 }
