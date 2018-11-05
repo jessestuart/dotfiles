@@ -303,8 +303,8 @@ let g:LanguageClient_autoStart = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript': ['/usr/local/bin/flow-language-server'],
+    \ 'javascript.jsx': ['/usr/local/bin/flow-language-server'],
     \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
@@ -340,3 +340,6 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 set rtp+=/usr/local/opt/fzf
 
 let g:ctrlp_user_command = 'git ls-files'
+
+" From https://jacky.wtf/weblog/language-client-and-neovim/
+set completeopt=noinsert,menuone,noselect

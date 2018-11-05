@@ -112,23 +112,35 @@ Plug 'prettier/vim-prettier', {
 \         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
 \         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
 \]}
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
 Plug 'heavenshell/vim-jsdoc'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'alampros/vim-styled-jsx'
 Plug 'jxnblk/vim-mdx-js'
-Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'mattn/emmet-vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mattn/emmet-vim'
 
 " Plug 'prabirshrestha/vim-lsp'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/async.vim'
+" Plug 'yami-beta/asyncomplete-omni.vim'
+" Plug 'prabirshrestha/async.vim'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" Plug 'wokalski/autocomplete-flow'
+" You will also need the following for function argument completion:
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+
+" Plug 'flowtype/vim-flow'
 
 " Plug 'prabirshrestha/asyncomplete-flow.vim'
 " Plug 'prabirshrestha/asyncomplete-necovim.vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -142,10 +154,10 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'Quramy/tsuquyomi'
 Plug 'Quramy/vim-dtsm'
-Plug 'Quramy/vim-js-pretty-template'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'jason0x43/vim-js-indent'
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'Quramy/vim-js-pretty-template'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'jason0x43/vim-js-indent'
+" Plug 'HerringtonDarkholme/yats.vim'
 
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'leafgarland/typescript-vim'
@@ -178,7 +190,7 @@ Plug 'vim-airline/vim-airline'
 " Misc. language support.
 " -------------------------------------
 Plug 'sheerun/vim-polyglot'
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
@@ -206,17 +218,6 @@ Plug 'jparise/vim-graphql'
 " Syntax source for neocomplete/deoplete/ncm
 " Plug 'Shougo/neco-syntax'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-" Plug 'wokalski/autocomplete-flow'
-" You will also need the following for function argument completion:
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-
-" Plug 'flowtype/vim-flow'
 
 " -------------------------------------
 " Time tracking, etc.

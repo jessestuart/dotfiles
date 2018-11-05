@@ -20,9 +20,9 @@ nnoremap : ;
 " ==========================
 noremap <leader>, :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
-nnoremap <leader>pi :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>
+nnoremap <leader>pi :source ~/github/jessestuart/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>
 " Update all plugins with <leader>up
-nnoremap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
+nnoremap <leader>up :source ~/github/jessestuart/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:PlugUpdate<CR>
 
 " ==========================================
 " Miscellaneous mappings I've grown to love.
@@ -60,15 +60,13 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
 " ======================
 " Fast saving / closing.
 " ======================
-" Write buffer with <leader>w or <C-s>.
-" The latter works in insert mode too, and will place you back in normal mode.
-nnoremap <leader>w :w!<CR>
+" Write buffer with <C-s>.
+" This works in insert mode too, and will place you back in normal mode.
 nnoremap <C-s> :w!<CR>
 inoremap <C-s> :w!<CR>
-" Write and close buffer with <leader>1.
-nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
 nnoremap <leader>q :q!<CR>
+nnoremap <leader>1 :wq!<CR>
 
 " Repeat macros with `<leader>2`.
 nnoremap <leader>2 @@
@@ -82,14 +80,15 @@ nnoremap <Leader>gw :!git add . && git commit -m '[wip]'<CR>
 " => Visual mode-related
 "-----------------------------
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
+" Super useful! From an idea by Michael Naumann.
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Make the dot command work in visual mode. (h/t @danielmiessler)
 vnoremap . :norm.<CR>
 
-vnoremap <leader>s :sort<CR>
+vnoremap <leader>s :sort i<CR>
 vnoremap <leader>si :sort i<CR>
+nnoremap <leader>si :norm vap:sort i<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around buffers, windows, & tabs.
@@ -157,18 +156,6 @@ endtry
 " =================
 " Remap `0` to first non-blank character.
 noremap 0 ^
-
-" Move a line of text using ALT+[jk].
-" nmap <M-j> mz:m+<CR>`z
-" nmap <M-k> mz:m-2<CR>`z
-" vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
-" vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
-" if has('mac') || has('macunix')
-"   nmap <D-j> <M-j>
-"   nmap <D-k> <M-k>
-"   vmap <D-j> <M-j>
-"   vmap <D-k> <M-k>
-" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking

@@ -40,6 +40,8 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export PATH="/opt/etcher:$PATH"
 
+export PATH="/usr/local/nvim/bin:$PATH"
+
 if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ]; then
   if test -e "$HOME/go"; then
     export GOPATH="$HOME/go"

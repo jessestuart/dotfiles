@@ -4,15 +4,15 @@
 if [ "$ZPROFILE" -eq 1 ]; then zmodload zsh/zprof; fi
 
 source "$HOME/.zsh/init"
-# Init prompt.
-autoload -U promptinit; promptinit
+# # Init prompt.
+# autoload -U promptinit
+# promptinit
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="$HOME/.bin/:$PATH"
+# export PATH="$HOME/.bin/:$PATH"
 
 eval "$(direnv hook zsh)"
 
-zle-keymap-select () {
+zle-keymap-select() {
   if [ "$TERM" = "xterm-256color" ]; then
     if [ $KEYMAP = vicmd ]; then
       # the command mode for vi
@@ -37,3 +37,5 @@ if [ "$ZPROFILE" -eq 1 ]; then
   unset ZPROFILE
 fi
 
+PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
