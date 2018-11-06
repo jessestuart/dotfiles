@@ -1,0 +1,7 @@
+[ver:1,total:1020]
+zsh/docker/aliases.zsh:240,1526086800:240,r
+zsh/kubernetes/functions.zsh:240,1525629600:20,1525838400:220,r
+zsh/kubernetes/completions.zsh:200,1525629600:200,r
+zsh/gcp/config.zsh:180,1525651200:180,r
+gitconfig:120,1526688000:120,r
+zsh/kubernetes/env.zsh:40,1525629600:20,1525838400:20,r

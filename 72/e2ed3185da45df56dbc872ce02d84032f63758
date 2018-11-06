@@ -1,0 +1,7 @@
+[ver:1,total:900]
+.gtm/terminal.app:689,1512363600:180,1512450000:509,r
+config/nvim/plugins-config.vimrc:180,1512424800:180,r
+git-templates/hooks/post-commit:10,1512450000:10,r
+config/nvim/spell/en.utf-8.add:8,1512450000:8,m
+zsh/todaytix/functions.zsh:7,1512450000:7,d
+zshrc:6,1512450000:6,r

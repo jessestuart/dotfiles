@@ -1,0 +1,6 @@
+[ver:1,total:1920]
+.gtm/terminal.app:1670,1531400400:990,1531404000:280,1531465200:400,r
+zsh/git/aliases.zsh:180,1531404000:180,m
+zsh/antibody/config.zsh:30,1531400400:30,r
+zsh/init:20,1531465200:20,r
+zsh/load_editor:20,1531404000:20,d

@@ -1,0 +1,7 @@
+[ver:1,total:2520]
+bin/load_colors:900,1529557200:900,d
+git-templates/hooks/post-commit:660,1528959600:480,1528963200:60,1529557200:120,m
+bin/get_pods_colorized:480,1529557200:480,d
+zsh/kubernetes/env.zsh:240,1528714800:240,m
+bin/bootstrap.sh:180,1529557200:180,r
+config/nvim/spell/en.utf-8.add:60,1529557200:60,m

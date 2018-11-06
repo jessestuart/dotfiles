@@ -1,0 +1,7 @@
+[ver:1,total:1080]
+zsh/init:300,1521061200:300,m
+zsh/serverless/completions.zsh:240,1521061200:240,m
+gitconfig:180,1521061200:180,m
+zsh/config.zsh:180,1521061200:180,m
+.git/COMMIT_EDITMSG:120,1521061200:120,r
+zshrc:60,1521061200:60,r

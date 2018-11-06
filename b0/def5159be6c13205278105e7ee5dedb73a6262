@@ -1,0 +1,17 @@
+[ver:1,total:1620]
+.gtm/terminal.app:893,1512331200:893,r
+config/nvim/functions.vimrc:360,1512331200:360,m
+tests/test.go:270,1512331200:270,d
+config/nvim/base.vimrc:87,1512331200:87,m
+.git/COMMIT_EDITMSG:10,1512331200:10,r
+
+[ver:1,total:8640]
+.gtm/terminal.app:5352,1512280800:60,1512284400:2088,1512288000:360,1512291600:900,1512295200:480,1512298800:180,1512327600:765,1512331200:519,r
+config/nvim/mappings.vimrc:2105,1512327600:2105,m
+config/nvim/functions.vimrc:720,1512327600:160,1512331200:560,m
+config/nvim/base.vimrc:302,1512327600:187,1512331200:115,m
+config/nvim/files.vimrc:90,1512327600:90,m
+config/nvim/plugins-config.vimrc:30,1512327600:30,r
+config/nvim/init.vim:23,1512327600:23,m
+gitconfig:12,1512284400:12,r
+zsh/aliases.zsh:6,1512331200:6,r
