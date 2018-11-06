@@ -27,25 +27,25 @@ function! HasPaste()
 endfunction
 
 " Don't close window when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr('%')
-   let l:alternateBufNum = bufnr('#')
+" command! Bclose call <SID>BufcloseCloseIt()
+" function! <SID>BufcloseCloseIt()
+"    let l:currentBufNum = bufnr('%')
+"    let l:alternateBufNum = bufnr('#')
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+"    if buflisted(l:alternateBufNum)
+"      buffer #
+"    else
+"      bnext
+"    endif
 
-   if bufnr('%') == l:currentBufNum
-     new
-   endif
+"    if bufnr('%') == l:currentBufNum
+"      new
+"    endif
 
-   if buflisted(l:currentBufNum)
-     execute('bdelete! '.l:currentBufNum)
-   endif
-endfunction
+"    if buflisted(l:currentBufNum)
+"      execute('bdelete! '.l:currentBufNum)
+"    endif
+" endfunction
 
 " Function allowing either sorting multiple lines individually or sorting part
 " of one line, depending on the visual selection.
@@ -113,4 +113,11 @@ function! SortWords()
     " Write it out
     call setline(StartPosition[1], NewLine)
   endif
+endfunction
+
+" From Drew Neil + https://github.com/stoeffel/.dotfiles/blob/master/vim/visual-at.vim
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
 endfunction
