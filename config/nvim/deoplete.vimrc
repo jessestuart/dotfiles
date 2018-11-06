@@ -54,7 +54,8 @@ let g:deoplete#sources#ternjs#in_literal = 1
 let g:deoplete#sources#ternjs#filetypes = ['js', 'jsx', 'js.es6']
 
 " Options are 'complete', 'completefunc', and 'omnifunc'.
-let g:deoplete#complete_method = 'omnifunc'
+" let g:deoplete#complete_method = 'omnifunc'
+let g:deoplete#complete_method = 'complete'
 
 let g:deoplete#enable_at_startup = 1
 
