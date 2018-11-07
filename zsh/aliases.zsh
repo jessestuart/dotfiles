@@ -110,7 +110,7 @@ alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # << LISTING THINGS! >>
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
-if test -e /usr/local/bin/exa; then
+if ! test -z $(which exa); then
   alias ls="exa --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format
   alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
