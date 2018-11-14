@@ -7,18 +7,18 @@
 
 set -e
 
-ARCH=amd64
+ARCH=arm64
 USER=pi
-HOSTNAME=pik8s-rock1
+HOSTNAME=pik8s-firefly1
 echo "ARCH: $ARCH, USER: $USER"
 if test -z "$ARCH"; then ARCH=arm64; fi
 if test -z "$USER"; then USER=jesse; fi
 USER_HOME=/home/$USER
 
 # TODO: Could pull latest releases of these from Github. Meh.
-GO_VERSION="1.10.3"
+GO_VERSION="1.11.2"
 DIFF_SO_FANCY_VERSION="1.2.0"
-ANTIBODY_VERSION="3.5.1"
+ANTIBODY_VERSION="4.0.1"
 
 # =============================
 # Some basic utility functions.
@@ -127,18 +127,19 @@ fi
 # ==========================
 print_header 'Installing dotfiles...'
 cd "$USER_HOME"
+sudo chown -R "$USER:" "$USER_HOME"
 if ! test -d "$USER_HOME"/dotfiles; then
-  sudo git clone https://github.com/jessestuart/dotfiles
+  git clone https://github.com/jessestuart/dotfiles
 fi
 sudo chown -R "$USER:" "$USER_HOME"
-pushd dotfiles && git stash save && git pull && git stash pop && popd
-rcup -d dotfiles
-sudo chsh -s /bin/zsh $USER
+# pushd dotfiles && git stash save && git pull && git stash pop && popd
+rcup -d "$USER_HOME/dotfiles"
+sudo chsh -s $(which zsh) $USER
 print_progress 'Finished syncing dotfiles.'
 
 if ! test -d "$USER_HOME/.config/nvim/plugged"; then
   print_header 'Installing nvim plugins...'
-  sudo curl -fLo "$USER_HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+  curl -fLo "$USER_HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim "+PlugInstall --sync" +qa
 fi
