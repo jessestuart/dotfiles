@@ -36,7 +36,7 @@ rules:
     # check-multi-line-strings: yes
   key-duplicates: enable
   line-length:
-    max: 80
+    max: 999
     allow-non-breakable-words: true
     allow-non-breakable-inline-mappings: false
   new-line-at-end-of-file: enable

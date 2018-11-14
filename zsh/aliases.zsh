@@ -17,7 +17,7 @@ alias chex="chmod +x"
 alias cl="clear && pwd && la"
 alias clobber="set +C"
 alias count="wc -l"
-alias ctags="/usr/local/bin/ctags"
+# alias ctags="/usr/local/bin/ctags"
 alias f="fzf | xargs $EDITOR"
 alias lrd="login_restic_do"
 alias lrdo="login_restic_do"
@@ -26,7 +26,7 @@ alias org="cd ~/Dropbox/org"
 alias r="ranger"
 alias tfa="terraform apply tf.plan"
 alias tfp="terraform plan -out tf.plan"
-alias today="$EDITOR ~/org/$(date -u +"%Y%m%d").md"
+alias today="nvim ~/Dropbox/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
 alias V="cd /Volumes"
 alias scid="ssh-copy-id"
@@ -39,6 +39,14 @@ alias fl="bundle exec fastlane"
 alias jv="load_sdkman"
 alias jdn="cd ~/dev/native/"
 alias jen="cd ~/github/edenhealth/native/"
+alias scli="sentry-cli"
+alias bundle="/usr/local/lib/ruby/gems/2.6.0/bin/bundle"
+alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias e2e="yarn e2e"
+alias simctl="xcrun simctl"
+alias pip="pip3"
+alias curl="curl -sL"
+alias vel="velero"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
@@ -88,12 +96,10 @@ if [ "$(uname)" = 'Darwin' ]; then
 fi
 
 if (hash bat &>/dev/null); then
-  alias cat="bat"
+  alias cat='bat --theme OneHalfDark --pager "less -RF"'
 elif (hash ccat &>/dev/null); then
   alias cat="ccat"
 fi
-
-if (hash viman &>/dev/null); then alias man="viman"; fi
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -110,10 +116,8 @@ alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # << LISTING THINGS! >>
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
-if ! test -z $(which exa); then
+if hash exa &>/dev/null; then
   alias ls="exa --git --group-directories-first --git-ignore --color-scale"
-  # List all files colorized in long format
-  alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format, including dot files
   alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
   # Same as above, but don't hide gitignored files.
@@ -126,7 +130,6 @@ if ! test -z $(which exa); then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
-  alias a="exa -la --git --git-ignore --group-directories-first --color-scale"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"

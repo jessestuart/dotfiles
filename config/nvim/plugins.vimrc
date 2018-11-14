@@ -2,34 +2,6 @@
 " Functions to help enable lazy-loading of plugins.
 " @see https://www.reddit.com/r/vim/comments/7datnj/vimplug_cursorhold_and_ondemand_loading/
 " =================================================
-function! LoadAndDestroy(plugin, ...) abort
-  call plug#load(a:plugin)
-  execute 'autocmd! Defer_'.a:plugin
-  if a:0
-    execute a:1
-  endif
-endfunction
-
-function! Defer(github_ref, ...) abort
-  if !has('vim_starting')
-    return
-  endif
-  let plug_args = a:0 ? a:1 : {}
-  call extend(plug_args, { 'on': [] })
-  call plug#(a:github_ref, plug_args)
-  let plugin = a:github_ref[stridx(a:github_ref, '/') + 1:]
-  let lad_args = '"'.plugin.'"'
-  if a:0 > 1
-    let lad_args .= ', "'.a:2.'"'
-  endif
-  let call_loadAndDestroy = 'call LoadAndDestroy('.lad_args.')'
-  execute 'augroup Defer_'.plugin.' |'
-        \ '  autocmd CursorHold,CursorHoldI * '.call_loadAndDestroy.' | '
-        \ 'augroup end'
-endfunction
-
-command! -nargs=+ Plug call Defer(<args>)
-
 call plug#begin()
 " -------------------------------------
 " Text Editing.
@@ -39,7 +11,7 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'osyo-manga/vim-over'
-Plug 'reedes/vim-pencil'
+" Plug 'reedes/vim-pencil'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -65,9 +37,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'wincent/ferret'
-" Plug 'vim-scripts/bufexplorer.zip'
-" Plug 'wellle/targets.vim'
-" Plug 'yegappan/mru'
 
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
@@ -99,39 +68,32 @@ Plug 'jreybert/vimagit'
 " Plug 'mattn/webapi-vim' " Required for vim-github-comment
 " Plug 'mmozuras/vim-github-comment'
 " Plug 'idanarye/vim-merginal'
-" Plug 'cohama/agit.vim'
+Plug 'cohama/agit.vim'
 
 " -------------------------------------
 " WebDev.
 " -------------------------------------
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
 Plug 'prettier/vim-prettier', {
-\ 'do': 'yarn install',
-\ 'for': ['javascript', 'typescript', 'css',
-\         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
-\         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
-\]}
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css',
+      \         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
+      \         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
+      \]}
 Plug 'chrisbra/Colorizer'
-Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
+Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'alampros/vim-styled-jsx'
-Plug 'jxnblk/vim-mdx-js'
+" Plug 'alampros/vim-styled-jsx'
+" Plug 'jxnblk/vim-mdx-js'
 Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'mattn/emmet-vim'
 
-" Plug 'prabirshrestha/vim-lsp'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/async.vim'
-
-" Plug 'prabirshrestha/asyncomplete-flow.vim'
-" Plug 'prabirshrestha/asyncomplete-necovim.vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Disabled 20181114
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " For Denite features
 Plug 'Shougo/denite.nvim'
@@ -140,15 +102,14 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 
-Plug 'Quramy/tsuquyomi'
-Plug 'Quramy/vim-dtsm'
-Plug 'Quramy/vim-js-pretty-template'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'jason0x43/vim-js-indent'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -159,10 +120,10 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
 " -------------------------------------
-Plug 'hashivim/vim-packer'
-Plug 'hashivim/vim-terraform'
-Plug 'hashivim/vim-vagrant'
-" Plug 'pearofducks/ansible-vim'
+" Plug 'hashivim/vim-packer'
+" Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-vagrant'
+Plug 'pearofducks/ansible-vim'
 " Plug 'hejack0207/ansible.vim'
 
 " -------------------------------------
@@ -171,21 +132,20 @@ Plug 'hashivim/vim-vagrant'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
+" Plug 'itchyny/lightline.vim'
 
 " -------------------------------------
 " Misc. language support.
 " -------------------------------------
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
 " Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'jaspervdj/stylish-haskell'
-" Plug 'kchmck/vim-coffee-script'
 
 " [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
 " a number of improvements over the messy original from `vim-scripts`.
@@ -193,7 +153,7 @@ Plug 'jparise/vim-graphql'
 " ========================
 " Autocomplete / Snippets.
 " ========================
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 " Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
 " Plug 'honza/vim-snippets'
@@ -207,9 +167,9 @@ Plug 'jparise/vim-graphql'
 " Plug 'Shougo/neco-syntax'
 
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 " Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
@@ -222,8 +182,8 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Time tracking, etc.
 " -------------------------------------
 if executable('gtm')
+  Plug 'git-time-metric/gtm-vim-plugin'
 endif
-Plug 'git-time-metric/gtm-vim-plugin'
 if executable('wakatime')
   Plug 'wakatime/vim-wakatime'
 endif
@@ -247,7 +207,7 @@ Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/splice.vim'
-" Plug 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'sunaku/vim-shortcut'
@@ -259,21 +219,32 @@ Plug 'zivyangll/git-blame.vim'
 
 Plug 'jceb/vim-orgmode'
 Plug 'sjl/gundo.vim'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'kassio/neoterm'
 " Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
 Plug 'gregsexton/gitv'
 
 " Plug 'jpalardy/vim-slime'
 
 " Plug 'eraserhd/parinfer-rust'
 
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 
 Plug 'jaawerth/nrun.vim'
+
+Plug 'jessestuart/vim-markdown-link-convert'
+
+" Plug 'jordwalke/vim-reasonml'
+" Plug 'reasonml-editor/vim-reason-plus'
+
+Plug 'srstevenson/vim-topiary'
+
+Plug 'chrisbra/matchit'
+
+" Plug 'ruanyl/vim-sort-imports'
 
 " Plug 'wincent/command-t'
 
@@ -291,13 +262,14 @@ Plug 'jaawerth/nrun.vim'
 "   ||       |
 "  \||/\/\//\|/
 " Plug 'maralla/completor.vim'
-" Plug 'Shougo/denite.nvim'
 " Plug 'fmoralesc/vim-tutor-mode'
 " Plug 'tpope/vim-jdaddy'
 " Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " Plug 'plasticboy/vim-markdown'
 
-" assuming your using vim-plug: https://github.com/junegunn/vim-plug
+" ========
+" ncm2
+" ========
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
 
@@ -311,6 +283,10 @@ Plug 'jaawerth/nrun.vim'
 " Plug 'ncm2/ncm2-bufword'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+" Plug 'ncm2/ncm2-tern', { 'do': 'yarn install' }
+
+Plug 'paretje/nvim-man'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 
 call plug#end()

@@ -1,5 +1,3 @@
-let g:deoplete#enable_at_startup = 1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -30,7 +28,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
 map <leader>cc :botright cope<CR>
-map <leader>co ggyG:tabnew<CR>:set syntax=qf<CR>pgg
+map <leader>co ggyG :tabnew<CR>:set syntax=qf<CR>pgg
 map <leader>ne :cn<CR>
 map <leader>pe :cp<CR>
 
@@ -48,21 +46,6 @@ let g:NERDTreeIgnore=[
   \ '*.pyc',
   \ '\~$'
   \ ]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZF
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
@@ -130,7 +113,7 @@ let g:fzf_colors =
 " augroup END
 
 " TODO(jesse): This was getting annoying w/ JSX; maybe reenable this?
-" let g:closetag_filenames = '*.html,*.jsx,*.js'
+let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:user_emmet_install_global = 1
 
 nnoremap <leader>tw :ToggleWorkspace<CR>
@@ -141,34 +124,33 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" ==================
-" Mappings for `fzy`
-" ==================
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
-" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
-nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
-nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
+" " ==================
+" " Mappings for `fzy`
+" " ==================
+" function! FzyCommand(choice_command, vim_command)
+"   try
+"     let output = system(a:choice_command . " | fzy ")
+"   catch /Vim:Interrupt/
+"     " Swallow errors from ^C, allow redraw! below
+"   endtry
+"   redraw!
+"   if v:shell_error == 0 && !empty(output)
+"     exec a:vim_command . ' ' . output
+"   endif
+" endfunction
+" " nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+" nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
+" nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
-" let g:prettier#config#print_width = 80
+let g:prettier#config#print_width = 80
 " number of spaces per indentation level
 let g:prettier#config#tab_width = 2
 " use tabs over spaces
@@ -183,17 +165,15 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
-" flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'flow'
+" flow|babel|typescript|css|less|scss|json|graphql|markdown
+" let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'file-override'
+" let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
-
-" autocmd BufWritePre *.js Neoformat
 
 " let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
 " function! UpdateStatusBar(timer)
@@ -226,13 +206,13 @@ set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  set relativenumber
+  set norelativenumber
   set scrolloff=999
 endfunction
 
 function! s:goyo_leave()
   set showmode
-  set number
+  set relativenumber
   set showcmd
 endfunction
 
@@ -268,53 +248,36 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
-let g:flow#enable = 1
-let g:flow#omnifunc = 1
-if executable('flow-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'flow-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx'],
-        \ })
-endif
+" let g:flow#enable = 1
+" let g:flow#omnifunc = 1
+" if executable('flow-language-server')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'flow-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
+"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+"         \ 'whitelist': ['javascript', 'javascript.jsx'],
+"         \ })
+" endif
 
-" " =========
-" " UltiSnips
-" " =========
-" " Trigger configuration.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" =========
+" UltiSnips
+" =========
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 " let g:UltiSnipsListSnippets="<c-e> <c-e>"
-
-" let g:flow#showquickfix = 0
 
 " Keep that hella legible 'conceal' option. I'm sure there's a way to do this
 " built in.
 " @see https://github.com/elzr/vim-json
 let g:polyglot_disabled = ['json']
 
-let g:LanguageClient_autoStart = 1
 " Required for operations modifying multiple buffers like rename.
 set hidden
-
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-set completefunc=LanguageClient#complete
-" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " =============================================================================
 " nmc2
@@ -324,7 +287,7 @@ set completefunc=LanguageClient#complete
 " set shortmess+=c
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
+inoremap <C-C> <ESC>
 
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
@@ -337,6 +300,12 @@ inoremap <c-c> <ESC>
 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
-set rtp+=/usr/local/opt/fzf
-
 let g:ctrlp_user_command = 'git ls-files'
+
+let g:import_sort_auto = 1
+
+nnoremap <silent> <leader>t :TestNearest<CR>
+nnoremap <silent> <leader>T :TestFile<CR>
+nnoremap <silent> <leader>a :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+" nnoremap <silent> <leader>g :TestVisit<CR>

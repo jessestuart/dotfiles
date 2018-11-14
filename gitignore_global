@@ -22,3 +22,5 @@ google-play-service-account-key.json
 *.bundle*
 
 .tern-project
+
+_esy/

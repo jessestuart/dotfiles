@@ -13,6 +13,8 @@ source $HOME/.config/nvim/plugins-config.vimrc
 
 source $HOME/.config/nvim/ale.vimrc
 source $HOME/.config/nvim/deoplete.vimrc
+source $HOME/.config/nvim/fzf.vimrc
+source $HOME/.config/nvim/language-client.vimrc
 
 " Load all 'native' plugins -- these need to be added to runtime path before
 " helptags can be generated.  These lines must go at the very end of the

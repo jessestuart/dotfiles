@@ -16,11 +16,9 @@ for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 source $ZSH/prompt/config.zsh
 
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
-# if (hash antibody &>/dev/null); then
 source <(antibody init)
 antibody bundle < "$ZSH/antibody.conf"
 . "$ZSH/antibody/config.zsh"
-# fi
 
 # Hack to make zsh load more quickly by not regenerating completion data
 # on every shell init.
@@ -55,7 +53,7 @@ done
 
 # source $fpath
 if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+  fpath=/usr/local/share/zsh/site-functions:$FPATH
 fi
 
 unset config_files

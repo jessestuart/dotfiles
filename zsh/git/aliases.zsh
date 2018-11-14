@@ -86,3 +86,7 @@ function git_cleanup_merged_prs() {
     sed 's/origin\///g' |
     xargs git push origin --delete
 }
+
+function git_latest_tag() {
+  git describe --tags `git rev-list --tags --max-count=1` --abbrev=0
+}

@@ -1,4 +1,9 @@
 #!/usr/bin/env zsh
+
+function zdo() {
+  sudo zsh -c "$functions[$1]" "$@"
+}
+
 # ====================================
 # Create a new directory and enter it.
 # ====================================
@@ -322,9 +327,10 @@ function empty_trash() {
   sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'
 }
 
-function timestamp() {
-  echo "$(date +%s)"
-}
+alias timestamp="date +%s"
+# function timestamp() {
+#   date +%s
+# }
 
 # TEMP
 function convert_icon() {
@@ -451,5 +457,9 @@ function sum() {
 function nag() {
   local cmd="$@"
   echo $cmd
-  while true; do $cmd; sleep 1; done
+  while true; do zdo $cmd; sleep 1; done
+}
+
+function cheat() {
+  /usr/local/bin/cheat $1 | bat -l markdown --theme OneHalfDark --style plain
 }

@@ -32,7 +32,8 @@ nnoremap <leader>fz :FZF<CR>
 nnoremap <C-j> <CR>
 
 " Toggle Goyo for distraction-free editing.
-nnoremap <leader>z :Goyo<CR>
+nnoremap <leader>z :Goyo 140+10%x100%<CR>
+nnoremap <leader>zz :Goyo!<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -95,7 +96,7 @@ vnoremap <leader>si :sort i<CR>
 " => Moving around buffers, windows, & tabs.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vertical Split
-nnoremap <leader>i :vsplit<CR>
+" nnoremap <leader>| :vsplit<CR>
 " Horizontal Split
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.
@@ -220,3 +221,5 @@ nnoremap <Leader>gg :GitGutterToggle<CR>
 nnoremap <Leader>b :Gblame<CR>
 
 nnoremap <leader>t :TagbarToggle<CR>
+
+nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>

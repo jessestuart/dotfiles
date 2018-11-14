@@ -112,6 +112,8 @@ set t_vb=
 " Add a bit of extra margin to the left gutter.
 set foldcolumn=2
 
+set foldmethod=indent
+
 " Enable clipboard on unix systems.
 set clipboard=unnamed
 
@@ -123,7 +125,7 @@ set laststatus=2
 set timeoutlen=500
 
 " Don't automatically continue comments after newline
-" autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Display whitespace characters.
 " set list listchars=tab:›\ ,trail:·,nbsp:␣,extends:↦,precedes:↤
@@ -158,21 +160,21 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m,%f:%l%m,%f\ \ %l%m
 endif
 
-" Delete trailing whitespace on save.
-function! DeleteTrailingWS()
-  " Set a mark on the current line...
-  exe 'normal mz'
-  " Delete all trailing whitespace...
-  exe ':%s/\s\+$//ge'
-  " Return to the mark we just set...
-  exe 'normal `z'
-  " Then delete the mark to clean up after ourselves.
-  exe ':delmarks z'
-endfunction
-augroup DeleteTrailingWhitespace
-  autocmd!
-  autocmd BufWrite * :call DeleteTrailingWS()
-augroup END
+" " Delete trailing whitespace on save.
+" function! DeleteTrailingWS()
+"   " Set a mark on the current line...
+"   exe 'normal mz'
+"   " Delete all trailing whitespace...
+"   exe ':%s/\s\+$//ge'
+"   " Return to the mark we just set...
+"   exe 'normal `z'
+"   " Then delete the mark to clean up after ourselves.
+"   exe ':delmarks z'
+" endfunction
+" augroup DeleteTrailingWhitespace
+"   autocmd!
+"   autocmd BufWrite * :call DeleteTrailingWS()
+" augroup END
 
 " Automatically reload vimrc on save
 augroup ReloadVimrcGroup
@@ -180,27 +182,29 @@ augroup ReloadVimrcGroup
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-function! DeleteTabs()
-  if &ft =~ 'make' || &ft =~ 'gitconfig' || &ft =~ 'go'
-    return
-  endif
-  try
-    exe 'normal mz'
-    exe '%s/\t/  /g'
-    exe 'normal `z'
-    exe ':delmarks z'
-  catch
-  endtry
-endfunction
-augroup DeleteTabs
-  autocmd!
-  autocmd BufWrite * :call DeleteTabs()
-augroup END
+" function! DeleteTabs()
+"   if &ft =~ 'make' || &ft =~ 'gitconfig' || &ft =~ 'go'
+"     return
+"   endif
+"   try
+"     exe 'normal mz'
+"     exe '%s/\t/  /g'
+"     exe 'normal `z'
+"     exe ':delmarks z'
+"   catch
+"   endtry
+" endfunction
+" augroup DeleteTabs
+"   autocmd!
+"   autocmd BufWrite * :call DeleteTabs()
+" augroup END
 
 " Switch to the directory files are in automatically.
 " NOTE: Not supported by Dirvish (?)
 " set autochdir
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+set foldmethod=indent
 
 " Get word completion for free -- the following command will let us press
 " CTRL-N or CTRL-P in insert-mode to complete the word we’re typing.

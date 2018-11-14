@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
 # Add the bins.
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 export PATH="/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -86,3 +84,13 @@ PATH=$PATH:$ANDROID_HOME/tools/bin
 # ~* Secrets *~
 # =============
 test -e "$HOME/.secrets" && . "$HOME/.secrets"
+
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+export PATH="/usr/local/opt/node@10/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin/bundle:$PATH"
+export PATH="$HOME/.bin/:$PATH"
+
+export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/bin:$PATH"

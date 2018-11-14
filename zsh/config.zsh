@@ -10,7 +10,7 @@ setopt NO_BG_NICE
 setopt NO_HUP
 setopt NO_LIST_BEEP
 setopt LOCAL_OPTIONS # allow functions to have local options
-setopt LOCAL_TRAPS # allow functions to have local traps
+setopt LOCAL_TRAPS   # allow functions to have local traps
 setopt PROMPT_SUBST
 setopt COMPLETE_IN_WORD
 # I'd like to use Ctrl+D to exit my shell, thank you.
@@ -37,9 +37,6 @@ setopt ALIASES
 ##
 # Completion
 ##
-# autoload -U compinit
-# compinit
-# zmodload -i zsh/complist
 # hash everything before completion
 setopt HASH_LIST_ALL
 # when completing from the middle of a word, move the cursor to the end of the word
@@ -55,8 +52,8 @@ zmodload -i zsh/complist
 
 WORDCHARS=''
 
-# do not autoselect the first completion entry
-unsetopt menu_complete
+# # do not autoselect the first completion entry
+# unsetopt menu_complete
 unsetopt flowcontrol
 # show completion menu on successive tab press
 setopt auto_menu
@@ -68,10 +65,10 @@ bindkey -M menuselect '^o' accept-and-infer-next-history
 zstyle ':completion:*:*:*:*:*' menu select
 
 # case insensitive (all), partial-word and substring completion
-if [[ "$CASE_SENSITIVE" = true ]]; then
+if [[ "$CASE_SENSITIVE" == true ]]; then
   zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 else
-  if [[ "$HYPHEN_INSENSITIVE" = true ]]; then
+  if [[ "$HYPHEN_INSENSITIVE" == true ]]; then
     zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
   else
     zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
@@ -88,4 +85,3 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # bindkey '^[[5C' end-of-line
 # bindkey '^[[3~' delete-char
 # bindkey '^?' backward-delete-char
-

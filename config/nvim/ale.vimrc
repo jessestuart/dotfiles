@@ -1,7 +1,7 @@
 " =============================================
 " Asynchronous Lint Engine (ALE) configuration.
 " =============================================
-let g:ale_javascript_eslint_options = 'esversion: 9'
+" let g:ale_javascript_eslint_options = 'esversion: 9'
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
@@ -23,14 +23,19 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 
 " \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
 " , 'prettier-eslint', 'flow', 'eslint'],
+"
+      " \  'typescript': ['prettier', 'tsc', 'tslint', 'eslint'],
+      " \  'typescript.tsx': ['prettier', 'tsc', 'tslint', 'eslint'],
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'ansible': ['ansible-lint'],
+      \  'bash': ['shfmt'],
       \  'Dockerfile': ['hadolint'],
-      \  'javascript': ['prettier', 'standard', 'flow'],
+      \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
+      \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
       \  'json': ['prettier'],
-      \  'typescript': ['prettier', 'tsc', 'tslint'],
-      \  'typescript.tsx': ['prettier', 'tsc', 'tslint'],
+      \  'typescript': ['eslint', 'tslint'],
+      \  'typescript.tsx': ['eslint', 'tslint'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
@@ -40,28 +45,31 @@ let g:ale_linters = {
       \  'zsh': ['shellcheck'],
       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
-      \  'ruby': ['rubocop']
+      \  'ruby': ['rubocop'],
       \}
 
-      " \  'javascript.jsx': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      " \  'javascript.jsx': ['importjs', 'standard'],
+      " \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      " \  'typescript': ['importjs', 'prettier', 'tslint', 'eslint'],
+      " \  'typescript.tsx': ['importjs', 'prettier', 'tslint', 'eslint'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'bash': ['shfmt'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
-      \  'javascript.jsx': ['importjs', 'standard'],
-      \  'typescript': ['prettier', 'tslint'],
-      \  'typescript.tsx': ['prettier', 'tslint'],
+      \  'javascript.jsx': ['prettier-eslint', 'eslint', 'flow'],
       \  'json': ['prettier'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
+      \  'ruby': ['rubocop'],
       \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],
-      \  'bash': ['shfmt'],
+      \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'typescript.tsx': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
-      \  'ruby': ['rubocop'],
-      \  'yaml': ['prettier']
       \}
 
 " Map keys to navigate between lines with errors and warnings.

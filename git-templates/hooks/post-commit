@@ -1,4 +1,5 @@
 #!/bin/sh
+#!/bin/bash
 
 # ===========================================================
 # Log commit messages as a 'highlight' in RescueTime Premium.
@@ -19,12 +20,17 @@ notify_rescuetime() {
     key=="$RESCUETIME_API_KEY" \
     highlight_date=="$DATE_TODAY" \
     description=="$MESSAGE" \
-    source=="$LABEL"
+    source=="$LABEL" \
+    --body
 }
 
 git-hooks run "$0" "$@"
+if hash gtm &>/dev/null; then
 gtm commit --yes || /usr/local/bin/gtm commit --yes
+  git pushgtm >/dev/null 2>&1 &
+fi
 
-notify_rescuetime &>/dev/null
-git pushgtm >/dev/null 2>&1 &
-.git/hooks/ctags >/dev/null 2>&1 &
+notify_rescuetime
+if test -e .git/hooks/ctags; then
+  .git/hooks/ctags >/dev/null 2>&1 &
+fi

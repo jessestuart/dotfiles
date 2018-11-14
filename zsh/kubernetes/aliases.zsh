@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
+alias hui="helm upgrade --install"
 # alias load_colors="$HOME/.bin/load_colors"
 # alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
-alias esh="http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
-alias eshw="watch http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
+alias esh="http --pretty=all -b https://elasticsearch.jesses.io/_cluster/health"
+alias eshw="watch http --pretty=all -b https://elasticsearch.jesses.io/_cluster/health"
 # alias esh="http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
 # alias eshw="watch http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
 alias k="kubectl "
@@ -23,9 +24,9 @@ alias stes="stern es-full --tail=100 --namespace=logging"
 # Get all pods, sorted by number of restarts.
 alias kgcrash="kgpw | sort -n -k5"
 
-alias abg="ark backup get"
-alias abdel="yes | ark backup delete"
-alias abd="ark backup describe"
+alias abg="velero backup get"
+alias abdel="yes | velero backup delete"
+alias abd="velero backup describe"
 
 # Aliases for `kubens` for quickly switching between common namespaces.
 alias knsl="kubens logging"
@@ -79,7 +80,7 @@ function load_colors() {
 #       | sed "s/Running/${green}Running${normal}/g" \
 #       | sed "s/Pending/${yellow}Pending${normal}/g" \
 #       | sed "s/Completed/${blue}Completed${normal}/g" \
-#       | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
+#       | sed -E "s/([a-zA-Z]]*)Error/${red}\1Error${normal}/g" \
 #       | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
 #       | sed -E "s/([a-zA-Z]+)Killed/${red}\1BackOff${normal}/g" \
 #       | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
@@ -88,24 +89,25 @@ function load_colors() {
 
 function get_pods_colorized() {
   load_colors
-  kubectl get pods "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
-      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
-      | sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g"
+  kubectl get pods "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" |
+    sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
+    sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
+    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
+    sed -E "s/\s(milo|ryzen|antergos(1|2)|ubuntu1)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {
   load_colors
-  kubectl describe "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed "s/Error/${red}Error${normal}/g" \
-      | sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
+  kubectl describe "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed "s/Error/${red}Error${normal}/g" |
+    sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
 }
 
 # Auto-generated from:
@@ -143,7 +145,6 @@ alias krun='kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i
 alias ksysrun='kubectl --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
 alias ked='kubectl edit'
 alias ksysed='kubectl --namespace=kube-system edit'
-alias kgpo='get_pods_colorized'
 alias ksysgpo='kubectl --namespace=kube-system get pods'
 alias kdpo='kubectl describe pods'
 alias ksysdpo='kubectl --namespace=kube-system describe pods'
@@ -979,5 +980,3 @@ alias kgwowidesln='kubectl get --watch -o=wide --show-labels --namespace'
 alias kgpowowidesln='get_pods_colorized --watch -o=wide --show-labels --namespace'
 alias kgdepwowidesln='kubectl get deployment --watch -o=wide --show-labels --namespace'
 alias kgwslowiden='kubectl get --watch --show-labels -o=wide --namespace'
-alias kgpowslowiden='get_pods_colorized --watch --show-labels -o=wide --namespace'
-alias kgdepwslowiden='kubectl get deployment --watch --show-labels -o=wide --namespace'

@@ -14,7 +14,8 @@ autoload zsh/files
 autoload zsh/zle
 
 # Get pure. 🙏
-autoload -Uz promptinit; promptinit
+autoload -Uz promptinit
+promptinit
 
 # Avoid "file/directory already exists" warnings.
 # I know what I'm doing. 🔥
@@ -29,14 +30,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # Miscellany.
 # --------------------------------------
 
-# Support for signing git commits w/ GPG.
-export GPG_TTY="$(tty)"
-
 # Use Ctrl+P / Ctrl+N to navigate through history, à l'emacs.
 bindkey "^N" down-line-or-search
 bindkey "^P" up-line-or-search
-# bindkey '^?' backward-delete-char
-# bindkey '^H' backward-delete-char
 bindkey '^W' backward-kill-word
 
 # zle -N zle-line-init
@@ -47,3 +43,5 @@ export KEYTIMEOUT=1
 if [ -n "$TMUX" ]; then
   export RPROMPT='%F$(test -e .gtm && gtm status -total-only -long-duration)'
 fi
+
+setopt autopushd pushdminus pushdsilent pushdtohome
