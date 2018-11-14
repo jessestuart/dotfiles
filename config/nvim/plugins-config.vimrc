@@ -62,7 +62,10 @@ let g:NERDTreeIgnore=[
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep(
+  \ 'rg --column --line-number --no-heading --fixed-strings '
+  \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"
+  \ ' '.shellescape(<q-args>), 1, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
@@ -298,13 +301,13 @@ endif
 " @see https://github.com/elzr/vim-json
 let g:polyglot_disabled = ['json']
 
-let g:LanguageClient_autoStart = 1
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript': ['flow', 'lsp'],
+    \ 'javascript.jsx': ['flow', 'lsp', '--from ', '.flowconfig'],
     \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
@@ -314,6 +317,14 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 set completefunc=LanguageClient#complete
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {}
+if executable('flow')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+endif
 " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " =============================================================================
@@ -340,3 +351,5 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 set rtp+=/usr/local/opt/fzf
 
 let g:ctrlp_user_command = 'git ls-files'
+
+let g:import_sort_auto = 1

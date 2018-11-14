@@ -70,7 +70,7 @@ Plug 'wincent/ferret'
 " Plug 'yegappan/mru'
 
 if executable('ctags')
-  Plug 'ludovicchabant/vim-gutentags'
+  " Plug 'ludovicchabant/vim-gutentags'
 endif
 
 " -------------------------------------
@@ -126,8 +126,8 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'yami-beta/asyncomplete-omni.vim'
 Plug 'prabirshrestha/async.vim'
 
-" Plug 'prabirshrestha/asyncomplete-flow.vim'
-" Plug 'prabirshrestha/asyncomplete-necovim.vim'
+Plug 'prabirshrestha/asyncomplete-flow.vim'
+Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
@@ -274,6 +274,8 @@ Plug 'gregsexton/gitv'
 Plug 'sbdchd/neoformat'
 
 Plug 'jaawerth/nrun.vim'
+
+Plug 'ruanyl/vim-sort-imports'
 
 " Plug 'wincent/command-t'
 

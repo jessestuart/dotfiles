@@ -23,3 +23,5 @@ alias pscprock="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/rock"
 
 alias pshff="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/ff"
 alias pscpff="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/ff"
+
+alias mosh-home='ssh -S none -o "ProxyCommand=/usr/local/bin/mosh --fake-proxy -- %h %p" -t jesse@74.71.41.142 -p 33335'
