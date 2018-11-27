@@ -7,15 +7,15 @@
 function start_ssh_agent() {
   ssh-add -l >/dev/null 2>&1
   if [ $? = 2 ]; then
-     # No `ssh-agent` running.
-     export SSH_AUTH_SOCK=~/.ssh-socket
-     rm -rf "$SSH_AUTH_SOCK"
-     # ^ Ensure that future sessions will reuse the same `SSH_AUTH_SOCK`.
+    # No `ssh-agent` running.
+    export SSH_AUTH_SOCK=~/.ssh-socket
+    rm -rf "$SSH_AUTH_SOCK"
+    # ^ Ensure that future sessions will reuse the same `SSH_AUTH_SOCK`.
 
-     local SSH_PID_FILE=~/.ssh-agent-pid
-     # Don't print the "Agent pid [...]" message.
-     eval "$(ssh-agent -a $SSH_AUTH_SOCK)" &>/dev/null
-     echo "$SSH_AGENT_PID" >| "$SSH_PID_FILE"
+    local SSH_PID_FILE=~/.ssh-agent-pid
+    # Don't print the "Agent pid [...]" message.
+    eval "$(ssh-agent -a $SSH_AUTH_SOCK)" &>/dev/null
+    echo "$SSH_AGENT_PID" >|"$SSH_PID_FILE"
   fi
 }
 

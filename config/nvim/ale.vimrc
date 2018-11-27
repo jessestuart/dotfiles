@@ -44,17 +44,17 @@ let g:ale_linters = {
       \}
 
       " \  'javascript.jsx': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      " \  'pandoc': ['prettier'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
-      \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      \  'javascript': ['importjs', 'eslint'],
       \  'javascript.jsx': ['importjs', 'standard'],
       \  'typescript': ['prettier', 'tslint'],
       \  'typescript.tsx': ['prettier', 'tslint'],
       \  'json': ['prettier'],
       \  'markdown': ['prettier'],
-      \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
       \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],

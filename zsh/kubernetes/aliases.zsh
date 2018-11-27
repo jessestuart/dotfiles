@@ -47,7 +47,7 @@ alias sysdst="sudo systemctl stop docker"
 alias sysdarl="sudo systemctl daemon-reload"
 
 alias hlrm="helm delete --purge"
-# alias hlin="helm update --install "
+alias hlin="helm update --install "
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
@@ -88,29 +88,30 @@ function load_colors() {
 
 function get_pods_colorized() {
   load_colors
-  kubectl get pods "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
-      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
-      | sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g"
+  kubectl get pods "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" |
+    sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
+    sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
+    sed -E "s/\spik8s-master/${cyan}pik8s-master${normal}/g" |
+    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
+    sed -E "s/\smilo/${magenta}milo${normal}/g"
 }
 
 function describe_pods_colorized() {
   load_colors
-  kubectl describe "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed "s/Error/${red}Error${normal}/g" \
-      | sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
+  kubectl describe "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed "s/Error/${red}Error${normal}/g" |
+    sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
 }
 
 # Auto-generated from:
 # @see https://github.com/jessestuart/kubectl-aliases
-# Copyright 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -143,7 +144,6 @@ alias krun='kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i
 alias ksysrun='kubectl --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
 alias ked='kubectl edit'
 alias ksysed='kubectl --namespace=kube-system edit'
-alias kgpo='get_pods_colorized'
 alias ksysgpo='kubectl --namespace=kube-system get pods'
 alias kdpo='kubectl describe pods'
 alias ksysdpo='kubectl --namespace=kube-system describe pods'
@@ -179,7 +179,7 @@ alias kdsec='kubectl describe secret'
 alias ksysdsec='kubectl --namespace=kube-system describe secret'
 alias krmsec='kubectl delete secret'
 alias ksysrmsec='kubectl --namespace=kube-system delete secret'
-alias kgno='kubectl get nodes'
+alias kgno='kubectl get nodes --no-headers'
 alias kdno='kubectl describe nodes'
 alias kgns='kubectl get namespaces'
 alias kdns='kubectl describe namespaces'

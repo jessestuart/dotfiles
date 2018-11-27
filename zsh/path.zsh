@@ -32,8 +32,6 @@ export PATH="/usr/local/node/bin:$PATH"
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
 
-export PATH="$PATH:~/dotfiles/**/*.sh"
-
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
@@ -69,6 +67,7 @@ export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
+# Rubies.
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.5.0/gems/bin:$PATH"
