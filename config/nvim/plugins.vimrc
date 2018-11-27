@@ -70,7 +70,7 @@ Plug 'wincent/ferret'
 " Plug 'yegappan/mru'
 
 if executable('ctags')
-  " Plug 'ludovicchabant/vim-gutentags'
+  Plug 'ludovicchabant/vim-gutentags'
 endif
 
 " -------------------------------------
@@ -80,7 +80,6 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
@@ -91,13 +90,13 @@ Plug 'tpope/vim-unimpaired'
 " -------------------------------------
 " Git/Github-related plugins.
 " -------------------------------------
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'codegram/vim-codereview'
-" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'mattn/webapi-vim' " Required for vim-github-comment
-" Plug 'mmozuras/vim-github-comment'
 " Plug 'idanarye/vim-merginal'
 " Plug 'cohama/agit.vim'
 
@@ -107,10 +106,11 @@ Plug 'jreybert/vimagit'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
+\ 'branch': 'release/1.x',
 \ 'do': 'yarn install',
 \ 'for': ['javascript', 'typescript', 'css',
 \         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
-\         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
+\         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc'
 \]}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'chrisbra/Colorizer'
@@ -200,7 +200,7 @@ Plug 'jparise/vim-graphql'
 " Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 " Place deoplete first, then autocomplete-flow
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/neocomplete'
 " Plug 'Shougo/neco-vim'
 " Syntax source for neocomplete/deoplete/ncm
@@ -211,7 +211,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-" Plug 'wokalski/autocomplete-flow'
+Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
 " Plug 'Shougo/neosnippet'
 " Plug 'Shougo/neosnippet-snippets'
@@ -275,7 +275,7 @@ Plug 'sbdchd/neoformat'
 
 Plug 'jaawerth/nrun.vim'
 
-Plug 'ruanyl/vim-sort-imports'
+" Plug 'ruanyl/vim-sort-imports'
 
 " Plug 'wincent/command-t'
 

@@ -50,24 +50,6 @@ let g:NERDTreeIgnore=[
   \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZF
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep(
-  \ 'rg --column --line-number --no-heading --fixed-strings '
-  \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"
-  \ ' '.shellescape(<q-args>), 1, <bang>0)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
@@ -101,21 +83,6 @@ let g:gutentags_file_list_command = {
 \ }
 
 let g:fml_all_sources = 1
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
 " augroup asyncomplete_register_sources
 "   au!
@@ -158,7 +125,7 @@ function! FzyCommand(choice_command, vim_command)
     exec a:vim_command . ' ' . output
   endif
 endfunction
-" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
@@ -167,9 +134,8 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
 " let g:prettier#config#print_width = 80
 " number of spaces per indentation level
@@ -187,9 +153,9 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'flow'
+let g:prettier#config#parser = 'babylon'
 " cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'file-override'
+let g:prettier#config#config_precedence = 'prefer-file'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
@@ -198,28 +164,28 @@ let g:prettier#quickfix_auto_focus = 0
 
 " autocmd BufWritePre *.js Neoformat
 
-" let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
-" function! UpdateStatusBar(timer)
-"   execute 'let &ro = &ro'
-" endfunction
+let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
+function! UpdateStatusBar(timer)
+  execute 'let &ro = &ro'
+endfunction
 
 " Not necessary to show the `--INSERT--` text anymore. This hides it.
 " h/t https://github.com/itchyny/lightline.vim
 set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \ 'left':  [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'modified' ] ],
-      \ 'right': [  ['datetime'],
-      \             [ 'lineinfo' ],
-      \             [ 'percent' ],
-      \             [ 'filetype']]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'one',
+"       \ 'active': {
+"       \ 'left':  [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'modified' ] ],
+"       \ 'right': [  ['datetime'],
+"       \             [ 'lineinfo' ],
+"       \             [ 'percent' ],
+"       \             [ 'filetype']]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head'
+"       \ },
+"       \ }
 " let g:lightline.tabline = {
 "   \   'left': [ ['tabs'] ],
 "   \   'right': []
@@ -271,16 +237,16 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
-let g:flow#enable = 1
-let g:flow#omnifunc = 1
-if executable('flow-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'flow-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx'],
-        \ })
-endif
+" let g:flow#enable = 1
+" let g:flow#omnifunc = 1
+" if executable('flow-language-server')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'flow-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
+"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+"         \ 'whitelist': ['javascript', 'javascript.jsx'],
+"         \ })
+" endif
 
 " " =========
 " " UltiSnips
@@ -306,8 +272,8 @@ set hidden
 
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['flow', 'lsp'],
-    \ 'javascript.jsx': ['flow', 'lsp', '--from ', '.flowconfig'],
+    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'javascript.jsx': ['flow-language-server', '--stdio'],
     \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
@@ -319,22 +285,15 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 set completefunc=LanguageClient#complete
 
 " Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {}
-if executable('flow')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  " Use LanguageServer for omnifunc completion
-  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-endif
+" let g:LanguageClient_serverCommands = {}
+" if executable('flow')
+"   let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"   " Use LanguageServer for omnifunc completion
+"   autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+" endif
 " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
-" =============================================================================
-" nmc2
-" =============================================================================
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-" set shortmess+=c
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+" CTRL-C doesn't trigger the InsertLeave autocmd. map to <ESC> instead.
 inoremap <c-c> <ESC>
 
 " When the <Enter> key is pressed while the popup menu is visible, it only
@@ -343,13 +302,14 @@ inoremap <c-c> <ESC>
 " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
-
-set rtp+=/usr/local/opt/fzf
 
 let g:ctrlp_user_command = 'git ls-files'
 
 let g:import_sort_auto = 1
+
+let g:airline#extensions#ale#enabled = 1

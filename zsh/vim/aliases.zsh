@@ -9,7 +9,6 @@ alias v="$EDITOR"
 alias vi.="$EDITOR ."
 alias vi="$EDITOR"
 
-
 # ===========================
 # Shortcuts to edit dotfiles.
 # ===========================

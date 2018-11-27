@@ -39,6 +39,7 @@ alias fl="bundle exec fastlane"
 alias jv="load_sdkman"
 alias jdn="cd ~/dev/native/"
 alias jen="cd ~/github/edenhealth/native/"
+alias rn="react-native"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
@@ -136,7 +137,7 @@ fi
 # Misc
 alias ap="ansible-playbook"
 alias atom="atom-beta"
-alias fuck='eval $(thefuck $(fc -ln -1))'
+# alias fuck='eval $(thefuck $(fc -ln -1))'
 alias kbz="ps aux | grep '[B]ackblaze' -i | awk '{print $2}' | sudo xargs kill -9"
 alias tf="terraform"
 alias tmd="tmux detach"
