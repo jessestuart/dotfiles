@@ -1,0 +1,11 @@
+[ver:1,total:3180]
+.gtm/terminal.app:1155,1543302000:150,1543305600:800,1543309200:205,r
+config/nvim/plugins.vimrc:675,1543305600:360,1543309200:315,m
+zsh/path.zsh:570,1543305600:270,1543309200:300,m
+config/nvim/fzf.vimrc:300,1543305600:300,m
+tmux.conf:250,1543305600:250,m
+zsh/base.zsh:90,1543305600:90,m
+textlintrc:60,1543302000:60,r
+rcrc:30,1543302000:30,r
+zsh/iterm/iterm2_shell_integration.zsh:30,1543305600:30,r
+.gitignore:20,1543309200:20,m
