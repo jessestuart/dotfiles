@@ -40,6 +40,7 @@ alias jv="load_sdkman"
 alias jdn="cd ~/dev/native/"
 alias jen="cd ~/github/edenhealth/native/"
 alias rn="react-native"
+alias curl="curl -sL"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"

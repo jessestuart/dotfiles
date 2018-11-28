@@ -94,6 +94,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+Plug 'zivyangll/git-blame.vim'
+Plug 'christoomey/vim-conflicted'
 " Plug 'codegram/vim-codereview'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'mattn/webapi-vim' " Required for vim-github-comment
@@ -255,7 +257,6 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'wesQ3/vim-windowswap'
 Plug 'thaerkh/vim-workspace'
 Plug 'janko-m/vim-test'
-Plug 'zivyangll/git-blame.vim'
 
 Plug 'jceb/vim-orgmode'
 Plug 'sjl/gundo.vim'

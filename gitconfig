@@ -136,6 +136,7 @@
 
 	# Pull all branches from the remote that can be merged with fast-forward
 	up = "!git remote update -p; git merge --ff-only @{u}"
+	conflicted = !nvim +Conflicted
 
 [apply]
 	# Detect whitespace errors when applying a patch

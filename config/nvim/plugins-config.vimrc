@@ -310,6 +310,9 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 let g:ctrlp_user_command = 'git ls-files'
 
-let g:import_sort_auto = 1
-
 let g:airline#extensions#ale#enabled = 1
+
+" =========================================
+" import-sort (javascript, typescript, etc)
+" =========================================
+let g:import_sort_auto = 0
