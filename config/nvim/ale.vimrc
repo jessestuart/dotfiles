@@ -1,7 +1,7 @@
 " =============================================
 " Asynchronous Lint Engine (ALE) configuration.
 " =============================================
-let g:ale_javascript_eslint_options = 'esversion: 9'
+" let g:ale_javascript_eslint_options = 'esversion: 9'
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
@@ -28,6 +28,7 @@ let g:ale_linters = {
       \  'ansible': ['ansible-lint'],
       \  'Dockerfile': ['hadolint'],
       \  'javascript': ['prettier', 'standard', 'flow'],
+      \  'javascript.jsx': ['eslint', 'importjs', 'prettier-eslint', 'flow', 'standard'],
       \  'json': ['prettier'],
       \  'typescript': ['prettier', 'tsc', 'tslint'],
       \  'typescript.tsx': ['prettier', 'tsc', 'tslint'],
@@ -43,13 +44,13 @@ let g:ale_linters = {
       \  'ruby': ['rubocop']
       \}
 
-      " \  'javascript.jsx': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+      " \  'javascript.jsx': ['importjs', 'standard'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
-      \  'javascript.jsx': ['importjs', 'standard'],
+      \  'javascript.jsx': ['importjs', 'prettier-eslint', 'eslint', 'flow'],
       \  'typescript': ['prettier', 'tslint'],
       \  'typescript.tsx': ['prettier', 'tslint'],
       \  'json': ['prettier'],

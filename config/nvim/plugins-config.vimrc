@@ -167,7 +167,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
+" let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
@@ -307,9 +307,9 @@ set hidden
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow', 'lsp'],
-    \ 'javascript.jsx': ['flow', 'lsp', '--from ', '.flowconfig'],
-    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['flow', 'lsp'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'typescript.tsx': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -317,14 +317,19 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 set completefunc=LanguageClient#complete
+autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 
 " Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {}
-if executable('flow')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  " Use LanguageServer for omnifunc completion
-  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-endif
+" let g:LanguageClient_serverCommands = {}
+" if executable('flow')
+"   let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"   " Use LanguageServer for omnifunc completion
+"   autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+" endif
 " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " =============================================================================

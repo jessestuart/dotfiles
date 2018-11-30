@@ -4,15 +4,17 @@
 if [ "$ZPROFILE" -eq 1 ]; then zmodload zsh/zprof; fi
 
 source "$HOME/.zsh/init"
-# Init prompt.
-autoload -U promptinit; promptinit
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# # Init prompt.
+# autoload -U promptinit
+# promptinit
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.bin/:$PATH"
 
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
-zle-keymap-select () {
+zle-keymap-select() {
   if [ "$TERM" = "xterm-256color" ]; then
     if [ $KEYMAP = vicmd ]; then
       # the command mode for vi
@@ -25,10 +27,10 @@ zle-keymap-select () {
 }
 
 # begin appcenter completion
-. <(appcenter --completion)
+# . <(appcenter --completion)
 # end appcenter completion
 
-load_sdkman
+# load_sdkman
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -37,3 +39,4 @@ if [ "$ZPROFILE" -eq 1 ]; then
   unset ZPROFILE
 fi
 
+export PATH="/usr/local/opt/node@10/bin:$PATH"

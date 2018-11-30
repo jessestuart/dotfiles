@@ -107,12 +107,11 @@ Plug 'jreybert/vimagit'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
-\ 'do': 'yarn install',
-\ 'for': ['javascript', 'typescript', 'css',
-\         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
-\         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
-\]}
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css',
+      \         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
+      \         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
+      \]}
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' } " This may not work?
 Plug 'heavenshell/vim-jsdoc'
@@ -128,8 +127,11 @@ Plug 'prabirshrestha/async.vim'
 
 Plug 'prabirshrestha/asyncomplete-flow.vim'
 Plug 'prabirshrestha/asyncomplete-necovim.vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
+
+" Disabled 20181114
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -179,7 +181,7 @@ Plug 'vim-airline/vim-airline'
 " -------------------------------------
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
 " Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
@@ -207,9 +209,9 @@ Plug 'jparise/vim-graphql'
 " Plug 'Shougo/neco-syntax'
 
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 " Plug 'wokalski/autocomplete-flow'
 " You will also need the following for function argument completion:
@@ -222,8 +224,8 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Time tracking, etc.
 " -------------------------------------
 if executable('gtm')
+  Plug 'git-time-metric/gtm-vim-plugin'
 endif
-Plug 'git-time-metric/gtm-vim-plugin'
 if executable('wakatime')
   Plug 'wakatime/vim-wakatime'
 endif
@@ -264,7 +266,7 @@ Plug 'Chiel92/vim-autoformat'
 " Plug 'kassio/neoterm'
 " Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
 Plug 'gregsexton/gitv'
 
 " Plug 'jpalardy/vim-slime'
@@ -275,7 +277,7 @@ Plug 'sbdchd/neoformat'
 
 Plug 'jaawerth/nrun.vim'
 
-Plug 'ruanyl/vim-sort-imports'
+" Plug 'ruanyl/vim-sort-imports'
 
 " Plug 'wincent/command-t'
 
@@ -299,7 +301,9 @@ Plug 'ruanyl/vim-sort-imports'
 " Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " Plug 'plasticboy/vim-markdown'
 
-" assuming your using vim-plug: https://github.com/junegunn/vim-plug
+" ========
+" ncm2
+" ========
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
 
@@ -313,6 +317,6 @@ Plug 'ruanyl/vim-sort-imports'
 " Plug 'ncm2/ncm2-bufword'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+" Plug 'ncm2/ncm2-tern', { 'do': 'yarn install' }
 
 call plug#end()
