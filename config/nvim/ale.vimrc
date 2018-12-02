@@ -41,28 +41,28 @@ let g:ale_linters = {
       \  'zsh': ['shellcheck'],
       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
-      \  'ruby': ['rubocop']
+      \  'ruby': ['rubocop'],
       \}
 
       " \  'javascript.jsx': ['importjs', 'standard'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'bash': ['shfmt'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'eslint', 'flow'],
-      \  'typescript': ['prettier', 'tslint'],
-      \  'typescript.tsx': ['prettier', 'tslint'],
       \  'json': ['prettier'],
       \  'markdown': ['prettier'],
       \  'pandoc': ['prettier'],
       \  'python': ['isort', 'yapf'],
+      \  'ruby': ['rubocop'],
       \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],
-      \  'bash': ['shfmt'],
+      \  'typescript': ['prettier', 'tslint'],
+      \  'typescript.tsx': ['prettier', 'tslint'],
+      \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
-      \  'ruby': ['rubocop'],
-      \  'yaml': ['prettier']
       \}
 
 " Map keys to navigate between lines with errors and warnings.
