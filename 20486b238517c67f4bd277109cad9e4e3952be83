@@ -1,2 +1,14 @@
 [ver:1,total:480]
 .gtm/terminal.app:480,1543744800:420,1543748400:60,r
+
+[ver:1,total:660]
+.gtm/terminal.app:660,1543744800:660,r
+
+[ver:1,total:60]
+.gtm/terminal.app:40,1543744800:40,r
+zsh/antibody.conf:20,1543744800:20,m
+
+[ver:1,total:720]
+.gtm/terminal.app:636,1543435200:360,1543744800:276,r
+zsh/fzf/config.zsh:54,1543744800:54,m
+zsh/aliases.zsh:30,1543744800:30,r
