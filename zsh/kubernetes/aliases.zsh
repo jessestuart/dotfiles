@@ -88,24 +88,25 @@ function load_colors() {
 
 function get_pods_colorized() {
   load_colors
-  kubectl get pods "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" \
-      | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-      | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
-      | sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g"
+  kubectl get pods "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" |
+    sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
+    sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
+    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
+    sed -E "s/\s(milo|ryzen)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {
   load_colors
-  kubectl describe "$@" \
-      | sed "s/Running/${green}Running${normal}/g" \
-      | sed "s/Pending/${yellow}Pending${normal}/g" \
-      | sed "s/Completed/${blue}Completed${normal}/g" \
-      | sed "s/Error/${red}Error${normal}/g" \
-      | sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
+  kubectl describe "$@" |
+    sed "s/Running/${green}Running${normal}/g" |
+    sed "s/Pending/${yellow}Pending${normal}/g" |
+    sed "s/Completed/${blue}Completed${normal}/g" |
+    sed "s/Error/${red}Error${normal}/g" |
+    sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
 }
 
 # Auto-generated from:
