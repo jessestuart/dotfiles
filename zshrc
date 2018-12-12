@@ -40,3 +40,4 @@ if [ "$ZPROFILE" -eq 1 ]; then
 fi
 
 export PATH="/usr/local/opt/node@10/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"

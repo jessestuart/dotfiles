@@ -26,7 +26,7 @@ alias org="cd ~/Dropbox/org"
 alias r="ranger"
 alias tfa="terraform apply tf.plan"
 alias tfp="terraform plan -out tf.plan"
-alias today="$EDITOR ~/Dropbox/org/$(date -u +"%Y%m%d").md"
+alias today="nvim ~/Dropbox/org/$(date -u +"%Y%m%d").md"
 alias jd="cd $HOME/dotfiles"
 alias V="cd /Volumes"
 alias scid="ssh-copy-id"
@@ -39,6 +39,8 @@ alias fl="bundle exec fastlane"
 alias jv="load_sdkman"
 alias jdn="cd ~/dev/native/"
 alias jen="cd ~/github/edenhealth/native/"
+alias scli="sentry-cli"
+alias j="z"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
@@ -112,8 +114,6 @@ alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 #--------------------------------------
 if hash exa &>/dev/null; then
   alias ls="exa --git --group-directories-first --git-ignore --color-scale"
-  # List all files colorized in long format
-  alias l="exa -l --git --group-directories-first --git-ignore --color-scale"
   # List all files colorized in long format, including dot files
   alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
   # Same as above, but don't hide gitignored files.
@@ -126,7 +126,6 @@ if hash exa &>/dev/null; then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
-  alias a="exa -la --git --git-ignore --group-directories-first --color-scale"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"

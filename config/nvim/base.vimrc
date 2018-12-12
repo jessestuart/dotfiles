@@ -112,6 +112,8 @@ set t_vb=
 " Add a bit of extra margin to the left gutter.
 set foldcolumn=2
 
+set foldmethod=indent
+
 " Enable clipboard on unix systems.
 set clipboard=unnamed
 
@@ -158,21 +160,21 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m,%f:%l%m,%f\ \ %l%m
 endif
 
-" Delete trailing whitespace on save.
-function! DeleteTrailingWS()
-  " Set a mark on the current line...
-  exe 'normal mz'
-  " Delete all trailing whitespace...
-  exe ':%s/\s\+$//ge'
-  " Return to the mark we just set...
-  exe 'normal `z'
-  " Then delete the mark to clean up after ourselves.
-  exe ':delmarks z'
-endfunction
-augroup DeleteTrailingWhitespace
-  autocmd!
-  autocmd BufWrite * :call DeleteTrailingWS()
-augroup END
+" " Delete trailing whitespace on save.
+" function! DeleteTrailingWS()
+"   " Set a mark on the current line...
+"   exe 'normal mz'
+"   " Delete all trailing whitespace...
+"   exe ':%s/\s\+$//ge'
+"   " Return to the mark we just set...
+"   exe 'normal `z'
+"   " Then delete the mark to clean up after ourselves.
+"   exe ':delmarks z'
+" endfunction
+" augroup DeleteTrailingWhitespace
+"   autocmd!
+"   autocmd BufWrite * :call DeleteTrailingWS()
+" augroup END
 
 " Automatically reload vimrc on save
 augroup ReloadVimrcGroup
@@ -180,22 +182,22 @@ augroup ReloadVimrcGroup
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-function! DeleteTabs()
-  if &ft =~ 'make' || &ft =~ 'gitconfig' || &ft =~ 'go'
-    return
-  endif
-  try
-    exe 'normal mz'
-    exe '%s/\t/  /g'
-    exe 'normal `z'
-    exe ':delmarks z'
-  catch
-  endtry
-endfunction
-augroup DeleteTabs
-  autocmd!
-  autocmd BufWrite * :call DeleteTabs()
-augroup END
+" function! DeleteTabs()
+"   if &ft =~ 'make' || &ft =~ 'gitconfig' || &ft =~ 'go'
+"     return
+"   endif
+"   try
+"     exe 'normal mz'
+"     exe '%s/\t/  /g'
+"     exe 'normal `z'
+"     exe ':delmarks z'
+"   catch
+"   endtry
+" endfunction
+" augroup DeleteTabs
+"   autocmd!
+"   autocmd BufWrite * :call DeleteTabs()
+" augroup END
 
 " Switch to the directory files are in automatically.
 " NOTE: Not supported by Dirvish (?)

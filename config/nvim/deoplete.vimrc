@@ -24,7 +24,7 @@ let g:deoplete#sources#ternjs#filter = 0
 
 " Whether to use a case-insensitive compare between the current word and
 " potential completions. Default 0
-let g:deoplete#sources#ternjs#case_insensitive = 1
+let g:deoplete#sources#ternjs#case_insensitive = 0
 
 " When completing a property and no completions are found, Tern will use some
 " heuristics to try and return some properties anyway. Set this to 0 to
@@ -45,7 +45,7 @@ let g:deoplete#sources#ternjs#expand_word_forward = 1
 
 " Whether to include JavaScript keywords when completing something that is not
 " a property. Default: 0
-let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#include_keywords = 0
 
 " If completions should be returned when inside a literal. Default: 1
 let g:deoplete#sources#ternjs#in_literal = 1
@@ -59,5 +59,5 @@ let g:deoplete#complete_method = 'complete'
 
 let g:deoplete#enable_at_startup = 1
 
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]

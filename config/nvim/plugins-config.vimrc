@@ -1,5 +1,3 @@
-let g:deoplete#enable_at_startup = 1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -51,7 +49,7 @@ let g:NERDTreeIgnore=[
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -60,7 +58,8 @@ let g:NERDTreeIgnore=[
 " --no-ignore: Do not respect .gitignore, etc...
 " --hidden: Search hidden files and folders
 " --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --glob: Additional conditions for search (in this case ignore everything in
+"         the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep(
   \ 'rg --column --line-number --no-heading --fixed-strings '
@@ -133,7 +132,7 @@ let g:fzf_colors =
 " augroup END
 
 " TODO(jesse): This was getting annoying w/ JSX; maybe reenable this?
-" let g:closetag_filenames = '*.html,*.jsx,*.js'
+let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:user_emmet_install_global = 1
 
 nnoremap <leader>tw :ToggleWorkspace<CR>
@@ -144,32 +143,31 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" ==================
-" Mappings for `fzy`
-" ==================
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
-" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
-nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
-nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
+" " ==================
+" " Mappings for `fzy`
+" " ==================
+" function! FzyCommand(choice_command, vim_command)
+"   try
+"     let output = system(a:choice_command . " | fzy ")
+"   catch /Vim:Interrupt/
+"     " Swallow errors from ^C, allow redraw! below
+"   endtry
+"   redraw!
+"   if v:shell_error == 0 && !empty(output)
+"     exec a:vim_command . ' ' . output
+"   endif
+" endfunction
+" " nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+" nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
+" nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
 let g:prettier#exec_cmd_async = 1
-" let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
 " let g:prettier#config#print_width = 80
 " number of spaces per indentation level
@@ -187,16 +185,14 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-let g:prettier#config#parser = 'flow'
+" let g:prettier#config#parser = 'flow'
 " cli-override|file-override|prefer-file
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
-let g:prettier#config#prose_wrap = 'always'
+let g:prettier#config#prose_wrap = 'preserve'
 
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
-
-" autocmd BufWritePre *.js Neoformat
 
 " let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
 " function! UpdateStatusBar(timer)
@@ -282,19 +278,17 @@ if executable('flow-language-server')
         \ })
 endif
 
-" " =========
-" " UltiSnips
-" " =========
-" " Trigger configuration.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" =========
+" UltiSnips
+" =========
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 " let g:UltiSnipsListSnippets="<c-e> <c-e>"
-
-" let g:flow#showquickfix = 0
 
 " Keep that hella legible 'conceal' option. I'm sure there's a way to do this
 " built in.
@@ -306,8 +300,8 @@ set hidden
 
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['flow', 'lsp'],
-    \ 'javascript.jsx': ['flow', 'lsp'],
+    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'javascript.jsx': ['flow-language-server', '--stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'typescript.tsx': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],

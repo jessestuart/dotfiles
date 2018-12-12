@@ -61,7 +61,9 @@ function load_bashmarks() {
   local bashmarks="$HOME/.local/bin/bashmarks.sh"
   test -e $bashmarks && . $bashmarks
 }
-# load_bashmarks
+load_bashmarks
+
+# test /usr/local/etc/profile.d/z.sh && . /usr/local/etc/profile.d/z.sh
 
 xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zsh/_tmux-xpanes"
 test -e $xpanes_completions && . $xpanes_completions
@@ -78,8 +80,6 @@ test -e $xpanes_completions && . $xpanes_completions
 # }
 # load_asdf
 
-# test -e ~/github/z/z.sh && . ~/github/z/z.sh
-
 if [ "$PLATFORM" = 'Darwin' ]; then
   # iTerm2 Shell Integration:
   test -e "${HOME}/.iterm2_shell_integration.zsh" && \
@@ -89,3 +89,5 @@ if [ "$PLATFORM" = 'Darwin' ]; then
     iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   }
 fi
+
+test -e /usr/local/share/chruby/chruby.sh && . /usr/local/share/chruby/chruby.sh

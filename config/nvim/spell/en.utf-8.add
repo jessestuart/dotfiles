@@ -16,6 +16,7 @@ Ansible
 ansible
 Ansible's
 API
+apiblueprint
 APIs
 apk
 app
@@ -50,6 +51,7 @@ Bind9
 bizzare
 blog
 Bluetooth
+Browserless
 Bukowski
 busybox
 C2
@@ -60,6 +62,7 @@ cancellable
 CDN
 CentOS
 centos
+CFE
 Changelog
 cheatsheet
 Cheatsheets
@@ -73,6 +76,7 @@ Civo
 CLI
 cli
 Clojure
+clojure
 Cloudflare
 cloudflare
 CloudFormation
@@ -82,11 +86,14 @@ CloudFront
 CloudWatch
 CMS Cancelable
 CNI
+cocoapods
 codebase
 CodeCov
 Codecov
+codecov
 codepath
 codepush
+CodePush
 Cognito
 colorscheme
 Colorschemes
@@ -107,6 +114,7 @@ Cygwin
 datacenter
 db
 Debian
+deision
 deps
 dev
 devbox
@@ -136,6 +144,7 @@ EC2
 ECMAScript
 ECR
 edenhealth
+EdenHealth
 elasticsearch
 Elisp
 EMR
@@ -151,6 +160,8 @@ ext4
 FaaS
 faas
 falsey
+fastlane
+fe
 filesystem
 Firefox's
 flexbox
@@ -325,7 +336,9 @@ nvim
 OCD
 Odroid
 offline
+OKRs
 omnicompletion
+OOM
 OpenFaaS
 OpenRC
 OpenShift
@@ -366,9 +379,11 @@ precompiled
 preinstalled
 preloading
 Prisma
+proactively
 ProfileFooter
 Provisioners
 provisioners
+PRs
 ps
 Pubnub
 PV
@@ -397,6 +412,7 @@ REPL
 Repo
 repo
 repos
+reprioritize
 RESTful
 restic
 reusability
@@ -435,6 +451,7 @@ SonarQube
 src
 srcset
 ssl
+Standup
 stateful
 Statefulset
 StatefulSet
@@ -450,7 +467,9 @@ Synology
 systemd
 t
 tempdir
+templating
 Terraform
+testflight
 Testinfra
 tf
 then
@@ -474,6 +493,7 @@ TT
 Ubiquiti
 Ubiquiti's
 Ubuntu
+UGC
 uglified
 UI
 ui
@@ -548,24 +568,4 @@ zplug
 zpreztorc
 Zsh
 zsh
-candid82
-clojure
-codecov
-apiblueprint
-UGC
-reprioritize
-Standup
-EdenHealth
-iOS
-Browserless
-cocoapods
-CodePush
-PRs
-CFE
-fastlane
-OOM
-fe
-deision
-proactively
-OKRs
-testflight
+microservice
