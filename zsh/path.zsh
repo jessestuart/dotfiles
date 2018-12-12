@@ -88,3 +88,7 @@ PATH=$PATH:$ANDROID_HOME/tools/bin
 test -e "$HOME/.secrets" && . "$HOME/.secrets"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+export PATH="/usr/local/opt/node@10/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.bin/:$PATH"
