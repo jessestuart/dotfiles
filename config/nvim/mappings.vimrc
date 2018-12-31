@@ -214,7 +214,9 @@ noremap <Leader>h :History<CR>
 noremap <Leader>f :Ag<CR>
 " Searches the word under the cursor through the project tree using fzf and
 " Ag.
-noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
+" noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
+
+nnoremap <leader>d :Denite<space>
 
 nnoremap <Leader>gg :GitGutterToggle<CR>
 nnoremap <Leader>b :Gblame<CR>

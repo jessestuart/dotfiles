@@ -74,6 +74,9 @@ test -e $xpanes_completions && . $xpanes_completions
 # Fastlane
 [ -f ~/.fastlane/completions/completion.sh ] && . ~/.fastlane/completions/completion.sh
 
+# added by travis gem
+[ -f /Users/jesse/.travis/travis.sh ] && source /Users/jesse/.travis/travis.sh
+
 # function load_asdf() {
 #   local asdf_init=/usr/local/opt/asdf/asdf.sh
 #   test -e $asdf_init && . $asdf_init

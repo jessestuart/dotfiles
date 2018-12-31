@@ -173,8 +173,8 @@ Plug 'hashivim/vim-vagrant'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'itchyny/lightline.vim'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
 
 " -------------------------------------
 " Misc. language support.
@@ -318,5 +318,9 @@ Plug 'jaawerth/nrun.vim'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-tern', { 'do': 'yarn install' }
+
+Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
+Plug 'kana/vim-textobj-user'
+Plug 'jessestuart/vim-textobj-function'
 
 call plug#end()
