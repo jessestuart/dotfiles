@@ -58,7 +58,7 @@ export PURE_PROMPT_SYMBOL="λ"
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 
-if hash vimpager&>/dev/null; then
+if hash vimpager &>/dev/null; then
   export PAGER="$(which vimpager)"
   alias less=$PAGER
   alias zless=$PAGER
@@ -69,4 +69,3 @@ export HOWDOI_COLORIZE=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=245"
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
-

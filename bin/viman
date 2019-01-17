@@ -1,6 +1,6 @@
-#!/bin/sh
-if hash nvim; then EDITOR=nvim;
-elif hash vim; then EDITOR=vim;
-else EDITOR=vi;
+#!/usr/bin/env zsh
+if hash nvim; then export EDITOR=nvim;
+elif hash vim; then export EDITOR=vim;
+else export EDITOR=vi;
 fi
 $EDITOR -c "Man $1 $2" -c 'silent only'

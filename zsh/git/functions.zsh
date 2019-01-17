@@ -45,7 +45,13 @@ function ghcl() {
   local FOLDER_NAME="$(echo $REPO_URL | sed 's#https://github.com/##')"
   local FOLDER_PATH="$GITHUB_ROOT/$FOLDER_NAME"
   mkdir -p $FOLDER_PATH
-  hub clone $REPO_URL $FOLDER_PATH
+  local clone_output="$(hub clone $REPO_URL $FOLDER_PATH 2>&1)"
+  local ret_code=$?
+  if ! [ ret_code = "0" ]; then
+    echo $clone_output
+    echo $FOLDER_PATH | pbcopy
+    return 1
+  fi
   echo "Cloned repository to $FOLDER_PATH."
   if (hash pbcopy &>/dev/null); then
     echo $FOLDER_PATH | pbcopy

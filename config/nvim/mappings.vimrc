@@ -220,3 +220,5 @@ nnoremap <Leader>gg :GitGutterToggle<CR>
 nnoremap <Leader>b :Gblame<CR>
 
 nnoremap <leader>t :TagbarToggle<CR>
+
+nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>

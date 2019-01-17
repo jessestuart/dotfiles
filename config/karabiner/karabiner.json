@@ -15,8 +15,7 @@
         },
         "rules": [
           {
-            "description":
-              "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
+            "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
             "manipulators": [
               {
                 "from": {
@@ -178,8 +177,7 @@
                 },
                 "to": [
                   {
-                    "shell_command":
-                      "osascript ~/dotfiles/bin/toggle-app.applescript 'Activity Monitor'"
+                    "shell_command": "osascript ~/dotfiles/bin/toggle-app.applescript 'Activity Monitor'"
                   }
                 ],
                 "type": "basic"
@@ -194,8 +192,7 @@
                 },
                 "to": [
                   {
-                    "shell_command":
-                      "osascript ~/dotfiles/bin/toggle-app.applescript 'Chrome'"
+                    "shell_command": "osascript ~/dotfiles/bin/toggle-app.applescript 'Chrome'"
                   }
                 ],
                 "type": "basic"
@@ -210,8 +207,7 @@
                 },
                 "to": [
                   {
-                    "shell_command":
-                      "osascript ~/dotfiles/bin/toggle-app.applescript 'iTerm2'"
+                    "shell_command": "osascript ~/dotfiles/bin/toggle-app.applescript 'iTerm2'"
                   }
                 ],
                 "type": "basic"
@@ -226,8 +222,7 @@
                 },
                 "to": [
                   {
-                    "shell_command":
-                      "osascript ~/dotfiles/bin/toggle-app.applescript 'Finder'"
+                    "shell_command": "osascript ~/dotfiles/bin/toggle-app.applescript 'Finder'"
                   }
                 ],
                 "type": "basic"
@@ -241,8 +236,7 @@
                 },
                 "to": [
                   {
-                    "shell_command":
-                      "osascript ~/dotfiles/bin/toggle-app.applescript 'Transmit'"
+                    "shell_command": "osascript ~/dotfiles/bin/toggle-app.applescript 'Transmit'"
                   }
                 ],
                 "type": "basic"

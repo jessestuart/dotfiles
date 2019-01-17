@@ -11,15 +11,17 @@ function manti() {
   local image=$1
   if ! hash reg &>/dev/null; then
     mantool-inspect $image
-  return
+    return
   fi
-  local manifest=$(reg manifest $image)
+  local manifest=$(reg manifest --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD $image 2>&1)
+  echo "manifest: $manifest"
+  # reg manifest --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD $image
   if ! [[ $manifest =~ .*platform.* ]]; then
-    mantool-inspect $image
+    manifest-tool --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD inspect $image | grep -vi -e layer -e digest -e 'manifest type'
   else
-    reg manifest $image \
-      | jq '.manifests[].platform | .os, .architecture' -r \
-      | xargs -L2 echo
+    echo $manifest |
+      jq '.manifests[].platform | .os, .architecture' -r |
+      xargs -L2 echo
   fi
 }
 
@@ -29,11 +31,11 @@ function manti() {
 
 function dps() {
   if (hash rainbow &>/dev/null); then
-    docker ps | \
+    docker ps |
       # REmove the column headers
-      tail -n+2 | \
-      grep -v k8s_POD | \
-      sed -e 's/k8s_POD_/(POD) /g' | \
+      tail -n+2 |
+      grep -v k8s_POD |
+      sed -e 's/k8s_POD_/(POD) /g' |
       # Highlight container name/id in green
       # Highlight 'Exited' containers in red
       # Highlight kubernetes-managed "k8s_POD` containers
@@ -45,10 +47,10 @@ function dps() {
 
 function dpa() {
   if (hash rainbow &>/dev/null); then
-    docker ps -a | \
+    docker ps -a |
       # REmove the column headers
-      tail -n+2 | \
-      sed -e 's/k8s_POD_/(POD) /g' | \
+      tail -n+2 |
+      sed -e 's/k8s_POD_/(POD) /g' |
       # Highlight container name/id in green
       # Highlight 'Exited' containers in red
       # Highlight kubernetes-managed "k8s_POD` containers
@@ -74,12 +76,12 @@ function dki() {
   echo 'TAGS:'
   echo '============================================='
   local dh_json=$(docker-hub tags -o $org -r $repo -f json)
-  docker-hub tags -o $org -r $repo -f json \
-    | jq -r '.[] | ."Name", ."Size", ."Last updated"' \
-    | sed -e 's/\([0-9]*\)\s*\([MKG]B\)/\1\2/' -e 's/[0-9]*\:[0-9]*//' \
-    | xargs -n3 echo \
-    | sort -k3r \
-    | column -t
+  docker-hub tags -o $org -r $repo -f json |
+    jq -r '.[] | ."Name", ."Size", ."Last updated"' |
+    sed -e 's/\([0-9]*\)\s*\([MKG]B\)/\1\2/' -e 's/[0-9]*\:[0-9]*//' |
+    xargs -n3 echo |
+    sort -k3r |
+    column -t
 }
 
 function dkir() {
@@ -95,42 +97,42 @@ function dkir() {
 # Docker Machine
 # ===============
 # Set Docker Machine environment
-function dkme {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
+function dkme() {
+  if ((!$ + commands[docker - machine])); then
+    return 1
+  fi
 
-    eval $(docker-machine env $1)
+  eval $(docker-machine env $1)
 }
 
 # Set Docker Machine default machine
-function dkmd {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
+function dkmd() {
+  if ((!$ + commands[docker - machine])); then
+    return 1
+  fi
 
-    pushd ~/.docker/machine/machines
+  pushd ~/.docker/machine/machines
 
-    if [[ ! -d $1 ]]; then
-        echo "Docker machine '$1' does not exists. Abort."
-        popd
-        return 1
-    fi
-
-    if [[ -L default ]]; then
-        eval $(rm -f default)
-    elif [[ -d default ]]; then
-        echo "A default manchine already exists. Abort."
-        popd
-        return 1
-    elif [[ -e default ]]; then
-        echo "A file named 'default' already exists. Abort."
-        popd
-        return 1
-    fi
-
-    eval $(ln -s $1 default)
+  if [[ ! -d $1 ]]; then
+    echo "Docker machine '$1' does not exists. Abort."
     popd
+    return 1
+  fi
+
+  if [[ -L default ]]; then
+    eval $(rm -f default)
+  elif [[ -d default ]]; then
+    echo "A default manchine already exists. Abort."
+    popd
+    return 1
+  elif [[ -e default ]]; then
+    echo "A file named 'default' already exists. Abort."
+    popd
+    return 1
+  fi
+
+  eval $(ln -s $1 default)
+  popd
 }
 
 # ==============

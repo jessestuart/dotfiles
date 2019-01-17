@@ -20,7 +20,8 @@ notify_rescuetime() {
     key=="$RESCUETIME_API_KEY" \
     highlight_date=="$DATE_TODAY" \
     description=="$MESSAGE" \
-    source=="$LABEL"
+    source=="$LABEL" \
+    --body
 }
 
 git-hooks run "$0" "$@"

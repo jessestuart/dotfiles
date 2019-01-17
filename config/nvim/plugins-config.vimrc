@@ -28,7 +28,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
 map <leader>cc :botright cope<CR>
-map <leader>co ggyG:tabnew<CR>:set syntax=qf<CR>pgg
+map <leader>co ggyG :tabnew<CR>:set syntax=qf<CR>pgg
 map <leader>ne :cn<CR>
 map <leader>pe :cp<CR>
 
@@ -46,25 +46,6 @@ let g:NERDTreeIgnore=[
   \ '*.pyc',
   \ '\~$'
   \ ]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZF
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in
-"         the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep(
-  \ 'rg --column --line-number --no-heading --fixed-strings '
-  \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"
-  \ ' '.shellescape(<q-args>), 1, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
@@ -169,7 +150,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 1
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 " max line length that prettier will wrap on
-" let g:prettier#config#print_width = 80
+let g:prettier#config#print_width = 80
 " number of spaces per indentation level
 let g:prettier#config#tab_width = 2
 " use tabs over spaces
@@ -185,11 +166,11 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
 let g:prettier#config#trailing_comma = 'es5'
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-" let g:prettier#config#parser = 'flow'
+" let g:prettier#config#parser = 'babylon'
 " cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'file-override'
+" let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
-let g:prettier#config#prose_wrap = 'preserve'
+let g:prettier#config#prose_wrap = 'always'
 
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
@@ -302,9 +283,9 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow-language-server', '--stdio'],
     \ 'javascript.jsx': ['flow-language-server', '--stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'typescript.tsx': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -312,6 +293,8 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 set completefunc=LanguageClient#complete
 autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
+autocmd FileType typescript.tsx setlocal omnifunc=LanguageClient#complete
 
 let g:LanguageClient_loggingLevel = 'INFO'
 let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
@@ -346,8 +329,6 @@ inoremap <c-c> <ESC>
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
-
-set rtp+=/usr/local/opt/fzf
 
 let g:ctrlp_user_command = 'git ls-files'
 

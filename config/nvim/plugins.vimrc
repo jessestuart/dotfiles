@@ -94,12 +94,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 " Plug 'codegram/vim-codereview'
-" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'mattn/webapi-vim' " Required for vim-github-comment
 " Plug 'mmozuras/vim-github-comment'
 " Plug 'idanarye/vim-merginal'
-" Plug 'cohama/agit.vim'
+Plug 'cohama/agit.vim'
 
 " -------------------------------------
 " WebDev.
@@ -122,16 +122,16 @@ Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'mattn/emmet-vim'
 
 " Plug 'prabirshrestha/vim-lsp'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/async.vim'
+" Plug 'yami-beta/asyncomplete-omni.vim'
+" Plug 'prabirshrestha/async.vim'
 
-Plug 'prabirshrestha/asyncomplete-flow.vim'
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
+" Plug 'prabirshrestha/asyncomplete-flow.vim'
+" Plug 'prabirshrestha/asyncomplete-necovim.vim'
 " Plug 'rhysd/vim-fixjson', { 'for': 'json' }
 
 " Disabled 20181114
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -142,15 +142,15 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 
-Plug 'Quramy/tsuquyomi'
-Plug 'Quramy/vim-dtsm'
-Plug 'Quramy/vim-js-pretty-template'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'jason0x43/vim-js-indent'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/vim-dtsm', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" Plug 'leafgarland/typescript-vim'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -161,9 +161,9 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " -------------------------------------
 " Hashicorp / Devops-related plugins.
 " -------------------------------------
-Plug 'hashivim/vim-packer'
+" Plug 'hashivim/vim-packer'
 Plug 'hashivim/vim-terraform'
-Plug 'hashivim/vim-vagrant'
+" Plug 'hashivim/vim-vagrant'
 " Plug 'pearofducks/ansible-vim'
 " Plug 'hejack0207/ansible.vim'
 
@@ -173,8 +173,8 @@ Plug 'hashivim/vim-vagrant'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
+" Plug 'itchyny/lightline.vim'
 
 " -------------------------------------
 " Misc. language support.
@@ -187,7 +187,6 @@ Plug 'jparise/vim-graphql'
 " Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'jaspervdj/stylish-haskell'
-" Plug 'kchmck/vim-coffee-script'
 
 " [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
 " a number of improvements over the messy original from `vim-scripts`.
@@ -210,7 +209,7 @@ Plug 'jparise/vim-graphql'
 
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
+      \ 'do': 'bash install.sh && npm install -g flow-language-server',
       \ }
 
 " Plug 'wokalski/autocomplete-flow'
@@ -249,7 +248,7 @@ Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/splice.vim'
-" Plug 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'aaronbieber/vim-quicktask'
 Plug 'sunaku/vim-shortcut'
@@ -277,6 +276,13 @@ Plug 'sbdchd/neoformat'
 
 Plug 'jaawerth/nrun.vim'
 
+Plug 'jessestuart/vim-markdown-link-convert'
+
+Plug 'jordwalke/vim-reasonml'
+Plug 'reasonml-editor/vim-reason-plus'
+
+Plug 'srstevenson/vim-topiary'
+
 " Plug 'ruanyl/vim-sort-imports'
 
 " Plug 'wincent/command-t'
@@ -295,7 +301,6 @@ Plug 'jaawerth/nrun.vim'
 "   ||       |
 "  \||/\/\//\|/
 " Plug 'maralla/completor.vim'
-" Plug 'Shougo/denite.nvim'
 " Plug 'fmoralesc/vim-tutor-mode'
 " Plug 'tpope/vim-jdaddy'
 " Plug 'chrisbra/csv.vim', { 'for': 'csv' }

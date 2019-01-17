@@ -40,7 +40,7 @@ alias jv="load_sdkman"
 alias jdn="cd ~/dev/native/"
 alias jen="cd ~/github/edenhealth/native/"
 alias scli="sentry-cli"
-alias j="z"
+alias bundle="/usr/local/lib/ruby/gems/2.6.0/bin/bundle"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
