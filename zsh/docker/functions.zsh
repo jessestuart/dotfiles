@@ -39,7 +39,7 @@ function dps() {
       # Highlight container name/id in green
       # Highlight 'Exited' containers in red
       # Highlight kubernetes-managed "k8s_POD` containers
-      rainbow '^[a-zA-Z0-9]+' -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
+      rainbow -g '^[a-zA-Z0-9]+' -r 'Exited' -y '\(POD\)'
   else
     docker ps | grep -v POD
   fi
@@ -67,9 +67,9 @@ function dki() {
   echo '============================================='
   echo 'MANIFEST:'
   echo '============================================='
-  manti $image
+  manti $image | grep Arch
   if ! (echo $image | grep -q "/" &>/dev/null); then
-    return
+    image = "library/$image"
   fi
 
   echo '============================================='

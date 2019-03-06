@@ -97,7 +97,7 @@ function get_pods_colorized() {
     sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
     sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
     sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
-    sed -E "s/\s(milo|ryzen|antergos(1|2)|ubuntu1)/${magenta}\1${normal}/g"
+    sed -E "s/\s(milo|ryzen|antergos(1|2)|ubuntu[0-9]+|ubuntu-nfs|architect)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {

@@ -92,8 +92,8 @@ Plug 'othree/javascript-libraries-syntax.vim'
 
 " Disabled 20181114
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " For Denite features
 Plug 'Shougo/denite.nvim'
