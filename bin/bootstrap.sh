@@ -7,18 +7,23 @@
 
 set -e
 
-ARCH=arm64
-USER=pi
-HOSTNAME=pik8s-firefly1
+ARCH=amd64
+USER=jesse
+HOSTNAME=
 echo "ARCH: $ARCH, USER: $USER"
 if test -z "$ARCH"; then ARCH=arm64; fi
 if test -z "$USER"; then USER=jesse; fi
 USER_HOME=/home/$USER
 
+if test -z $HOSTNAME; then
+  echo "Please specify HOSTNAME as an env var."
+  exit 1
+fi
+
 # TODO: Could pull latest releases of these from Github. Meh.
-GO_VERSION="1.11.2"
-DIFF_SO_FANCY_VERSION="1.2.0"
-ANTIBODY_VERSION="4.0.1"
+GO_VERSION="1.12.1"
+DIFF_SO_FANCY_VERSION="1.2.5"
+ANTIBODY_VERSION="4.1.0"
 
 # =============================
 # Some basic utility functions.
@@ -34,6 +39,8 @@ function print_header() {
 function print_progress() {
   echo "-- $1"
 }
+
+sudo apt install -yq curl git
 
 # ==========================
 # Let's get this show goin'.
@@ -73,6 +80,19 @@ if cmd_missing docker; then
   print_progress 'docker installed successfully.'
 fi
 
+# =======================
+# Kubernetes installation
+# =======================
+if cmd_missing kubeadm; then
+  sudo apt update && sudo apt-get install -yq apt-transport-https
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+  cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+  sudo apt update -yq
+  sudo apt-get install -yq kubelet kubeadm kubectl
+fi
+
 # ======================
 # Antibody installation.
 # ======================
@@ -80,15 +100,15 @@ if cmd_missing antibody; then
   print_header 'Installing antibody...'
   antibody_arch=''
   case "$ARCH" in
-    arm64)
-      antibody_arch='arm64'
-      ;;
-    arm)
-      antibody_arch="armv6"
-      ;;
-    amd64)
-      antibody_arch='x86_64'
-      ;;
+  arm64)
+    antibody_arch='arm64'
+    ;;
+  arm)
+    antibody_arch="armv6"
+    ;;
+  amd64)
+    antibody_arch='x86_64'
+    ;;
   esac
   curl -sL https://github.com/getantibody/antibody/releases/download/v${ANTIBODY_VERSION}/antibody_Linux_${antibody_arch}.tar.gz | tar xz
   sudo mv antibody /usr/local/bin/
@@ -144,12 +164,15 @@ if ! test -d "$USER_HOME/.config/nvim/plugged"; then
   nvim "+PlugInstall --sync" +qa
 fi
 
-if ! test -z $HOSTNAME && (hash hostnamectl &> /dev/null); then
+if ! test -z $HOSTNAME && (hash hostnamectl &>/dev/null); then
   print_header 'Updating hostname.'
   sudo hostnamectl set-hostname "$HOSTNAME"
   sudo hostname "$HOSTNAME"
 fi
 
+# ==============
+# ARM64-Specific
+# ==============
 if test "$(uname -m)" == 'aarch64'; then
   if cmd_missing exa; then
     print_header 'Installing exa...'

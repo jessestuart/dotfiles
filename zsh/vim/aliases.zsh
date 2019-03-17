@@ -9,7 +9,6 @@ alias v="$EDITOR"
 alias vi.="$EDITOR ."
 alias vi="$EDITOR"
 
-
 # ===========================
 # Shortcuts to edit dotfiles.
 # ===========================
@@ -29,6 +28,7 @@ alias vipath="$EDITOR ~/.zsh/path.zsh"
 alias viv="$EDITOR ~/.zsh/vim/aliases.zsh"
 alias vt="$EDITOR ~/.tmux.conf"
 alias vz="$EDITOR ~/.zsh/zshrc"
+alias viaweb="$EDITOR ~/.zsh/webdev/aliases.zsh"
 
 # ===================================
 # Vim-specific configuration aliases.

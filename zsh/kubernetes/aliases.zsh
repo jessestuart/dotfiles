@@ -17,9 +17,9 @@ alias kp="get_pods_colorized "
 alias fa="faas"
 alias cm="helm push . js"
 
-alias st="stern"
+alias st="stern --tail=100"
 alias stfl="stern fluent-bit --tail=100 --namespace=logging"
-alias stes="stern es-full --tail=100 --namespace=logging"
+alias stes="stern elasticsearch --tail=100 --namespace=logging"
 
 # Get all pods, sorted by number of restarts.
 alias kgcrash="kgpw | sort -n -k5"
@@ -49,6 +49,8 @@ alias sysdarl="sudo systemctl daemon-reload"
 
 alias hlrm="helm delete --purge"
 # alias hlin="helm update --install "
+
+alias kpanes="xpanes --ssh \$(kubectl get nodes --no-headers | awk1)"
 
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
@@ -94,10 +96,11 @@ function get_pods_colorized() {
     sed "s/Pending/${yellow}Pending${normal}/g" |
     sed "s/Completed/${blue}Completed${normal}/g" |
     sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" |
+    sed -E "s/([a-zA-Z]*)ErrImagePull/${red}\1Error${normal}/g" |
     sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
     sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
     sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
-    sed -E "s/\s(milo|ryzen|antergos(1|2)|ubuntu[0-9]+|ubuntu-nfs|architect)/${magenta}\1${normal}/g"
+    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+|-(nfs|milo))|architect)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {
@@ -132,8 +135,8 @@ alias ka='kubectl apply --recursive -f'
 alias ksysa='kubectl --namespace=kube-system apply --recursive -f'
 alias kex='kubectl exec -i -t'
 alias ksysex='kubectl --namespace=kube-system exec -i -t'
-alias klo='kubectl logs -f'
-alias ksyslo='kubectl --namespace=kube-system logs -f'
+alias klo='kubectl logs -f --tail=200'
+alias ksyslo='kubectl --namespace=kube-system logs -f --tail=200'
 alias kp='kubectl proxy'
 alias kg='kubectl get'
 alias ksysg='kubectl --namespace=kube-system get'
@@ -143,8 +146,6 @@ alias krm='kubectl delete'
 alias ksysrm='kubectl --namespace=kube-system delete'
 alias krun='kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
 alias ksysrun='kubectl --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
-alias ked='kubectl edit'
-alias ksysed='kubectl --namespace=kube-system edit'
 alias ksysgpo='kubectl --namespace=kube-system get pods'
 alias kdpo='kubectl describe pods'
 alias ksysdpo='kubectl --namespace=kube-system describe pods'
@@ -980,3 +981,99 @@ alias kgwowidesln='kubectl get --watch -o=wide --show-labels --namespace'
 alias kgpowowidesln='get_pods_colorized --watch -o=wide --show-labels --namespace'
 alias kgdepwowidesln='kubectl get deployment --watch -o=wide --show-labels --namespace'
 alias kgwslowiden='kubectl get --watch --show-labels -o=wide --namespace'
+
+alias kdss='kubectl describe statefulsets'
+alias ksysdss='kubectl --namespace=kube-system describe statefulsets'
+alias kedss='kubectl edit statefulsets'
+alias ksysedss='kubectl --namespace=kube-system edit statefulsets'
+alias kgss='kubectl get statefulsets'
+alias ksysgss='kubectl --namespace=kube-system get statefulsets'
+alias krmss='kubectl delete statefulsets'
+alias ksysrmss='kubectl --namespace=kube-system delete statefulsets'
+alias kgssoyaml='kubectl get statefulsets -o=yaml'
+alias ksysgssoyaml='kubectl --namespace=kube-system get statefulsets -o=yaml'
+alias kgssowide='kubectl get statefulsets -o=wide'
+alias ksysgssowide='kubectl --namespace=kube-system get statefulsets -o=wide'
+alias kgssojson='kubectl get statefulsets -o=json'
+alias ksysgssojson='kubectl --namespace=kube-system get statefulsets -o=json'
+alias kdssall='kubectl describe statefulsets --all-namespaces'
+alias kgssall='kubectl get statefulsets --all-namespaces'
+alias krmssall='kubectl delete statefulsets --all'
+alias ksysrmssall='kubectl --namespace=kube-system delete statefulsets --all'
+alias kgssw='kubectl get statefulsets --watch'
+alias ksysgssw='kubectl --namespace=kube-system get statefulsets --watch'
+alias kgssoyamlall='kubectl get statefulsets -o=yaml --all-namespaces'
+alias kgssalloyaml='kubectl get statefulsets --all-namespaces -o=yaml'
+alias kgsswoyaml='kubectl get statefulsets --watch -o=yaml'
+alias ksysgsswoyaml='kubectl --namespace=kube-system get statefulsets --watch -o=yaml'
+alias kgssowideall='kubectl get statefulsets -o=wide --all-namespaces'
+alias kgssallowide='kubectl get statefulsets --all-namespaces -o=wide'
+alias kgsswowide='kubectl get statefulsets --watch -o=wide'
+alias ksysgsswowide='kubectl --namespace=kube-system get statefulsets --watch -o=wide'
+alias kgssojsonall='kubectl get statefulsets -o=json --all-namespaces'
+alias kgssallojson='kubectl get statefulsets --all-namespaces -o=json'
+alias kgsswojson='kubectl get statefulsets --watch -o=json'
+alias ksysgsswojson='kubectl --namespace=kube-system get statefulsets --watch -o=json'
+alias kgssallw='kubectl get statefulsets --all-namespaces --watch'
+alias kgsswall='kubectl get statefulsets --watch --all-namespaces'
+alias kgssallwoyaml='kubectl get statefulsets --all-namespaces --watch -o=yaml'
+alias kgsswoyamlall='kubectl get statefulsets --watch -o=yaml --all-namespaces'
+alias kgsswalloyaml='kubectl get statefulsets --watch --all-namespaces -o=yaml'
+alias kgssallwowide='kubectl get statefulsets --all-namespaces --watch -o=wide'
+alias kgsswowideall='kubectl get statefulsets --watch -o=wide --all-namespaces'
+alias kgsswallowide='kubectl get statefulsets --watch --all-namespaces -o=wide'
+alias kgssallwojson='kubectl get statefulsets --all-namespaces --watch -o=json'
+alias kgsswojsonall='kubectl get statefulsets --watch -o=json --all-namespaces'
+alias kgsswallojson='kubectl get statefulsets --watch --all-namespaces -o=json'
+alias kdssl='kubectl describe statefulsets -l'
+alias ksysdssl='kubectl --namespace=kube-system describe statefulsets -l'
+alias kgssl='kubectl get statefulsets -l'
+alias ksysgssl='kubectl --namespace=kube-system get statefulsets -l'
+alias krmssl='kubectl delete statefulsets -l'
+alias ksysrmssl='kubectl --namespace=kube-system delete statefulsets -l'
+alias kgssoyamll='kubectl get statefulsets -o=yaml -l'
+alias ksysgssoyamll='kubectl --namespace=kube-system get statefulsets -o=yaml -l'
+alias kgssowidel='kubectl get statefulsets -o=wide -l'
+alias ksysgssowidel='kubectl --namespace=kube-system get statefulsets -o=wide -l'
+alias kgssojsonl='kubectl get statefulsets -o=json -l'
+alias ksysgssojsonl='kubectl --namespace=kube-system get statefulsets -o=json -l'
+alias kgsswl='kubectl get statefulsets --watch -l'
+alias ksysgsswl='kubectl --namespace=kube-system get statefulsets --watch -l'
+alias kgsswoyamll='kubectl get statefulsets --watch -o=yaml -l'
+alias ksysgsswoyamll='kubectl --namespace=kube-system get statefulsets --watch -o=yaml -l'
+alias kgsswowidel='kubectl get statefulsets --watch -o=wide -l'
+alias ksysgsswowidel='kubectl --namespace=kube-system get statefulsets --watch -o=wide -l'
+alias kgsswojsonl='kubectl get statefulsets --watch -o=json -l'
+alias ksysgsswojsonl='kubectl --namespace=kube-system get statefulsets --watch -o=json -l'
+alias kdssn='kubectl describe statefulsets --namespace'
+alias kgssn='kubectl get statefulsets --namespace'
+alias krmssn='kubectl delete statefulsets --namespace'
+alias kgssoyamln='kubectl get statefulsets -o=yaml --namespace'
+alias kgssowiden='kubectl get statefulsets -o=wide --namespace'
+alias kgssojsonn='kubectl get statefulsets -o=json --namespace'
+alias kgsswn='kubectl get statefulsets --watch --namespace'
+alias kgsswoyamln='kubectl get statefulsets --watch -o=yaml --namespace'
+alias kgsswowiden='kubectl get statefulsets --watch -o=wide --namespace'
+alias kgsswojsonn='kubectl get statefulsets --watch -o=json --namespace'
+
+alias ked='kubectl edit'
+alias ksysed='kubectl --namespace=kube-system edit'
+alias kedcm='kubectl edit configmap'
+alias ksysedcm='kubectl --namespace=kube-system edit configmap'
+alias keddep='kubectl edit deployment'
+alias ksyseddep='kubectl --namespace=kube-system edit deployment'
+alias keding='kubectl edit ingress'
+alias ksyseding='kubectl --namespace=kube-system edit ingress'
+alias kedns='kubectl edit namespaces'
+alias kedpo='kubectl edit pods'
+alias ksysedpo='kubectl --namespace=kube-system edit pods'
+alias kedpv='kubectl edit persistentvolumes'
+alias ksysedpv='kubectl --namespace=kube-system edit persistentvolumes'
+alias kedpvc='kubectl edit persistentvolumeclaims'
+alias ksysedpvc='kubectl --namespace=kube-system edit persistentvolumeclaims'
+alias kedsec='kubectl edit secret'
+alias ksysedsec='kubectl --namespace=kube-system edit secret'
+alias kedss='kubectl edit statefulsets'
+alias ksysedss='kubectl --namespace=kube-system edit statefulsets'
+alias kedsvc='kubectl edit service'
+alias ksysedsvc='kubectl --namespace=kube-system edit service'

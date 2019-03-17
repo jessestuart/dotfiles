@@ -24,6 +24,7 @@ alias yl="yarn lint"
 alias yt="yarn test"
 alias ywip="yarn willitpass"
 alias ysr="yarn start --reset-cache"
+alias ytw="yarn test --watch"
 
 # Gatsby
 # alias kg="ps -efw | ag '[g]atsby develop' | awk '{print $2}' | xargs kill"

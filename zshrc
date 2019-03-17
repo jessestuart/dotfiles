@@ -11,3 +11,10 @@ if ! test -z $ZPROFILE; then
   zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
+
+export GO111MODULE=auto
+
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /Users/jesse/go/src/github.com/minio/mc/mc mc
+
+# complete -o nospace -C /Users/jesse/go/bin/mc mc

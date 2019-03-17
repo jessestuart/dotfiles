@@ -463,3 +463,7 @@ function nag() {
 function cheat() {
   /usr/local/bin/cheat $1 | bat -l markdown --theme OneHalfDark --style plain
 }
+
+function uniqx() {
+  awk '{ if (!h[$0]) { print $0; h[$0]=1 } }'
+}

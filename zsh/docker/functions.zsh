@@ -67,7 +67,7 @@ function dki() {
   echo '============================================='
   echo 'MANIFEST:'
   echo '============================================='
-  manti $image | grep Arch
+  manti $image | rg --color=never Arch
   if ! (echo $image | grep -q "/" &>/dev/null); then
     image = "library/$image"
   fi

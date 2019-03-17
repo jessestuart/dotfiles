@@ -99,7 +99,7 @@ function ketcdctl() {
 function kglb() {
   kubectl get svc --all-namespaces |
     grep LoadBalancer |
-    awk '{print $5,$2,$1}' |
+    awk '{print $5,$2,$1,$6}' |
     sort -k1 -d |
     column -t
 }
