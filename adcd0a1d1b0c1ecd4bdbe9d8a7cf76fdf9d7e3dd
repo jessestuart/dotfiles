@@ -1,0 +1,7 @@
+[ver:1,total:2040]
+.gtm/terminal.app:850,1551866400:420,1552852800:360,1552863600:70,r
+zsh/docker/functions.zsh:540,1552723200:420,1552726800:120,m
+bin/bootstrap.sh:330,1552863600:330,m
+zsh/exports.zsh:240,1551956400:240,r
+zsh/docker/aliases.zsh:60,1552723200:60,r
+config/yamllint/config:20,1552863600:20,m
