@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " =============================================
 " Asynchronous Lint Engine (ALE) configuration.
 " =============================================
@@ -14,6 +16,20 @@ let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 1
 
 let g:ale_statusline_format = ['X %d', '? %d', '']
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+" set statusline=%{LinterStatus()}
 
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
@@ -23,35 +39,35 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 
 " \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
 " , 'prettier-eslint', 'flow', 'eslint'],
-"
-      " \  'typescript': ['prettier', 'tsc', 'tslint', 'eslint'],
-      " \  'typescript.tsx': ['prettier', 'tsc', 'tslint', 'eslint'],
-let g:ale_linters = {
-      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \  'ansible': ['ansible-lint'],
-      \  'bash': ['shfmt'],
-      \  'Dockerfile': ['hadolint'],
-      \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
-      \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
-      \  'json': ['prettier'],
-      \  'typescript': ['eslint', 'tslint'],
-      \  'typescript.tsx': ['eslint', 'tslint'],
-      \  'markdown': ['prettier'],
-      \  'pandoc': ['prettier'],
-      \  'python': ['isort', 'yapf'],
-      \  'sh': ['shfmt', 'shellcheck'],
-      \  'vim': ['vint'],
-      \  'yaml': ['yamllint', 'swaglint', 'prettier'],
-      \  'zsh': ['shellcheck'],
-      \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
-      \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
-      \  'ruby': ['rubocop'],
-      \}
+" \  'typescript': ['prettier', 'tsc', 'tslint', 'eslint'],
+" \  'typescript.tsx': ['prettier', 'tsc', 'tslint', 'eslint'],
 
-      " \  'javascript.jsx': ['importjs', 'standard'],
-      " \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
-      " \  'typescript': ['importjs', 'prettier', 'tslint', 'eslint'],
-      " \  'typescript.tsx': ['importjs', 'prettier', 'tslint', 'eslint'],
+" let g:ale_linters = {
+"       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+"       \  'ansible': ['ansible-lint'],
+"       \  'bash': ['shfmt'],
+"       \  'Dockerfile': ['hadolint'],
+"       \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
+"       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
+"       \  'json': ['prettier'],
+"       \  'typescript': ['eslint', 'tslint'],
+"       \  'typescript.tsx': ['eslint', 'tslint'],
+"       \  'markdown': ['prettier', 'vale'],
+"       \  'pandoc': ['prettier', 'vale'],
+"       \  'python': ['isort', 'yapf'],
+"       \  'sh': ['shfmt', 'shellcheck', 'language_server'],
+"       \  'vim': ['vint'],
+"       \  'yaml': ['yamllint', 'swaglint', 'prettier'],
+"       \  'zsh': ['shellcheck'],
+"       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
+"       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
+"       \  'ruby': ['rubocop'],
+"       \}
+
+" \  'javascript.jsx': ['importjs', 'standard'],
+" \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
+" \  'typescript': ['importjs', 'prettier', 'tslint', 'eslint'],
+" \  'typescript.tsx': ['importjs', 'prettier', 'tslint', 'eslint'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'bash': ['shfmt'],
@@ -77,7 +93,8 @@ nnoremap <leader>an :ALENextWrap<CR>
 nnoremap <leader>ap :ALEPreviousWrap<CR>
 nnoremap <leader>af :ALEFix<CR>
 
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-let g:airline_section_error = airline#section#create_right(['ALE'])
+" call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+" call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+" let g:airline_section_error = airline#section#create_right(['ALE'])
+
 let g:ale_sign_column_always = 1

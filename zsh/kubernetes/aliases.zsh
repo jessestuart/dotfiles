@@ -2,8 +2,8 @@
 alias hui="helm upgrade --install"
 # alias load_colors="$HOME/.bin/load_colors"
 # alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
-alias esh="http --pretty=all -b https://elasticsearch.jesses.io/_cluster/health"
-alias eshw="watch http --pretty=all -b https://elasticsearch.jesses.io/_cluster/health"
+alias esh="http --pretty=all -b https://es.jesses.io/_cluster/health"
+alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
 # alias esh="http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
 # alias eshw="watch http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
 alias k="kubectl "
@@ -15,9 +15,10 @@ alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
 alias kp="get_pods_colorized "
 alias fa="faas"
-alias cm="helm push . js"
+alias hp="helm push . jesse"
 
 alias st="stern --tail=100"
+alias stt="stern"
 alias stfl="stern fluent-bit --tail=100 --namespace=logging"
 alias stes="stern elasticsearch --tail=100 --namespace=logging"
 
@@ -100,7 +101,8 @@ function get_pods_colorized() {
     sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
     sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
     sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
-    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+|-(nfs|milo))|architect)/${magenta}\1${normal}/g"
+    sed -E "s/\srock([a-zA-Z0-9]*)/${blue}rock\1${normal}/g" |
+    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo))|architect)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {

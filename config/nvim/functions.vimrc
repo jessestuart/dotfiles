@@ -63,7 +63,7 @@ function! SortWords()
   let EndPosition = getpos("'>")
 
   if StartPosition[0] != EndPosition[0]
-    echoerr "Range spans multiple buffers"
+    echoerr 'Range spans multiple buffers'
   elseif StartPosition[1] != EndPosition[1]
     " This is a multiple line range, probably easiest to work line wise
 
@@ -84,13 +84,13 @@ function! SortWords()
     if StartPosition[2] > 1
       let StartOfLine = CurrentLine[:StartPosition[2]-2]
     else
-      let StartOfLine = ""
+      let StartOfLine = ''
     endif
     " The end bit
     if EndPosition[2] < len(CurrentLine)
       let EndOfLine = CurrentLine[EndPosition[2]:]
     else
-      let EndOfLine = ""
+      let EndOfLine = ''
     endif
     " The middle bit
     let BitToSort = CurrentLine[StartPosition[2]-1:EndPosition[2]-1]
@@ -118,6 +118,6 @@ endfunction
 " From Drew Neil + https://github.com/stoeffel/.dotfiles/blob/master/vim/visual-at.vim
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 function! ExecuteMacroOverVisualRange()
-  echo "@".getcmdline()
+  echo '@'.getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction

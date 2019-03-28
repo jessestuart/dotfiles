@@ -79,4 +79,10 @@ export LDFLAGS="-L/usr/local/opt/curl/lib"
 export CPPFLAGS="-I/usr/local/opt/curl/include"
 export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
 
+export HOMEBREW_PREFIX="/usr/local"
+export HOMEBREW_CELLAR="/usr/local/Cellar"
+export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
+export MANPATH="/usr/local/share/man:$MANPATH"
+export INFOPATH="/usr/local/share/info:$INFOPATH"
+
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

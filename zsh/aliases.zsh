@@ -47,6 +47,7 @@ alias simctl="xcrun simctl"
 alias pip="pip3"
 alias curl="curl -sL"
 alias vel="velero"
+alias scratch="cd $(mktemp -d)"
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
@@ -121,7 +122,7 @@ if hash exa &>/dev/null; then
   # List all files colorized in long format, including dot files
   alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
   # Same as above, but don't hide gitignored files.
-  alias laa="exa -la --git --group-directories-first"
+  alias laa="exa -la --git --group-directories-first --color-scale"
   # List all sorted by size.
   alias las="la -s size --git"
   # List all sorted by date.
@@ -134,6 +135,7 @@ else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"
   alias la="ls -alh"
+  alias laa="ls -alh"
 fi
 
 # Misc
@@ -143,14 +145,6 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 alias kbz="ps aux | grep '[B]ackblaze' -i | awk '{print $2}' | sudo xargs kill -9"
 alias tf="terraform"
 alias tmd="tmux detach"
-
-# ========
-# hyper.sh
-# ========
-alias h="hyper"
-alias hc="hyper compose"
-alias hcup="hyper compose up"
-alias hcdown="hyper compose down"
 
 # ===================================================
 
@@ -163,7 +157,8 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 # IP addresses
 # alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }' | sort -nr"
+alias ip4="ifconfig -a | grep -o 'inet\s\(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet\s(addr:)? ?/, \"\"); print }' | sort -nr"
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"

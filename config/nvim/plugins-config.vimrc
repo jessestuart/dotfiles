@@ -2,7 +2,7 @@
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
+" let g:javascript_plugin_flow = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
@@ -10,8 +10,8 @@ let g:jsx_ext_required = 0
 let g:tern#is_show_argument_hints_enabled = 1
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -27,25 +27,28 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " but we can co-opt it to display search results from Ag with: <leader>cc
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
-map <leader>cc :botright cope<CR>
-map <leader>co ggyG :tabnew<CR>:set syntax=qf<CR>pgg
-map <leader>ne :cn<CR>
-map <leader>pe :cp<CR>
+noremap <leader>cc :botright cope<CR>
+noremap <leader>co ggyG :tabnew<CR>:set syntax=qf<CR>pgg
+noremap <leader>ne :cn<CR>
+noremap <leader>pe :cp<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd bufenter * if (winnr("$") == 1 &&
-  \ exists("b:NERDTree") &&
-  \ b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=[
-  \ '.git$[[dir]]',
-  \ 'node_modules$[[dir]]',
-  \ '.DS_Store',
-  \ '*.pyc',
-  \ '\~$'
-  \ ]
+augroup NERDTreeInit
+  au!
+  autocmd bufenter * if (winnr("$") == 1 &&
+    \ exists("b:NERDTree") &&
+    \ b:NERDTree.isTabTree()) | q | endif
+  let g:NERDTreeShowHidden=1
+  let g:NERDTreeIgnore=[
+    \ '.git$[[dir]]',
+    \ 'node_modules$[[dir]]',
+    \ '.DS_Store',
+    \ '*.pyc',
+    \ '\~$'
+    \ ]
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
@@ -206,7 +209,7 @@ set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  set norelativenumber
+  set relativenumber
   set scrolloff=999
 endfunction
 

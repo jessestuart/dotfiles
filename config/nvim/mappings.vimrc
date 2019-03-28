@@ -11,7 +11,8 @@ scriptencoding
 let g:mapleader = '\'
 map <space> \
 
-" TODO: Trying this out.
+" Swap colon and semicolon -- easier access to `ex` mode; just remember this
+" requires using `:` to skip forward when using the `f` motion.
 nnoremap ; :
 nnoremap : ;
 
@@ -29,10 +30,9 @@ nnoremap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:
 " ==========================================
 " I would be lost without FZF.
 nnoremap <leader>fz :FZF<CR>
-nnoremap <C-j> <CR>
 
 " Toggle Goyo for distraction-free editing.
-nnoremap <leader>z :Goyo 140+10%x100%<CR>
+nnoremap <leader>z :Goyo 120x80%<CR>
 nnoremap <leader>zz :Goyo!<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
@@ -46,6 +46,7 @@ nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
 " Disable highlight with <leader><CR>.
 noremap <silent> <leader><CR> :noh<CR>
+noremap <silent> <leader><BS> :noh<CR>
 
 " Shortcut to begin a substitution with
 noremap <Leader>re :%s/
@@ -183,7 +184,7 @@ noremap <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From Upcase
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = [
   \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'python']
 
@@ -223,3 +224,5 @@ nnoremap <Leader>b :Gblame<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 
 nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>
+
+nnoremap <leader>ir :Inline2Ref<CR>

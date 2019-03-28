@@ -3,7 +3,7 @@
 rules:
   braces:
     level: warning
-        max-spaces-inside: 1
+    max-spaces-inside: 1
   brackets:
     level: warning
     max-spaces-inside: 1
@@ -26,7 +26,8 @@ rules:
     max-end: 0
   hyphens:
     max-spaces-after: 1
-  indentation: disable
+  indentation:
+    disable
     # spaces: consistent
     # indent-sequences: yes
     # check-multi-line-strings: yes
@@ -38,5 +39,6 @@ rules:
   new-line-at-end-of-file: enable
   new-lines:
     type: unix
+  quoted-strings: disable
   trailing-spaces: enable
   truthy: disable

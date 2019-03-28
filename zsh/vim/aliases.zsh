@@ -48,8 +48,15 @@ alias vipc="$EDITOR ~/.config/nvim/plugins-config.vimrc"
 alias vici="$EDITOR .circleci/config.yml"
 alias vihost="sudo $EDITOR /etc/hosts"
 alias vimake="$EDITOR Makefile"
-alias vir="$EDITOR README.md"
 alias visec="$EDITOR ~/.secrets"
 alias vissh="$EDITOR ~/.ssh/config"
 alias vitodo="$EDITOR TODO.md"
 alias vm="$EDITOR Makefile"
+
+# =========================================================================
+# Open a README file in the current directory; matches anything of the form
+# README*, with any extension, case insenstive.
+# =========================================================================
+function vir() {
+  find . -iname 'README*' -depth 1 -exec nvim {} \;
+}

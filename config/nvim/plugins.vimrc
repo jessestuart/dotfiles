@@ -31,7 +31,7 @@ Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-dirvish'
+" Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
@@ -89,6 +89,7 @@ Plug 'heavenshell/vim-jsdoc'
 " Plug 'jxnblk/vim-mdx-js'
 Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'mattn/emmet-vim'
+Plug 'moll/vim-node'
 
 " Disabled 20181114
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
@@ -286,7 +287,24 @@ Plug 'chrisbra/matchit'
 " Plug 'ncm2/ncm2-tern', { 'do': 'yarn install' }
 
 Plug 'paretje/nvim-man'
+" Plug 'vim-utils/vim-man'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+
+Plug 'google/vim-jsonnet'
+
+" ES2015 code snippets
+Plug 'epilande/vim-es2015-snippets'
+" React code snippets (Optional)
+Plug 'epilande/vim-react-snippets'
+Plug 'honza/vim-snippets'
+
+" > This plugin sends lines from either Vim or Neovim to a command line
+" > interpreter (REPL application). There is support for Clojure, Golang,
+" > Haskell, JavaScript, Julia, Jupyter, Lisp, Macaulay2, Matlab, Prolog,
+" > Python, Ruby, Sage, Scala, Shell script, and Swift (see Nvim-R for R support
+" > on Vim/Neovim). The interpreter may run in a Neovim built-in terminal
+" > (Neovim buffer), an external terminal emulator or in a tmux pane.
+Plug 'jalvesaq/vimcmdline'
 
 call plug#end()

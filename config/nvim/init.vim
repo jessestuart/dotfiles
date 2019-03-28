@@ -3,6 +3,7 @@
 " =============================================================
 
 source $HOME/.config/nvim/base.vimrc
+source $HOME/.config/nvim/ale.vimrc
 source $HOME/.config/nvim/files.vimrc
 source $HOME/.config/nvim/filetypes.vimrc
 source $HOME/.config/nvim/plugins.vimrc
@@ -11,7 +12,6 @@ source $HOME/.config/nvim/functions.vimrc
 source $HOME/.config/nvim/mappings.vimrc
 source $HOME/.config/nvim/plugins-config.vimrc
 
-source $HOME/.config/nvim/ale.vimrc
 source $HOME/.config/nvim/deoplete.vimrc
 source $HOME/.config/nvim/fzf.vimrc
 source $HOME/.config/nvim/language-client.vimrc
