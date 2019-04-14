@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 # Git Time Metrics ⏱
 test -e "$HOME/bin/gtm-plugin.sh" && . "$HOME/bin/gtm-plugin.sh"
 test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.sh"
@@ -7,13 +8,7 @@ test -e "$HOME/dotfiles/bin/gtm-plugin.sh" && . "$HOME/dotfiles/bin/gtm-plugin.s
 test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
 
 # Autojump 🚀
-function j() {
-  (( $+commands[brew] )) && {
-      local pfx=$(brew --prefix)
-      [[ -f "$pfx/etc/autojump.sh" ]] && . "$pfx/etc/autojump.sh"
-      j "$@"
-  }
-}
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # SDKMAN!
 function load_sdkman() {
@@ -65,7 +60,7 @@ load_bashmarks
 
 # test /usr/local/etc/profile.d/z.sh && . /usr/local/etc/profile.d/z.sh
 
-xpanes_completions="$HOME/gh/github.com/greymd/tmux-xpanes/contrib/completion/zsh/_tmux-xpanes"
+xpanes_completions="$HOME/github/greymd/tmux-xpanes/completion.zsh"
 test -e $xpanes_completions && . $xpanes_completions
 
 # added by travis gem

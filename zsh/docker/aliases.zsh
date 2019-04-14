@@ -11,6 +11,7 @@ alias vid="vi Dockerfile"
 alias dkspr="docker system prune"
 alias dih="docker images | tail -n+2 | head -n10"
 alias dcp="docker container prune -f"
+alias dks="docker search"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
@@ -83,7 +84,6 @@ alias dkRM='docker system prune'
 alias dkrm='docker rm'
 alias dkrmi='docker rmi'
 alias dkrn='docker rename'
-alias dks='docker start'
 alias dkS='docker restart'
 alias dkss='docker stats'
 alias dksv='docker save'

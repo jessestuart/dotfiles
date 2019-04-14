@@ -1,21 +1,27 @@
 #!/usr/bin/env zsh
-alias hui="helm upgrade --install"
+
+# ===========
+# Helm / etc.
+# ===========
+# alias hui="helm upgrade --install --reuse-values"
+alias hp="helm push . jesse"
 # alias load_colors="$HOME/.bin/load_colors"
 # alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
 alias esh="http --pretty=all -b https://es.jesses.io/_cluster/health"
 alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
-# alias esh="http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
-# alias eshw="watch http --pretty=all -b http://10.10.10.15:9200/_cluster/health"
+
+# =======
+# Kubectl
+# =======
 alias k="kubectl "
 alias kdp="kubectl describe pods "
 alias kgp="get_pods_colorized "
 alias kgpo="get_pods_colorized -owide"
-# alias kgpw="kgpoall -o=custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,STATE:.status.phase,NODE:.spec.nodeName"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
 alias kp="get_pods_colorized "
 alias fa="faas"
-alias hp="helm push . jesse"
+alias kgpw0="kgpw | rg '0/'"
 
 alias st="stern --tail=100"
 alias stt="stern"
@@ -102,7 +108,7 @@ function get_pods_colorized() {
     sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
     sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
     sed -E "s/\srock([a-zA-Z0-9]*)/${blue}rock\1${normal}/g" |
-    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo))|architect)/${magenta}\1${normal}/g"
+    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${magenta}\1${normal}/g"
 }
 
 function describe_pods_colorized() {

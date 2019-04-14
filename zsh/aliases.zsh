@@ -47,7 +47,12 @@ alias simctl="xcrun simctl"
 alias pip="pip3"
 alias curl="curl -sL"
 alias vel="velero"
-alias scratch="cd $(mktemp -d)"
+alias scratch='cd $(mktemp -d)'
+alias ssh="mosh"
+
+hosts() {
+  sudo $EDITOR /etc/hosts
+}
 
 alias rgi="rg -i"
 alias rgh="rg --hidden"
@@ -97,7 +102,8 @@ if [ "$(uname)" = 'Darwin' ]; then
 fi
 
 if (hash bat &>/dev/null); then
-  alias cat='bat --theme OneHalfDark --pager "less -RF"'
+  # alias cat='bat --theme OneHalfDark --pager "less -RF"'
+  alias cat='bat --theme OneHalfDark'
 elif (hash ccat &>/dev/null); then
   alias cat="ccat"
 fi

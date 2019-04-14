@@ -14,7 +14,7 @@ alias gca="git commit -a"
 alias gcaa="git commit -a --amend -C HEAD"
 alias gci="hub ci-status -v"
 alias gcl="git clone"
-alias gcm="git commit -m"
+alias gcm="git commit -s -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gdc="git diff --cached"
@@ -30,7 +30,7 @@ alias gp="git push"
 alias gpf="git push --force-with-lease"
 alias gpr="git pull --rebase"
 alias grba="git rebase --abort"
-alias grc="git rebase --continue"
+alias grbc="git rebase --continue"
 alias grHH="git add -u && git reset --hard HEAD"
 alias gs="git status -s"
 alias gst="git stash push"
@@ -53,6 +53,7 @@ alias gr="git remotes"
 alias gfa="git fetch --all"
 alias gcanon="git commit --amend --no-edit --no-verify"
 alias gwe="git reset --hard HEAD"
+alias gh="ghcl"
 
 # ===============================================
 # Hub aliases.
@@ -88,5 +89,5 @@ function git_cleanup_merged_prs() {
 }
 
 function git_latest_tag() {
-  git describe --tags `git rev-list --tags --max-count=1` --abbrev=0
+  git describe --tags $(git rev-list --tags --max-count=1) --abbrev=0
 }

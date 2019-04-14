@@ -43,6 +43,12 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 " \  'typescript.tsx': ['prettier', 'tsc', 'tslint', 'eslint'],
 
 " let g:ale_linters = {
+"       \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
+"       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
+"       \  'json': ['prettier'],
+"       \}
+
+" let g:ale_linters = {
 "       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 "       \  'ansible': ['ansible-lint'],
 "       \  'bash': ['shfmt'],
@@ -76,9 +82,9 @@ let g:ale_fixers = {
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
       \  'javascript.jsx': ['prettier-eslint', 'eslint', 'flow'],
       \  'json': ['prettier'],
-      \  'markdown': ['prettier'],
-      \  'pandoc': ['prettier'],
-      \  'python': ['isort', 'yapf'],
+      \  'markdown': ['prettier', 'textlint'],
+      \  'pandoc': ['prettier', 'textlint'],
+      \  'python': ['isort'],
       \  'ruby': ['rubocop'],
       \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],
@@ -93,8 +99,6 @@ nnoremap <leader>an :ALENextWrap<CR>
 nnoremap <leader>ap :ALEPreviousWrap<CR>
 nnoremap <leader>af :ALEFix<CR>
 
-" call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-" call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-" let g:airline_section_error = airline#section#create_right(['ALE'])
-
 let g:ale_sign_column_always = 1
+
+let g:ale_virtualtext_cursor = 1

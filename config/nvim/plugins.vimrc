@@ -31,7 +31,7 @@ Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
@@ -55,6 +55,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-eunuch'
 " Plug 'tpope/vim-projectionist'
 
 " -------------------------------------
@@ -103,7 +104,7 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
@@ -144,7 +145,7 @@ Plug 'ekalinin/Dockerfile.vim'
 " Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
-" Plug 'modille/groovy.vim', { 'for': 'groovy' } " See note [1] below.
+" Plug 'modille/groovy.vim', { 'for': ['groovy', 'Jenkinsfile'] } " See note [1] below.
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'jaspervdj/stylish-haskell'
 
@@ -286,7 +287,7 @@ Plug 'chrisbra/matchit'
 " Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-tern', { 'do': 'yarn install' }
 
-Plug 'paretje/nvim-man'
+" Plug 'paretje/nvim-man'
 " Plug 'vim-utils/vim-man'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install'}

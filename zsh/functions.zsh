@@ -254,8 +254,8 @@ function sf() {
   local include="yml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst"
   local exclude=".config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,dist,public,.cache"
   local rg_command='
-    rg --column --line-number --no-heading --fixed-strings --ignore-case
-       --no-ignore --hidden --follow --color "always"
+    rg --column --line-number --no-heading --fixed-strings --ignore-case \
+       --no-ignore --hidden --follow --color "always" \
        -g "*.{'$include'}" -g "!{'$exclude'}/*"
   '
   local files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
@@ -275,17 +275,18 @@ function arch() {
   if [ $# -eq 1 ]; then
     local filename=$1
     local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
-    archiver make $archive_filename $filename
+    arc archive $archive_filename $filename
   fi
   if [ $# -eq 2 ]; then
     local archive_filename=$1
     local filename=$2
     (
       set noclobber
-      archiver make $archive_filename $filename
+      arc archive $archive_filename $filename
     )
   fi
-  echo $archive_filename
+  echo "Archived $input to $DROPBOX_BACKUP_ARCHIVE/$archive_filename."
+  return $archive_filename
 }
 
 # ===========================================================================
@@ -294,11 +295,10 @@ function arch() {
 # `~/Dropbox/Backup/Archive`.
 # ===========================================================================
 function arkcp() {
-  local input="$1"
+  local input=$1
   local DROPBOX_BACKUP_ARCHIVE=~/Dropbox/Backup/Archive
-  echo "Compressing and copying '$input' to '$DROPBOX_BACKUP_ARCHIVE'."
   local archive_file="$(arch $input)"
-  mv "$archive_file" "$DROPBOX_BACKUP_ARCHIVE"
+  mv $archive_file $DROPBOX_BACKUP_ARCHIVE
 }
 
 # ==========================================================================
@@ -460,9 +460,9 @@ function nag() {
   while true; do zdo $cmd; sleep 1; done
 }
 
-function cheat() {
-  /usr/local/bin/cheat $1 | bat -l markdown --theme OneHalfDark --style plain
-}
+# function cheat() {
+#   /usr/local/bin/cheat $1 | bat -l Markdown --theme TwoDark -p
+# }
 
 function uniqx() {
   awk '{ if (!h[$0]) { print $0; h[$0]=1 } }'

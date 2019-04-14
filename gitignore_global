@@ -24,3 +24,6 @@ google-play-service-account-key.json
 .tern-project
 
 _esy/
+
+yalc.lock
+.yalc

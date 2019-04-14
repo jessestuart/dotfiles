@@ -1,7 +1,11 @@
 let g:LanguageClient_autoStart = 1
+
+" \ 'javascript': ['javascript-typescript-stdio'],
+" \ 'javascript.jsx': ['javascript-typescript-stdio'],
+
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['flow', 'lsp'],
-    \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'javascript.jsx': ['flow', 'lsp'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'typescript.tsx': ['javascript-typescript-stdio'],
     \ 'markdown': ['markdown-language-server'],

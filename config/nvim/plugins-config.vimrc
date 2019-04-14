@@ -70,7 +70,7 @@ nmap <silent> <leader>ds <Plug>DashSearch
 
 let g:FerretMap=0
 
-let g:colorizer_auto_color = 1
+" let g:colorizer_auto_color = 1
 
 let g:github_dashboard = {
   \ 'username': 'jessestuart',
@@ -149,9 +149,16 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 
+" ===============
+" Prettier config
+" ===============
 let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+augroup PrettierInit
+  au!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+augroup END
+
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
 " number of spaces per indentation level
@@ -219,15 +226,19 @@ function! s:goyo_leave()
   set showcmd
 endfunction
 
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup GoyoInit
+  au!
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
-" function! s:isAtStartOfLine(mapping)
-"   let text_before_cursor = getline('.')[0 : col('.')-1]
-"   let mapping_pattern = '\V' . escape(a:mapping, '\')
-"   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-"   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-" endfunction
+" From https://github.com/dhruvasagar/vim-table-mode
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
 
 " inoreabbrev <expr> <bar><bar>
 "       \ <SID>isAtStartOfLine('\|\|') ?
@@ -266,13 +277,13 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>
 " UltiSnips
 " =========
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsListSnippets="<c-e> <c-e>"
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsListSnippets='<c-e> <c-e>'
 
 " Keep that hella legible 'conceal' option. I'm sure there's a way to do this
 " built in.
@@ -306,6 +317,13 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 let g:ctrlp_user_command = 'git ls-files'
 
 let g:import_sort_auto = 1
+
+" ======================================
+" From https://github.com/janko/vim-test
+" ======================================
+let test#strategy = 'neovim'
+" let test#neovim#term_position = 'bottomleft'
+let g:test#preserve_screen = 1
 
 nnoremap <silent> <leader>t :TestNearest<CR>
 nnoremap <silent> <leader>T :TestFile<CR>

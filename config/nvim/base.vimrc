@@ -107,6 +107,7 @@ set matchtime=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
+set belloff+=ctrlg
 set t_vb=
 
 " Add a bit of extra margin to the left gutter.
@@ -209,3 +210,8 @@ set foldmethod=indent
 " Get word completion for free -- the following command will let us press
 " CTRL-N or CTRL-P in insert-mode to complete the word we’re typing.
 set complete+=kspell
+
+augroup crontab
+  au!
+  autocmd filetype crontab setlocal nobackup nowritebackup
+augroup END

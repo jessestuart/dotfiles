@@ -9,7 +9,7 @@ set -e
 
 ARCH=amd64
 USER=jesse
-HOSTNAME=
+HOSTNAME=$(hostname)
 echo "ARCH: $ARCH, USER: $USER"
 if test -z "$ARCH"; then ARCH=arm64; fi
 if test -z "$USER"; then USER=jesse; fi
@@ -21,9 +21,9 @@ if test -z $HOSTNAME; then
 fi
 
 # TODO: Could pull latest releases of these from Github. Meh.
-GO_VERSION="1.12.1"
+GO_VERSION="1.12.4"
 DIFF_SO_FANCY_VERSION="1.2.5"
-ANTIBODY_VERSION="4.1.0"
+ANTIBODY_VERSION="4.1.1"
 
 # =============================
 # Some basic utility functions.
@@ -81,7 +81,7 @@ if cmd_missing docker; then
   print_header 'Installing Docker...'
   curl -fsSL get.docker.com | sudo sh
   sudo usermod -aG docker "$USER"
-  print_progress 'docker installed successfully.'
+  print_progress 'Docker installed successfully.'
 fi
 
 # =======================

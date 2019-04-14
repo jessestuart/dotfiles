@@ -13,10 +13,12 @@ function manti() {
     mantool-inspect $image
     return
   fi
-  local manifest=$(reg manifest --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD $image 2>&1)
+  manifest=$(reg manifest --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD $image 2 &>1)
   echo "manifest: $manifest"
   # reg manifest --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD $image
+
   if ! [[ $manifest =~ .*platform.* ]]; then
+    echo 'falling back to manifest tool'
     manifest-tool --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD inspect $image | grep -vi -e layer -e digest -e 'manifest type'
   else
     echo $manifest |

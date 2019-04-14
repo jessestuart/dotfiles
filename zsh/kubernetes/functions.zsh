@@ -115,15 +115,20 @@ function krg() {
 #   command kubectl "$@"
 # }
 
-function helmup() {
-  local chart_name=$(pwd | awk -F/ '{print $NF}')
-  if ! $(kubectl get namespaces | grep -q $chart_name); then
-    kubectl create namespace $chart_name
-  fi
-  helm upgrade --install $chart_name stable/$chart_name --namespace $1
-}
+# function helmup() {
+#   local chart_name=$(pwd | awk -F/ '{print $NF}')
+#   if ! $(kubectl get namespaces | grep -q $chart_name); then
+#     kubectl create namespace $chart_name
+#   fi
+#   helm upgrade --install $chart_name stable/$chart_name --namespace $1
+# }
 
 function helmdown() {
   local chart_name=$(pwd | awk -F/ '{print $NF}')
   helm del --purge $chart_name
+}
+
+function hui() {
+  helm upgrade --install --reuse-values $@
+  helm push . jesse
 }
