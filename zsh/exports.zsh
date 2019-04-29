@@ -64,9 +64,10 @@ export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 #   alias less=$PAGER
 #   alias zless=$PAGER
 # fi
-if hash nvim &>/dev/null; then
-  export PAGER="nvim -R"
-fi
+
+# if hash nvim &>/dev/null; then
+#   export PAGER="nvim -R"
+# fi
 
 export HOWDOI_COLORIZE=1
 
@@ -84,5 +85,7 @@ export HOMEBREW_CELLAR="/usr/local/Cellar"
 export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
 export MANPATH="/usr/local/share/man:$MANPATH"
 export INFOPATH="/usr/local/share/info:$INFOPATH"
+
+export GROOVY_TURN_OFF_JAVA_WARNINGS=1
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

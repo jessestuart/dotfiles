@@ -128,7 +128,7 @@
 [core]
 	editor = /usr/local/bin/nvim
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/jesse/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	attributesfile = ~/.gitattributes
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -244,10 +244,10 @@
 	enabled = true
 [mergetool]
 	keepBackup = true
-; [commit]
-; 	gpgsign = true
-; [gpg]
-; 	program = gpg
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
 [ghq]
 	root=~/gh
 [color "diff-highlight"]

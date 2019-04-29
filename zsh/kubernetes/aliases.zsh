@@ -5,7 +5,6 @@
 # ===========
 # alias hui="helm upgrade --install --reuse-values"
 alias hp="helm push . jesse"
-# alias load_colors="$HOME/.bin/load_colors"
 # alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
 alias esh="http --pretty=all -b https://es.jesses.io/_cluster/health"
 alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
@@ -15,7 +14,7 @@ alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
 # =======
 alias k="kubectl "
 alias kdp="kubectl describe pods "
-alias kgp="get_pods_colorized "
+alias kgp="get_pods_colorized -owide"
 alias kgpo="get_pods_colorized -owide"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
@@ -32,7 +31,7 @@ alias stes="stern elasticsearch --tail=100 --namespace=logging"
 alias kgcrash="kgpw | sort -n -k5"
 
 alias abg="velero backup get"
-alias abdel="yes | velero backup delete"
+alias abdel="velero backup delete --confirm"
 alias abd="velero backup describe"
 
 # Aliases for `kubens` for quickly switching between common namespaces.
@@ -54,71 +53,106 @@ alias sysdr="sudo systemctl restart docker"
 alias sysdst="sudo systemctl stop docker"
 alias sysdarl="sudo systemctl daemon-reload"
 
-alias hlrm="helm delete --purge"
-# alias hlin="helm update --install "
+alias hrm="helm delete --purge"
 
 alias kpanes="xpanes --ssh \$(kubectl get nodes --no-headers | awk1)"
 
+# https://unix.stackexchange.com/a/10065
+# If stdout is a terminal
+# if test -t 1; then
+#   # see if it supports colors
+#   ncolors=$(tput colors)
+#   if test -n "$ncolors" && test $ncolors -ge 8; then
+#     export BOLD="$(tput bold)"
+#     export UNDERLINE="$(tput smul)"
+#     export STANDOUT="$(tput smso)"
+#     export NORMAL="$(tput sgr0)"
+#     export BLACK="$(tput setaf 0)"
+#     export RED="$(tput setaf 1)"
+#     export GREEN="$(tput setaf 2)"
+#     export YELLOW="$(tput setaf 3)"
+#     export BLUE="$(tput setaf 4)"
+#     export MAGENTA="$(tput setaf 5)"
+#     export CYAN="$(tput setaf 6)"
+#     export WHITE="$(tput setaf 7)"
+#   fi
+# fi
+
 function load_colors() {
   # https://unix.stackexchange.com/a/10065
-  # if stdout is a terminal
+  # If stdout is a terminal
   if test -t 1; then
     # see if it supports colors
     ncolors=$(tput colors)
     if test -n "$ncolors" && test $ncolors -ge 8; then
-      bold="$(tput bold)"
-      underline="$(tput smul)"
-      standout="$(tput smso)"
-      normal="$(tput sgr0)"
-      black="$(tput setaf 0)"
-      red="$(tput setaf 1)"
-      green="$(tput setaf 2)"
-      yellow="$(tput setaf 3)"
-      blue="$(tput setaf 4)"
-      magenta="$(tput setaf 5)"
-      cyan="$(tput setaf 6)"
-      white="$(tput setaf 7)"
+      export BOLD="$(tput bold)"
+      export UNDERLINE="$(tput smul)"
+      export STANDOUT="$(tput smso)"
+      export NORMAL="$(tput sgr0)"
+      export BLACK="$(tput setaf 0)"
+      export RED="$(tput setaf 1)"
+      export GREEN="$(tput setaf 2)"
+      export YELLOW="$(tput setaf 3)"
+      export BLUE="$(tput setaf 4)"
+      export MAGENTA="$(tput setaf 5)"
+      export CYAN="$(tput setaf 6)"
+      export WHITE="$(tput setaf 7)"
     fi
   fi
 }
 
-# function colorize_stdout() {
-#   load_colors
-#   input="$@"
-#   echo $input \
-#       | sed "s/Running/${green}Running${normal}/g" \
-#       | sed "s/Pending/${yellow}Pending${normal}/g" \
-#       | sed "s/Completed/${blue}Completed${normal}/g" \
-#       | sed -E "s/([a-zA-Z]]*)Error/${red}\1Error${normal}/g" \
-#       | sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" \
-#       | sed -E "s/([a-zA-Z]+)Killed/${red}\1BackOff${normal}/g" \
-#       | sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" \
-#       | sed -E "s/(10.*)/${cyan}\1${normal}/g"
-# }
+function colorize_stdout() {
+  # load_colors
+  while read input; do
+    echo $input |
+      sed "s/Running/${GREEN}Running${NORMAL}/g" |
+      sed "s/Pending/${YELLOW}Pending${NORMAL}/g" |
+      sed "s/Completed/${BLUE}Completed${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]*)Error/${RED}\1Error${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]*)ErrImagePull/${RED}\1Error${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]+)BackOff/${RED}\1BackOff${NORMAL}/g" |
+      sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
+      sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
+      sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
+      sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+      sed -E "s/^\(.*\s\)\(.*\)\s/\1${BOLD}\2${NORMAL}/g"
+
+    echo $input |
+      sed "s/Running/${GREEN}Running${NORMAL}/g" |
+      sed "s/Pending/${YELLOW}Pending${NORMAL}/g" |
+      sed "s/Completed/${BLUE}Completed${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]]*)Error/${RED}\1Error${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]+)BackOff/${RED}\1BackOff${NORMAL}/g" |
+      sed -E "s/([a-zA-Z]+)Killed/${RED}\1BackOff${NORMAL}/g" |
+      sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
+      sed -E "s/\(10\..*\)/${CYAN}\1${NORMAL}/g"
+  done
+}
 
 function get_pods_colorized() {
   load_colors
   kubectl get pods "$@" |
-    sed "s/Running/${green}Running${normal}/g" |
-    sed "s/Pending/${yellow}Pending${normal}/g" |
-    sed "s/Completed/${blue}Completed${normal}/g" |
-    sed -E "s/([a-zA-Z]*)Error/${red}\1Error${normal}/g" |
-    sed -E "s/([a-zA-Z]*)ErrImagePull/${red}\1Error${normal}/g" |
-    sed -E "s/([a-zA-Z]+)BackOff/${red}\1BackOff${normal}/g" |
-    sed -E "s/^([a-z0-9\-]+)/${cyan}\1${normal}/g" |
-    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${blue}pik8s-\1${normal}/g" |
-    sed -E "s/\srock([a-zA-Z0-9]*)/${blue}rock\1${normal}/g" |
-    sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${magenta}\1${normal}/g"
+    sed "s/Running/${GREEN}Running${NORMAL}/g" |
+    sed "s/Pending/${YELLOW}Pending${NORMAL}/g" |
+    sed "s/Completed/${BLUE}Completed${NORMAL}/g" |
+    sed -E "s/([a-zA-Z]*)Error/${RED}\1Error${NORMAL}/g" |
+    sed -E "s/([a-zA-Z]*)ErrImagePull/${RED}\1Error${NORMAL}/g" |
+    sed -E "s/([a-zA-Z]+)BackOff/${RED}\1BackOff${NORMAL}/g" |
+    sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
+    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
+    sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
+    sed -E "s/\s(milo|(ubuntu(-qemu)?|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+    sed -E "s/[.*\s]+\(.*\)/${BOLD}&${NORMAL}/g"
 }
 
 function describe_pods_colorized() {
   load_colors
   kubectl describe "$@" |
-    sed "s/Running/${green}Running${normal}/g" |
-    sed "s/Pending/${yellow}Pending${normal}/g" |
-    sed "s/Completed/${blue}Completed${normal}/g" |
-    sed "s/Error/${red}Error${normal}/g" |
-    sed "s/CrashLoopBackOff/${red}CrashLoopBackOff${normal}/g"
+    sed "s/Running/${GREEN}Running${NORMAL}/g" |
+    sed "s/Pending/${YELLOW}Pending${NORMAL}/g" |
+    sed "s/Completed/${BLUE}Completed${NORMAL}/g" |
+    sed "s/Error/${RED}Error${NORMAL}/g" |
+    sed "s/CrashLoopBackOff/${RED}CrashLoopBackOff${NORMAL}/g"
 }
 
 # Auto-generated from:

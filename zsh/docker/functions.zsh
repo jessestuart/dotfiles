@@ -149,9 +149,10 @@ function dht() {
     repo=$(echo $1 | cut -d'/' -f1)
     image=$(echo $1 | cut -d'/' -f2)
   else
-    repo=$1
-    image=$2
+    repo='library'
+    image=$1
   fi
+  if ! test -z $2; then page_num=$2; else page_num=1; fi
   docker-hub tags -o $repo -r $image
 }
 
@@ -181,4 +182,9 @@ function mantp() {
     --platforms "$platforms" \
     --template "$registry/$image:$version-ARCH" \
     --target "$registry/$image:$target"
+}
+
+function dhtags() {
+  image=$1
+  skopeo inspect docker://docker.io/$image | jq '.RepoTags[]' -r | rg --color=never '^(v)?[0-9]+\.[0-9]+\.[0-9]+' | sort --version-sort
 }

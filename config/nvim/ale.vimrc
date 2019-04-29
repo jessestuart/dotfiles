@@ -29,8 +29,6 @@ function! LinterStatus() abort
     \)
 endfunction
 
-" set statusline=%{LinterStatus()}
-
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 " let g:ale_echo_msg_format = '%linter%: %s'
@@ -89,7 +87,7 @@ let g:ale_fixers = {
       \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],
       \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
-      \  'typescript.tsx': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'typescript.tsx': ['prettier', 'eslint'],
       \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
       \}
@@ -101,4 +99,4 @@ nnoremap <leader>af :ALEFix<CR>
 
 let g:ale_sign_column_always = 1
 
-let g:ale_virtualtext_cursor = 1
+" let g:ale_virtualtext_cursor = 1

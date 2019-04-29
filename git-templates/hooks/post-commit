@@ -1,3 +1,4 @@
+#!/bin/sh
 #!/bin/bash
 
 # ===========================================================
@@ -29,7 +30,12 @@ if hash gtm &>/dev/null; then
   git pushgtm >/dev/null 2>&1 &
 fi
 
-notify_rescuetime
+notify_rescuetime &>/dev/null
+notify_rescuetime_exit_code=$?
+if ! [ "$notify_rescuetime_exit_code" -eq '0' ]; then
+  echo "Unable to update RescueTime."
+fi
+
 if test -e .git/hooks/ctags; then
   .git/hooks/ctags >/dev/null 2>&1 &
 fi

@@ -52,4 +52,4 @@ set ttimeout
 set ttimeoutlen=1
 
 " Use <C-A> to execute a math expression.
-ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+inoremap <C-N> <C-O>yiW<End>=<C-R>=<C-R>0<CR>

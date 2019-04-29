@@ -86,6 +86,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'jxnblk/vim-mdx-js'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -97,6 +98,8 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
@@ -104,11 +107,12 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -132,6 +136,7 @@ Plug 'pearofducks/ansible-vim'
 " Visual styling / theming.
 " -------------------------------------
 Plug 'joshdick/onedark.vim'
+" Plug 'rakr/vim-one'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
@@ -141,7 +146,8 @@ Plug 'vim-airline/vim-airline'
 " Misc. language support.
 " -------------------------------------
 Plug 'sheerun/vim-polyglot'
-Plug 'ekalinin/Dockerfile.vim'
+" Plug 'ekalinin/Dockerfile.vim'
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
 " Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 Plug 'jparise/vim-graphql'
@@ -224,7 +230,7 @@ Plug 'sjl/gundo.vim'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'kassio/neoterm'
-" Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
 " Plug 'rhysd/clever-f.vim'
 Plug 'gregsexton/gitv'
@@ -289,6 +295,7 @@ Plug 'chrisbra/matchit'
 
 " Plug 'paretje/nvim-man'
 " Plug 'vim-utils/vim-man'
+
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 
@@ -307,5 +314,7 @@ Plug 'honza/vim-snippets'
 " > on Vim/Neovim). The interpreter may run in a Neovim built-in terminal
 " > (Neovim buffer), an external terminal emulator or in a tmux pane.
 Plug 'jalvesaq/vimcmdline'
+
+" Plug 'meain/vim-package-json', { 'do': 'cd rplugin/node/vim-package-json && yarn -s' }
 
 call plug#end()

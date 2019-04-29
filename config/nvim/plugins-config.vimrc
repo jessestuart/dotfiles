@@ -156,7 +156,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 1
 augroup PrettierInit
   au!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass,*.md PrettierAsync
 augroup END
 
 " max line length that prettier will wrap on
@@ -321,12 +321,19 @@ let g:import_sort_auto = 1
 " ======================================
 " From https://github.com/janko/vim-test
 " ======================================
-let test#strategy = 'neovim'
+let test#strategy = 'dispatch'
 " let test#neovim#term_position = 'bottomleft'
 let g:test#preserve_screen = 1
 
-nnoremap <silent> <leader>t :TestNearest<CR>
-nnoremap <silent> <leader>T :TestFile<CR>
+" nnoremap <silent> <leader>t :TestNearest<CR>
+nnoremap <silent> <leader>T :TestNearest<CR>
 nnoremap <silent> <leader>a :TestSuite<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 " nnoremap <silent> <leader>g :TestVisit<CR>
+
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+let g:colorizer_use_virtual_text=1

@@ -59,6 +59,7 @@ bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
 bindkey '^L' autosuggest-accept
+bindkey '^[end' autosuggest-accept
 # bindkey -M vicmd '<C-p>' autosuggest-accept
 
 zle-keymap-select() {

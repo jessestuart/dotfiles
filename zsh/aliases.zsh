@@ -49,6 +49,10 @@ alias curl="curl -sL"
 alias vel="velero"
 alias scratch='cd $(mktemp -d)'
 alias ssh="mosh"
+alias px="ps aux"
+alias jgh="cd ~/github"
+alias n="nnn"
+alias bd="brew desc"
 
 hosts() {
   sudo $EDITOR /etc/hosts
@@ -71,7 +75,7 @@ function sum() {
 # *Advanced SSH Config* --
 # @see https://github.com/moul/advanced-ssh-config
 alias ash="clobber && assh config build > ~/.ssh/config"
-alias vash="$EDITOR ~/.ssh/assh.yml"
+alias vash='$EDITOR ~/.ssh/assh.yml'
 
 # ============================================
 # Shell essentials. `ls`, `du`, `source`, etc.

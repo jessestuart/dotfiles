@@ -203,8 +203,8 @@ augroup END
 " ============================================
 " --------------- EXPERIMENTAL ---------------
 " ============================================
-nnoremap <silent> H ^
-nnoremap <silent> L $
+" nnoremap <silent> H ^
+" nnoremap <silent> L $
 nnoremap <M-tab> :tabprevious<CR>
 nnoremap <M-q> :tabnext<CR>
 
@@ -223,6 +223,6 @@ nnoremap <Leader>b :Gblame<CR>
 
 nnoremap <leader>t :TagbarToggle<CR>
 
-nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>
+" nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>
 
 nnoremap <leader>ir :Inline2Ref<CR>

@@ -3,11 +3,13 @@ let g:LanguageClient_autoStart = 1
 " \ 'javascript': ['javascript-typescript-stdio'],
 " \ 'javascript.jsx': ['javascript-typescript-stdio'],
 
+" \ 'javascript': ['flow-language-server', '--stdio'],
+" \ 'javascript.jsx': ['flow', 'lsp'],
+
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['flow-language-server', '--stdio'],
-    \ 'javascript.jsx': ['flow', 'lsp'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'typescript.tsx': ['javascript-typescript-stdio'],
+    \ 'go': ['go-langserver'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
     \ 'markdown': ['markdown-language-server'],
     \ 'pandoc': ['markdown-language-server'],
     \ }
@@ -23,5 +25,5 @@ set omnifunc=LanguageClient#complete
 " autocmd FileType typescript.tsx setlocal omnifunc=LanguageClient#complete
 
 let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
