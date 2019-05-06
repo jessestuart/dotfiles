@@ -1,0 +1,14 @@
+[ver:1,total:3240]
+zsh/zplug.zsh:1320,1514451600:180,1514455200:540,1514458800:420,1514754000:180,m
+zsh/zshrc:330,1514757600:330,m
+tmux.conf:300,1514660400:300,r
+zsh/utils/tinylogger.zsh:290,1514757600:290,d
+config/nvim/ale.vimrc:180,1514451600:180,r
+zsh/source.zsh:180,1514476800:180,m
+zsh/docker/aliases.zsh:180,1514545200:180,m
+zsh/path.zsh:150,1514700000:150,m
+zsh/utils/tinylogger.sh:100,1514757600:100,d
+zsh/git/aliases.zsh:60,1514757600:60,m
+zsh/.aliases:60,1514757600:60,d
+rcrc:60,1514757600:60,r
+zsh/exports.zsh:30,1514700000:30,r

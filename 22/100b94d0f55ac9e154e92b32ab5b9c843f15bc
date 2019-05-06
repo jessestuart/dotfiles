@@ -1,0 +1,11 @@
+[ver:1,total:60]
+zsh/kubernetes/completions.zsh:60,1527408000:60,m
+
+[ver:1,total:1320]
+zsh/prompt/config.zsh:360,1526688000:240,1527404400:60,1527408000:60,m
+zsh/systemd/aliases.zsh:360,1527188400:360,m
+zsh/antibody:210,1526688000:210,r
+zsh/functions.zsh:180,1526979600:180,m
+zsh/docker/completions.zsh.bak:120,1526688000:120,d
+zsh/docker/aliases.zsh:60,1526688000:60,m
+zsh/init:30,1526688000:30,r

@@ -1,0 +1,8 @@
+[ver:1,total:3600]
+.gtm/terminal.app:2811,1512694800:2691,1512720000:120,r
+ssh/config:396,1512694800:216,1512698400:180,m
+zsh/docker/aliases.zsh:180,1512720000:180,m
+.git/hooks/post-commit:146,1512694800:146,r
+git-templates/hooks/post-commit:41,1512694800:41,m
+zsh/zplug.zsh:14,1512694800:14,m
+zsh/functions.zsh:12,1512694800:12,m

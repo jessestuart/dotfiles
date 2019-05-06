@@ -1,0 +1,11 @@
+[ver:1,total:4920]
+zsh/docker/aliases.zsh:2930,1531202400:2700,1531371600:230,m
+.gtm/terminal.app:700,1531371600:700,r
+zsh/docker/functions.zsh:330,1531371600:330,m
+zshrc:210,1531116000:180,1531119600:30,r
+tmux.conf:180,1531119600:180,r
+zsh/antibody:180,1531296000:180,m
+zsh_profile.GizOlL7x:150,1531119600:150,d
+bin/gtm-plugin:120,1531296000:120,m
+zsh/docker/functions.sh:90,1531371600:90,d
+config/nvim/spell/en.utf-8.add:30,1531371600:30,m

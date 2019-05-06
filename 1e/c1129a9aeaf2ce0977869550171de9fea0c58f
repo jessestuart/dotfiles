@@ -1,0 +1,16 @@
+[ver:1,total:5880]
+config/nvim/mappings.vimrc:1020,1525323600:300,1525327200:720,m
+config/nvim/colors.vimrc:720,1523610000:600,1523613600:120,m
+zsh/kubernetes/aliases.zsh:660,1524110400:240,1524114000:240,1524117600:180,m
+zsh/antibody:620,1525327200:60,1525590000:560,m
+zsh/bindings.zsh:480,1525327200:240,1525330800:240,m
+zsh/git/functions.zsh:440,1524758400:180,1525586400:180,1525590000:20,1525629600:60,m
+tmux.conf:360,1525327200:180,1525330800:180,r
+bin/viman:300,1525327200:300,m
+config/nvim/base.vimrc:300,1523617200:300,m
+zsh/kubernetes/functions.zsh:240,1523412000:240,m
+config/nvim/spell/en.utf-8.add:180,1525629600:180,m
+config/nvim/filetypes.vimrc:180,1524164400:180,r
+config/nvim/after/ftdetect/markdown.vim:180,1523368800:180,d
+zsh/kubernetes/completions.zsh:180,1524333600:180,r
+zsh/init:20,1525590000:20,r

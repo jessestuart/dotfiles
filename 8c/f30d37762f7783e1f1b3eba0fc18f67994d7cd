@@ -1,0 +1,14 @@
+[ver:1,total:2520]
+config/nvim/mappings.vimrc:630,1522990800:630,m
+tmux.conf:450,1522342800:210,1522807200:240,m
+config/nvim/plugins.vimrc:180,1522803600:180,m
+ctags:180,1522342800:180,r
+gitignore_global:180,1522854000:180,m
+zsh/antibody:180,1522213200:180,m
+bin/up:180,1522807200:180,m
+zsh/tmux/completions.zsh:180,1522807200:180,m
+zsh/source.zsh:160,1522990800:160,m
+config/nvim/spell/en.utf-8.add:80,1522990800:80,m
+config/nvim/plugins-config.vimrc:60,1522990800:60,m
+rcrc:30,1522342800:30,r
+bin/gtm-plugin:30,1522990800:30,r
