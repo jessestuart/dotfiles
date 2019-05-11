@@ -234,162 +234,162 @@ function gb() {
 # compdef -e 'words=(git branch "${(@)words[2,-1]}"); ((CURRENT++)); _normal' gb
 
 # Delete or list merged branched.
-gbmcleanup() {
-  setopt localoptions errreturn
-  local -a opts only
-  zparseopts -D -a opts f q h i n l m v o+:=only
-  local curb merged
-  local -A no_diff
-  local from_branches='^(master|develop)$'
-  local keep_branches='^(master|develop|local)$'
+# gbmcleanup() {
+#   setopt localoptions errreturn
+#   local -a opts only
+#   zparseopts -D -a opts f q h i n l m v o+:=only
+#   local curb merged
+#   local -A no_diff
+#   local from_branches='^(master|develop)$'
+#   local keep_branches='^(master|develop|local)$'
 
-  if (( $opts[(I)-h] )); then
-    echo "Cleans merged branches."
-    echo "$0 [-i] [-f] [-n] [-l] [-m] [-v] [-o branch]"
-    echo " -l: list"
-    echo " -n: dry run"
-    echo " -i: interactive (show diff for each branch, asking for confirmation)"
-    echo " -f: force"
-    echo " -m: test for empty merges"
-    echo " -v: verbose"
-    return
-  fi
-  local interactive=$opts[(I)-i]
-  local force=$opts[(I)-f]
-  local dry_run=$opts[(I)-n]
-  local list=$opts[(I)-l]
-  local test_merges=$opts[(I)-m]
-  local verbose=$opts[(I)-v]
-  only=(${only:#-o})
-  local branch="$1"
+#   if (( $opts[(I)-h] )); then
+#     echo "Cleans merged branches."
+#     echo "$0 [-i] [-f] [-n] [-l] [-m] [-v] [-o branch]"
+#     echo " -l: list"
+#     echo " -n: dry run"
+#     echo " -i: interactive (show diff for each branch, asking for confirmation)"
+#     echo " -f: force"
+#     echo " -m: test for empty merges"
+#     echo " -v: verbose"
+#     return
+#   fi
+#   local interactive=$opts[(I)-i]
+#   local force=$opts[(I)-f]
+#   local dry_run=$opts[(I)-n]
+#   local list=$opts[(I)-l]
+#   local test_merges=$opts[(I)-m]
+#   local verbose=$opts[(I)-v]
+#   only=(${only:#-o})
+#   local branch="$1"
 
-  if [[ -z "$branch" ]]; then
-    branch="$(current_branch)"
-    if [[ -z $branch ]]; then
-      echo "No current branch. Aborting."
-      return 1
-    fi
-  fi
+#   if [[ -z "$branch" ]]; then
+#     branch="$(current_branch)"
+#     if [[ -z $branch ]]; then
+#       echo "No current branch. Aborting."
+#       return 1
+#     fi
+#   fi
 
-  if ! (( $list )) && ! (( $force )) && ! (( $dry_run )) \
-      && ! [[ $branch =~ $from_branches ]] ; then
-    echo "Current branch does not match '$from_branches'." 2>&1
-    echo "Use -f to force." 2>&1
-    return 1
-  fi
+#   if ! (( $list )) && ! (( $force )) && ! (( $dry_run )) \
+#       && ! [[ $branch =~ $from_branches ]] ; then
+#     echo "Current branch does not match '$from_branches'." 2>&1
+#     echo "Use -f to force." 2>&1
+#     return 1
+#   fi
 
-  merged=($(git branch --merged $branch | sed -E "/^[* ] $branch\$/d" \
-    | cut -b3- | sed -E "/$keep_branches/d"))
+#   merged=($(git branch --merged $branch | sed -E "/^[* ] $branch\$/d" \
+#     | cut -b3- | sed -E "/$keep_branches/d"))
 
-  local b not_merged
-  not_merged=(${(f)"$(git branch --no-merged | cut -b3- \
-    | sed -E "/$keep_branches/d")"})
-  if [[ -n $only ]]; then
-    not_merged=(${not_merged:*only})
-  fi
+#   local b not_merged
+#   not_merged=(${(f)"$(git branch --no-merged | cut -b3- \
+#     | sed -E "/$keep_branches/d")"})
+#   if [[ -n $only ]]; then
+#     not_merged=(${not_merged:*only})
+#   fi
 
-  local branch_color=`git config --get-color color.branch.local blue`
-  local reset_color=`tput sgr0`
-  local cmd
+#   local branch_color=`git config --get-color color.branch.local blue`
+#   local reset_color=`tput sgr0`
+#   local cmd
 
-  if (( $#not_merged )); then
-    if (( $test_merges )); then
-      local diff out rev_list merge_base
-      local -A rev_diff
-      local display_progress=$(($#not_merged > 20))
-      local -F 2 start duration
-      local last_b
-      for b in $not_merged; do
-        if [[ -n "$last_b" ]]; then
-          duration=$(( ($(print -P '%D{%s%.}') - start) / 1000 ))
-          if (( duration > 1.0 )); then
-            echo "slow: $last_b (${duration}s)"
-          fi
-        fi
-        start=$(print -P '%D{%s%.}')
-        last_b=$b
-        (( display_progress )) && echo -n '.' >&2
-        # Look for empty merges (no hunks with git-merge-tree).
-        # Otherwise "merged" means that it could be merged without conflicts.
-        merge_base=$(git merge-base HEAD "$b")
-        cmd=(git merge-tree $merge_base HEAD "$b")
-        out=("${(@f)$($cmd)}")
-        if ! print -l $out | \grep -q '^@@'; then
-          no_diff+=($b "empty merge")
-          continue
-        else
-          # Check for cherry-picks, that cause a conflict with merge-tree, but
-          # should be OK.
-          rev_list=(${(f)"$(git rev-list --abbrev-commit "$merge_base..HEAD")"})
-          branch_diff=$(git diff "$merge_base" $b --)
-          for i in $rev_list; do
-            if [[ -z "${rev_diff[$i]}" ]]; then
-              rev_diff[$i]="$(git diff "$i^" "$i" --)"
-            fi
-            if [[ "$rev_diff[$i]" == "$branch_diff" ]]; then
-              no_diff+=($b "cherry-picked in $(git name-rev $i)")
-              continue
-            fi
-          done
-        fi
-        if (( $verbose )); then
-          if (( $#only )); then
-            echo "cmd: $cmd" >&2
-            print -l $out >&2
-          else
-            echo "$out[1]: $branch_color$b$reset_color ($#out lines)" >&2
-          fi
-        fi
-      done
-      (( display_progress )) && echo
-    else
-      echo "NOTE: Not testing $#not_merged non-merged branches, use -m." >&2
-    fi
-  fi
+#   if (( $#not_merged )); then
+#     if (( $test_merges )); then
+#       local diff out rev_list merge_base
+#       local -A rev_diff
+#       local display_progress=$(($#not_merged > 20))
+#       local -F 2 start duration
+#       local last_b
+#       for b in $not_merged; do
+#         if [[ -n "$last_b" ]]; then
+#           duration=$(( ($(print -P '%D{%s%.}') - start) / 1000 ))
+#           if (( duration > 1.0 )); then
+#             echo "slow: $last_b (${duration}s)"
+#           fi
+#         fi
+#         start=$(print -P '%D{%s%.}')
+#         last_b=$b
+#         (( display_progress )) && echo -n '.' >&2
+#         # Look for empty merges (no hunks with git-merge-tree).
+#         # Otherwise "merged" means that it could be merged without conflicts.
+#         merge_base=$(git merge-base HEAD "$b")
+#         cmd=(git merge-tree $merge_base HEAD "$b")
+#         out=("${(@f)$($cmd)}")
+#         if ! print -l $out | \grep -q '^@@'; then
+#           no_diff+=($b "empty merge")
+#           continue
+#         else
+#           # Check for cherry-picks, that cause a conflict with merge-tree, but
+#           # should be OK.
+#           rev_list=(${(f)"$(git rev-list --abbrev-commit "$merge_base..HEAD")"})
+#           branch_diff=$(git diff "$merge_base" $b --)
+#           for i in $rev_list; do
+#             if [[ -z "${rev_diff[$i]}" ]]; then
+#               rev_diff[$i]="$(git diff "$i^" "$i" --)"
+#             fi
+#             if [[ "$rev_diff[$i]" == "$branch_diff" ]]; then
+#               no_diff+=($b "cherry-picked in $(git name-rev $i)")
+#               continue
+#             fi
+#           done
+#         fi
+#         if (( $verbose )); then
+#           if (( $#only )); then
+#             echo "cmd: $cmd" >&2
+#             print -l $out >&2
+#           else
+#             echo "$out[1]: $branch_color$b$reset_color ($#out lines)" >&2
+#           fi
+#         fi
+#       done
+#       (( display_progress )) && echo
+#     else
+#       echo "NOTE: Not testing $#not_merged non-merged branches, use -m." >&2
+#     fi
+#   fi
 
-  if (( $#merged )); then
-    echo ${(%):-"%BMerged branches:%b"} >&2
-    for b in $merged; do
-      echo "$branch_color$b$reset_color"
-    done
-  fi
-  if (( $#no_diff )); then
-    echo ${(%):-"%BBranches with empty merges:%b"} >&2
-    for b in ${(k)no_diff}; do
-      echo "$branch_color$b$reset_color: $no_diff[$b]"
-    done
-  fi
-  if (( $list )); then
-    return
-  fi
-  merged+=(${(k)no_diff})
-  if ! (( $#merged )); then
-    return
-  fi
+#   if (( $#merged )); then
+#     echo ${(%):-"%BMerged branches:%b"} >&2
+#     for b in $merged; do
+#       echo "$branch_color$b$reset_color"
+#     done
+#   fi
+#   if (( $#no_diff )); then
+#     echo ${(%):-"%BBranches with empty merges:%b"} >&2
+#     for b in ${(k)no_diff}; do
+#       echo "$branch_color$b$reset_color: $no_diff[$b]"
+#     done
+#   fi
+#   if (( $list )); then
+#     return
+#   fi
+#   merged+=(${(k)no_diff})
+#   if ! (( $#merged )); then
+#     return
+#   fi
 
-  if ! (( $interactive )); then
-    printf "Delete? (y/N) "
-    read -q || { echo; return }; echo
-  fi
+#   if ! (( $interactive )); then
+#     printf "Delete? (y/N) "
+#     read -q || { echo; return }; echo
+#   fi
 
-  cmd=(git branch -D)
-  if (( $dry_run )); then
-    cmd=(echo $cmd)
-  fi
+#   cmd=(git branch -D)
+#   if (( $dry_run )); then
+#     cmd=(echo $cmd)
+#   fi
 
-  if (( $interactive )); then
-    echo "$#merged branches to process: $merged"
+#   if (( $interactive )); then
+#     echo "$#merged branches to process: $merged"
 
-    for b in $merged; do
-      view '+set ft=diff' =(echo "== $b =="; git show $b)
-      printf "Delete? "
-      read -q || { echo; continue }; echo
-      $cmd $b
-    done
-  else
-    $cmd $merged
-  fi
-}
+#     for b in $merged; do
+#       view '+set ft=diff' =(echo "== $b =="; git show $b)
+#       printf "Delete? "
+#       read -q || { echo; continue }; echo
+#       $cmd $b
+#     done
+#   else
+#     $cmd $merged
+#   fi
+# }
 
 function git-new-remote-tracking {
   git checkout -b $1 && git push -u origin $1

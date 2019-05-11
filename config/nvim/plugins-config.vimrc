@@ -156,7 +156,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 1
 augroup PrettierInit
   au!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass,*.md PrettierAsync
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
 augroup END
 
 " max line length that prettier will wrap on
@@ -178,7 +178,7 @@ let g:prettier#config#trailing_comma = 'es5'
 " flow|babel|typescript|css|less|scss|json|graphql|markdown
 " let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
-" let g:prettier#config#config_precedence = 'file-override'
+let g:prettier#config#config_precedence = 'cli-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
@@ -196,17 +196,20 @@ set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
-      \ 'left':  [ [ 'mode', 'paste' ],
+      \ 'left':  [ [ 'mode' ],
       \             [ 'gitbranch', 'readonly', 'modified' ] ],
       \ 'right': [  ['datetime'],
-      \             [ 'lineinfo' ],
-      \             [ 'percent' ],
-      \             [ 'filetype']]
+      \             [ 'percent' ]]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'FugitiveStatusLine()'
       \ },
-      \ }
+    \ }
+
+      " \ 'right': [  ['datetime'],
+      " \             [ 'lineinfo' ],
+      " \             [ 'percent' ],
+      " \             [ 'filetype']]
 " let g:lightline.tabline = {
 "   \   'left': [ ['tabs'] ],
 "   \   'right': []
@@ -261,17 +264,6 @@ nnoremap <silent> ,th :call neoterm#close()<cr>
 nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
-
-" let g:flow#enable = 1
-" let g:flow#omnifunc = 1
-" if executable('flow-language-server')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'flow-language-server',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'flow-language-server --stdio']},
-"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-"         \ 'whitelist': ['javascript', 'javascript.jsx'],
-"         \ })
-" endif
 
 " =========
 " UltiSnips

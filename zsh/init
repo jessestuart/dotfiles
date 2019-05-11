@@ -58,6 +58,6 @@ fi
 
 unset config_files
 
-# Finally, cleanup $PATH to remove duplicates.
+# Finally, cleanup $PATH to remove duplicates & whitespace.
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
 export PATH=$(echo "$PATH" | tr -d '\n' | sed -e 's/:$//' -e 's/::/:/g' -e 's/ /\\ /g')

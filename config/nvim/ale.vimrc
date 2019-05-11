@@ -32,19 +32,7 @@ endfunction
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 " let g:ale_echo_msg_format = '%linter%: %s'
-
 let g:ale_echo_msg_format = '%linter%: %s [%code%]'
-
-" \  'javascript': ['flow', 'eslint', 'prettier', 'prettier-eslint'],
-" , 'prettier-eslint', 'flow', 'eslint'],
-" \  'typescript': ['prettier', 'tsc', 'tslint', 'eslint'],
-" \  'typescript.tsx': ['prettier', 'tsc', 'tslint', 'eslint'],
-
-" let g:ale_linters = {
-"       \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
-"       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
-"       \  'json': ['prettier'],
-"       \}
 
 " let g:ale_linters = {
 "       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -68,25 +56,20 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 "       \  'ruby': ['rubocop'],
 "       \}
 
-" \  'javascript.jsx': ['importjs', 'standard'],
-" \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
-" \  'typescript': ['importjs', 'prettier', 'tslint', 'eslint'],
-" \  'typescript.tsx': ['importjs', 'prettier', 'tslint', 'eslint'],
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'bash': ['shfmt'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
-      \  'javascript.jsx': ['prettier-eslint', 'eslint', 'flow'],
-      \  'json': ['prettier'],
+      \  'javascript.jsx': [ 'importjs', 'standard', 'prettier-eslint', 'eslint'],
+      \  'json': ['fixjson', 'prettier'],
       \  'markdown': ['prettier', 'textlint'],
       \  'pandoc': ['prettier', 'textlint'],
       \  'python': ['isort'],
       \  'ruby': ['rubocop'],
-      \  'scss': ['prettier', 'stylelint'],
       \  'sh': ['shfmt'],
-      \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'typescript': ['importjs', 'prettier', 'eslint'],
       \  'typescript.tsx': ['prettier', 'eslint'],
       \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
@@ -98,5 +81,4 @@ nnoremap <leader>ap :ALEPreviousWrap<CR>
 nnoremap <leader>af :ALEFix<CR>
 
 let g:ale_sign_column_always = 1
-
-" let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 1

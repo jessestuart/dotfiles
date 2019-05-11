@@ -141,7 +141,9 @@ function dkmd() {
 # docker-hub CLI
 # ==============
 function dhr() {
-  docker-hub repos -o $1
+  local organization=$1
+  shift
+  docker-hub repos -o $organization $@
 }
 
 function dht() {

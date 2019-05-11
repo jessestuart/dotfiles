@@ -17,9 +17,9 @@ command! -bang -nargs=* Find call fzf#vim#grep(
   \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"'
   \ ' '.shellescape(<q-args>), 1, <bang>0)
 
-nnoremap <Leader>t :Files<CR>
+" nnoremap <Leader>t :Files<CR>
 " nnoremap <Leader>r :Tags<CR>
 
-set rtp+=/usr/local/opt/fzf
+set runtimepath+=/usr/local/opt/fzf
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'

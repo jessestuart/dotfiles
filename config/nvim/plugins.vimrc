@@ -15,6 +15,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'jessestuart/vim-markdown-link-convert'
 
 " ============================
 " Linting / fixing. Must have.
@@ -77,16 +78,11 @@ Plug 'cohama/agit.vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css',
-      \         'less', 'scss', 'json', 'graphql', 'markdown', 'vue',
-      \         'javascript.jsx', 'typescript.tsx', 'yaml', 'pandoc',
-      \]}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'alampros/vim-styled-jsx'
 " Plug 'jxnblk/vim-mdx-js'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -107,9 +103,9 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 
-" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
-" Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
@@ -155,17 +151,14 @@ Plug 'jparise/vim-graphql'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'jaspervdj/stylish-haskell'
 
-" [1]: This groovy.vim ^ is the most up-to-date of the several on GitHub, with
-" a number of improvements over the messy original from `vim-scripts`.
-
 " ========================
 " Autocomplete / Snippets.
 " ========================
 Plug 'SirVer/ultisnips'
-" Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
-" Plug 'epilande/vim-react-snippets', { 'for': 'javascript' }
+Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
+Plug 'epilande/vim-react-snippets'
 " Plug 'honza/vim-snippets'
-" Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
+Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 
 " Place deoplete first, then autocomplete-flow
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -174,17 +167,7 @@ Plug 'SirVer/ultisnips'
 " Syntax source for neocomplete/deoplete/ncm
 " Plug 'Shougo/neco-syntax'
 
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
-" Plug 'wokalski/autocomplete-flow'
-" You will also need the following for function argument completion:
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-
-" Plug 'flowtype/vim-flow'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 " -------------------------------------
 " Time tracking, etc.
@@ -195,10 +178,6 @@ endif
 if executable('wakatime')
   Plug 'wakatime/vim-wakatime'
 endif
-" augroup LoadDuringHold_Targets
-"     autocmd!
-"     autocmd CursorHold,CursorHoldI * call plug#load('vim-wakatime') | autocmd! LoadDuringHold_Targets
-" augroup end
 
 " -------------------------------------
 " Kubernetes, etc.
@@ -225,25 +204,20 @@ Plug 'thaerkh/vim-workspace'
 Plug 'janko-m/vim-test'
 Plug 'zivyangll/git-blame.vim'
 
+Plug 'gregsexton/gitv'
 Plug 'jceb/vim-orgmode'
-Plug 'sjl/gundo.vim'
-" Plug 'Chiel92/vim-autoformat'
-" Plug 'vim-scripts/dbext.vim'
-" Plug 'kassio/neoterm'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'majutsushi/tagbar'
-" Plug 'rhysd/clever-f.vim'
-Plug 'gregsexton/gitv'
-
-" Plug 'jpalardy/vim-slime'
-
+Plug 'sjl/gundo.vim'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'eraserhd/parinfer-rust'
-
+" Plug 'jpalardy/vim-slime'
+" Plug 'kassio/neoterm'
+" Plug 'rhysd/clever-f.vim'
 " Plug 'sbdchd/neoformat'
+" Plug 'vim-scripts/dbext.vim'
 
 Plug 'jaawerth/nrun.vim'
-
-Plug 'jessestuart/vim-markdown-link-convert'
 
 " Plug 'jordwalke/vim-reasonml'
 " Plug 'reasonml-editor/vim-reason-plus'
@@ -300,6 +274,7 @@ Plug 'chrisbra/matchit'
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 
 Plug 'google/vim-jsonnet'
+Plug 'google/vim-searchindex'
 
 " ES2015 code snippets
 Plug 'epilande/vim-es2015-snippets'

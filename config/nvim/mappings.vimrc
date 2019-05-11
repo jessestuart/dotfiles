@@ -121,6 +121,8 @@ noremap <leader>ba :bufdo bd<CR>
 noremap <leader>l :bnext<CR>
 noremap <leader>h :bprevious<CR>
 
+noremap <leader>W <C-w>T
+
 " ============
 " Manage tabs.
 " ============
@@ -132,12 +134,6 @@ noremap <leader>t<leader> :tabnext<CR>
 noremap <leader>tp :tabprevious<CR>
 
 let g:lasttab = 1
-" Let 'tl' toggle between this and the last accessed tab
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-augroup tableave
-  autocmd!
-  autocmd TabLeave * let g:lasttab = tabpagenr()
-augroup END
 
 " Opens a new tab with the current buffer's path --
 " Super useful when editing files in the same directory.
@@ -160,18 +156,6 @@ endtry
 " Remap `0` to first non-blank character.
 noremap 0 ^
 
-" Move a line of text using ALT+[jk].
-" nmap <M-j> mz:m+<CR>`z
-" nmap <M-k> mz:m-2<CR>`z
-" vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
-" vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
-" if has('mac') || has('macunix')
-"   nmap <D-j> <M-j>
-"   nmap <D-k> <M-k>
-"   vmap <D-j> <M-j>
-"   vmap <D-k> <M-k>
-" endif
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,25 +170,21 @@ noremap <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = [
-  \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'python']
+  \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'python'
+  \ ]
 
+" =========================================================
 " Sane way to switch out of neovim's :term mode with <Esc>.
+" =========================================================
 tnoremap <Esc> <C-\><C-n>
 
 nnoremap <silent> y' yi'
 nnoremap <silent> yq yi'
 nnoremap <silent> yqq yi"
 
-augroup GolangCommands
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.go nnoremap <leader>gr :GoRun<CR>
-augroup END
-
 " ============================================
 " --------------- EXPERIMENTAL ---------------
 " ============================================
-" nnoremap <silent> H ^
-" nnoremap <silent> L $
 nnoremap <M-tab> :tabprevious<CR>
 nnoremap <M-q> :tabnext<CR>
 
@@ -214,8 +194,7 @@ nnoremap <Leader>bf :Buffers<CR>
 noremap <Leader>h :History<CR>
 " FZF :Ag search. (NB: customized elsewhere to use ripgrep)
 noremap <Leader>f :Ag<CR>
-" Searches the word under the cursor through the project tree using fzf and
-" Ag.
+" Searches the word under the cursor through the project tree using fzf and Ag.
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 nnoremap <Leader>gg :GitGutterToggle<CR>
@@ -223,6 +202,11 @@ nnoremap <Leader>b :Gblame<CR>
 
 nnoremap <leader>t :TagbarToggle<CR>
 
-" nnoremap <leader>p :!prettier --write --print-width=80 --prose-wrap=always %<CR>
+" nnoremap <leader>p :silent !prettier --write --print-width=80 --prose-wrap=always %<CR>
+" nnoremap <leader>p <Cmd>PrettierCli --write --print-width=80 --prose-wrap=always %<CR>
+nnoremap <leader>p <Cmd>PrettierAsync<CR>
 
-nnoremap <leader>ir :Inline2Ref<CR>
+nnoremap <leader>ir :silent Inline2Ref<CR>
+
+noremap <C-t> :Files<CR>
+inoremap <C-t> <Esc>:Files<CR>
