@@ -27,7 +27,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " but we can co-opt it to display search results from Ag with: <leader>cc
 " To go to the next search result:       <leader>ne
 " To go to the previous search result:   <leader>pe
-noremap <leader>cc :botright cope<CR>
+noremap <leader>se :botright cope<CR>
 noremap <leader>co ggyG :tabnew<CR>:set syntax=qf<CR>pgg
 noremap <leader>ne :cn<CR>
 noremap <leader>pe :cp<CR>
@@ -56,7 +56,7 @@ augroup END
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 let g:pandoc#modules#disabled = ['folding']
-let g:pandoc#filetypes#handled = ['pandoc', 'rst', 'textile', 'markdown']
+let g:pandoc#filetypes#handled = ['markdown', 'pandoc', 'rst', 'textile']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GTM
@@ -155,8 +155,8 @@ map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 1
 augroup PrettierInit
-  au!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.sass PrettierAsync
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
 augroup END
 
 " max line length that prettier will wrap on
@@ -166,7 +166,7 @@ let g:prettier#config#tab_width = 2
 " use tabs over spaces
 let g:prettier#config#use_tabs = 'false'
 " print semicolons
-" let g:prettier#config#semi = 'false'
+let g:prettier#config#semi = 'false'
 " single quotes over double quotes
 let g:prettier#config#single_quote = 'true'
 " print spaces between brackets
@@ -178,7 +178,7 @@ let g:prettier#config#trailing_comma = 'es5'
 " flow|babel|typescript|css|less|scss|json|graphql|markdown
 " let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'cli-override'
+let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
@@ -235,21 +235,6 @@ augroup GoyoInit
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
-" From https://github.com/dhruvasagar/vim-table-mode
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-" inoreabbrev <expr> <bar><bar>
-"       \ <SID>isAtStartOfLine('\|\|') ?
-"       \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-" inoreabbrev <expr> __
-"       \ <SID>isAtStartOfLine('__') ?
-"       \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
 " ========
 " Neoterm.
 " ========
@@ -295,6 +280,9 @@ set hidden
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <C-C> <ESC>
 
+" inoremap jk <Esc>`^
+inoremap jk <Esc>`^
+
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
@@ -329,3 +317,24 @@ endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
 let g:colorizer_use_virtual_text=1
+
+let g:deoplete#enable_at_startup = 1
+
+let g:airline_powerline_fonts=1
+let g:airline_theme='onedark'
+
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_close_button = 0
+
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+
+let g:multi_cursor_exit_from_insert_mode = 0
+
+set statusline+=%{gutentags#statusline()}

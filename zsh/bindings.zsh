@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# ci"
+# Change inner text object (e.g., ci")
 autoload -U select-quoted
 zle -N select-quoted
 for m in visual viopp; do
@@ -60,8 +60,9 @@ bindkey "^[OB" down-line-or-beginning-search
 
 bindkey '^L' autosuggest-accept
 bindkey '^K' autosuggest-accept
-bindkey '^[end' autosuggest-accept
 bindkey -M vicmd '<C-p>' autosuggest-accept
+# Map ⌘  + h (implemented in iTerm) to autosuggest-accept
+bindkey '^[end' autosuggest-accept
 
 zle-keymap-select() {
   if [ "$TERM" = "xterm-256color" ]; then

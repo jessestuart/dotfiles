@@ -19,7 +19,7 @@ function! InitializeColorscheme()
   set t_Co=256
   let s:white = { 'gui': '#ABB2BF', 'cterm': '145', 'cterm16' : '7' }
   let g:airline_powerline_fonts=1
-  " let g:airline_theme='onedark'
+  let g:airline_theme='onedark'
   let g:onedark_termcolors=24
   let g:onedark_terminal_italics=1
   let g:enable_bold_font=1
@@ -44,8 +44,7 @@ if (has('autocmd') && !has('gui_running'))
   if !exists("g:colors_name")
     augroup onedark
       autocmd!
-      " highlight EndOfBuffer guifg=black
-      hi! EndOfBuffer ctermbg=282c34 ctermfg=282c34 guibg=282c34 guifg=282c34
+      highlight! EndOfBuffer ctermbg=282c34 ctermfg=282c34 guibg=282c34 guifg=282c34
       call InitializeColorscheme()
     augroup END
   endif

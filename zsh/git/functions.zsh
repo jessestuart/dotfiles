@@ -47,13 +47,11 @@ function ghcl() {
   mkdir -p $FOLDER_PATH
   local clone_output="$(hub clone $REPO_URL $FOLDER_PATH 2>&1)"
   local ret_code=$?
-  if ! [ ret_code = "0" ]; then
-    echo $clone_output
-    echo $FOLDER_PATH | pbcopy
+  if ! [ $ret_code = '0' ]; then
     return 1
   fi
   echo "Cloned repository to $FOLDER_PATH."
-  if (hash pbcopy &>/dev/null); then
+  if test $(uname -s) = 'Darwin'; then
     echo $FOLDER_PATH | pbcopy
     echo "The absolute path has been copied to your clipboard."
   fi

@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.wiki  setf pandoc
+au BufNewFile,BufRead *.wiki setf pandoc

@@ -55,6 +55,15 @@ function krmerr() {
     done
 }
 
+function krmerrf() {
+  kubectl get pods --all-namespaces -owide | tail -n+2 | grep -v Running | grep -v Completed |
+    while read err_pod; do
+      local namespace=$(echo $err_pod | awk1)
+      local podname=$(echo $err_pod | awk2)
+      nohup kubectl --namespace $namespace delete pod $podname --force --grace-period 0 &>/dev/null &
+    done
+}
+
 function krmcomp() {
   kubectl get pods --all-namespaces -owide | tail -n+2 | grep Completed | while read completed_pod; do
     local namespace=$(echo $completed_pod | awk1)

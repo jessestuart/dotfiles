@@ -286,7 +286,6 @@ function arch() {
     )
   fi
   echo "Archived $input to $DROPBOX_BACKUP_ARCHIVE/$archive_filename."
-  return $archive_filename
 }
 
 # ===========================================================================
@@ -297,8 +296,10 @@ function arch() {
 function arkcp() {
   local input=$1
   local DROPBOX_BACKUP_ARCHIVE=~/Dropbox/Backup/Archive
-  local archive_file="$(arch $input)"
-  mv $archive_file $DROPBOX_BACKUP_ARCHIVE
+  local archive_filename="$input$(date +"%Y%m%d_%H%M").tar.gz"
+  arc archive $archive_filename $input
+  mv $archive_filename $DROPBOX_BACKUP_ARCHIVE
+  echo "Archived $input to $DROPBOX_BACKUP_ARCHIVE/$archive_filename."
 }
 
 # ==========================================================================

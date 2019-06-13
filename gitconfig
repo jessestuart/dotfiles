@@ -126,7 +126,7 @@
 	whitespace = fix
 
 [core]
-	editor = /usr/local/bin/nvim
+	;editor = /usr/local/bin/nvim
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore_global
 	attributesfile = ~/.gitattributes

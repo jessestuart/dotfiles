@@ -15,19 +15,17 @@ let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 1
 
-let g:ale_statusline_format = ['X %d', '? %d', '']
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
+" let g:ale_statusline_format = ['X %d', '? %d', '']
+" function! LinterStatus() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+"     return l:counts.total == 0 ? 'OK' : printf(
+"     \   '%dW %dE',
+"     \   all_non_errors,
+"     \   all_errors
+"     \)
+" endfunction
 
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
@@ -69,8 +67,8 @@ let g:ale_fixers = {
       \  'python': ['isort'],
       \  'ruby': ['rubocop'],
       \  'sh': ['shfmt'],
-      \  'typescript': ['importjs', 'prettier', 'eslint'],
-      \  'typescript.tsx': ['prettier', 'eslint'],
+      \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'typescript.tsx': ['importjs', 'prettier', 'eslint', 'tslint'],
       \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
       \}
@@ -81,4 +79,8 @@ nnoremap <leader>ap :ALEPreviousWrap<CR>
 nnoremap <leader>af :ALEFix<CR>
 
 let g:ale_sign_column_always = 1
-let g:ale_virtualtext_cursor = 1
+" let g:ale_virtualtext_cursor = 1
+
+let g:ale_pattern_options = {
+\   '.*\.tsx?$': {'ale_enabled': 0},
+\}

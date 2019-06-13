@@ -88,4 +88,6 @@ export INFOPATH="/usr/local/share/info:$INFOPATH"
 
 export GROOVY_TURN_OFF_JAVA_WARNINGS=1
 
+export GO111MODULE=on
+
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

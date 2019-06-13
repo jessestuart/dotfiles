@@ -168,9 +168,9 @@ noremap <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From Upcase
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = [
-  \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'python'
+  \ 'bash=sh', 'groovy', 'html', 'java', 'javascript', 'javascript.jsx', 'python',
+  \ 'typescript', 'typescript.tsx'
   \ ]
 
 " =========================================================
@@ -197,10 +197,10 @@ noremap <Leader>f :Ag<CR>
 " Searches the word under the cursor through the project tree using fzf and Ag.
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
-nnoremap <Leader>gg :GitGutterToggle<CR>
-nnoremap <Leader>b :Gblame<CR>
+nnoremap <Leader>gg <CMD>GitGutterToggle<CR>
+nnoremap <Leader>b <CMD>Gblame<CR>
 
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>t <Cmd>TagbarToggle<CR>
 
 " nnoremap <leader>p :silent !prettier --write --print-width=80 --prose-wrap=always %<CR>
 " nnoremap <leader>p <Cmd>PrettierCli --write --print-width=80 --prose-wrap=always %<CR>
@@ -209,4 +209,4 @@ nnoremap <leader>p <Cmd>PrettierAsync<CR>
 nnoremap <leader>ir :silent Inline2Ref<CR>
 
 noremap <C-t> :Files<CR>
-inoremap <C-t> <Esc>:Files<CR>
+inoremap <C-t> <Cmd>Files<CR>

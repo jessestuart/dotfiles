@@ -17,7 +17,7 @@ command! -bang -nargs=* Find call fzf#vim#grep(
   \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"'
   \ ' '.shellescape(<q-args>), 1, <bang>0)
 
-" nnoremap <Leader>t :Files<CR>
+" nnoremap <Leader>F :Files<CR>
 " nnoremap <Leader>r :Tags<CR>
 
 set runtimepath+=/usr/local/opt/fzf

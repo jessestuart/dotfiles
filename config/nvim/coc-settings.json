@@ -1,10 +1,18 @@
 {
-	"tsserver.orgnizeImportOnSave": true,
-	"languageserver": {
-		"dockerfile": {
-			"command": "docker-langserver",
-			"filetypes": ["dockerfile"],
-			"args": ["--stdio"]
-		}
-	}
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "tsx", "js"],
+  "prettier.semi": false,
+  "prettier.eslintIntegration": true,
+  "typescript.preferences.noSemicolons": true,
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["typescript", "typescript.tsx"]
+    }
+  }
 }

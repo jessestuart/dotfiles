@@ -57,6 +57,7 @@ command! -nargs=0 -range SortWords call SortWords()
 vmap ,s :SortWords<CR>
 " Normal mode one: ,s to select the string and sort it
 nmap ,s vi",s
+
 function! SortWords()
   " Get the visual mark points
   let StartPosition = getpos("'<")

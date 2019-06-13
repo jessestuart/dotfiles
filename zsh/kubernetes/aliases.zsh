@@ -21,6 +21,8 @@ alias kns="kubens "
 alias kp="get_pods_colorized "
 alias fa="faas"
 alias kgpw0="kgpw | rg '0/'"
+alias krmpof="kubectl delete pod --force --grace-period 0"
+alias kgip="kgpw | grep -v -e 10.10.10 -e IP | awk7 | sort | uniq -c | sort"
 
 alias st="stern --tail=100"
 alias stt="stern"
@@ -114,7 +116,7 @@ function colorize_stdout() {
       sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
       sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
       sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
-      sed -E "s/\s(milo|(ubuntu|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+      sed -E "s/\s(milo|(ubuntu|arch|fedora)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
       sed -E "s/^\(.*\s\)\(.*\)\s/\1${BOLD}\2${NORMAL}/g"
 
     echo $input |
@@ -141,7 +143,7 @@ function get_pods_colorized() {
     sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
     sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
     sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
-    sed -E "s/\s(milo|(ubuntu(-qemu)?|arch)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+    sed -E "s/\s(milo|(ubuntu(-qemu)?|arch|fedora)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
     sed -E "s/[.*\s]+\(.*\)/${BOLD}&${NORMAL}/g"
 }
 

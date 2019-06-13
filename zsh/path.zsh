@@ -40,13 +40,13 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export PATH="/opt/etcher:$PATH"
 
-if [ "$(uname -s)" = "GNU/Linux" ] || [ "$(uname -s)" = "Linux" ]; then
+if [ "$(uname -s | grep -q 'Linux')" -eq '0' ]; then
   if test -e "$HOME/go"; then
     export GOPATH="$HOME/go"
   elif test -e "/mnt/data/go"; then
     export GOPATH="/mnt/data/go"
   fi
-  export GOROOT=/usr/local/go
+  # export GOROOT=/usr/local/go
   export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:/mnt/data/go/bin
   export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
@@ -59,13 +59,9 @@ if [ "$(uname -s)" = "Darwin" ]; then
   export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 fi
 
-# export PATH="$PATH:/opt/etcher-cli"
 export PATH="$PATH:$HOME/bin/etcher/"
 
-export PATH="$HOME/bin/heketi-client/bin:$PATH"
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
-
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
@@ -85,9 +81,6 @@ PATH=$PATH:$ANDROID_HOME/tools/bin
 # =============
 test -e "$HOME/.secrets" && . "$HOME/.secrets"
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.6.0/bin/bundle:$PATH"
 export PATH="$HOME/.bin/:$PATH"

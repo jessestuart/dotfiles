@@ -48,11 +48,13 @@ alias pip="pip3"
 alias curl="curl -sL"
 alias vel="velero"
 alias scratch='cd $(mktemp -d)'
-alias ssh="mosh"
+# alias ssh="mosh"
 alias px="ps aux"
 alias jgh="cd ~/github"
 alias n="nnn"
 alias bd="brew desc"
+alias xsh="xpanes --ssh"
+alias mp="multipass"
 
 hosts() {
   sudo $EDITOR /etc/hosts
@@ -128,11 +130,12 @@ alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # Alias `ls` to use `exa`. If it exists.
 #--------------------------------------
 if hash exa &>/dev/null; then
-  alias ls="exa --git --group-directories-first --git-ignore --color-scale"
+  alias ls="exa --git --group-directories-first --git-ignore --color-scale --time-style=iso"
   # List all files colorized in long format, including dot files
-  alias la="exa -l --git --group-directories-first --git-ignore --color-scale"
+  alias la="exa -l --git --group-directories-first --git-ignore --color-scale --time-style=iso"
   # Same as above, but don't hide gitignored files.
-  alias laa="exa -la --git --group-directories-first --color-scale"
+  alias laa="exa -la --git --group-directories-first --color-scale --time-style=iso"
+  alias a="laa"
   # List all sorted by size.
   alias las="la -s size --git"
   # List all sorted by date.
