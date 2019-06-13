@@ -1,0 +1,5 @@
+[ver:1,total:600]
+.gtm/terminal.app:395,1560445200:180,1560546000:110,1560567600:105,r
+config/nvim/after/ftdetect/jsonc.vim:140,1560546000:140,m
+config/nvim/after/ftdetect/pandoc.vim:50,1560546000:50,m
+zshrc:15,1560567600:15,m
