@@ -141,3 +141,7 @@ function hui() {
   helm upgrade --install --reuse-values $@
   helm push . jesse --force
 }
+
+function kgnoip() {
+  kubectl get nodes -owide --no-headers | awk '{print $1,$6}' | sort -k2 | column -t
+}

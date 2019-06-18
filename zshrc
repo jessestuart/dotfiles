@@ -13,6 +13,3 @@ if ! test -z $ZPROFILE; then
   zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc

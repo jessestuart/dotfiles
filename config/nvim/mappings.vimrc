@@ -210,3 +210,5 @@ nnoremap <leader>ir :silent Inline2Ref<CR>
 
 noremap <C-t> :Files<CR>
 inoremap <C-t> <Cmd>Files<CR>
+
+inoremap <silent><expr> <c-space> coc#refresh()

@@ -1,7 +1,17 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "tsx", "js"],
-  "prettier.semi": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "Markdown",
+    "ts",
+    "tsx",
+    "js",
+    "typescript",
+    "typescript.tsx",
+    "javascript"
+  ],
   "prettier.eslintIntegration": true,
+  "prettier.semi": false,
+  "suggest.autoTrigger": "trigger",
   "typescript.preferences.noSemicolons": true,
   "languageserver": {
     "dockerfile": {

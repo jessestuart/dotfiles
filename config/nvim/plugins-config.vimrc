@@ -219,13 +219,15 @@ set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
-  set relativenumber
+  set norelativenumber
+  set nonumber
   set scrolloff=999
 endfunction
 
 function! s:goyo_leave()
-  set showmode
+  set noshowmode
   set relativenumber
+  set number
   set showcmd
 endfunction
 
