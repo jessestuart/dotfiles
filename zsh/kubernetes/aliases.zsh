@@ -345,7 +345,9 @@ alias kgcmw='kubectl get configmap --watch'
 alias ksysgcmw='kubectl --namespace=kube-system get configmap --watch'
 alias kgsecw='kubectl get secret --watch'
 alias ksysgsecw='kubectl --namespace=kube-system get secret --watch'
-alias kgnow='kubectl get nodes --watch'
+# NOTE: Making an exception here, because I query nodes with `-owide` much
+#       more often than I want to `watch` them.
+alias kgnow='kubectl get nodes -owide'
 alias kgnsw='kubectl get namespaces --watch'
 alias kgpvcw='kubectl get persistentvolumeclaims --watch'
 alias ksysgpvcw='kubectl --namespace=kube-system get persistentvolumeclaims --watch'

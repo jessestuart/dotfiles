@@ -294,7 +294,4 @@ Plug 'robbles/logstash.vim'
 " Plug 'paretje/nvim-man'
 " Plug 'vim-utils/vim-man'
 
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
-
 call plug#end()

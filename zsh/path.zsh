@@ -26,6 +26,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/yarn/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="/usr/local/node/bin:$PATH"
+export PATH="/usr/local/Cellar/node/12.4.0/bin/:$PATH"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"

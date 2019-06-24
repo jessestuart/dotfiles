@@ -13,3 +13,12 @@ if ! test -z $ZPROFILE; then
   zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
+
+# For Timing.app
+if [ $ITERM_SESSION_ID ]; then
+  DISABLE_AUTO_TITLE="true"
+  echo -ne "\033]0; ${USER} @ ${HOSTNAME%% .* } : ${PWD/# $HOME/ ~} \007"
+fi
+precmd() {
+  echo -ne "\033]0; ${USER} @ ${HOSTNAME%% .* } : ${PWD/# $HOME/ ~} \007"
+}

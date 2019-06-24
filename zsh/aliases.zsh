@@ -55,6 +55,8 @@ alias n="nnn"
 alias bd="brew desc"
 alias xsh="xpanes --ssh"
 alias mp="multipass"
+alias si="sudo -i"
+alias ar2="aria2c"
 
 hosts() {
   sudo $EDITOR /etc/hosts
