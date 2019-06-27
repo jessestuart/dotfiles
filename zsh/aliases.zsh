@@ -101,10 +101,10 @@ alias sudo='sudo '
 
 if [ "$(uname)" = 'Darwin' ]; then
   function rm() {
-    if hash trash &>/dev/null; then
-      trash "$@"
+    if hash trash-put &>/dev/null; then
+      trash-put "$@"
     else
-      rm "$@"
+      mv "$@" ~/.Trash/
     fi
   }
 fi

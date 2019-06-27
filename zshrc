@@ -22,3 +22,5 @@ fi
 precmd() {
   echo -ne "\033]0; ${USER} @ ${HOSTNAME%% .* } : ${PWD/# $HOME/ ~} \007"
 }
+
+export GO111MODULE=on

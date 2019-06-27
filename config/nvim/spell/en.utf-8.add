@@ -617,3 +617,5 @@ CNAME
 walkthrough
 memoization
 DaemonSet
+openssl
+SANs
