@@ -47,7 +47,6 @@ if [ "$(uname -s | grep -q 'Linux')" -eq '0' ]; then
   elif test -e "/mnt/data/go"; then
     export GOPATH="/mnt/data/go"
   fi
-  # export GOROOT=/usr/local/go
   export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:/mnt/data/go/bin
   export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   export PATH=$PATH/var/home/linuxbrew/.linuxbrew/bin
@@ -93,3 +92,5 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 
 export PATH="/usr/local/nvim/bin:$PATH"
+
+export PATH=/opt/kata/bin:$PATH
