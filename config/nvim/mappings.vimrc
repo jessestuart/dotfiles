@@ -212,3 +212,5 @@ noremap <C-t> :Files<CR>
 inoremap <C-t> <Cmd>Files<CR>
 
 inoremap <silent><expr> <c-space> coc#refresh()
+
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a

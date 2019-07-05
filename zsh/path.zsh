@@ -91,6 +91,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 
-export PATH="/usr/local/nvim/bin:$PATH"
-
 export PATH=/opt/kata/bin:$PATH
+export PATH=/home/linuxbrew/.linuxbrew/opt/python/libexec/bin:$PATH
+export PATH=/usr/local/nvim/bin:$PATH
+export PATH=/snap/bin:$PATH
