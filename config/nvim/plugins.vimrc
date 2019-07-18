@@ -103,7 +103,7 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
@@ -113,7 +113,6 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-imselect'
 Plug 'neoclide/jsonc.vim'
 
 " -------------------------------------
@@ -256,6 +255,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'christoomey/vim-conflicted'
 
 Plug 'robbles/logstash.vim'
+Plug 'towolf/vim-helm'
 
 " =================
 " --- Graveyard ---

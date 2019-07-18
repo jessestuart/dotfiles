@@ -54,6 +54,11 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 "       \  'ruby': ['rubocop'],
 "       \}
 
+let g:ale_linters = {
+  \ 'typescript': ['eslint', 'tslint'],
+  \ 'typescript.tsx': ['eslint', 'tslint'],
+  \}
+
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'bash': ['shfmt'],
@@ -64,7 +69,7 @@ let g:ale_fixers = {
       \  'json': ['fixjson', 'prettier'],
       \  'markdown': ['prettier', 'textlint'],
       \  'pandoc': ['prettier', 'textlint'],
-      \  'python': ['isort'],
+      \  'python': ['isort', 'black'],
       \  'ruby': ['rubocop'],
       \  'sh': ['shfmt'],
       \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
@@ -79,8 +84,8 @@ nnoremap <leader>ap :ALEPreviousWrap<CR>
 nnoremap <leader>af :ALEFix<CR>
 
 let g:ale_sign_column_always = 1
-" let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 1
 
-let g:ale_pattern_options = {
-\   '.*\.tsx?$': {'ale_enabled': 0},
-\}
+" let g:ale_pattern_options = {
+" \   '.*\.tsx?$': {'ale_enabled': 0},
+" \}

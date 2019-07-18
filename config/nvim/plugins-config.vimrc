@@ -2,7 +2,6 @@
 " JS things.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:javascript_plugin_jsdoc = 1
-" let g:javascript_plugin_flow = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
 let g:jsx_ext_required = 0
@@ -215,7 +214,7 @@ let g:lightline = {
 "   \   'right': []
 "   \ }
 " set showtabline=2  " Show tabline
-set guioptions-=e  " Don't use GUI tabline
+" set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode
@@ -328,7 +327,7 @@ let g:airline_theme='onedark'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -338,5 +337,16 @@ let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
 let g:multi_cursor_exit_from_insert_mode = 0
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
 
 set statusline+=%{gutentags#statusline()}

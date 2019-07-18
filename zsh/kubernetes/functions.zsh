@@ -28,7 +28,7 @@ function ktmps() {
 function kmem() {
   local remote_command="free -h | head -n2 | tail -n1 | awk '{print \$7}' | xargs printf \"\$(hostname)\t\t%s\n\""
   local hosts_file="$HOME/.pssh/all"
-  pssh -t10 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort
+  pssh -t10 -i -h $hosts_file $remote_command | grep -v SUCCESS | sort | column -t
 }
 
 function clustup() {

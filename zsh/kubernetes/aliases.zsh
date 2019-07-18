@@ -1,44 +1,56 @@
 #!/usr/bin/env zsh
 
-# ===========
-# Helm / etc.
-# ===========
-# alias hui="helm upgrade --install --reuse-values"
-alias hp="helm push . jesse"
-# alias get_pods_colorized="$HOME/.bin/get_pods_colorized "
-alias esh="http --pretty=all -b https://es.jesses.io/_cluster/health"
-alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
-
 # =======
 # Kubectl
 # =======
 alias k="kubectl "
-alias kdp="kubectl describe pods "
-alias kgp="get_pods_colorized -owide"
 alias kgpo="get_pods_colorized -owide"
 alias kgpw="get_pods_colorized -owide --all-namespaces "
 alias kns="kubens "
+
+alias kdp="kubectl describe pods "
+alias kgp="get_pods_colorized -owide"
 alias kp="get_pods_colorized "
-alias fa="faas"
-alias kgpw0="kgpw | rg '0/'"
 alias krmpof="kubectl delete pod --force --grace-period 0"
+
+# =====================================================================
+# Single out pods that are marked are `Running` but aren't yet healthy.
+# =====================================================================
+alias kgpw0="kgpw | rg '0/'"
+
+# ====================================================================
+# Useful for ensuring there's no pod subnet collisions caused by e.g.,
+# duplicate `/etc/machine-id`s.
+# ====================================================================
 alias kgip="kgpw | grep -v -e 10.10.10 -e IP | awk7 | sort | uniq -c | sort"
 
+alias krmrs="kg rs --no-headers | awk1 | xargs kubectl delete rs"
+
+# ===================================================================
+# Aliases for `stern`[1] to make tailing logs across multiple pods super easy.
+# ===================================================================
 alias st="stern --tail=100"
 alias stt="stern"
 alias stfl="stern fluent-bit --tail=100 --namespace=logging"
 alias stes="stern elasticsearch --tail=100 --namespace=logging"
 
+# ===========================================
 # Get all pods, sorted by number of restarts.
+# ===========================================
 alias kgcrash="kgpw | sort -n -k5"
 
+# =================================================
+# Velero aliases for quickly querying backups, etc.
+# =================================================
 alias abg="velero backup get"
 alias abdel="velero backup delete --confirm"
 alias abd="velero backup describe"
 
+# =====================================================================
 # Aliases for `kubens` for quickly switching between common namespaces.
+# =====================================================================
 alias knsl="kubens logging"
-alias knsm="kubens monitoring"
+alias knsm="kubens kube-prometheus"
 alias knss="kubens kube-system"
 
 alias krmpom="kubectl delete pods --namespace monitoring"
@@ -58,6 +70,13 @@ alias sysdarl="sudo systemctl daemon-reload"
 alias hrm="helm delete --purge"
 
 alias kpanes="xpanes --ssh \$(kubectl get nodes --no-headers | awk1)"
+
+# ===========
+# Helm / etc.
+# ===========
+alias hp="helm push . jesse"
+alias esh="http --pretty=all -b https://es.jesses.io/_cluster/health"
+alias eshw="watch http --pretty=all -b https://es.jesses.io/_cluster/health"
 
 # https://unix.stackexchange.com/a/10065
 # If stdout is a terminal

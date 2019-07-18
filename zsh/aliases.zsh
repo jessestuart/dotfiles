@@ -57,6 +57,12 @@ alias xsh="xpanes --ssh"
 alias mp="multipass"
 alias si="sudo -i"
 alias ar2="aria2c"
+alias gil="gitin log"
+alias pacsc="cat package.json | jq '.scripts'"
+
+function cheat() {
+  /usr/local/bin/cheat $1 | bat --theme TwoDark --language=md
+}
 
 hosts() {
   sudo $EDITOR /etc/hosts
@@ -156,7 +162,7 @@ fi
 # Misc
 alias ap="ansible-playbook"
 alias atom="atom-beta"
-alias fuck='eval $(thefuck $(fc -ln -1))'
+alias cuck='eval $(thefuck $(fc -ln -1))'
 alias kbz="ps aux | grep '[B]ackblaze' -i | awk '{print $2}' | sudo xargs kill -9"
 alias tf="terraform"
 alias tmd="tmux detach"
