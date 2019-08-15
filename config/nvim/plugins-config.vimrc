@@ -61,6 +61,13 @@ let g:pandoc#filetypes#handled = ['markdown', 'pandoc', 'rst', 'textile']
 " GTM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gtm_plugin_status_enabled = 1
+function! AirlineInit()
+  if exists('*GTMStatusline')
+    call airline#parts#define_function('gtmstatus', 'GTMStatusline')
+    let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
+  endif
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellany
@@ -115,7 +122,7 @@ let g:fzf_colors =
 " augroup END
 
 " TODO(jesse): This was getting annoying w/ JSX; maybe reenable this?
-let g:closetag_filenames = '*.html,*.jsx,*.js'
+let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx'
 let g:user_emmet_install_global = 1
 
 nnoremap <leader>tw :ToggleWorkspace<CR>
@@ -140,7 +147,7 @@ nmap ga <Plug>(EasyAlign)
 "     exec a:vim_command . ' ' . output
 "   endif
 " endfunction
-" " nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
+" nnoremap <leader>e :call FzyCommand("find -type f", ":e")<CR>
 " nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 " nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
@@ -151,12 +158,20 @@ map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 " ===============
 " Prettier config
 " ===============
+" let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 1
-augroup PrettierInit
-  autocmd!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
-augroup END
+
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+" augroup PrettierInit
+"   autocmd!
+"   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"   " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
+" augroup END
 
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
@@ -173,16 +188,17 @@ let g:prettier#config#bracket_spacing = 'true'
 " put > on the last line instead of new line
 let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
-let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#trailing_comma = 'all'
 " flow|babel|typescript|css|less|scss|json|graphql|markdown
 " let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
+" let g:prettier#config#config_precedence = 'file-override'
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
 
-let g:prettier#quickfix_enabled = 1
-let g:prettier#quickfix_auto_focus = 0
+" let g:prettier#quickfix_enabled = 1
+" let g:prettier#quickfix_auto_focus = 0
 
 " let timer = timer_start(4000, 'UpdateStatusBar',{'repeat':-1})
 " function! UpdateStatusBar(timer)
@@ -192,18 +208,18 @@ let g:prettier#quickfix_auto_focus = 0
 " Not necessary to show the `--INSERT--` text anymore. This hides it.
 " h/t https://github.com/itchyny/lightline.vim
 set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \ 'left':  [ [ 'mode' ],
-      \             [ 'gitbranch', 'readonly', 'modified' ] ],
-      \ 'right': [  ['datetime'],
-      \             [ 'percent' ]]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveStatusLine()'
-      \ },
-    \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'one',
+"       \ 'active': {
+"       \ 'left':  [ [ 'mode' ],
+"       \             [ 'gitbranch', 'readonly', 'modified' ] ],
+"       \ 'right': [  ['datetime'],
+"       \             [ 'percent' ]]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'FugitiveStatusLine()'
+"       \ },
+"     \ }
 
       " \ 'right': [  ['datetime'],
       " \             [ 'lineinfo' ],
@@ -255,7 +271,7 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>
 " UltiSnips
 " =========
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
@@ -349,4 +365,9 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 
-set statusline+=%{gutentags#statusline()}
+" set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
+
+let g:vim_package_info_virutaltext_prefix = '  ¤ '
+let g:vim_package_info_virutaltext_highlight = 'NonText'
+
+" set statusline+=%{gutentags#statusline()}

@@ -462,28 +462,28 @@ function uniqx() {
 # # =====================================================
 # # @see https://github.com/git-time-metric/gtm/wiki/FAQs
 # # =====================================================
-# function git {
-#   command git "$@"
-#   rc=$?
-#   if [ $rc -ne 0 ]; then
-#     return $rc
-#   fi
-#   case "$1" in
-#     init)
-#       output=$(gtm init)
-#       if [ $? -eq 0 ]; then
-#         echo "$output"
-#       fi
-#       ;;
-#     status)
-#       output=$(gtm status)
-#       if [ $? -eq 0 ]; then
-#         echo "$output"
-#       fi
-#       ;;
-#   esac
-#   return $rc
-# }
+function git {
+  command git "$@"
+  rc=$?
+  if [ $rc -ne 0 ]; then
+    return $rc
+  fi
+  case "$1" in
+    init)
+      output=$(gtm init)
+      if [ $? -eq 0 ]; then
+        echo "$output"
+      fi
+      ;;
+    status)
+      output=$(gtm status)
+      if [ $? -eq 0 ]; then
+        echo "$output"
+      fi
+      ;;
+  esac
+  return $rc
+}
 
 # export AUTOJUMP_SOURCED=1
 

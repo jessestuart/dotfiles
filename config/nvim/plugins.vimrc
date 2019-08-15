@@ -20,7 +20,7 @@ Plug 'jessestuart/vim-markdown-link-convert'
 " ============================
 " Linting / fixing. Must have.
 " ============================
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -28,7 +28,7 @@ Plug 'w0rp/ale'
 " -------------------------------------
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
+" Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -57,6 +57,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-dotenv'
 " Plug 'tpope/vim-projectionist'
 
 " -------------------------------------
@@ -67,8 +68,8 @@ Plug 'cohama/agit.vim'
 Plug 'gregsexton/gitv'
 Plug 'jreybert/vimagit'
 Plug 'zivyangll/git-blame.vim'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'codegram/vim-codereview'
-" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'mattn/webapi-vim' " Required for vim-github-comment
 " Plug 'mmozuras/vim-github-comment'
@@ -77,9 +78,8 @@ Plug 'zivyangll/git-blame.vim'
 " -------------------------------------
 " WebDev.
 " -------------------------------------
-Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'jessestuart/vim-prettier', { 'do': 'yarn install --prod', }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
@@ -88,9 +88,11 @@ Plug 'alampros/vim-styled-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
 Plug 'hail2u/vim-css3-syntax'
+" Plug 'othree/yajs.vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'mattn/emmet-vim'
-" Plug 'jxnblk/vim-mdx-js'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'pangloss/vim-javascript'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -103,14 +105,14 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 " Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/jsonc.vim'
@@ -126,9 +128,8 @@ Plug 'tmux-plugins/vim-tmux' " *Much* better syntax highlighting in tmux.conf.
 " -------------------------------------
 Plug 'pearofducks/ansible-vim'
 Plug 'hashivim/vim-terraform'
-" Plug 'hashivim/vim-packer'
+Plug 'hashivim/vim-packer'
 " Plug 'hashivim/vim-vagrant'
-" Plug 'hejack0207/ansible.vim'
 
 " -------------------------------------
 " Visual styling / theming.
@@ -137,7 +138,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
-" Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
 
 " -------------------------------------
@@ -189,7 +190,7 @@ endif
 " -------------------------------------
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'andrewstuart/vim-kubernetes'
-" Plug 'c9s/vikube.vim'
+Plug 'c9s/vikube.vim'
 
 " -------------------------------------
 " Experimentation. Inbox.
@@ -201,7 +202,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/splice.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'aaronbieber/vim-quicktask'
 Plug 'sunaku/vim-shortcut'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'wesQ3/vim-windowswap'
@@ -230,7 +230,7 @@ Plug 'srstevenson/vim-topiary'
 Plug 'chrisbra/matchit'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
-Plug 'kshenoy/vim-signature'
+" Plug 'kshenoy/vim-signature'
 
 Plug 'google/vim-jsonnet'
 Plug 'google/vim-searchindex'
@@ -249,7 +249,7 @@ Plug 'honza/vim-snippets'
 " > (Neovim buffer), an external terminal emulator or in a tmux pane.
 Plug 'jalvesaq/vimcmdline'
 
-Plug 'meain/vim-package-json', { 'do': 'yarn -s' }
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'christoomey/vim-conflicted'

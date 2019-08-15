@@ -19,7 +19,7 @@ nnoremap : ;
 " ==========================
 " vim-plug plugin management
 " ==========================
-noremap <leader>, :source ~/.config/nvim/init.vim<CR>
+noremap <leader>; :source ~/.config/nvim/init.vim<CR>
 " Install new plugins with <leader>pi
 nnoremap <leader>pi :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>
 " Update all plugins with <leader>up
@@ -45,7 +45,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>== mz:,co-1<CR>2lv$r=:,co+1<CR>`z0w
 
 " Disable highlight with <leader><CR>.
-noremap <silent> <leader><CR> :noh<CR>
+" noremap <silent> <leader><CR> :noh<CR>
 noremap <silent> <leader><BS> :noh<CR>
 
 " Shortcut to begin a substitution with
@@ -64,9 +64,10 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<CR>
 " ======================
 " Write buffer with <leader>w or <C-s>.
 " The latter works in insert mode too, and will place you back in normal mode.
-nnoremap <leader>w :w!<CR>
 nnoremap <C-s> :w!<CR>
-inoremap <C-s> :w!<CR>
+" inoremap <C-s> :w!<CR>
+inoremap <C-s> <esc>:w!<CR>
+
 " Write and close buffer with <leader>1.
 nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
@@ -102,6 +103,7 @@ vnoremap <leader>si :sort i<CR>
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.
 noremap <leader>Z <C-W>T<CR>
+noremap <silent> <leader><CR> <C-W>T<CR>
 
 noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
@@ -118,8 +120,8 @@ noremap <leader>bd :Bclose<CR>:tabclose<CR>gT
 " Close all buffers.
 noremap <leader>ba :bufdo bd<CR>
 " Switch between next/previous buffers with <leader>l or <leader>h.
-noremap <leader>l :bnext<CR>
-noremap <leader>h :bprevious<CR>
+noremap <leader>bl :bnext<CR>
+noremap <leader>bh :bprevious<CR>
 
 noremap <leader>W <C-w>T
 
@@ -208,8 +210,8 @@ nnoremap <leader>p <Cmd>PrettierAsync<CR>
 
 nnoremap <leader>ir :silent Inline2Ref<CR>
 
-noremap <C-t> :Files<CR>
-inoremap <C-t> <Cmd>Files<CR>
+" noremap <C-t> :Files<CR>
+" inoremap <C-t> <Cmd>Files<CR>
 
 inoremap <silent><expr> <c-space> coc#refresh()
 

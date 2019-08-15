@@ -26,7 +26,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/yarn/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="/usr/local/node/bin:$PATH"
-export PATH="/usr/local/Cellar/node/12.4.0/bin/:$PATH"
+export PATH="/usr/local/Cellar/node/12.7.0/bin/:$PATH"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -63,9 +63,11 @@ export PATH="$PATH:$HOME/bin/etcher/"
 
 export PATH="$HOME/bin/diff-so-fancy:$PATH"
 
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.5.0/gems/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/gems/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/bin/sonar-scanner/bin:$PATH"
@@ -95,3 +97,7 @@ export PATH=/opt/kata/bin:$PATH
 export PATH=/home/linuxbrew/.linuxbrew/opt/python/libexec/bin:$PATH
 export PATH=/usr/local/nvim/bin:$PATH
 export PATH=/snap/bin:$PATH
+
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+export PATH="/opt/sia:$PATH"

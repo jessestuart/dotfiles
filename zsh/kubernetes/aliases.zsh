@@ -4,12 +4,14 @@
 # Kubectl
 # =======
 alias k="kubectl "
-alias kgpo="get_pods_colorized -owide"
-alias kgpw="get_pods_colorized -owide --all-namespaces "
+alias kgpo="get_pods_colorized -owide "
+alias kgpw="get_pods_colorized -owide --all-namespaces"
 alias kns="kubens "
+alias kuncordon='for node in $(kgno --no-headers | awk1); do k uncordon $node; done'
+alias kgconsul="ksysgpo | rg consul"
 
 alias kdp="kubectl describe pods "
-alias kgp="get_pods_colorized -owide"
+alias kgp="kubectl get pod"
 alias kp="get_pods_colorized "
 alias krmpof="kubectl delete pod --force --grace-period 0"
 
@@ -17,6 +19,8 @@ alias krmpof="kubectl delete pod --force --grace-period 0"
 # Single out pods that are marked are `Running` but aren't yet healthy.
 # =====================================================================
 alias kgpw0="kgpw | rg '0/'"
+
+alias nodes="kubectl get nodes --no-headers | wc -l"
 
 # ====================================================================
 # Useful for ensuring there's no pod subnet collisions caused by e.g.,
@@ -69,7 +73,7 @@ alias sysdarl="sudo systemctl daemon-reload"
 
 alias hrm="helm delete --purge"
 
-alias kpanes="xpanes --ssh \$(kubectl get nodes --no-headers | awk1)"
+alias kpanes="xpanes --ssh \$(kubectl get nodes --no-headers | grep -v master | awk1)"
 
 # ===========
 # Helm / etc.
@@ -135,7 +139,7 @@ function colorize_stdout() {
       sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
       sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
       sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
-      sed -E "s/\s(milo|(ubuntu|arch|fedora)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+      sed -E "s/\s(milo|(ubuntu|arch|fedora)(lxc-2)?([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
       sed -E "s/^\(.*\s\)\(.*\)\s/\1${BOLD}\2${NORMAL}/g"
 
     echo $input |
@@ -151,8 +155,14 @@ function colorize_stdout() {
 }
 
 function get_pods_colorized() {
+  # local node_column=$1
+  # if ! test $node_column = "6" && ! test $node_column = "7"; then
+  #   node_column=6;
+  # else
+  #   shift;
+  # fi
   load_colors
-  kubectl get pods "$@" |
+  kubectl get pods --no-headers "$@" |
     sed "s/Running/${GREEN}Running${NORMAL}/g" |
     sed "s/Pending/${YELLOW}Pending${NORMAL}/g" |
     sed "s/Completed/${BLUE}Completed${NORMAL}/g" |
@@ -160,9 +170,14 @@ function get_pods_colorized() {
     sed -E "s/([a-zA-Z]*)ErrImagePull/${RED}\1Error${NORMAL}/g" |
     sed -E "s/([a-zA-Z]+)BackOff/${RED}\1BackOff${NORMAL}/g" |
     sed -E "s/^([a-z0-9\-]+)/${CYAN}\1${NORMAL}/g" |
-    sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
-    sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
-    sed -E "s/\s(milo|(ubuntu(-qemu)?|arch|fedora)([0-9]+(-[0-9])?|-(nfs|milo|influxdb))|architect)/${MAGENTA}\1${NORMAL}/g" |
+    # sed -E "s/((\S+?\s*){$node_column})((\S+?\s*){1})/\1${MAGENTA}\3${NORMAL}/g" |
+    # sed -E "s/((\S+?\s*){7})(.+?)[^<]/\1${MAGENTA}\3${NORMAL}/g" |
+    # sed -E "s/(((\S+)\s+){7})(([\S]+)[\s]+)((([\S]+)[\s]*)+)/${MAGENTA}\1${MAGENTA}\5${NORMAL}\6/g" |
+    # sed -E 's/([\S+\s+]{1})([\S+\s+]{1})([\S+\s+]+)/\1/' |
+    # sed -E "s/^(\S+\s+){7}(\S+)/\1${MAGENTA}\2${NORMAL}/g"
+    # sed -E "s/\spik8s-([a-zA-Z0-9]*)/${BLUE}pik8s-\1${NORMAL}/g" |
+    # sed -E "s/\srock([a-zA-Z0-9]*)/${BLUE}rock\1${NORMAL}/g" |
+    # sed -E "s/\s(milo|(ubuntu(-qemu)?|arch|fedora)([0-9]+(-[0-9]|-lxc-[0-9])?|-(nfs|milo|influxdb)))/${MAGENTA}\1${NORMAL}/g" |
     sed -E "s/[.*\s]+\(.*\)/${BOLD}&${NORMAL}/g"
 }
 

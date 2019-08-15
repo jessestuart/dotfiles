@@ -45,3 +45,5 @@ if [ -n "$TMUX" ]; then
 fi
 
 setopt autopushd pushdminus pushdsilent pushdtohome
+
+setopt interactivecomments

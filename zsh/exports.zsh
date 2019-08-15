@@ -57,7 +57,7 @@ export PURE_PROMPT_SYMBOL="λ"
 
 # For Timing.app
 export PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
+# export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 
 # if hash vimpager &>/dev/null; then
 #   export PAGER="$(which vimpager)"
@@ -87,6 +87,8 @@ export MANPATH="/usr/local/share/man:$MANPATH"
 export INFOPATH="/usr/local/share/info:$INFOPATH"
 
 export GROOVY_TURN_OFF_JAVA_WARNINGS=1
+
+export GITIN_LINESIZE=30
 
 export PATH="$HOME/.cargo/bin:$PATH"
 

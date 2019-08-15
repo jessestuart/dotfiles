@@ -55,8 +55,8 @@ let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 "       \}
 
 let g:ale_linters = {
-  \ 'typescript': ['eslint', 'tslint'],
-  \ 'typescript.tsx': ['eslint', 'tslint'],
+  \ 'typescript': ['eslint', 'tslint', 'prettier'],
+  \ 'typescript.tsx': ['eslint', 'tslint', 'prettier'],
   \}
 
 let g:ale_fixers = {
@@ -72,8 +72,8 @@ let g:ale_fixers = {
       \  'python': ['isort', 'black'],
       \  'ruby': ['rubocop'],
       \  'sh': ['shfmt'],
-      \  'typescript': ['importjs', 'prettier', 'eslint', 'tslint'],
-      \  'typescript.tsx': ['importjs', 'prettier', 'eslint', 'tslint'],
+      \  'typescript': ['importjs', 'tslint', 'eslint', 'prettier'],
+      \  'typescript.tsx': ['importjs', 'tslint', 'eslint', 'prettier'],
       \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
       \}

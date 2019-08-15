@@ -16,16 +16,17 @@ let g:LanguageClient_serverCommands = {
     \ 'yaml': ['yaml-language-server', '--stdio'],
     \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" NOTE: disabled 20190718 to test out coc.nvim more.
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-set completefunc=LanguageClient#complete
-set omnifunc=LanguageClient#complete
-autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
-autocmd FileType typescript.tsx setlocal omnifunc=LanguageClient#complete
+" set completefunc=LanguageClient#complete
+" set omnifunc=LanguageClient#complete
+" autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+" autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
+" autocmd FileType typescript.tsx setlocal omnifunc=LanguageClient#complete
 
 let g:LanguageClient_loggingLevel = 'INFO'
 let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')

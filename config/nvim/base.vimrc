@@ -68,10 +68,13 @@ set wildignore+=nvim/plugged/*
 set ruler
 
 " Height of the command bar.
-set cmdheight=1
+set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned.
 set hidden
+set runtimepath+=~/.config/nvim/plugged/coc.nvim/
+filetype plugin indent on
+syntax on
 
 " Configure backspace so it acts as it should act.
 set backspace=eol,start,indent

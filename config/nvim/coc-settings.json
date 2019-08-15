@@ -1,7 +1,11 @@
 {
+  "codeLens.enable": true,
+  "coc.github.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
+    "md",
+    "pandoc",
     "ts",
     "tsx",
     "js",
@@ -12,6 +16,7 @@
   "prettier.eslintIntegration": true,
   "prettier.semi": false,
   "suggest.autoTrigger": "trigger",
+  "json.schemas": [{}],
   "typescript.preferences.noSemicolons": true,
   "languageserver": {
     "dockerfile": {

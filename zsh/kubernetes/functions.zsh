@@ -139,7 +139,7 @@ function helmdown() {
 
 function hui() {
   helm upgrade --install --reuse-values $@
-  helm push . jesse --force
+  # helm push . jesse --force
 }
 
 function kgnoip() {
