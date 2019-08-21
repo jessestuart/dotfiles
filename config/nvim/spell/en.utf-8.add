@@ -633,3 +633,11 @@ xml
 tailwindcss
 svg
 plugin
+graphql
+getIsolatedQuery
+fetchPolicy
+fieldName
+refetch
+serializable
+Now's
+CRD's

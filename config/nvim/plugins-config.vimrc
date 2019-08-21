@@ -294,11 +294,10 @@ set hidden
 " found' messages
 " set shortmess+=c
 
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+" CTRL-C doesn't trigger the InsertLeave autocmd. Map to <ESC> instead.
 inoremap <C-C> <ESC>
 
 " inoremap jk <Esc>`^
-inoremap jk <Esc>`^
 
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
@@ -324,7 +323,7 @@ let g:test#preserve_screen = 1
 
 " nnoremap <silent> <leader>t :TestNearest<CR>
 nnoremap <silent> <leader>T :TestNearest<CR>
-nnoremap <silent> <leader>a :TestSuite<CR>
+" nnoremap <silent> <leader>a :TestSuite<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 " nnoremap <silent> <leader>g :TestVisit<CR>
 
@@ -365,7 +364,7 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 
-" set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
+set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
 
 let g:vim_package_info_virutaltext_prefix = '  ¤ '
 let g:vim_package_info_virutaltext_highlight = 'NonText'

@@ -155,7 +155,14 @@ function dht() {
     image=$1
   fi
   if ! test -z $2; then page_num=$2; else page_num=1; fi
-  docker-hub tags -o $repo -r $image
+  docker-hub tags -o $repo -r $image -p $page_num
+}
+
+function djt() {
+  image=$1
+  page_num=1
+  if ! test -z $2; then page_num=$2; fi
+  docker-hub tags -o jessestuart -r $image -p $page_num
 }
 
 function mantp() {
@@ -172,19 +179,19 @@ function mantp() {
     --target "$registry/$image:$target"
 }
 
-function mantp() {
-  local registry=jessestuart
-  local image=$1
-  local version=$2
-  local platforms=$3
-  local target=$4
-  manifest-tool \
-    --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD \
-    push from-args \
-    --platforms "$platforms" \
-    --template "$registry/$image:$version-ARCH" \
-    --target "$registry/$image:$target"
-}
+# function mantp() {
+#   local registry=jessestuart
+#   local image=$1
+#   local version=$2
+#   local platforms=$3
+#   local target=$4
+#   manifest-tool \
+#     --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD \
+#     push from-args \
+#     --platforms "$platforms" \
+#     --template "$registry/$image:$version-ARCH" \
+#     --target "$registry/$image:$target"
+# }
 
 function dhtags() {
   image=$1

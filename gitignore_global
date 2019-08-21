@@ -27,3 +27,5 @@ _esy/
 
 yalc.lock
 .yalc
+
+qemu-*

@@ -20,7 +20,7 @@ Plug 'jessestuart/vim-markdown-link-convert'
 " ============================
 " Linting / fixing. Must have.
 " ============================
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -108,7 +108,7 @@ Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
-" Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
