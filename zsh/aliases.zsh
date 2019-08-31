@@ -54,6 +54,7 @@ alias ar2="aria2c"
 alias gil="gitin log"
 alias pacsc="cat package.json | jq '.scripts'"
 alias hass="hass-cli"
+alias jsown="sudo chown -R jesse:"
 
 function cheat() {
   /usr/local/bin/cheat $1 | bat --theme TwoDark --language=md
@@ -67,7 +68,7 @@ alias rgi="rg -i"
 alias rgh="rg --hidden"
 alias rghig="rg --hidden --no-ignore"
 alias rgig="rg --no-ignore"
-alias rgfwm="rg --files-with-matches"
+alias rgf="rg --files-with-matches"
 
 function sum() {
   sum=0
@@ -98,7 +99,7 @@ alias sz="source ~/.zshrc"
 alias path='echo -e ${PATH//:/\\n} | sort'
 
 # Enable aliases to be sudo’ed.
-alias sudo='sudo '
+# alias sudo='sudo '
 
 if [ "$(uname)" = 'Darwin' ]; then
   function rm() {
@@ -184,8 +185,8 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd >/dev/null || alias hd="hexdump -C"

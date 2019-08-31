@@ -1,32 +1,41 @@
 {
   "codeLens.enable": true,
-  "coc.github.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "Markdown",
-    "md",
-    "pandoc",
-    "ts",
-    "tsx",
-    "js",
-    "typescript",
-    "typescript.tsx",
-    "javascript"
-  ],
+  "diagnostic.virtualText": true,
+  "git.addGlameToVirtualText": false,
+  "git.enableGutters": false,
+  "json.schemas": {
+    "https://json.schemastore.org/package.json": "/package.json",
+    "https://json.schemastore.org/renovate.json": "/renovate.json",
+    "https://json.schemastore.org/tsconfig.json": "/tsconfig.json",
+    "https://json.schemastore.org/tslint.json": "/tslint.json"
+  },
+  "npm.binPath": "yarn",
   "prettier.eslintIntegration": true,
   "prettier.semi": false,
-  "suggest.autoTrigger": "trigger",
-  "json.schemas": [{}],
+  "suggest.autoTrigger": "always",
+  "suggest.enablePreview": true,
+  "tsserver.log": "normal",
   "typescript.preferences.noSemicolons": true,
+  "typescript.preferences.quoteStyle": "single",
+
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml",
+    "https://json.schemastore.org/circleciconfig": "/.circleci/config.yaml",
+    "helm": "/values.yaml"
+  },
   "languageserver": {
-    "dockerfile": {
+    "Dockerfile": {
       "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
+      "args": ["--stdio"],
+      "filetypes": ["Dockerfile"]
+    },
+    "yaml": {
+      "command": "yaml-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["yaml"]
     },
     "typescript": {
-      "command": "typescript-language-server",
-      "args": ["--stdio"],
+      "command": "tsserver",
       "filetypes": ["typescript", "typescript.tsx"]
     }
   }

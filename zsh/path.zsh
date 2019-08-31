@@ -26,7 +26,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/yarn/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="/usr/local/node/bin:$PATH"
-export PATH="/usr/local/Cellar/node/12.7.0/bin/:$PATH"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -35,6 +34,7 @@ export PATH="$PATH:~/dotfiles/**/*.sh"
 
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 
 export PATH="$HOME/github/emacs/src:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"

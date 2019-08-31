@@ -25,6 +25,12 @@ precmd() {
 
 export GO111MODULE=on
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+
+HISTORIAN_SRC="${HOME}/.zhistory"
+
+# source ${HOME}/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-larkery-SLASH-zsh-histdb/sqlite-history.zsh
+# autoload -Uz add-zsh-hook
+# add-zsh-hook precmd histdb-update-outcome
+
+export PATH=$PATH:~/.kube/plugins/jordanwilson230

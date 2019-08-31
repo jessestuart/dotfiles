@@ -54,20 +54,50 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
-let g:pandoc#modules#disabled = ['folding']
+let g:pandoc#modules#disabled = ['folding', 'spell']
 let g:pandoc#filetypes#handled = ['markdown', 'pandoc', 'rst', 'textile']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GTM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gtm_plugin_status_enabled = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" function! AirlineInit()
+"   if exists('*GTMStatusline')
+"     call airline#parts#define_function('gtmstatus', 'GTMStatusline')
+"     let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
+"   endif
+" endfunction
+" autocmd User AirlineAfterInit call AirlineInit()
+
 function! AirlineInit()
+  let g:airline#extensions#coc#enabled = 1
+  let g:airline_section_a = airline#section#create(['mode'])
+  let g:airline_section_b = airline#section#create_left(['ffenc','file'])
+  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
   if exists('*GTMStatusline')
     call airline#parts#define_function('gtmstatus', 'GTMStatusline')
     let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
   endif
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
+
+function! s:get_gutentags_status(mods) abort
+  let l:msg = ''
+  if index(a:mods, 'ctags') >= 0
+    let l:msg .= '♨'
+  endif
+  if index(a:mods, 'cscope') >= 0
+    let l:msg .= '♺'
+  endif
+  return l:msg
+endfunction
+
+:set statusline+=%{gutentags#statusline_cb(
+            \function('<SID>get_gutentags_status'))}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellany
@@ -158,14 +188,14 @@ map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 " ===============
 " Prettier config
 " ===============
-" let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
+let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#exec_cmd_async = 1
 
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " augroup PrettierInit
 "   autocmd!
@@ -192,7 +222,6 @@ let g:prettier#config#trailing_comma = 'all'
 " flow|babel|typescript|css|less|scss|json|graphql|markdown
 " let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
-" let g:prettier#config#config_precedence = 'file-override'
 let g:prettier#config#config_precedence = 'file-override'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'always'
@@ -308,16 +337,16 @@ inoremap <C-C> <ESC>
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+" let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 let g:ctrlp_user_command = 'git ls-files'
 
-let g:import_sort_auto = 1
+let g:import_sort_auto = 0
 
 " ======================================
 " From https://github.com/janko/vim-test
 " ======================================
-let test#strategy = 'dispatch'
+let test#strategy = 'neovim'
 " let test#neovim#term_position = 'bottomleft'
 let g:test#preserve_screen = 1
 
@@ -327,21 +356,16 @@ nnoremap <silent> <leader>T :TestNearest<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 " nnoremap <silent> <leader>g :TestVisit<CR>
 
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-
 let g:colorizer_use_virtual_text=1
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 let g:airline_powerline_fonts=1
 let g:airline_theme='onedark'
 
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
@@ -364,9 +388,41 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 
-set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
+" set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
 
 let g:vim_package_info_virutaltext_prefix = '  ¤ '
 let g:vim_package_info_virutaltext_highlight = 'NonText'
 
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
+
 " set statusline+=%{gutentags#statusline()}
+
+" ===================
+" vimcmdline mappings
+" ===================
+let cmdline_map_start          = '<LocalLeader>c'
+let cmdline_map_send           = '<LocalLeader>cS'
+" let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
+let cmdline_map_source_fun     = '<LocalLeader>cf'
+let cmdline_map_send_paragraph = '<LocalLeader>cp'
+let cmdline_map_send_block     = '<LocalLeader>cb'
+let cmdline_map_quit           = '<LocalLeader>cq'
+
+" ==================
+" vimcmdline options
+" ==================
+let cmdline_vsplit      = 1      " Split the window vertically
+let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
+let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
+let cmdline_term_height = 15     " Initial height of interpreter window or pane
+let cmdline_term_width  = 80     " Initial width of interpreter window or pane
+let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
+let cmdline_outhl       = 1      " Syntax highlight the output
+"let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)

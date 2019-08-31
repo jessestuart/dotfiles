@@ -27,7 +27,13 @@ augroup gitcommit
 augroup END
 
 " Enable omnifunc.
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+    \	if &omnifunc == "" |
+    \		setlocal omnifunc=syntaxcomplete#Complete |
+    \	endif
+endif
 set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :

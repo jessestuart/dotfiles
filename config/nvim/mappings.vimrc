@@ -19,7 +19,7 @@ nnoremap : ;
 " ==========================
 " vim-plug plugin management
 " ==========================
-noremap <leader>; :source ~/.config/nvim/init.vim<CR>
+noremap <leader>; :source ~/.config/nvim/init.vim<CR>:AirlineRefresh<CR>
 " Install new plugins with <leader>pi
 nnoremap <leader>pi :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>
 " Update all plugins with <leader>up
@@ -32,7 +32,7 @@ nnoremap <leader>up :source ~/dotfiles/config/nvim/init.vim<CR>:PlugInstall<CR>:
 nnoremap <leader>fz :FZF<CR>
 
 " Toggle Goyo for distraction-free editing.
-nnoremap <leader>z :Goyo 120x80%<CR>
+nnoremap <leader>z :Goyo 80%x80%<CR>
 nnoremap <leader>zz :Goyo!<CR>
 
 " Toggle NERDTree. Call it a guilty pleasure.
@@ -98,7 +98,7 @@ vnoremap <leader>si :sort i<CR>
 " => Moving around buffers, windows, & tabs.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vertical Split
-" nnoremap <leader>| :vsplit<CR>
+nnoremap <leader>wn :rightbelow vnew<CR>
 " Horizontal Split
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.

@@ -17,7 +17,7 @@ alias via="$EDITOR ~/.zsh/aliases.zsh"
 alias viad="$EDITOR ~/.zsh/docker/aliases.zsh"
 alias viagit="$EDITOR ~/.zsh/git/aliases.zsh"
 alias viak="$EDITOR ~/.zsh/kubernetes/aliases.zsh"
-alias vianti="vi ~/dotfiles/zsh/antibody"
+alias vianti="$EDITOR ~/dotfiles/zsh/antibody.conf"
 alias vidk="$EDITOR ~/dotfiles/zsh/docker"
 alias vif="$EDITOR ~/.zsh/functions.zsh"
 alias vigitconfig="$EDITOR ~/.gitconfig"
@@ -49,6 +49,7 @@ alias vipc="$EDITOR ~/.config/nvim/plugins-config.vimrc"
 alias vici="$EDITOR .circleci/config.yml"
 alias vihost="sudo $EDITOR /etc/hosts"
 alias vimake="$EDITOR Makefile"
+alias vimk="$EDITOR Makefile"
 alias visec="$EDITOR ~/.secrets"
 alias vissh="$EDITOR ~/.ssh/config"
 alias vitodo="$EDITOR TODO.md"
@@ -58,6 +59,7 @@ alias vm="$EDITOR Makefile"
 # Open a README file in the current directory; matches anything of the form
 # README*, with any extension, case insenstive.
 # =========================================================================
-function vir() {
-  find . -iname 'README*' -depth 1 -exec nvim {} \;
-}
+alias vir="fd --max-depth=1 -i 'README' | head | xargs nvim"
+# function vir() {
+#   fd --max-depth=1 -i 'README' --exec nvim
+# }

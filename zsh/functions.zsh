@@ -51,15 +51,15 @@ function targz() {
 # Determine size of a file or total size of a directory
 # =====================================================
 function fs() {
-  if du -b /dev/null > /dev/null 2>&1; then
+  if sudo du -b /dev/null > /dev/null 2>&1; then
     local arg=-sbh;
   else
     local arg=-sh;
   fi
   if [[ -n "$@" ]]; then
-    du $arg -- "$@";
+    sudo du $arg -- "$@";
   else
-    du $arg .[^.]* ./*;
+    sudo du $arg .[^.]* ./*;
   fi;
 }
 
@@ -245,7 +245,7 @@ function sf() {
   local rg_command='
     rg --column --line-number --no-heading --fixed-strings --ignore-case \
        --no-ignore --hidden --follow --color "always" \
-       -g "*.{'$include'}" -g "!{'$exclude'}/*"
+       -g "*.{'$include'}" -g "!{'$exclude'}/*" \
   '
   local files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
   [[ -n "$files" ]] && "${EDITOR:-vim}" "$files"
@@ -342,11 +342,11 @@ function fuck() {
   test -n "$TF_CMD" && print -s $TF_CMD
 }
 
-function dut {
-  (( $# == 0 )) && set -- *
+function dut() {
+  (( $# == 0 )) && set -- .
 
   if grep -q -i 'GNU' < <(du --version 2>&1); then
-    sudo du -khsc "$@" | sort -h -r
+    sudo du -ahc --max-depth=1 "$@" | sort -h
   else
     local line size name
     local -a record

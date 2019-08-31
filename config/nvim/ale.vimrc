@@ -9,7 +9,7 @@ let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
 " Fix files automatically on save. (This is off by default)
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
@@ -66,14 +66,14 @@ let g:ale_fixers = {
       \  'go': ['gofmt', 'goimports'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
       \  'javascript.jsx': [ 'importjs', 'standard', 'prettier-eslint', 'eslint'],
+      \  'typescript': ['importjs', 'tslint', 'eslint', 'prettier'],
+      \  'typescript.tsx': ['importjs', 'tslint', 'eslint', 'prettier'],
       \  'json': ['fixjson', 'prettier'],
       \  'markdown': ['prettier', 'textlint'],
       \  'pandoc': ['prettier', 'textlint'],
       \  'python': ['isort', 'black'],
       \  'ruby': ['rubocop'],
       \  'sh': ['shfmt'],
-      \  'typescript': ['importjs', 'tslint', 'eslint', 'prettier'],
-      \  'typescript.tsx': ['importjs', 'tslint', 'eslint', 'prettier'],
       \  'yaml': ['prettier'],
       \  'zsh': ['shfmt'],
       \}

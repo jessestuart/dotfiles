@@ -58,6 +58,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-dotenv'
+Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-projectionist'
 
 " -------------------------------------
@@ -78,10 +79,10 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " -------------------------------------
 " WebDev.
 " -------------------------------------
-Plug 'jessestuart/vim-prettier', { 'do': 'yarn install --prod', }
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'jessestuart/vim-prettier', { 'do': 'yarn install --prod', }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
-Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
+" Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 Plug 'alampros/vim-styled-jsx'
@@ -93,10 +94,13 @@ Plug 'hail2u/vim-css3-syntax'
 " Plug 'mattn/emmet-vim'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'pangloss/vim-javascript'
+Plug 'gutenye/json5.vim'
 
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
+
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install jsctags --save-dev' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " For Denite features
 Plug 'Shougo/denite.nvim'
@@ -173,7 +177,7 @@ Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
 " ============================
 " LanguageClient (LSP) support
 " ============================
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 " -------------------------------------
 " Time tracking, etc.
@@ -201,7 +205,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/splice.vim'
 Plug 'rizzatti/dash.vim'
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'sunaku/vim-shortcut'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'wesQ3/vim-windowswap'
@@ -249,13 +253,15 @@ Plug 'honza/vim-snippets'
 " > (Neovim buffer), an external terminal emulator or in a tmux pane.
 Plug 'jalvesaq/vimcmdline'
 
-Plug 'meain/vim-package-info', { 'do': 'npm install' }
+Plug 'meain/vim-package-info', { 'do': 'yarn -s' }
 
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'christoomey/vim-conflicted'
 
 Plug 'robbles/logstash.vim'
 Plug 'towolf/vim-helm'
+
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " =================
 " --- Graveyard ---
