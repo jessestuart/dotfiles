@@ -102,3 +102,5 @@ export PATH=/snap/bin:$PATH
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 export PATH="/opt/sia:$PATH"
+
+export PATH=$PATH:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin/x86_64

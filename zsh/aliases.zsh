@@ -40,6 +40,7 @@ alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 alias e2e="yarn e2e"
 alias simctl="xcrun simctl"
 alias pip="pip3"
+alias curl="curl -sL"
 alias vel="velero"
 alias scratch='cd $(mktemp -d)'
 # alias ssh="mosh"
@@ -56,11 +57,22 @@ alias pacsc="cat package.json | jq '.scripts'"
 alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
 
+function ports() {
+  netstat -plunt | \
+    grep LISTEN | \
+    grep -v '^tcp6' | \
+    sed -E 's/\s+/|/g' | \
+    sed -e 's/127\.0\.0\.1//g' -e 's/0\.0\.0\.0//g' -e 's/://g' | \
+    awk -F '|' '{print \$4,\$7}' | \
+    sort -k1n | \
+    column -t
+}
+
 function cheat() {
   /usr/local/bin/cheat $1 | bat --theme TwoDark --language=md
 }
 
-hosts() {
+function hosts() {
   sudo $EDITOR /etc/hosts
 }
 
