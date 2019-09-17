@@ -53,7 +53,6 @@ alias mp="multipass"
 alias si="sudo -i"
 alias ar2="aria2c"
 alias gil="gitin log"
-alias pacsc="cat package.json | jq '.scripts'"
 alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
 
@@ -69,6 +68,9 @@ function ports() {
 }
 
 function cheat() {
+  if $(echo $1 | grep -q '\.man$'); then
+    \cat $1 | nvim -R
+  fi
   /usr/local/bin/cheat $1 | bat --theme TwoDark --language=md
 }
 
@@ -76,11 +78,15 @@ function hosts() {
   sudo $EDITOR /etc/hosts
 }
 
+if test -e $HOME/.config/ignore; then
+  alias rg="rg --ignore-file=$HOME/.config/ignore"
+fi
 alias rgi="rg -i"
 alias rgh="rg --hidden"
 alias rghig="rg --hidden --no-ignore"
 alias rgig="rg --no-ignore"
 alias rgf="rg --files-with-matches"
+alias rgconsole="rg -g '!tslint.json' console"
 
 function sum() {
   sum=0
@@ -111,7 +117,7 @@ alias sz="source ~/.zshrc"
 alias path='echo -e ${PATH//:/\\n} | sort'
 
 # Enable aliases to be sudo’ed.
-# alias sudo='sudo '
+alias sudo='sudo '
 
 if [ "$(uname)" = 'Darwin' ]; then
   function rm() {
@@ -172,7 +178,7 @@ fi
 alias ap="ansible-playbook"
 alias atom="atom-beta"
 alias cuck='eval $(thefuck $(fc -ln -1))'
-alias kbz="ps aux | grep '[B]ackblaze' -i | awk '{print $2}' | sudo xargs kill -9"
+alias kbz="ps aux | grep '[B]ackblaze' -i | awk2 | sudo xargs kill -9"
 alias tf="terraform"
 alias tmd="tmux detach"
 

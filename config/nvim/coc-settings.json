@@ -3,21 +3,37 @@
   "diagnostic.virtualText": true,
   "git.addGlameToVirtualText": false,
   "git.enableGutters": false,
-  "json.schemas": {
-    "https://json.schemastore.org/package.json": "/package.json",
-    "https://json.schemastore.org/renovate.json": "/renovate.json",
-    "https://json.schemastore.org/tsconfig.json": "/tsconfig.json",
-    "https://json.schemastore.org/tslint.json": "/tslint.json"
-  },
+  "docker.enable": true,
+  "json.schemas": [
+    { "https://json.schemastore.org/package.json": "/package.json" },
+    { "https://json.schemastore.org/renovate.json": "/renovate.json" },
+    { "https://json.schemastore.org/tsconfig.json": "/tsconfig.json" },
+    { "https://json.schemastore.org/tslint.json": "/tslint.json" },
+    {
+      "https://json.schemastore.org/eslintrc": [
+        ".eslintrc",
+        ".eslintrc.js",
+        "eslint.config.js"
+      ]
+    },
+    {
+      "http://json.schemastore.org/ansible-stable-2.7.json": [
+        "/main.yml",
+        "/roles/*.yml",
+        "/group_vars/**/*.yml",
+        "/host_vars/**/*.yml",
+        "/*playbook.yml"
+      ]
+    }
+  ],
   "npm.binPath": "yarn",
   "prettier.eslintIntegration": true,
   "prettier.semi": false,
   "suggest.autoTrigger": "always",
   "suggest.enablePreview": true,
   "tsserver.log": "normal",
-  "typescript.preferences.noSemicolons": true,
+  "tslint.autoFixOnSave": true,
   "typescript.preferences.quoteStyle": "single",
-
   "yaml.schemas": {
     "kubernetes": "/*.yaml",
     "https://json.schemastore.org/circleciconfig": "/.circleci/config.yaml",
@@ -36,7 +52,7 @@
     },
     "typescript": {
       "command": "tsserver",
-      "filetypes": ["typescript", "typescript.tsx"]
+      "filetypes": ["typescript", "typescript.tsx", "javascript"]
     }
   }
 }

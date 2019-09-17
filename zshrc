@@ -27,10 +27,23 @@ export GO111MODULE=on
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
-HISTORIAN_SRC="${HOME}/.zhistory"
+export HISTORIAN_SRC="${HOME}/.zhistory"
 
-# source ${HOME}/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-larkery-SLASH-zsh-histdb/sqlite-history.zsh
-# autoload -Uz add-zsh-hook
-# add-zsh-hook precmd histdb-update-outcome
+source ${HOME}/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-larkery-SLASH-zsh-histdb/sqlite-history.zsh
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd histdb-update-outcome
 
 export PATH=$PATH:~/.kube/plugins/jordanwilson230
+export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jesse/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"

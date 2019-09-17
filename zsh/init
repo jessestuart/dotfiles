@@ -30,6 +30,7 @@ for match in $zcompdump*(.Nmh+24); do
   break
 done
 if [ "$re_initialize" -eq "0" ]; then
+  echo "reinit"
   compinit
   # Update the timestamp on compdump file.
   compdump

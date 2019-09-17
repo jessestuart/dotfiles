@@ -55,6 +55,37 @@ alias gcanon="git commit --amend --no-edit --no-verify"
 alias gwe="git reset --hard HEAD"
 alias gh="ghcl"
 
+# i.e., "git last committed" -- prints when the last commit to the current
+# branch was, in relative format.
+function glc() {
+  load_colors
+  local rel_date=$(git log --oneline --date-order --pretty=format:"%ad" --date=relative | head -n1)
+  echo "${GREEN}$(git branch --show-current)${NORMAL} was last updated ${RED}${rel_date}${NORMAL}."
+}
+
+function load_colors() {
+  # https://unix.stackexchange.com/a/10065
+  # If stdout is a terminal
+  if test -t 1; then
+    # see if it supports colors
+    ncolors=$(tput colors)
+    if test -n "$ncolors" && test $ncolors -ge 8; then
+      export BOLD="$(tput bold)"
+      export UNDERLINE="$(tput smul)"
+      export STANDOUT="$(tput smso)"
+      export NORMAL="$(tput sgr0)"
+      export BLACK="$(tput setaf 0)"
+      export RED="$(tput setaf 1)"
+      export GREEN="$(tput setaf 2)"
+      export YELLOW="$(tput setaf 3)"
+      export BLUE="$(tput setaf 4)"
+      export MAGENTA="$(tput setaf 5)"
+      export CYAN="$(tput setaf 6)"
+      export WHITE="$(tput setaf 7)"
+    fi
+  fi
+}
+
 # ===============================================
 # Hub aliases.
 # NB: some of these features requiring building

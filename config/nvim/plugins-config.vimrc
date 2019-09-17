@@ -4,13 +4,13 @@
 let g:javascript_plugin_jsdoc = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
-let g:tern#is_show_argument_hints_enabled = 1
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
+" let g:tern#is_show_argument_hints_enabled = 1
+" let g:tern_show_argument_hints='on_hold'
+" let g:tern_map_keys=1
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver search (`ag`) + displaying results in cope.
@@ -76,8 +76,18 @@ let g:gtm_plugin_status_enabled = 1
 function! AirlineInit()
   let g:airline#extensions#coc#enabled = 1
   let g:airline_section_a = airline#section#create(['mode'])
-  let g:airline_section_b = airline#section#create_left(['ffenc','file'])
-  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+  let g:airline_section_b = airline#section#create_left(['file'])
+  let g:airline_section_c = airline#section#create(['tagbar'])
+  " let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+  " let g:airline_section_x =
+
+  " airline#util#prepend("",0)
+  " airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
+  " airline#util#prepend(airline#extensions#vista#currenttag(),0)
+  " airline#util#prepend(airline#extensions#gutentags#status(),0)
+  " airline#util#prepend("",0)
+  " airline#util#wrap(airline#parts#filetype(),0)
+
   if exists('*GTMStatusline')
     call airline#parts#define_function('gtmstatus', 'GTMStatusline')
     let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
@@ -188,6 +198,7 @@ map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
 " ===============
 " Prettier config
 " ===============
+let g:prettier#quickfix_auto_focus = 0
 let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#exec_cmd_async = 1
 
@@ -195,7 +206,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " augroup PrettierInit
 "   autocmd!

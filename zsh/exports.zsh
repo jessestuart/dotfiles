@@ -17,8 +17,8 @@ export PYTHONIOENCODING='UTF-8'
 # export HISTFILESIZE="${HISTSIZE}"
 # Omit duplicates and commands that begin with a space from history.
 # export HISTCONTROL='ignoreboth'
-export HISTTIMEFORMAT="%h %d %H:%M:%S> "
-export HIST_FIND_NO_DUPS=true
+# export HISTTIMEFORMAT="%h %d %H:%M:%S> "
+# export HIST_FIND_NO_DUPS=true
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
@@ -76,9 +76,9 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=245"
 export CHEATPATH="$HOME/github/rstacruz/cheatsheets:$CHEATPATH"
 
 export PATH="/usr/local/opt/curl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/curl/lib"
-export CPPFLAGS="-I/usr/local/opt/curl/include"
-export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/curl/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/curl/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 export HOMEBREW_PREFIX="/usr/local"
 export HOMEBREW_CELLAR="/usr/local/Cellar"
@@ -95,8 +95,15 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # zlib
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/zlib/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/zlib/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+export LDFLAGS="-L/usr/local/opt/mozjpeg/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/mozjpeg/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/mozjpeg/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
+  export LDFLAGS="-L/usr/local/opt/libffi/lib:$LDFLAGS"
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

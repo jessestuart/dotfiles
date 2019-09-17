@@ -12,14 +12,15 @@
 " --glob: Additional conditions for search (in this case ignore everything in
 "         the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep(
-  \ 'rg --column --line-number --no-heading --fixed-strings '
-  \ '--ignore-case --hidden --follow --glob "!.git/*" --color "always"'
-  \ ' '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always"'.shellescape(<q-args>), 1, <bang>0)
 
-" nnoremap <Leader>F :Files<CR>
-" nnoremap <Leader>r :Tags<CR>
+nnoremap <Leader>F :GFiles<CR>
+nnoremap <Leader>R :Tags<CR>
 
-set runtimepath+=/usr/local/opt/fzf
+nnoremap <C-f> :GFiles<CR>
+
+set runtimepath+='~/.fzf'
+
+" let g:fzf_layout = { 'window': 'enew' }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'

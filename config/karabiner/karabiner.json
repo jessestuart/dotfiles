@@ -105,6 +105,39 @@
             ]
           },
           {
+            "description": "Change right control + `;` / `'` / `[` / `/` to right, left, up, and down, respectively.",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "mandatory": "right_control"
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "quote",
+                  "modifiers": {
+                    "mandatory": ["right_control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Use right_command+;/' to cycle through running applications (like command+tab).",
             "manipulators": [
               {

@@ -71,7 +71,7 @@ inoremap <C-s> <esc>:w!<CR>
 " Write and close buffer with <leader>1.
 nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
-nnoremap <leader>q :q!<CR>
+nnoremap <leader>q :q<CR>
 
 " Repeat macros with `<leader>2`.
 nnoremap <leader>2 @@
@@ -117,6 +117,7 @@ noremap <C-l> <C-W>l
 
 " Close the current buffer.
 noremap <leader>bd :Bclose<CR>:tabclose<CR>gT
+noremap <leader>\ :Bclose<CR>:tabclose<CR>gT
 " Close all buffers.
 noremap <leader>ba :bufdo bd<CR>
 " Switch between next/previous buffers with <leader>l or <leader>h.
@@ -200,7 +201,7 @@ noremap <Leader>f :Ag<CR>
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 nnoremap <Leader>gg <CMD>GitGutterToggle<CR>
-nnoremap <Leader>b <CMD>Gblame<CR>
+nnoremap <Leader>bb <CMD>Gblame<CR>
 
 nnoremap <leader>t <Cmd>TagbarToggle<CR>
 
@@ -214,5 +215,9 @@ nnoremap <leader>ir :silent Inline2Ref<CR>
 " inoremap <C-t> <Cmd>Files<CR>
 
 inoremap <silent><expr> <c-space> coc#refresh()
+
+nnoremap <leader>J :Jest<CR>
+
+nmap <silent> <leader>da <Plug>DashSearch
 
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a

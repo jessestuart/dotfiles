@@ -8,7 +8,7 @@ call plug#begin()
 " -------------------------------------
 Plug 'alvan/vim-closetag'
 Plug 'christoomey/vim-sort-motion'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'osyo-manga/vim-over'
 Plug 'tommcdo/vim-exchange'
@@ -82,7 +82,7 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " Plug 'jessestuart/vim-prettier', { 'do': 'yarn install --prod', }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
-" Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
+Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 Plug 'alampros/vim-styled-jsx'
@@ -109,11 +109,12 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
@@ -161,7 +162,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 " ========================
 " Autocomplete / Snippets.
 " ========================
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 Plug 'epilande/vim-react-snippets'
 Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
@@ -261,7 +262,9 @@ Plug 'christoomey/vim-conflicted'
 Plug 'robbles/logstash.vim'
 Plug 'towolf/vim-helm'
 
-Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'MattesGroeger/vim-bookmarks'
+
+" Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " =================
 " --- Graveyard ---
