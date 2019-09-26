@@ -71,7 +71,7 @@ inoremap <C-s> <esc>:w!<CR>
 " Write and close buffer with <leader>1.
 nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
-nnoremap <leader>q :q<CR>
+nnoremap <leader>q :q!<CR>
 
 " Repeat macros with `<leader>2`.
 nnoremap <leader>2 @@

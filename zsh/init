@@ -7,6 +7,7 @@ config_files=($ZSH/**/*.zsh)
 fpath=(
   /usr/local/share/zsh-completions
   /usr/local/share/zsh/site-functions
+  /usr/local/Cellar/zsh-completions/0.30.0/share/zsh-completions
   $fpath
 )
 
@@ -20,24 +21,31 @@ source <(antibody init)
 antibody bundle < "$ZSH/antibody.conf"
 . "$ZSH/antibody/config.zsh"
 
-# Hack to make zsh load more quickly by not regenerating completion data
-# on every shell init.
-# autoload -Uz compinit
+# completion; use cache if updated within 24h
 autoload -Uz compinit
-re_initialize=0
-for match in $zcompdump*(.Nmh+24); do
-  re_initialize=1
-  break
-done
-if [ "$re_initialize" -eq "0" ]; then
-  echo "reinit"
-  compinit
-  # Update the timestamp on compdump file.
-  compdump
+if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d $HOME/.zcompdump;
 else
-  # Omit the check for new functions once we've updated today.
-  compinit -C
-fi
+  compinit -C;
+fi;
+# # Hack to make zsh load more quickly by not regenerating completion data
+# # on every shell init.
+# # autoload -Uz compinit
+# autoload -Uz compinit
+# re_initialize=0
+# for match in $zcompdump*(.Nmh+24); do
+#   re_initialize=1
+#   break
+# done
+# if [ "$re_initialize" -eq "0" ]; then
+#   echo "reinit"
+#   compinit
+#   # Update the timestamp on compdump file.
+#   compdump
+# else
+#   # Omit the check for new functions once we've updated today.
+#   compinit -C
+# fi
 
 test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
 
@@ -52,10 +60,13 @@ for file in ${(M)config_files:#**/completions.zsh}; do
   . $file
 done
 
+# fpath=$(echo $fpath | sed -e 's/\s/\n/g' | sort | uniq | xargs echo)
+# echo $fpath
+
 source $fpath
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  fpath=/usr/local/share/zsh/site-functions:$FPATH
-fi
+# if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+#   fpath=/usr/local/share/zsh/site-functions:$FPATH
+# fi
 
 unset config_files
 

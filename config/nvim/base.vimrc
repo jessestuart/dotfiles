@@ -214,8 +214,6 @@ augroup END
 " set autochdir
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
-set foldmethod=indent
-
 " Get word completion for free -- the following command will let us press
 " CTRL-N or CTRL-P in insert-mode to complete the word we’re typing.
 set complete+=kspell
@@ -224,3 +222,16 @@ augroup crontab
   au!
   autocmd filetype crontab setlocal nobackup nowritebackup
 augroup END
+
+set noswapfile
+set autoread
+set autowrite
+set confirm
+set splitbelow
+set bsdir=buffer
+if has('vim_starting')
+	set encoding=UTF-8
+	scriptencoding UTF-8
+endif
+set laststatus=2
+set showtabline=2

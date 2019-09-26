@@ -23,7 +23,6 @@ alias nrt="npm run test"
 
 alias build="yarn build"
 alias dev="yarn dev"
-alias yalc="yarn yalc"
 
 alias jw="yarn jest --watch"
 alias lint="yarn lint"

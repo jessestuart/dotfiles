@@ -79,8 +79,8 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " -------------------------------------
 " WebDev.
 " -------------------------------------
-" Plug 'jessestuart/vim-prettier', { 'do': 'yarn install --prod', }
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'jessestuart/vim-prettier', { 'do': 'yarn install', }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
@@ -215,7 +215,8 @@ Plug 'janko-m/vim-test'
 
 Plug 'jceb/vim-orgmode'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'sjl/gundo.vim'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'eraserhd/parinfer-rust'

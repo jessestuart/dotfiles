@@ -4,6 +4,8 @@
   "git.addGlameToVirtualText": false,
   "git.enableGutters": false,
   "docker.enable": true,
+  "homeassistant.enable": true,
+  "homeassistant.hostUrl": "https://ha.jesses.io/",
   "json.schemas": [
     { "https://json.schemastore.org/package.json": "/package.json" },
     { "https://json.schemastore.org/renovate.json": "/renovate.json" },

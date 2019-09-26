@@ -99,6 +99,9 @@ export PATH=/home/linuxbrew/.linuxbrew/opt/python/libexec/bin:$PATH
 export PATH=/usr/local/nvim/bin:$PATH
 export PATH=/snap/bin:$PATH
 
+export PATH=$PATH:~/.kube/plugins/jordanwilson230
+export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
+
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 export PATH="/opt/sia:$PATH"

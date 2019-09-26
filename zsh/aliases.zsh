@@ -49,12 +49,13 @@ alias jgh="cd ~/github"
 alias n="nnn"
 alias bd="brew desc"
 alias xsh="xpanes --ssh"
-alias mp="multipass"
+alias mp="sudo multipass"
 alias si="sudo -i"
 alias ar2="aria2c"
 alias gil="gitin log"
 alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
+alias pb64="pbpaste | base64 -d"
 
 function ports() {
   netstat -plunt | \

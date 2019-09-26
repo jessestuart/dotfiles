@@ -131,5 +131,5 @@ nnoremap <silent> <leader>cl  :<C-u>CocList<CR>
 " Format selected range, would work in both visual mode
 " and normal mode, when used in normal mode, the
 " selection works on the motion object.
-vnoremap <leader>p  <Plug>(coc-format-selected)
-nnoremap <leader>p  <Plug>(coc-format-selected)
+vnoremap <leader>cf  <Plug>(coc-format-selected)
+nnoremap <leader>cf  <Plug>(coc-format-selected)

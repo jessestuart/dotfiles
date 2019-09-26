@@ -7,6 +7,10 @@
 # Get ya' vim on.
 bindkey -v
 
+# ...but still keep some emacs muscle-memory.
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
 # Enable "fast deletion" of nested folder structures.
 # @see https://unix.stackexchange.com/questions/277203/whats-the-fastest-way-to-remove-all-files-subfolders-in-a-directory
 autoload zsh/files
@@ -36,8 +40,8 @@ zstyle ':completion:*' group-name ''
 # --------------------------------------
 
 # Use Ctrl+P / Ctrl+N to navigate through history, à l'emacs.
-bindkey "^N" down-line-or-search
-bindkey "^P" up-line-or-search
+bindkey '^N' down-line-or-search
+bindkey '^P' up-line-or-search
 bindkey '^W' backward-kill-word
 
 # zle -N zle-line-init

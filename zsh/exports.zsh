@@ -104,6 +104,8 @@ export CPPFLAGS="-I/usr/local/opt/mozjpeg/include:$CPPFLAGS"
 export PKG_CONFIG_PATH="/usr/local/opt/mozjpeg/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
-  export LDFLAGS="-L/usr/local/opt/libffi/lib:$LDFLAGS"
+export LDFLAGS="-L/usr/local/opt/libffi/lib:$LDFLAGS"
+
+export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

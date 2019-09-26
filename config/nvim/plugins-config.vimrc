@@ -77,7 +77,7 @@ function! AirlineInit()
   let g:airline#extensions#coc#enabled = 1
   let g:airline_section_a = airline#section#create(['mode'])
   let g:airline_section_b = airline#section#create_left(['file'])
-  let g:airline_section_c = airline#section#create(['tagbar'])
+  let g:airline_section_c = airline#section#create(['tagbar', 'gutentags'])
   " let g:airline_section_c = airline#section#create(['%{getcwd()}'])
   " let g:airline_section_x =
 
@@ -95,16 +95,16 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
-function! s:get_gutentags_status(mods) abort
-  let l:msg = ''
-  if index(a:mods, 'ctags') >= 0
-    let l:msg .= '♨'
-  endif
-  if index(a:mods, 'cscope') >= 0
-    let l:msg .= '♺'
-  endif
-  return l:msg
-endfunction
+" function! s:get_gutentags_status(mods) abort
+"   let l:msg = ''
+"   if index(a:mods, 'ctags') >= 0
+"     let l:msg .= '♨'
+"   endif
+"   if index(a:mods, 'cscope') >= 0
+"     let l:msg .= '♺'
+"   endif
+"   return l:msg
+" endfunction
 
 :set statusline+=%{gutentags#statusline_cb(
             \function('<SID>get_gutentags_status'))}
@@ -128,6 +128,7 @@ let g:gutentags_file_list_command = {
   \   '.git': 'git ls-files',
   \ },
 \ }
+let g:gutentags_cache_dir = '~/.cache/ctags/'
 
 let g:fml_all_sources = 1
 
@@ -191,9 +192,21 @@ nmap ga <Plug>(EasyAlign)
 " nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<CR>
 " nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<CR>
 
+" =======================
+" Mapping for `incsearch`
+" =======================
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)ap /  <Plug>(incsearch-forward)
+map g/ <Plug>(incsearch-stay)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" =======================
 
 " ===============
 " Prettier config
