@@ -4,3 +4,6 @@
 
 alias zpl="zpool list"
 alias zio="sudo zpool iostat -v 1"
+
+alias zl="zpool list"
+alias zs="zpool status"

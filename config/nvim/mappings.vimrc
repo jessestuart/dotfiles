@@ -72,12 +72,13 @@ inoremap <C-s> <esc>:w!<CR>
 nnoremap <leader>1 :wq!<CR>
 " Close buffer unsaved with <leader>q.
 nnoremap <leader>q :q!<CR>
+nnoremap <leader>e :q!<CR>
 
 " Repeat macros with `<leader>2`.
 nnoremap <leader>2 @@
 
 " Open neovim config directory with <leader>ev.
-nnoremap <leader>ev :vsplit ~/.config/nvim/<CR>
+nnoremap <leader>ev :vsplit ~/dotfiles/config/nvim/<CR>
 
 nnoremap <Leader>gw :!git add . && git commit -m '[wip]'<CR>
 
@@ -98,14 +99,14 @@ vnoremap <leader>si :sort i<CR>
 " => Moving around buffers, windows, & tabs.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vertical Split
-nnoremap <leader>wn :rightbelow vnew<CR>
+nnoremap <leader>w :rightbelow vnew<CR>
 " Horizontal Split
 nnoremap <leader>- :split<CR>
 " Make the current buffer fill the window.
 noremap <leader>Z <C-W>T<CR>
 noremap <silent> <leader><CR> <C-W>T<CR>
 
-noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+" noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
@@ -141,7 +142,7 @@ let g:lasttab = 1
 " Opens a new tab with the current buffer's path --
 " Super useful when editing files in the same directory.
 noremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
-noremap <leader>e :tabedit <c-r>=expand("%:p:h")<CR>/
+" noremap <leader>e :tabedit <c-r>=expand("%:p:h")<CR>/
 
 " Switch CWD to the directory of the open buffer.
 noremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -157,7 +158,7 @@ endtry
 " Editing mappings.
 " =================
 " Remap `0` to first non-blank character.
-noremap 0 ^
+" noremap 0 ^
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -182,14 +183,15 @@ let g:markdown_fenced_languages = [
 tnoremap <Esc> <C-\><C-n>
 
 nnoremap <silent> y' yi'
+nnoremap <silent> y" yi"
 nnoremap <silent> yq yi'
 nnoremap <silent> yqq yi"
 
 " ============================================
 " --------------- EXPERIMENTAL ---------------
 " ============================================
-nnoremap <M-tab> :tabprevious<CR>
-nnoremap <M-q> :tabnext<CR>
+noremap <M-tab> :tabprevious<CR>
+noremap <M-q> :tabnext<CR>
 
 " Opens up the fzf buffer search to navigate between open buffers.
 nnoremap <Leader>bf :Buffers<CR>

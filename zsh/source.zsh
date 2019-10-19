@@ -14,7 +14,7 @@ test -e "$HOME/.fzf.zsh" && . "$HOME/.fzf.zsh"
 function load_sdkman() {
   export SDKMAN_DIR="$HOME/.sdkman"
   local SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
-  test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &> /dev/null
+  test -e "$SDKMAN_INIT" && . "$SDKMAN_INIT" &>/dev/null
 }
 # Slows down ZSH startup time by ~250ms. Ugh.
 # load_sdkman
@@ -28,7 +28,7 @@ function load_awless() {
 # ===================
 # OS-specific sources
 # ===================
-PLATFORM=`uname`
+export PLATFORM=$(uname)
 
 function load_linuxbrew() {
   local LINUXBREW_HOME=$(readlink -f /home/linuxbrew)
@@ -64,7 +64,7 @@ xpanes_completions="$HOME/github/greymd/tmux-xpanes/completion.zsh"
 test -e $xpanes_completions && . $xpanes_completions
 
 # added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+# [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # Fastlane
 [ -f ~/.fastlane/completions/completion.sh ] && . ~/.fastlane/completions/completion.sh
@@ -77,12 +77,11 @@ test -e $xpanes_completions && . $xpanes_completions
 
 if [ "$PLATFORM" = 'Darwin' ]; then
   # iTerm2 Shell Integration:
-  test -e "${HOME}/.iterm2_shell_integration.zsh" && \
+  test -e "${HOME}/.iterm2_shell_integration.zsh" &&
     . "${HOME}/.iterm2_shell_integration.zsh"
   # zsh: Place this in .zshrc after `source ~/.iterm2_shell_integration.zsh`.
   function iterm2_print_user_vars() {
-    iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   }
 fi
 
-test -e /usr/local/share/chruby/chruby.sh && . /usr/local/share/chruby/chruby.sh
+# test -e /usr/local/share/chruby/chruby.sh && . /usr/local/share/chruby/chruby.sh

@@ -12,7 +12,7 @@ source $HOME/.config/nvim/functions.vimrc
 source $HOME/.config/nvim/mappings.vimrc
 source $HOME/.config/nvim/plugins-config.vimrc
 
-source $HOME/.config/nvim/deoplete.vimrc
+" source $HOME/.config/nvim/deoplete.vimrc
 source $HOME/.config/nvim/fzf.vimrc
 source $HOME/.config/nvim/language-client.vimrc
 source $HOME/.config/nvim/coc-settings.vimrc

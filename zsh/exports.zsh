@@ -23,6 +23,11 @@ export PYTHONIOENCODING='UTF-8'
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+# if [[ $(uname) == 'Darwin' ]]; then
+#   export LC_ALL=C
+# else
+#   export LC_ALL='en_US.UTF-8'
+# fi
 
 # Highlight section titles in manual pages.
 if ! hash vimpager &>/dev/null; then
@@ -107,5 +112,8 @@ export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
 export LDFLAGS="-L/usr/local/opt/libffi/lib:$LDFLAGS"
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

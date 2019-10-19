@@ -9,7 +9,7 @@ let g:ale_lint_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
 " Fix files automatically on save. (This is off by default)
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
@@ -32,32 +32,32 @@ let g:ale_lint_on_enter = 1
 " let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 
-" let g:ale_linters = {
-"       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-"       \  'ansible': ['ansible-lint'],
-"       \  'bash': ['shfmt'],
-"       \  'Dockerfile': ['hadolint'],
-"       \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
-"       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
-"       \  'json': ['prettier'],
-"       \  'typescript': ['eslint', 'tslint'],
-"       \  'typescript.tsx': ['eslint', 'tslint'],
-"       \  'markdown': ['prettier', 'vale'],
-"       \  'pandoc': ['prettier', 'vale'],
-"       \  'python': ['isort', 'yapf'],
-"       \  'sh': ['shfmt', 'shellcheck', 'language_server'],
-"       \  'vim': ['vint'],
-"       \  'yaml': ['yamllint', 'swaglint', 'prettier'],
-"       \  'zsh': ['shellcheck'],
-"       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
-"       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
-"       \  'ruby': ['rubocop'],
-"       \}
-
 let g:ale_linters = {
-  \ 'typescript': ['eslint', 'tslint', 'prettier'],
-  \ 'typescript.tsx': ['eslint', 'tslint', 'prettier'],
-  \}
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'ansible': ['ansible-lint'],
+      \  'bash': ['shfmt'],
+      \  'Dockerfile': ['hadolint'],
+      \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
+      \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
+      \  'json': ['prettier'],
+      \  'typescript': ['eslint', 'tslint'],
+      \  'typescript.tsx': ['eslint', 'tslint'],
+      \  'markdown': ['prettier', 'vale'],
+      \  'pandoc': ['prettier', 'vale'],
+      \  'python': ['isort', 'yapf'],
+      \  'sh': ['shfmt', 'shellcheck', 'language_server'],
+      \  'vim': ['vint'],
+      \  'yaml': ['yamllint', 'prettier'],
+      \  'zsh': ['shellcheck', 'shfmt'],
+      \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
+      \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
+      \  'ruby': ['rubocop'],
+      \}
+
+" let g:ale_linters = {
+"   \ 'typescript': ['eslint', 'tslint', 'prettier'],
+"   \ 'typescript.tsx': ['eslint', 'tslint', 'prettier'],
+"   \}
 
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],

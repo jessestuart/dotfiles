@@ -4,6 +4,7 @@
 # Kubectl
 # =======
 alias k="kubectl "
+alias kaf="kubectl apply -f "
 alias kgpo="get_pods_colorized -owide "
 alias kgpw="get_pods_colorized -owide --all-namespaces"
 alias kns="kubens "

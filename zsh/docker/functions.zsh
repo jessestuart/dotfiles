@@ -175,7 +175,7 @@ function mantp() {
     --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD \
     push from-args \
     --platforms "$platforms" \
-    --template "$registry/$image:$version-ARCH" \
+    --template "$registry/$image:${version}-ARCH" \
     --target "$registry/$image:$target"
 }
 

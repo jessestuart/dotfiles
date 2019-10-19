@@ -114,13 +114,16 @@ Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/jsonc.vim'
+
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
 
 " -------------------------------------
 " Tmux-related plugins.
@@ -162,7 +165,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 " ========================
 " Autocomplete / Snippets.
 " ========================
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets', { 'for': 'javascript' }
 Plug 'epilande/vim-react-snippets'
 Plug 'phenomenes/ansible-snippets', { 'for': ['ansible', 'yaml', 'yml'] }
@@ -215,7 +218,7 @@ Plug 'janko-m/vim-test'
 
 Plug 'jceb/vim-orgmode'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 Plug 'sjl/gundo.vim'
 " Plug 'Chiel92/vim-autoformat'
@@ -303,5 +306,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 " Plug 'paretje/nvim-man'
 " Plug 'vim-utils/vim-man'
+
+Plug 'ruanyl/coverage.vim'
 
 call plug#end()

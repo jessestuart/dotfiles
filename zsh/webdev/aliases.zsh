@@ -11,8 +11,9 @@ alias ns="npm show"
 alias pac="$EDITOR package.json"
 alias pacup="ncu -u && yarn -s"
 alias pacsc="cat package.json | jq '.scripts'"
-alias pacdep="cat package.json | jq '.dependencies'"
+alias pacdep="cat package.json | jq '.dependencies | keys | sort | .[]' -r | column"
 alias pacdev="cat package.json | jq '.devDependencies'"
+# alias pacdep="cat package.json | jq '.dependencies'"
 
 # Meh.
 alias nr="npm run"

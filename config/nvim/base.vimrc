@@ -34,7 +34,8 @@ if has("autocmd") && exists("+omnifunc")
     \		setlocal omnifunc=syntaxcomplete#Complete |
     \	endif
 endif
-set completeopt=longest,menuone
+" set completeopt=longest,menuone
+set completeopt=menuone,preview
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
@@ -71,7 +72,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=nvim/plugged/*
 
 " Always show current position.
-set ruler
+set noruler
 
 " Height of the command bar.
 set cmdheight=2

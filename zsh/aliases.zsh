@@ -31,7 +31,8 @@ alias V="cd /Volumes"
 alias scid="ssh-copy-id"
 alias gojira="~/go/bin/jira"
 alias dfh="df -h"
-alias cci="circleci"
+alias cci="circleci "
+alias orb="circleci orb "
 alias ys="yarn -s"
 alias fl="bundle exec fastlane"
 alias jv="load_sdkman"
@@ -42,7 +43,6 @@ alias simctl="xcrun simctl"
 alias pip="pip3"
 alias curl="curl -sL"
 alias vel="velero"
-alias scratch='cd $(mktemp -d)'
 # alias ssh="mosh"
 alias px="ps aux"
 alias jgh="cd ~/github"
@@ -57,14 +57,33 @@ alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
 alias pb64="pbpaste | base64 -d"
 
+alias zpga="zpool get all "
+alias zga="zfs get all "
+alias -g sk1="| sort -k1"
+alias -g sk2="| sort -k2"
+alias -g sk3="| sort -k3"
+
+alias tl1="sudo tail -n100 -f "
+
+alias -g .s=" | sort "
+alias -g .r=" | rg "
+alias -g .rv=" | rg -v "
+
+alias psrg="ps aux | rgi"
+
+function scratch() {
+  cd "$(mktemp -d)"
+}
+
 function ports() {
-  netstat -plunt | \
-    grep LISTEN | \
-    grep -v '^tcp6' | \
-    sed -E 's/\s+/|/g' | \
-    sed -e 's/127\.0\.0\.1//g' -e 's/0\.0\.0\.0//g' -e 's/://g' | \
-    awk -F '|' '{print \$4,\$7}' | \
-    sort -k1n | \
+  # netstat -plunt | \
+  netstat -f inet -a |
+    grep LISTEN |
+    grep tcp4 |
+    sed -E 's/\s+/|/g' |
+    sed -e 's/127\.0\.0\.1//g' -e 's/0\.0\.0\.0//g' -e 's/://g' |
+    awk -F '|' '{print $4,$7}' |
+    sort -k1n |
     column -t
 }
 
@@ -168,6 +187,8 @@ if hash exa &>/dev/null; then
   alias ladir="exa -d --git"
   # Sometimes I button-mash.
   alias lka="la"
+  alias lat="la --tree"
+  alias lst="ls --tree"
 else
   alias ls="ls --color --group-directories-first"
   alias ll="ls -lh"

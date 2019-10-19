@@ -126,9 +126,9 @@
 	whitespace = fix
 
 [core]
-	;editor = /usr/local/bin/nvim
+	editor = /usr/local/bin/nvim
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jesse/.gitignore_global
 	attributesfile = ~/.gitattributes
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -198,21 +198,21 @@
 
 # URL shorthands
 
-; [url "git@github.com:"]
-; 	insteadOf = "gh:"
-; 	pushInsteadOf = "github:"
-; 	pushInsteadOf = "git://github.com/"
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
 
-; [url "git://github.com/"]
-; 	insteadOf = "github:"
+[url "git://github.com/"]
+	insteadOf = "github:"
 
-; [url "git@gist.github.com:"]
-; 	insteadOf = "gst:"
-; 	pushInsteadOf = "gist:"
-; 	pushInsteadOf = "git://gist.github.com/"
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
 
-; [url "git://gist.github.com/"]
-; 	insteadOf = "gist:"
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
 
 ###
 # Further customizations.
@@ -222,7 +222,7 @@
 	email = hi@jessestuart.com
 	signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
 [credential]
-	helper = osxkeychain
+	; helper = osxkeychain
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -265,5 +265,3 @@
 ; 	trustExitCode = true
 [pull]
 	rebase = true
-[checkout]
-	defaultRemote=origin

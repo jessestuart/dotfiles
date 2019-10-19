@@ -260,7 +260,7 @@ function copy() {
 # an archive in the current directory with a filename like
 # `${ORIGINAL_FILENAME}-{current-datetime}.tar.gz`.
 # ====================================================================
-function arch() {
+function archv() {
   if [ $# -eq 1 ]; then
     local filename=$1
     local archive_filename="$filename-$(date +"%Y%m%d_%H%M").tar.gz"
@@ -274,7 +274,7 @@ function arch() {
       arc archive $archive_filename $filename
     )
   fi
-  echo "Archived $input to $DROPBOX_BACKUP_ARCHIVE/$archive_filename."
+  echo "Archived $filename to $archive_filename."
 }
 
 # ===========================================================================
@@ -483,4 +483,32 @@ function git {
       ;;
   esac
   return $rc
+}
+
+### BREW + FZF
+# update multiple packages at once
+# mnemonic [B]rew [U]pdate [P]lugin
+###
+function bip() {
+  local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:install]'")
+
+  if [[ $inst ]]; then
+    for prog in $(echo $inst)
+    do brew install $prog
+    done
+  fi
+}
+
+function explain() {
+  # Base url with first command already injected
+  local url="http://explainshell.com/explain/$1?args="
+  shift;
+
+  # iterates over remaining args and adds builds the rest of the url
+  for i in "$@"; do
+    url=$url"$i""+"
+  done
+
+  # opens url in browser
+  open $url
 }

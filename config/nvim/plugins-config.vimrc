@@ -77,16 +77,17 @@ function! AirlineInit()
   let g:airline#extensions#coc#enabled = 1
   let g:airline_section_a = airline#section#create(['mode'])
   let g:airline_section_b = airline#section#create_left(['file'])
-  let g:airline_section_c = airline#section#create(['tagbar', 'gutentags'])
+  let g:airline_section_c = airline#section#create(['tagbar'])
+  " let g:airline_section_c = airline#section#create(['tagbar', 'gutentags'])
   " let g:airline_section_c = airline#section#create(['%{getcwd()}'])
   " let g:airline_section_x =
 
-  " airline#util#prepend("",0)
-  " airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
-  " airline#util#prepend(airline#extensions#vista#currenttag(),0)
-  " airline#util#prepend(airline#extensions#gutentags#status(),0)
-  " airline#util#prepend("",0)
-  " airline#util#wrap(airline#parts#filetype(),0)
+  call airline#util#prepend("",0)
+  call airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
+  call airline#util#prepend(airline#extensions#vista#currenttag(),0)
+  call airline#util#prepend(airline#extensions#gutentags#status(),0)
+  call airline#util#prepend("",0)
+  call airline#util#wrap(airline#parts#filetype(),0)
 
   if exists('*GTMStatusline')
     call airline#parts#define_function('gtmstatus', 'GTMStatusline')
@@ -106,17 +107,18 @@ autocmd User AirlineAfterInit call AirlineInit()
 "   return l:msg
 " endfunction
 
-:set statusline+=%{gutentags#statusline_cb(
-            \function('<SID>get_gutentags_status'))}
+" set statusline+=%{gutentags#statusline_cb(
+"             \function('<SID>get_gutentags_status'))}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellany
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>ds <Plug>DashSearch
 
-let g:FerretMap=0
+let g:FerretMap=1
 
-" let g:colorizer_auto_color = 1
+let g:colorizer_auto_color = 1
+let g:colorizer_use_virtual_text=1
 
 let g:github_dashboard = {
   \ 'username': 'jessestuart',
@@ -219,13 +221,13 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-" augroup PrettierInit
-"   autocmd!
-"   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-"   " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
-" augroup END
+augroup PrettierInit
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+  " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
+augroup END
 
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
@@ -242,7 +244,7 @@ let g:prettier#config#bracket_spacing = 'true'
 " put > on the last line instead of new line
 let g:prettier#config#jsx_bracket_same_line = 'false'
 " none|es5|all
-let g:prettier#config#trailing_comma = 'all'
+" let g:prettier#config#trailing_comma = 'all'
 " flow|babel|typescript|css|less|scss|json|graphql|markdown
 " let g:prettier#config#parser = 'babel'
 " cli-override|file-override|prefer-file
@@ -309,6 +311,7 @@ augroup END
 " Neoterm.
 " ========
 let g:neoterm_automap_keys = ',tt'
+let g:neoterm_default_mod = "vertical"
 " Use gx{text-objects} such as gxip
 nmap gx <Plug>(neoterm-repl-send)
 xmap gx <Plug>(neoterm-repl-send)
@@ -320,18 +323,23 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
+filetype off
+let &runtimepath.=',~/.config/nvim/plugged/neoterm'
+filetype plugin on
+
 " =========
 " UltiSnips
 " =========
 " Trigger configuration.
-" let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsExpandTrigger='<C-e> <C-e>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsListSnippets='<c-e> <c-e>'
+let g:UltiSnipsListSnippets='<M-Tab>'
 
+"
 " Keep that hella legible 'conceal' option. I'm sure there's a way to do this
 " built in.
 " @see https://github.com/elzr/vim-json
@@ -380,8 +388,6 @@ nnoremap <silent> <leader>T :TestNearest<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 " nnoremap <silent> <leader>g :TestVisit<CR>
 
-let g:colorizer_use_virtual_text=1
-
 " let g:deoplete#enable_at_startup = 1
 
 let g:airline_powerline_fonts=1
@@ -394,7 +400,7 @@ let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_close_button = 0
+" let g:airline#extensions#tabline#show_close_button = 0
 
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -449,4 +455,4 @@ let cmdline_term_height = 15     " Initial height of interpreter window or pane
 let cmdline_term_width  = 80     " Initial width of interpreter window or pane
 let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
 let cmdline_outhl       = 1      " Syntax highlight the output
-"let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
+" let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
