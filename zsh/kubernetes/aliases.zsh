@@ -1158,3 +1158,5 @@ alias kedss='kubectl edit statefulsets'
 alias ksysedss='kubectl --namespace=kube-system edit statefulsets'
 alias kedsvc='kubectl edit service'
 alias ksysedsvc='kubectl --namespace=kube-system edit service'
+
+export PATH=$PATH:~/.kube/plugins/jordanwilson230

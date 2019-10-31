@@ -1,99 +1,113 @@
 {
-	"codeLens.enable": true,
-	"diagnostic.virtualText": true,
-	"git.addGlameToVirtualText": false,
-	"git.enableGutters": false,
-	"docker.enable": true,
-	"homeassistant.enable": true,
-	"homeassistant.hostUrl": "https://ha.jesses.io/",
-	"diagnostic.displayByAle": true,
-	"coc.github.enable": true,
-	"git.signOffset": 3,
-	"yaml.format.enable": true,
-	"json.schemas": [
-		{ "https://json.schemastore.org/package.json": "/package.json" },
-		{ "https://json.schemastore.org/renovate.json": "/renovate.json" },
-		{ "https://json.schemastore.org/tsconfig.json": "/tsconfig.json" },
-		{ "https://json.schemastore.org/tslint.json": "/tslint.json" },
-		{
-			"https://json.schemastore.org/eslintrc": [
-				".eslintrc",
-				".eslintrc.js",
-				"eslint.config.js"
-			]
-		},
-		{
-			"http://json.schemastore.org/ansible-stable-2.7.json": [
-				"/main.yml",
-				"/roles/*.yml",
-				"/group_vars/**/*.yml",
-				"/host_vars/**/*.yml",
-				"/*playbook.yml"
-			]
-		},
-		{
-			"http://json.schemastore.org/circleciconfig": [
-				"/.circleci/config.yml",
-				"/orbs/**/*.yml"
-			]
-		}
-	],
-	"npm.binPath": "/usr/local/bin/npm",
-	"json.enable": true,
-	"coc.source.dictionary.enable": true,
-	"coc.source.dictionary.shortcut": "<leader>di",
-	"prettier.eslintIntegration": true,
-	"prettier.semi": false,
-	"suggest.autoTrigger": "always",
-	"suggest.enablePreview": true,
-	"tsserver.log": "normal",
-	"tslint.autoFixOnSave": true,
-	"typescript.preferences.quoteStyle": "single",
-	"yaml.schemas": {
-		"kubernetes": "/*.yaml"
-	},
-	"languageserver": {
-		"Dockerfile": {
-			"command": "/usr/local/bin/docker-langserver",
-			"args": ["--node-ipc"],
-			"filetypes": ["Dockerfile"]
-		},
-		"yaml": {
-			"module": "/usr/local/bin/yaml-language-server",
-			"args": ["--node-ipc"],
-			"filetypes": ["yaml"]
-		},
-		"typescript": {
-			"module": "/usr/local/bin/typescript-language-server",
-			"args": ["--node-ipc"],
-			"filetypes": [
-				"typescript",
-				"typescript.tsx",
-				"javascript",
-				"javascript.jsx"
-			]
-		},
-		"vimls": {
-			"module": "/usr/local/bin/vim-language-server",
-			"args": ["--node-ipc"],
-			"initializationOptions": {
-				"iskeyword": "vim iskeyword option",
-				"vimruntime": "~/.config/nvim",
-				"runtimepath": "~/.config/nvim",
-				"diagnostic": {
-					"enable": true
-				},
-				"indexes": {
-					"runtimepath": true,
-					"gap": 100,
-					"count": 3
-				},
-				"suggest": {
-					"fromVimruntime": true,
-					"fromRuntimepath": true
-				}
-			},
-			"filetypes": ["vim"]
-		}
-	}
+  "coc.github.enable": true,
+  "coc.source.dictionary.enable": true,
+  "coc.source.dictionary.shortcut": "<leader>di",
+  "codeLens.enable": true,
+  "diagnostic.displayByAle": true,
+  "diagnostic.virtualText": true,
+  "docker.enable": true,
+  "git.addGBlameToVirtualText": true,
+  "git.addGlameToVirtualText": false,
+  "git.enableGutters": false,
+  "git.signOffset": 3,
+  "homeassistant.enable": true,
+  "homeassistant.hostUrl": "https://ha.jesses.io/",
+  "json.enable": true,
+  "json.schemas": [
+    {
+      "https://json.schemastore.org/package.json": "/package.json"
+    },
+    {
+      "https://json.schemastore.org/renovate.json": "/renovate.json"
+    },
+    {
+      "https://json.schemastore.org/tsconfig.json": "/tsconfig.json"
+    },
+    {
+      "https://json.schemastore.org/tslint.json": "/tslint.json"
+    },
+    {
+      "https://json.schemastore.org/eslintrc": [
+        ".eslintrc",
+        ".eslintrc.js",
+        "eslint.config.js"
+      ]
+    },
+    {
+      "http://json.schemastore.org/ansible-stable-2.7.json": [
+        "/main.yml",
+        "/roles/*.yml",
+        "/group_vars/**/*.yml",
+        "/host_vars/**/*.yml",
+        "/*playbook.yml"
+      ]
+    },
+    {
+      "http://json.schemastore.org/circleciconfig": [
+        "/.circleci/config.yml",
+        "/orbs/**/*.yml"
+      ]
+    },
+    {
+      "kubernetes": ["/*.yaml"]
+    }
+  ],
+  "languageserver": {
+    "Dockerfile": {
+      "args": ["--node-ipc"],
+      "module": "/usr/local/bin/docker-langserver",
+      "filetypes": ["Dockerfile"]
+    },
+    "typescript": {
+      "args": ["--node-ipc"],
+      "filetypes": [
+        "typescript",
+        "typescript.tsx",
+        "javascript",
+        "javascript.jsx"
+      ],
+      "module": "/usr/local/bin/typescript-language-server"
+    },
+    "vimls": {
+      "args": ["--node-ipc"],
+      "filetypes": ["vim"],
+      "initializationOptions": {
+        "diagnostic": { "enable": true },
+        "indexes": { "count": 3, "gap": 100, "runtimepath": true },
+        "iskeyword": "vim iskeyword option",
+        "runtimepath": "~/.config/nvim",
+        "suggest": { "fromRuntimepath": true, "fromVimruntime": true },
+        "vimruntime": "~/.config/nvim"
+      },
+      "module": "/usr/local/bin/vim-language-server"
+    },
+    "yaml": {
+      "args": ["--node-ipc"],
+      "filetypes": ["yaml"],
+      "module": "/usr/local/bin/yaml-language-server"
+    }
+  },
+  "npm.binPath": "/usr/local/bin/yarn",
+  "prettier.eslintIntegration": true,
+  "prettier.semi": false,
+  "prettier.proseWrap": "always",
+  "suggest.autoTrigger": "always",
+  "suggest.enablePreview": true,
+  "tslint.autoFixOnSave": true,
+  "tsserver.log": "normal",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.referencesCodeLens.enable": true,
+  "typescript.showUnused": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "yaml.format.enable": true,
+  "yaml.schemas": {
+    "helm": "/values.yaml",
+    "https://json.schemastore.org/circleciconfig": "/.circleci/*.yaml",
+    "https://json.schemastore.org/package.json": "/package.json",
+    "https://json.schemastore.org/renovate.json": "/renovate.json",
+    "https://json.schemastore.org/tsconfig.json": "/tsconfig.json",
+    "https://json.schemastore.org/tslint.json": "/tslint.json",
+    "kubernetes": "/*.yaml"
+  }
 }

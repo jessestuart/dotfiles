@@ -24,9 +24,9 @@ antibody bundle < "$ZSH/antibody.conf"
 # completion; use cache if updated within 24h
 autoload -Uz compinit
 if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-  compinit -d $HOME/.zcompdump;
+  compinit -d $HOME/.zcompdump
 else
-  compinit -C;
+  compinit -C
 fi;
 # # Hack to make zsh load more quickly by not regenerating completion data
 # # on every shell init.
