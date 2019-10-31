@@ -71,7 +71,6 @@ let g:ale_fixers = {
       \  'json': ['fixjson', 'prettier'],
       \  'markdown': ['prettier', 'textlint'],
       \  'pandoc': ['prettier', 'textlint'],
-      \  'python': ['isort', 'black'],
       \  'ruby': ['rubocop'],
       \  'sh': ['shfmt'],
       \  'yaml': ['prettier'],

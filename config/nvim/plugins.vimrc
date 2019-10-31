@@ -59,7 +59,18 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-dotenv'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist'
+
+" Mappings for working with JSON in Vim:
+" - `aj` provides a text object for the outermost JSON object, array, string,
+"   number, or keyword.
+" - `gqaj` pretty prints (wraps/indents/sorts keys/otherwise cleans up) the
+"   JSON construct under the cursor.
+" - `gwaj` takes the JSON object on the clipboard and extends it into the JSON
+"   object under the cursor.
+" There are also `ij` variants that target innermost rather than outermost JSON
+" construct."
+Plug 'tpope/vim-jdaddy'
 
 " -------------------------------------
 " Git/Github-related plugins.
@@ -109,7 +120,7 @@ Plug 'Shougo/denite.nvim'
 " Typescript
 " ==========
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
-" Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
@@ -282,7 +293,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 "  \||/\/\//\|/
 " Plug 'maralla/completor.vim'
 " Plug 'fmoralesc/vim-tutor-mode'
-" Plug 'tpope/vim-jdaddy'
 " Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " Plug 'plasticboy/vim-markdown'
 

@@ -106,7 +106,7 @@ nnoremap <leader>- :split<CR>
 noremap <leader>Z <C-W>T<CR>
 noremap <silent> <leader><CR> <C-W>T<CR>
 
-" noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
@@ -213,8 +213,8 @@ nnoremap <leader>p <Cmd>PrettierAsync<CR>
 
 nnoremap <leader>ir :silent Inline2Ref<CR>
 
-" noremap <C-t> :Files<CR>
-" inoremap <C-t> <Cmd>Files<CR>
+noremap <C-t> :Files<CR>
+inoremap <C-t> <Cmd>Files<CR>
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
