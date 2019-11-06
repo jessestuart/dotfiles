@@ -5,7 +5,6 @@ typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
 fpath=(
-  /usr/local/share/zsh-completions
   /usr/local/share/zsh/site-functions
   /usr/local/Cellar/zsh-completions/0.30.0/share/zsh-completions
   $fpath
@@ -60,13 +59,14 @@ for file in ${(M)config_files:#**/completions.zsh}; do
   . $file
 done
 
-# fpath=$(echo $fpath | sed -e 's/\s/\n/g' | sort | uniq | xargs echo)
 # echo $fpath
 
+if (( ! ${fpath[(I)/usr/local/share/zsh-completions]} )); then
+  FPATH=/usr/local/share/zsh-completions:$FPATH
+fi
+# fpath=$(echo $fpath | sed -e 's/\s/\n/g' | sort | uniq | xargs echo)
+
 source $fpath
-# if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-#   fpath=/usr/local/share/zsh/site-functions:$FPATH
-# fi
 
 unset config_files
 

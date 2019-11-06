@@ -20,7 +20,7 @@ Plug 'jessestuart/vim-markdown-link-convert'
 " ============================
 " Linting / fixing. Must have.
 " ============================
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -75,7 +75,7 @@ Plug 'tpope/vim-jdaddy'
 " -------------------------------------
 " Git/Github-related plugins.
 " -------------------------------------
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'gregsexton/gitv'
 Plug 'jreybert/vimagit'
@@ -90,8 +90,8 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " -------------------------------------
 " WebDev.
 " -------------------------------------
-Plug 'jessestuart/vim-prettier', { 'do': 'yarn install', }
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'jessestuart/vim-prettier', { 'do': 'yarn install', }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
 Plug 'heavenshell/vim-jsdoc'
@@ -119,9 +119,8 @@ Plug 'Shougo/denite.nvim'
 " ==========
 " Typescript
 " ==========
-Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
-" Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
@@ -130,8 +129,10 @@ Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] 
 Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/jsonc.vim'
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/jsonc.vim'
+endif
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
@@ -318,5 +319,8 @@ Plug 'MattesGroeger/vim-bookmarks'
 " Plug 'vim-utils/vim-man'
 
 Plug 'ruanyl/coverage.vim'
+Plug 'mcchrish/nnn.vim'
+Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+Plug 'hjson/vim-hjson'
 
 call plug#end()

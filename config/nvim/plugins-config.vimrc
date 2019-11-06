@@ -223,11 +223,11 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat = 0
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-augroup PrettierInit
-  autocmd!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-  " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
-augroup END
+" augroup PrettierInit
+"   autocmd!
+"   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"   " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql PrettierAsync
+" augroup END
 
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
@@ -259,33 +259,6 @@ let g:prettier#config#prose_wrap = 'always'
 " function! UpdateStatusBar(timer)
 "   execute 'let &ro = &ro'
 " endfunction
-
-" Not necessary to show the `--INSERT--` text anymore. This hides it.
-" h/t https://github.com/itchyny/lightline.vim
-set noshowmode
-" let g:lightline = {
-"       \ 'colorscheme': 'one',
-"       \ 'active': {
-"       \ 'left':  [ [ 'mode' ],
-"       \             [ 'gitbranch', 'readonly', 'modified' ] ],
-"       \ 'right': [  ['datetime'],
-"       \             [ 'percent' ]]
-"       \ },
-"       \ 'component_function': {
-"       \   'gitbranch': 'FugitiveStatusLine()'
-"       \ },
-"     \ }
-
-      " \ 'right': [  ['datetime'],
-      " \             [ 'lineinfo' ],
-      " \             [ 'percent' ],
-      " \             [ 'filetype']]
-" let g:lightline.tabline = {
-"   \   'left': [ ['tabs'] ],
-"   \   'right': []
-"   \ }
-" set showtabline=2  " Show tabline
-" set guioptions-=e  " Don't use GUI tabline
 
 function! s:goyo_enter()
   set showmode

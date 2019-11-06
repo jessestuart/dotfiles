@@ -14,8 +14,8 @@ if [ $ITERM_SESSION_ID ]; then
   DISABLE_AUTO_TITLE="true"
   echo -ne "\033]0; ${USER} @ ${HOSTNAME%% .* } : ${PWD/# $HOME/ ~} \007"
 fi
-# export PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-# export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
+export PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 precmd() {
   echo -ne "\033]0; ${USER}@${HOSTNAME%% .* }:${PWD/# $HOME/ ~} \007"
 }
@@ -30,6 +30,8 @@ add-zsh-hook precmd histdb-update-outcome
 
 autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /Users/jesse/go/bin/mc mc
+
+export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 
 if ! test -z $ZPROFILE; then
   zprof

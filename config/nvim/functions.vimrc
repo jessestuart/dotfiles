@@ -146,3 +146,22 @@ endfunct
 "     :R ls =>g:buffer_list
 "     :R ls >buffer_list.txt
 command! -nargs=+ R call call(function('Redir'), split(<q-args>, '\s\(\S\+\s*$\)\@='))
+
+function! OutputSplitWindow(...)
+  " this function output the result of the Ex command into a split scratch buffer
+  let cmd = join(a:000, ' ')
+  let temp_reg = @"
+  redir @"
+  silent! execute cmd
+  redir END
+  let output = copy(@")
+  let @" = temp_reg
+  if empty(output)
+    echoerr "no output"
+  else
+    vnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
+    put! =output
+  endif
+endfunction
+command! -nargs=+ -complete=command Output call OutputSplitWindow(<f-args>)

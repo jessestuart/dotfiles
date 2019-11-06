@@ -80,7 +80,7 @@ nnoremap <leader>2 @@
 " Open neovim config directory with <leader>ev.
 nnoremap <leader>ev :vsplit ~/dotfiles/config/nvim/<CR>
 
-nnoremap <Leader>gw :!git add . && git commit -m '[wip]'<CR>
+nnoremap <Leader>gw :!git add . && git commit -m 'fix(ref): Misc. changes.'<CR>
 
 "-----------------------------
 " => Visual mode-related
@@ -106,7 +106,7 @@ nnoremap <leader>- :split<CR>
 noremap <leader>Z <C-W>T<CR>
 noremap <silent> <leader><CR> <C-W>T<CR>
 
-noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+" noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>sp :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>vs :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
@@ -158,7 +158,7 @@ endtry
 " Editing mappings.
 " =================
 " Remap `0` to first non-blank character.
-" noremap 0 ^
+noremap 0 ^
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -223,3 +223,9 @@ nnoremap <leader>J :Jest<CR>
 nmap <silent> <leader>da <Plug>DashSearch
 
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+" cnoremap <Esc>b <S-Left>
+" cnoremap <Esc>f <S-Right>
