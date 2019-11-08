@@ -56,6 +56,7 @@ alias gil="gitin log"
 alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
 alias pb64="pbpaste | base64 -d"
+alias ydl="youtube-dl"
 
 alias zpga="zpool get all "
 alias zga="zfs get all "

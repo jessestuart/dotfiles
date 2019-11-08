@@ -113,7 +113,13 @@ export LDFLAGS="-L/usr/local/opt/libffi/lib:$LDFLAGS"
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 
+export BYOBU_PREFIX=/usr/local
+
 export LDFLAGS="-L/usr/local/opt/libffi/lib"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
+export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
+
+export HISTORIAN_SRC="${HOME}/.zhistory"
 
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')

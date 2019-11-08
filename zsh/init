@@ -4,12 +4,6 @@ ZSH=$HOME/.zsh
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
-fpath=(
-  /usr/local/share/zsh/site-functions
-  /usr/local/Cellar/zsh-completions/0.30.0/share/zsh-completions
-  $fpath
-)
-
 # 1) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
@@ -18,7 +12,7 @@ source $ZSH/prompt/config.zsh
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
 source <(antibody init)
 antibody bundle < "$ZSH/antibody.conf"
-. "$ZSH/antibody/config.zsh"
+source "$ZSH/antibody/config.zsh"
 
 # completion; use cache if updated within 24h
 autoload -Uz compinit
@@ -58,8 +52,6 @@ done
 for file in ${(M)config_files:#**/completions.zsh}; do
   . $file
 done
-
-# echo $fpath
 
 if (( ! ${fpath[(I)/usr/local/share/zsh-completions]} )); then
   FPATH=/usr/local/share/zsh-completions:$FPATH

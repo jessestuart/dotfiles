@@ -179,6 +179,18 @@ function mantp() {
     --target "$registry/$image:$target"
 }
 
+function mantp_j3s() {
+  local image=$1
+  local version=$2
+  local platforms=$3
+  local target=$4
+  manifest-tool \
+    push from-args \
+    --platforms "$platforms" \
+    --template "r.j3s.co/$image:${version}-ARCH" \
+    --target "r.j3s.co/$image:$target"
+}
+
 # function mantp() {
 #   local registry=jessestuart
 #   local image=$1
