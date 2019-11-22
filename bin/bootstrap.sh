@@ -165,7 +165,8 @@ if ! test -d "$USER_HOME/.config/nvim/plugged"; then
   print_header 'Installing nvim plugins...'
   curl -fLo "$USER_HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  nvim "+PlugInstall --sync" +qa
+  sudo chown -R "$USER:" "$USER_HOME"
+  yes | nvim "+PlugInstall --sync" +qa
 fi
 
 if ! test -z $HOSTNAME && (hash hostnamectl &>/dev/null); then

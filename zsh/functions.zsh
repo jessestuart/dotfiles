@@ -468,6 +468,9 @@ function git {
   if [ $rc -ne 0 ]; then
     return $rc
   fi
+  if ! hash gtm &>/dev/null; then
+    return
+  fi
   case "$1" in
     init)
       output=$(gtm init)

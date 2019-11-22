@@ -85,7 +85,9 @@ function! AirlineInit()
   call airline#util#prepend("",0)
   call airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
   call airline#util#prepend(airline#extensions#vista#currenttag(),0)
-  call airline#util#prepend(airline#extensions#gutentags#status(),0)
+  if executable('ctags')
+    call airline#util#prepend(airline#extensions#gutentags#status(),0)
+  endif
   call airline#util#prepend("",0)
   call airline#util#wrap(airline#parts#filetype(),0)
 
