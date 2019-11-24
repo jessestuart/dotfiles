@@ -35,5 +35,3 @@ if ! test -z $ZPROFILE; then
   zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -10,18 +10,18 @@ for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 # source $ZSH/prompt/config.zsh
 
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
-source <(antibody init)
-antibody bundle < "$ZSH/antibody.conf"
-source "$ZSH/antibody/config.zsh"
+# source <(antibody init)
+# antibody bundle < "$ZSH/antibody.conf"
+# source "$ZSH/antibody/config.zsh"
+source "$ZSH/antibody.sh"
 
 # completion; use cache if updated within 24h
 autoload -Uz compinit
-compinit -C
-# if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-# 	compinit -d $HOME/.zcompdump;
-# else
-# 	compinit -C;
-# fi;
+if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+	compinit -d $HOME/.zcompdump;
+else
+	compinit -C;
+fi;
 
 # autoload -Uz compinit
 # if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
