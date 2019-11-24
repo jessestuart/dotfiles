@@ -66,7 +66,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/bin/sonar-scanner/bin:$PATH"
-export PATH="$(yarn global bin):$PATH"
+# export PATH="$(yarn global bin):$PATH"
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 PATH=$PATH:$ANDROID_HOME/emulator
