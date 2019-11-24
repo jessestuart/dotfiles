@@ -28,7 +28,6 @@ set signcolumn=yes:2
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position.  Coc only does snippet and additional edit on confirm.  inoremap
 " <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 inoremap <silent><expr> <TAB>
       \ pumvisible()
       \   ?  '\<C-n>' : <SID>check_back_space() ? "\<TAB>" :
@@ -77,13 +76,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fo  <Plug>(coc-format)
+nmap <leader>fo  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,typescript.tsx,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType javascript,javascript.jsx,javascriptreact,typescript,typescriptreact,typescript.tsx,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -106,10 +105,10 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -141,3 +140,12 @@ nnoremap <silent> <leader>cl  :<C-u>CocList<CR>
 " used in normal mode, the selection works on the motion object.
 vnoremap <leader>cf  <Plug>(coc-format-selected)
 nnoremap <leader>cf  <Plug>(coc-format-selected)
+
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')

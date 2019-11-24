@@ -24,11 +24,16 @@ if hash sqlite3 &>/dev/null; then
   add-zsh-hook precmd histdb-update-outcome
 fi
 
-autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /Users/jesse/go/bin/mc mc
 
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 if ! test -z $ZPROFILE; then
-  zprof
-  # zprof | head -n20 | tail -n+3 | sort -k5nr
+  # zprof
+  zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -4,7 +4,7 @@
 let g:javascript_plugin_jsdoc = 1
 
 " Don't require .jsx extension for JSX syntax highlighting.
-" let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
 
 " let g:tern#is_show_argument_hints_enabled = 1
 " let g:tern_show_argument_hints='on_hold'
@@ -54,8 +54,10 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
-let g:pandoc#modules#disabled = ['folding', 'spell']
+let g:pandoc#modules#disabled = ['folding']
+let g:pandoc#spell#enabled = 0
 let g:pandoc#filetypes#handled = ['markdown', 'pandoc', 'rst', 'textile']
+let g:pandoc#syntax#conceal#urls = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GTM
@@ -77,26 +79,30 @@ function! AirlineInit()
   let g:airline#extensions#coc#enabled = 1
   let g:airline_section_a = airline#section#create(['mode'])
   let g:airline_section_b = airline#section#create_left(['file'])
-  let g:airline_section_c = airline#section#create(['tagbar'])
-  " let g:airline_section_c = airline#section#create(['tagbar', 'gutentags'])
+  " let g:airline_section_c = airline#section#create(['tagbar'])
+  let g:airline_section_c = airline#section#create(['tagbar', 'gutentags'])
   " let g:airline_section_c = airline#section#create(['%{getcwd()}'])
   " let g:airline_section_x =
 
-  call airline#util#prepend("",0)
-  call airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
-  call airline#util#prepend(airline#extensions#vista#currenttag(),0)
-  if executable('ctags')
-    call airline#util#prepend(airline#extensions#gutentags#status(),0)
-  endif
-  call airline#util#prepend("",0)
-  call airline#util#wrap(airline#parts#filetype(),0)
+  " call airline#util#prepend('',0)
+  " call airline#util#prepend(airline#extensions#tagbar#currenttag(),0)
+  " call airline#util#prepend(airline#extensions#vista#currenttag(),0)
+  " if executable('ctags')
+  "   call airline#util#prepend(airline#extensions#gutentags#status(),0)
+  " endif
+  " call airline#util#prepend(airline#extensions#gutentags#status(),0)
+  " call airline#util#prepend('',0)
+  " call airline#util#wrap(airline#parts#filetype(),0)
 
   if exists('*GTMStatusline')
     call airline#parts#define_function('gtmstatus', 'GTMStatusline')
     let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
   endif
 endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+augroup AirlineAfterInit
+  autocmd!
+  autocmd User AirlineAfterInit call AirlineInit()
+augroup END
 
 " function! s:get_gutentags_status(mods) abort
 "   let l:msg = ''
@@ -223,7 +229,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " augroup PrettierInit
 "   autocmd!
@@ -346,7 +352,7 @@ inoremap <C-C> <ESC>
 
 " let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
-let g:ctrlp_user_command = 'git ls-files'
+let g:ctrlp_user_command = ['.git', 'git ls-files', 'fd -t=f']
 
 let g:import_sort_auto = 0
 
@@ -362,8 +368,6 @@ nnoremap <silent> <leader>T :TestNearest<CR>
 " nnoremap <silent> <leader>a :TestSuite<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 " nnoremap <silent> <leader>g :TestVisit<CR>
-
-" let g:deoplete#enable_at_startup = 1
 
 let g:airline_powerline_fonts=1
 let g:airline_theme='onedark'
@@ -412,7 +416,7 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
 " ===================
 " vimcmdline mappings
 " ===================
-let cmdline_map_start          = '<LocalLeader>c'
+let cmdline_map_start          = '<LocalLeader>cm'
 let cmdline_map_send           = '<LocalLeader>cS'
 " let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
 let cmdline_map_source_fun     = '<LocalLeader>cf'
@@ -431,3 +435,21 @@ let cmdline_term_width  = 80     " Initial width of interpreter window or pane
 let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
 let cmdline_outhl       = 1      " Syntax highlight the output
 " let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
+
+if system('uname') == 'Darwin'
+  let g:python3_host_prog = '/Users/jesse/.pyenv/versions/3.8.0/bin/python'
+else
+  let g:python3_host_prog = '/usr/local/bin/python'
+endif
+
+" function! NearestMethodOrFunction() abort
+"   return get(b:, 'vista_nearest_method_or_function', '')
+" endfunction
+
+" set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()

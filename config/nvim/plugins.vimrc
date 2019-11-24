@@ -7,6 +7,7 @@ call plug#begin()
 " Text Editing.
 " -------------------------------------
 Plug 'alvan/vim-closetag'
+Plug 'cohama/lexima.vim'
 Plug 'christoomey/vim-sort-motion'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -27,13 +28,14 @@ Plug 'w0rp/ale'
 " Getting around.
 " -------------------------------------
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'haya14busa/incsearch.vim'
 " Plug 'haya14busa/is.vim' " Doesn't seem to work compared to `incsearch`...?
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -94,12 +96,11 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'chrisbra/Colorizer'
 Plug 'Galooshi/vim-import-js', { 'do': 'yarn install' }
-Plug 'heavenshell/vim-jsdoc'
-Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
-Plug 'alampros/vim-styled-jsx'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'alampros/vim-styled-jsx'
+" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'moll/vim-node'
-Plug 'hail2u/vim-css3-syntax'
+" Plug 'hail2u/vim-css3-syntax'
 " Plug 'othree/yajs.vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'mattn/emmet-vim'
@@ -124,13 +125,16 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
+
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
+" Plug 'jason0x43/vim-js-indent', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescript.tsx'] }
 
 if executable('node')
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'tjdevries/coc-zsh'
   Plug 'neoclide/jsonc.vim'
 endif
 
@@ -251,7 +255,7 @@ Plug 'srstevenson/vim-topiary'
 Plug 'chrisbra/matchit'
 
 " Figure out why this causes errors calling DeleteTrailingWhitepace() on exit.
-" Plug 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 Plug 'google/vim-jsonnet'
 Plug 'google/vim-searchindex'
@@ -322,5 +326,6 @@ Plug 'ruanyl/coverage.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 Plug 'hjson/vim-hjson'
+Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()

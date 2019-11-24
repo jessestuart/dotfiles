@@ -122,8 +122,8 @@ noremap <leader>\ :Bclose<CR>:tabclose<CR>gT
 " Close all buffers.
 noremap <leader>ba :bufdo bd<CR>
 " Switch between next/previous buffers with <leader>l or <leader>h.
-noremap <leader>bl :bnext<CR>
-noremap <leader>bh :bprevious<CR>
+nnoremap <leader>wl :bnext<CR>
+nnoremap <leader>wh :bprevious<CR>
 
 noremap <leader>W <C-w>T
 
@@ -229,3 +229,19 @@ cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 " cnoremap <Esc>b <S-Left>
 " cnoremap <Esc>f <S-Right>
+
+" =====================
+" Adjusting window size
+" =====================
+" left / shift-left decreases width
+nnoremap <Left>    :5wincmd <<CR>
+nnoremap <S-Left>  :wincmd  <<CR>
+" right / shift-left increases width
+nnoremap <Right>   :5wincmd ><CR>
+nnoremap <S-Right> :wincmd  ><CR>
+" up / shift-left increases height
+nnoremap <Up>      :5wincmd +<CR>
+nnoremap <S-Up>    :wincmd  +<CR>
+" down / shift-left decreases height
+nnoremap <Down>    :5wincmd -<CR>
+nnoremap <S-Down>  :wincmd  -<CR>

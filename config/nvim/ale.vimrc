@@ -32,10 +32,12 @@ let g:ale_lint_on_enter = 1
 " let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_echo_msg_format = '%linter%: %s [%code%]'
 
+" \  'python': ['isort', 'yapf', 'black'],
+" \  'python': ['bandit', 'flake8', 'mypy', 'prospector', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylama', 'pylint', 'pyls', 'pyre', 'vulture'],
 let g:ale_linters = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'ansible': ['ansible-lint'],
-      \  'bash': ['shfmt'],
+      \  'bash': ['shfmt', 'shellcheck', 'bash-language-server'],
       \  'Dockerfile': ['hadolint'],
       \  'javascript': ['prettier', 'standard', 'flow', 'eslint'],
       \  'javascript.jsx': ['importjs', 'prettier-eslint', 'flow', 'eslint'],
@@ -44,11 +46,11 @@ let g:ale_linters = {
       \  'typescript.tsx': ['eslint', 'tslint'],
       \  'markdown': ['prettier', 'vale'],
       \  'pandoc': ['prettier', 'vale'],
-      \  'python': ['isort', 'yapf'],
-      \  'sh': ['shfmt', 'shellcheck', 'language_server'],
+      \  'sh': ['shfmt', 'shellcheck', 'bash-language-server', 'language_server'],
+      \  'shell': ['shfmt', 'shellcheck', 'bash-language-server', 'language_server'],
       \  'vim': ['vint'],
       \  'yaml': ['yamllint', 'prettier'],
-      \  'zsh': ['shellcheck', 'shfmt'],
+      \  'zsh': ['language_server', 'shell', 'shellcheck'],
       \  'css': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'scss': ['prettier', 'prettier-eslint', 'stylelint'],
       \  'ruby': ['rubocop'],
@@ -64,6 +66,7 @@ let g:ale_fixers = {
       \  'bash': ['shfmt'],
       \  'css': ['prettier', 'stylelint'],
       \  'go': ['gofmt', 'goimports'],
+      \  'python': ['isort', 'yapf', 'black'],
       \  'javascript': ['importjs', 'standard', 'prettier-eslint', 'eslint'],
       \  'javascript.jsx': [ 'importjs', 'standard', 'prettier-eslint', 'eslint'],
       \  'typescript': ['importjs', 'tslint', 'eslint', 'prettier'],

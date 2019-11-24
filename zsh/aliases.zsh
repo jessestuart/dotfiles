@@ -17,6 +17,7 @@ alias chex="chmod +x"
 alias cl="clear && pwd && la"
 alias clobber="set +C"
 alias count="wc -l"
+alias -g .count="| wc -l"
 # alias ctags="/usr/local/bin/ctags"
 alias f="fzf | xargs $EDITOR"
 alias lrd="login_restic_do"
@@ -57,29 +58,31 @@ alias hass="hass-cli"
 alias jsown="sudo chown -R jesse:"
 alias pb64="pbpaste | base64 -d"
 alias ydl="youtube-dl"
+alias fmap="for file in "
+alias prefs="open /System/Applications/System\ Preferences.app"
 
 alias zpga="zpool get all "
 alias zga="zfs get all "
+
+alias tl="sudo tail -n100 -f "
+
 alias -g sk1="| sort -k1"
 alias -g sk2="| sort -k2"
 alias -g sk3="| sort -k3"
-
-alias tl1="sudo tail -n100 -f "
-
-alias -g .s=" | sort "
-alias -g .r=" | rg "
-alias -g .rv=" | rg -v "
+alias -g .s="| sort "
+alias -g .r="| rg "
+alias -g R="| rg -i "
+alias -g .rv="| rg -v "
 
 alias psrg="ps aux | rgi"
 
-function scratch() {
-  cd "$(mktemp -d)"
-}
+alias scratch='cd $(mktemp -d)'
 
 function ports() {
   # netstat -plunt | \
   netstat -f inet -a |
-    grep LISTEN |
+
+  grep LISTEN |
     grep tcp4 |
     sed -E 's/\s+/|/g' |
     sed -e 's/127\.0\.0\.1//g' -e 's/0\.0\.0\.0//g' -e 's/://g' |
@@ -92,7 +95,7 @@ function cheat() {
   if $(echo $1 | grep -q '\.man$'); then
     \cat $1 | nvim -R
   fi
-  /usr/local/bin/cheat $1 | bat --theme TwoDark --language=md
+  /usr/local/bin/cheat $1 | bat -p --theme TwoDark --language=md
 }
 
 function hosts() {

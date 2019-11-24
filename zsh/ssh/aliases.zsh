@@ -6,22 +6,42 @@
 # for issuing one-off commands across a cluster it hits the sweet
 # spot in terms of simplicity and trasparency.
 
-alias pshal="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/all"
+function pssh_with_hosts() {
+  local hostfile=$1
+  if ! test -e $hostfile; then
+    echo '[ERROR]: hostfile does not exist.'
+    exit 1
+  fi
+  shift
+  pssh -i -h $hostfile "DEBIAN_FRONTEND=noninteractive $@"
+}
+
+# =========
+# -- ALL --
+# =========
+alias pshal="pssh_with_hosts ~/.pssh/all"
 alias pscpal="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/all"
 
-alias pshpis="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/rpis"
+# =========
+# -- PVE --
+# =========
+alias pshpve="pssh_with_hosts ~/.pssh/pve-lxc"
+alias pshpve3="pssh_with_hosts ~/.pssh/pve3-lxc"
+
+# ===========
+# -- RPi's --
+# ===========
+alias pshpis="pssh_with_hosts ~/.pssh/rpis"
 alias pscppis="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/rpis"
 
-alias pshwrk="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/wrk"
-alias pscpwrk="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/wrk"
-
-alias pshgluster="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/gluster"
-alias pscpgluster="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/gluster"
-
-alias pshrock="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/rock"
+# ==============
+# -- Rock64's --
+# ==============
+alias pshrock="pssh_with_hosts ~/.pssh/rock"
 alias pscprock="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/rock"
 
-alias pshff="DEBIAN_FRONTEND=noninteractive pssh -i -h ~/.pssh/ff"
+# -- roc-rk33288-
+alias pshff="pssh_with_hosts ~/.pssh/ff"
 alias pscpff="DEBIAN_FRONTEND=noninteractive pscp -h ~/.pssh/ff"
 
 alias mosh-home='ssh -S none -o "ProxyCommand=/usr/local/bin/mosh --fake-proxy -- %h %p" -t jesse@74.71.41.142 -p 33335'

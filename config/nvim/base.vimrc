@@ -121,7 +121,7 @@ set belloff+=ctrlg
 set t_vb=
 
 " Add a bit of extra margin to the left gutter.
-set foldcolumn=2
+" set foldcolumn=2
 
 set foldmethod=indent
 

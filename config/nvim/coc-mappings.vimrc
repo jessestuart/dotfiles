@@ -10,10 +10,8 @@ nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " ======================
 
 " List errors
-nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>
-
-" list commands available in tsserver (and others)
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+" nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>
+nnoremap ma ma
 
 " restart when tsserver gets wonky
 nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
@@ -29,3 +27,6 @@ vmap <leader>cf  <Plug>(coc-format-selected)
 " run code actions
 vmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
+
+nnoremap <M-d>  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <M-d>  :<C-u>CocList diagnostics<cr>

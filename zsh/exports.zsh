@@ -116,7 +116,7 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 export BYOBU_PREFIX=/usr/local
 
 export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 

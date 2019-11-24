@@ -7,7 +7,7 @@ config_files=($ZSH/**/*.zsh)
 # 1) Load the path file(s).
 for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
-source $ZSH/prompt/config.zsh
+# source $ZSH/prompt/config.zsh
 
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
 source <(antibody init)
@@ -16,11 +16,20 @@ source "$ZSH/antibody/config.zsh"
 
 # completion; use cache if updated within 24h
 autoload -Uz compinit
-if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-  compinit -d $HOME/.zcompdump
-else
-  compinit -C
-fi;
+compinit -C
+# if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+# 	compinit -d $HOME/.zcompdump;
+# else
+# 	compinit -C;
+# fi;
+
+# autoload -Uz compinit
+# if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+#   compinit -d $HOME/.zcompdump
+# else
+#   compinit -C
+# fi
+
 # # Hack to make zsh load more quickly by not regenerating completion data
 # # on every shell init.
 # # autoload -Uz compinit
@@ -40,28 +49,36 @@ fi;
 #   compinit -C
 # fi
 
-test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
+# test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
+
+autoload -U +X bashcompinit && bashcompinit
 
 ulimit -n 8192
 
 # 3) Load everything else. Order is important here for autocompletion to work.
-for file in ${${config_files:#*/path.zsh}:#**/completions.zsh}; do
-  . $file;
-done
+for file in ${${config_files:#*/path.zsh}:#**/completions.zsh}; do . $file; done
 
-for file in ${(M)config_files:#**/completions.zsh}; do
-  . $file
-done
+for file in ${(M)config_files:#**/completions.zsh}; do . $file; done
 
 if (( ! ${fpath[(I)/usr/local/share/zsh-completions]} )); then
   FPATH=/usr/local/share/zsh-completions:$FPATH
 fi
-# fpath=$(echo $fpath | sed -e 's/\s/\n/g' | sort | uniq | xargs echo)
+if (( ! ${fpath[(I)${ZSH}/fpath]} )); then
+  FPATH=${ZSH}/fpath:$FPATH
+fi
+# if (( ! ${fpath[(I)/usr/local/share/zsh/functions/]} )); then
+#   FPATH=/usr/local/share/zsh/functions/:$FPATH
+# fi
 
-source $fpath
+# fpath=$(echo $fpath | sed -e 's/\s/\n/g' | sort | uniq | xargs echo)
 
 unset config_files
 
 # Finally, cleanup $PATH to remove duplicates & whitespace.
-export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
-export PATH=$(echo "$PATH" | tr -d '\n' | sed -e 's/:$//' -e 's/::/:/g' -e 's/ /\\ /g')
+typeset -aU path
+typeset -aU fpath
+
+# source $fpath
+
+# export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
+# export PATH=$(echo "$PATH" | tr -d '\n' | sed -e 's/:$//' -e 's/::/:/g' -e 's/ /\\ /g')

@@ -221,8 +221,8 @@
 	name = Jesse Stuart
 	email = hi@jessestuart.com
 	signingkey = 4ECAB807BC6B6D41C5D2CF42AB409E7ED316A477
-[credential]
-	; helper = osxkeychain
+[credential "https://github.com"]
+	username = jessestuart
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f

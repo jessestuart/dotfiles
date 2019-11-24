@@ -138,7 +138,7 @@ function helmdown() {
 }
 
 function hui() {
-  helm upgrade --install --reuse-values $@
+  helm2 upgrade --install --reuse-values $@
   # helm push . jesse --force
 }
 

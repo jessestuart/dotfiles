@@ -427,7 +427,15 @@ function profile() {
 }
 
 function bak() {
-  sudo mv "$1" "$1.bak"
+  for file in $@; do
+    sudo mv "$file" "$file.bak"
+  done
+}
+
+function unbak() {
+  for file in $@; do
+    sudo mv "$file" "$(echo $file | sed 's/\.bak//')"
+  done
 }
 
 function swap() {

@@ -76,36 +76,36 @@ jc() {
 }
 
 # open autojump results in file browser
-jo() {
-  if [[ ${1} == -* ]] && [[ ${1} != "--" ]]; then
-    autojump ${@}
-    return
-  fi
+# jo() {
+#   if [[ ${1} == -* ]] && [[ ${1} != "--" ]]; then
+#     autojump ${@}
+#     return
+#   fi
 
-  setopt localoptions noautonamedirs
-  local output="$(autojump ${@})"
-  if [[ -d "${output}" ]]; then
-    case ${OSTYPE} in
-      linux*)
-        xdg-open "${output}"
-        ;;
-      darwin*)
-        open "${output}"
-        ;;
-      cygwin)
-        cygstart "" $(cygpath -w -a ${output})
-        ;;
-      *)
-        echo "Unknown operating system: ${OSTYPE}" 1>&2
-        ;;
-    esac
-  else
-    echo "autojump: directory '${@}' not found"
-    echo "\n${output}\n"
-    echo "Try \`autojump --help\` for more information."
-    false
-  fi
-}
+#   setopt localoptions noautonamedirs
+#   local output="$(autojump ${@})"
+#   if [[ -d "${output}" ]]; then
+#     case ${OSTYPE} in
+#       linux*)
+#         xdg-open "${output}"
+#         ;;
+#       darwin*)
+#         open "${output}"
+#         ;;
+#       cygwin)
+#         cygstart "" $(cygpath -w -a ${output})
+#         ;;
+#       *)
+#         echo "Unknown operating system: ${OSTYPE}" 1>&2
+#         ;;
+#     esac
+#   else
+#     echo "autojump: directory '${@}' not found"
+#     echo "\n${output}\n"
+#     echo "Try \`autojump --help\` for more information."
+#     false
+#   fi
+# }
 
 # open autojump results (child directory) in file browser
 jco() {

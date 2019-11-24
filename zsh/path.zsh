@@ -7,7 +7,7 @@ export PATH="/usr/sbin:$PATH"
 
 # Couple special `bin` directories for [dash](https://github.com/IFTTT/dash)
 # + some nifty commands from [Zach Holman](https://github.com/holman/dotfiles)
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin/:$PATH"
 export PATH="$HOME/bin/dash:$PATH"
 export PATH="$HOME/bin/holman:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -21,18 +21,13 @@ export PATH=$PATH:$MONGO_PATH/bin
 # Python.
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-# Yarn / NPM.
-export PATH="/usr/local/opt/yarn/bin:$PATH"
-export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH="/usr/local/node/bin:$PATH"
-
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # export PATH="$PATH:~/dotfiles/**/*.sh"
 
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 
 export PATH="$HOME/github/emacs/src:$PATH"
@@ -52,7 +47,7 @@ if [ "$(uname -s | grep -q 'Linux')" -eq '0' ]; then
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/coreutils/libexec/gnuman:$PATH"
   export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
@@ -71,6 +66,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/bin/sonar-scanner/bin:$PATH"
+export PATH="$(yarn global bin):$PATH"
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 PATH=$PATH:$ANDROID_HOME/emulator
@@ -85,13 +81,8 @@ test -e "$HOME/.secrets" && . "$HOME/.secrets"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.6.0/bin/bundle:$PATH"
-export PATH="$HOME/.bin/:$PATH"
 
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 
 export PATH=/opt/kata/bin:$PATH
 export PATH=/home/linuxbrew/.linuxbrew/opt/python/libexec/bin:$PATH
@@ -99,11 +90,24 @@ export PATH=/usr/local/nvim/bin:$PATH
 export PATH=/snap/bin:$PATH
 
 export PATH=$PATH:~/.kube/plugins/jordanwilson230
+
 export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
 
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
-export PATH=$PATH:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin/x86_64
+export PATH="/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin/x86_64:$PATH"
 
-# Always prefer /usr/local/bin.
+# export PATH="/Library/Developer/CommandLineTools/usr/bin:$PATH"
+export PATH="~/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
+
+# (Usually) prefer /usr/local/bin.
 export PATH="/usr/local/bin:$PATH"
+
+# Yarn / NPM.
+export PATH="/usr/local/opt/yarn/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="/usr/local/node/bin:$PATH"
+export PATH="$HOME/.pyenv/versions/3.8.0/bin:$PATH"
+export PATH="/usr/local/nvim/bin:$PATH"
+
+typeset -aU path

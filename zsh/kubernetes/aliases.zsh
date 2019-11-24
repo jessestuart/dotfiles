@@ -48,6 +48,7 @@ alias kgcrash="kgpw | sort -n -k5"
 # Velero aliases for quickly querying backups, etc.
 # =================================================
 alias abg="velero backup get"
+alias abgh="velero backup get | head -n20"
 alias abdel="velero backup delete --confirm"
 alias abd="velero backup describe"
 
