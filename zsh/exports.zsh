@@ -122,4 +122,6 @@ export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 
 export HISTORIAN_SRC="${HOME}/.zhistory"
 
-PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
+# PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
+export LDFLAGS="-L/usr/local/opt/libxml2/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/libxml2/include:$CPPFLAGS"

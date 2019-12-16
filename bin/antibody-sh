@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+antibody bundle < ~/.zsh/antibody.conf > ~/.zsh/antibody.sh
+
+if hash gtm &>/dev/null; then
+  antibody bundle jessestuart/gtm-terminal-plugin >> ~/.zsh/antibody.sh
+fi
+
+if hash wakatime &>/dev/null; then
+  antibody bundle sobolevn/wakatime-zsh-plugin >> ~/.zsh/antibody.sh
+fi

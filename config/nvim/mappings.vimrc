@@ -245,3 +245,7 @@ nnoremap <S-Up>    :wincmd  +<CR>
 " down / shift-left decreases height
 nnoremap <Down>    :5wincmd -<CR>
 nnoremap <S-Down>  :wincmd  -<CR>
+
+nnoremap <leader>f :Rg -g '!yarn.lock'<CR>
+
+nnoremap <leader>yad :!yarn add

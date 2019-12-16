@@ -21,7 +21,7 @@ Plug 'jessestuart/vim-markdown-link-convert'
 " ============================
 " Linting / fixing. Must have.
 " ============================
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " -------------------------------------
 " File management, searching, etc.
@@ -120,12 +120,12 @@ Plug 'Shougo/denite.nvim'
 " ==========
 " Typescript
 " ==========
-" Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescript.tsx'] }
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'Quramy/tsuquyomi', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
@@ -324,8 +324,9 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 Plug 'ruanyl/coverage.vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 Plug 'hjson/vim-hjson'
 Plug 'tweekmonster/startuptime.vim'
+Plug 'iberianpig/tig-explorer.vim'
+Plug 'jszakmeister/markdown2ctags'
 
 call plug#end()

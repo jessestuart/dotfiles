@@ -30,3 +30,5 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
 nnoremap <M-d>  :<C-u>CocList diagnostics<cr>
 " nnoremap <silent> <M-d>  :<C-u>CocList diagnostics<cr>
+
+nnoremap <leader>ge :CocCommand explorer<CR>

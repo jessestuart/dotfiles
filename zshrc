@@ -18,11 +18,11 @@ precmd() {
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
-if hash sqlite3 &>/dev/null; then
-  source "$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-larkery-SLASH-zsh-histdb/sqlite-history.zsh"
-  autoload -Uz add-zsh-hook
-  add-zsh-hook precmd histdb-update-outcome
-fi
+# if hash sqlite3 &>/dev/null; then
+#   source "$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-larkery-SLASH-zsh-histdb/sqlite-history.zsh"
+#   autoload -Uz add-zsh-hook
+#   add-zsh-hook precmd histdb-update-outcome
+# fi
 
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /Users/jesse/go/bin/mc mc
@@ -35,3 +35,12 @@ if ! test -z $ZPROFILE; then
   zprof | head -n20 | tail -n+3 | sort -k5nr
   unset ZPROFILE
 fi
+
+export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch
+GIT_PS1_SHOWCOLORHINTS=1
+PROMPT_COMMAND='__git_ps1 "${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w" "\[\033[00m\]\$ "'
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

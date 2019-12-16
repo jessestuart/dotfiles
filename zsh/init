@@ -9,6 +9,8 @@ for file in ${(M)config_files:#*/path.zsh}; do . $file; done
 
 # source $ZSH/prompt/config.zsh
 
+export ANTIBODY_HOME=$(antibody home)
+
 # 2) Initialize antibody, a lightweight, git-based "plugin" manager.
 # source <(antibody init)
 # antibody bundle < "$ZSH/antibody.conf"
@@ -51,11 +53,12 @@ fi;
 
 # test -e $ZSH/utils/tinylogger.zsh && . $ZSH/utils/tinylogger.zsh
 
-autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X bashcompinit && bashcompinit
 
-ulimit -n 8192
+# ulimit -n 8192
 
 # 3) Load everything else. Order is important here for autocompletion to work.
+
 for file in ${${config_files:#*/path.zsh}:#**/completions.zsh}; do . $file; done
 
 for file in ${(M)config_files:#**/completions.zsh}; do . $file; done
@@ -63,9 +66,7 @@ for file in ${(M)config_files:#**/completions.zsh}; do . $file; done
 if (( ! ${fpath[(I)/usr/local/share/zsh-completions]} )); then
   FPATH=/usr/local/share/zsh-completions:$FPATH
 fi
-if (( ! ${fpath[(I)${ZSH}/fpath]} )); then
-  FPATH=${ZSH}/fpath:$FPATH
-fi
+if (( ! ${fpath[(I)${ZSH}/fpath]} )); then FPATH=${ZSH}/fpath:$FPATH fi
 # if (( ! ${fpath[(I)/usr/local/share/zsh/functions/]} )); then
 #   FPATH=/usr/local/share/zsh/functions/:$FPATH
 # fi

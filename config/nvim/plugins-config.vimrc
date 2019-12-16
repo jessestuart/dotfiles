@@ -57,6 +57,7 @@ let g:vim_markdown_toc_autofit = 1
 let g:pandoc#modules#disabled = ['folding']
 let g:pandoc#spell#enabled = 0
 let g:pandoc#filetypes#handled = ['markdown', 'pandoc', 'rst', 'textile']
+let g:pandoc#filetypes#pandoc_markdown = 0
 let g:pandoc#syntax#conceal#urls = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,7 +293,7 @@ augroup END
 " Neoterm.
 " ========
 let g:neoterm_automap_keys = ',tt'
-let g:neoterm_default_mod = "vertical"
+let g:neoterm_default_mod = 'vertical'
 " Use gx{text-objects} such as gxip
 nmap gx <Plug>(neoterm-repl-send)
 xmap gx <Plug>(neoterm-repl-send)
@@ -386,16 +387,16 @@ let g:airline#extensions#tagbar#enabled = 1
 
 let g:multi_cursor_exit_from_insert_mode = 0
 
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_function             = 'ƒ'
+let g:javascript_conceal_null                 = 'ø'
+let g:javascript_conceal_this                 = '@'
+let g:javascript_conceal_return               = '⇚'
+let g:javascript_conceal_undefined            = '¿'
+let g:javascript_conceal_NaN                  = 'ℕ'
+let g:javascript_conceal_prototype            = '¶'
+let g:javascript_conceal_static               = '•'
+let g:javascript_conceal_super                = 'Ω'
+let g:javascript_conceal_arrow_function       = '⇒'
 
 " set runtimepath+=~/.config/nvim/plugged/LanguageClient-neovim
 
@@ -453,3 +454,6 @@ endif
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+"
+
+set tags^=./.git/tags

@@ -19,7 +19,8 @@ alias krmpof="kubectl delete pod --force --grace-period 0"
 # =====================================================================
 # Single out pods that are marked are `Running` but aren't yet healthy.
 # =====================================================================
-alias kgpw0="kgpw | rg '0/'"
+alias kgpw0="kgpw | rg '0/' | rg -v Completed"
+alias kgpw0]="kgpw0"
 
 alias nodes="kubectl get nodes --no-headers | wc -l"
 

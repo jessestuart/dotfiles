@@ -27,7 +27,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # export PATH="$PATH:~/dotfiles/**/*.sh"
 
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-# export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 
 export PATH="$HOME/github/emacs/src:$PATH"
@@ -47,7 +47,7 @@ if [ "$(uname -s | grep -q 'Linux')" -eq '0' ]; then
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-  # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/coreutils/libexec/gnuman:$PATH"
   export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
@@ -68,11 +68,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/bin/sonar-scanner/bin:$PATH"
 # export PATH="$(yarn global bin):$PATH"
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-PATH=$PATH:$ANDROID_HOME/emulator
-PATH=$PATH:$ANDROID_HOME/tools
-PATH=$PATH:$ANDROID_HOME/platform-tools
-PATH=$PATH:$ANDROID_HOME/tools/bin
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# PATH=$PATH:$ANDROID_HOME/emulator
+# PATH=$PATH:$ANDROID_HOME/tools
+# PATH=$PATH:$ANDROID_HOME/platform-tools
+# PATH=$PATH:$ANDROID_HOME/tools/bin
 
 # =============
 # ~* Secrets *~
@@ -92,6 +92,8 @@ export PATH=/snap/bin:$PATH
 export PATH=$PATH:~/.kube/plugins/jordanwilson230
 
 export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
+
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
 
 # export PATH="/usr/local/opt/sqlite/bin:$PATH"
 

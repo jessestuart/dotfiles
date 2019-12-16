@@ -60,6 +60,7 @@ alias pb64="pbpaste | base64 -d"
 alias ydl="youtube-dl"
 alias fmap="for file in "
 alias prefs="open /System/Applications/System\ Preferences.app"
+# alias antibody-sh="antibody bundle < ~/.zsh/antibody.conf > ~/.zsh/antibody.sh"
 
 alias zpga="zpool get all "
 alias zga="zfs get all "
@@ -77,6 +78,12 @@ alias -g .rv="| rg -v "
 alias psrg="ps aux | rgi"
 
 alias scratch='cd $(mktemp -d)'
+alias scr='cd $(mktemp -d)'
+
+alias -g xi="| xargs -I{} "
+alias -g .x="| xargs "
+alias -g ,,="| "
+alias cd.="eval 'cd !$'"
 
 function ports() {
   # netstat -plunt | \
@@ -280,3 +287,7 @@ alias awk1,2="awk '{print \$1,\$2}'"
 
 # Allow alias expansion for `watch` command.
 alias watch="watch --color "
+
+# if hash ncdu &>/dev/null; then
+#   alias du="ncdu --color dark -rr -x"
+# fi
