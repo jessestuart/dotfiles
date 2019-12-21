@@ -1,3 +1,10 @@
 [ver:1,total:360]
 .gtm/terminal.app:343,1576904400:343,r
 tmux.conf:17,1576904400:17,m
+
+[ver:1,total:600]
+.gtm/terminal.app:510,1576900800:315,1576904400:195,r
+zlogin:45,1576904400:45,m
+zshrc:15,1576900800:15,m
+tmux.conf:15,1576900800:15,r
+zsh/init:15,1576900800:15,r
