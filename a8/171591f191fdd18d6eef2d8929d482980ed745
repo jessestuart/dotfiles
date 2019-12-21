@@ -1,0 +1,13 @@
+[ver:1,total:2640]
+zsh/aliases.zsh:660,1576548000:300,1576551600:180,1576778400:180,m
+config/nvim/coc-settings.json:480,1576548000:300,1576872000:180,r
+.gtm/terminal.app:385,1576692000:280,1576886400:45,1576900800:60,r
+zsh/exports.zsh:360,1576551600:340,1576692000:20,m
+zsh/path.zsh:200,1576551600:200,m
+zsh/docker/functions.zsh:180,1576623600:180,r
+zsh/man/man1/fx.1:135,1576886400:135,m
+zsh/man/fx.1:120,1576551600:120,d
+config/nvim/plugins.vimrc:30,1576548000:30,m
+config/nvim/ale.vimrc:30,1576548000:30,r
+zsh/docker/aliases.zsh:30,1576551600:30,r
+zsh/vim/aliases.zsh:30,1576551600:30,m
