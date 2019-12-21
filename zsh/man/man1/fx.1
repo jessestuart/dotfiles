@@ -1,0 +1,342 @@
+.TH Documentation
+.RS
+.IP \(bu 2
+Getting started \[la]#getting-started\[ra]
+.IP \(bu 2
+Usage \[la]#usage\[ra]
+.RS
+.IP \(bu 2
+Anonymous function \[la]#anonymous-function\[ra]
+.IP \(bu 2
+Binding \[la]#binding\[ra]
+.IP \(bu 2
+Dot \[la]#dot\[ra]
+.IP \(bu 2
+Chaining \[la]#chaining\[ra]
+.IP \(bu 2
+Updating \[la]#updating\[ra]
+.IP \(bu 2
+Edit\-in\-place \[la]#edit-in-place\[ra]
+.IP \(bu 2
+Using packages \[la]#using-packages\[ra]
+.RE
+.IP \(bu 2
+Using .fxrc \[la]#using-fxrc\[ra]
+.IP \(bu 2
+Formatting \[la]#formatting\[ra]
+.IP \(bu 2
+Other examples \[la]#other-examples\[ra]
+.IP \(bu 2
+Streaming mode \[la]#streaming-mode\[ra]
+.RS
+.IP \(bu 2
+Filtering \[la]#filtering\[ra]
+.RE
+.IP \(bu 2
+Interactive mode \[la]#interactive-mode\[ra]
+.RS
+.IP \(bu 2
+Searching \[la]#searching\[ra]
+.IP \(bu 2
+Selecting text \[la]#selecting-text\[ra]
+.RE
+.IP \(bu 2
+Memory Usage \[la]#memory-usage\[ra]
+.RE
+.SH Getting started
+.PP
+\fB\fCfx\fR can work in two modes: cli and interactive. To start interactive mode pipe any JSON into \fB\fCfx\fR:
+.PP
+.RS
+.nf
+$ curl ... | fx
+.fi
+.RE
+.PP
+Or you can pass a filename as the first parameter:
+.PP
+.RS
+.nf
+$ fx my.json
+.fi
+.RE
+.PP
+If any argument was passed, \fB\fCfx\fR will apply it and prints to stdout.
+.SH Usage
+.SS Anonymous function
+.PP
+Use an anonymous function as reducer which gets JSON and processes it:
+\fB\fCbash
+$ echo '{"foo": [{"bar": "value"}]}' | fx 'x => x.foo[0].bar'
+value
+\fR
+.SS Binding
+.PP
+If you don't pass anonymous function \fB\fCparam => ...\fR, code will be automatically transformed into anonymous function.
+And you can get access to JSON by \fB\fCthis\fR keyword:
+\fB\fCbash
+$ echo '{"foo": [{"bar": "value"}]}' | fx 'this.foo[0].bar'
+value
+\fR
+.SS Dot
+.PP
+It is possible to omit \fB\fCthis\fR keyword:
+\fB\fCbash
+$ echo '{"foo": [{"bar": "value"}]}' | fx .foo[0].bar
+value
+\fR
+.PP
+If a single dot is passed, the input JSON will be formatted but otherwise unaltered:
+\fB\fCbash
+$ echo '{"foo": "bar"}' | fx .
+{
+  "foo": "bar"
+}
+\fR
+.SS Chaining
+.PP
+You can pass any number of anonymous functions for reducing JSON:
+\fB\fCbash
+$ echo '{"foo": [{"bar": "value"}]}' | fx 'x => x.foo' 'this[0]' 'this.bar'
+value
+\fR
+.SS Updating
+.PP
+You can update existing JSON using the spread operator:
+.PP
+.RS
+.nf
+$ echo '{"count": 0}' | fx '{...this, count: 1}'
+{
+  "count": 1
+}
+.fi
+.RE
+.SS Edit\-in\-place
+.PP
+\fB\fCfx\fR provides a function \fB\fCsave\fR which will save everything in place and return saved object.
+This function can be only used with filename as first argument to \fB\fCfx\fR command.
+.PP
+Usage:
+.PP
+.RS
+.nf
+fx data.json '{...this, count: this.count+1}' save .count
+.fi
+.RE
+.SS Using packages
+.PP
+Use any npm package by installing it globally:
+\fB\fCbash
+$ npm install \-g lodash
+$ cat package.json | fx 'require("lodash").keys(this.dependencies)'
+\fR
+.SH Using .fxrc
+.PP
+Create \fI\&.fxrc\fP file in \fB\fC$HOME\fR directory, and require any packages or define global functions.
+.PP
+For example, access all lodash methods without \fB\fC_\fR prefix. Put in your \fB\fC\&.fxrc\fR file:
+.PP
+.RS
+.nf
+Object.assign(global, require('lodash/fp'))
+.fi
+.RE
+.PP
+And now you will be able to call all lodash methods. For example, see who's been committing to react recently:
+.PP
+.RS
+.nf
+curl 'https://api.github.com/repos/facebook/react/commits?per_page=100' \\
+| fx 'groupBy("commit.author.name")' 'mapValues(size)' toPairs 'sortBy(1)' reverse 'take(10)' fromPairs
+.fi
+.RE
+.PP
+.RS
+To be able require global modules make sure you have correct \fB\fCNODE_PATH\fR env variable.
+\fB\fCbash
+export NODE_PATH=`npm root \-g`
+\fR
+.RE
+.SH Formatting
+.PP
+If you need output other than JSON (for example arguments for xargs), do not return anything from the reducer.
+\fB\fCundefined\fR value is printed into stderr by default.
+\fB\fCbash
+echo '[]' | fx 'void 0'
+undefined
+\fR
+.PP
+.RS
+.nf
+echo '[1,2,3]' | fx 'this.forEach(x => console.log(x))' 2>/dev/null | xargs echo
+1 2 3
+.fi
+.RE
+.SH Other examples
+.PP
+Convert object to array:
+\fB\fCbash
+$ cat package.json | fx 'Object.keys(this.dependencies)'
+\fR
+.PP
+Or by two functions:
+\fB\fCbash
+$ cat package.json | fx .dependencies Object.keys
+\fR
+.PP
+By the way, fx has shortcut for \fB\fCObject.keys\fR\&. Previous example can be rewritten as:
+.PP
+.RS
+.nf
+$ cat package.json | fx .dependencies ?
+.fi
+.RE
+.SH Streaming mode
+.PP
+\fB\fCfx\fR supports line\-delimited JSON and concatenated JSON streaming.
+.PP
+.RS
+.nf
+$ kubectl logs ... | fx .message
+.fi
+.RE
+.PP
+.RS
+Note what is object lacks \fB\fCmessage\fR field, \fIundefined\fP will be printed to stderr.
+This is useful to see if you are skipping some objects. But if you want to hide them,
+redirect stderr to \fB\fC/dev/null\fR\&.
+.RE
+.SS Filtering
+.PP
+Sometimes it is necessary to omit some messages in JSON stream, or select only specified log messages.
+For this purpose, \fB\fCfx\fR has special helpers \fB\fCselect\fR/\fB\fCfilter\fR, pass function into it to select/filter JSON messages.
+.PP
+.RS
+.nf
+$ kubectl logs ... | fx 'select(x => x.status == 500)' .message
+.fi
+.RE
+.PP
+.RS
+.nf
+$ kubectl logs ... | fx 'filter(x => x.status < 499)' .message
+.fi
+.RE
+.PP
+.RS
+Note, what if use override \fB\fCfilter\fR/\fB\fCselect\fR in \fI\&.fxrc\fP you still able to access them with prefix:
+\fB\fCstd.select(cb)\fR or \fB\fCstd.filter(cd)\fR
+.RE
+.SH Interactive mode
+.PP
+Click on fields to expand or collapse JSON tree, use mouse wheel to scroll view.
+.PP
+Next commands available in interactive mode:
+.TS
+allbox;
+cb cb
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+.
+Key	Command
+\fB\fCq\fR or \fB\fCEsc\fR or \fB\fCCtrl\fR+\fB\fCc\fR	Exit
+\fB\fCup\fR or \fB\fCk\fR	Move cursor up
+\fB\fCdown\fR or \fB\fCj\fR	Move cursor down
+\fB\fCleft\fR or \fB\fCh\fR	Collapse
+\fB\fCright\fR or \fB\fCl\fR	Expand
+\fB\fCShift\fR+\fB\fCright\fR or \fB\fCL\fR	Expand all under cursor
+\fB\fCe\fR	Expand all
+\fB\fCE\fR	Collapse all
+\fB\fCg\fR	Scroll to top
+\fB\fCG\fR	Scroll to bottom
+\fB\fC\&.\fR	Edit filter
+\fB\fC/\fR	Search
+\fB\fCn\fR	Find next
+\fB\fCp\fR	Exit and print JSON to stdout
+\fB\fCP\fR	Exit and print fully expanded JSON to stdout
+.TE
+.PP
+These commands are available when editing the filter:
+.TS
+allbox;
+cb cb
+l l
+l l
+l l
+l l
+.
+Key	Command
+\fB\fCEnter\fR	Apply filter
+\fB\fCCtrl\fR+\fB\fCu\fR	Clear filter
+\fB\fCCtrl\fR+\fB\fCw\fR	Delete last part
+\fB\fCup\fR/\fB\fCdown\fR	Select autocomplete
+.TE
+.SS Searching
+.PP
+Press \fB\fC/\fR and type regexp pattern to search in current JSON. Search work with currently applied filter.
+.PP
+Examples of pattern and corresponding regexp:
+.TS
+allbox;
+cb cb
+l l
+l l
+l l
+l l
+.
+Pattern	RegExp
+\fB\fC/apple\fR	\fB\fC/apple/ig\fR
+\fB\fC/apple/\fR	\fB\fC/apple/\fR
+\fB\fC/apple/u\fR	\fB\fC/apple/u\fR
+\fB\fC/\\w+\fR	\fB\fC/\\w+/ig\fR
+.TE
+.SS Selecting text
+.PP
+You may found what you can't just select text in fx. This is due the fact that all mouse events redirected to stdin. To be able select again you need instruct your terminal not to do it. This can be done by holding special keys while selecting:
+.TS
+allbox;
+cb cb
+l l
+l l
+l l
+.
+Key	Terminal
+\fB\fCOption\fR+\fB\fCMouse\fR	iTerm2, Hyper
+\fB\fCFn\fR+\fB\fCMouse\fR	Terminal.app
+\fB\fCShift\fR+\fB\fCMouse\fR	Linux
+.TE
+.PP
+.RS
+Note what you can press \fB\fCp\fR/\fB\fCP\fR to print everything to stdout and select if there.
+.RE
+.SH Memory Usage
+.PP
+You may find that sometimes, on really big JSON files, fx prints an error message like this:
+.PP
+.RS
+.nf
+FATAL ERROR: JavaScript heap out of memory
+.fi
+.RE
+.PP
+V8 limits memory usage to around 2 GB by default. You can increase the limit by putting this line in your \fI\&.profile\fP:
+.PP
+.RS
+.nf
+export NODE_OPTIONS='\-\-max\-old\-space\-size=8192'
+.fi
+.RE

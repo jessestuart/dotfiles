@@ -21,7 +21,7 @@ Plug 'jessestuart/vim-markdown-link-convert'
 " ============================
 " Linting / fixing. Must have.
 " ============================
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " -------------------------------------
 " File management, searching, etc.

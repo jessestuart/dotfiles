@@ -62,6 +62,9 @@ alias fmap="for file in "
 alias prefs="open /System/Applications/System\ Preferences.app"
 # alias antibody-sh="antibody bundle < ~/.zsh/antibody.conf > ~/.zsh/antibody.sh"
 
+alias dns-cf="m network location switch cloudflare"
+alias dns-ag="m network location switch adguard"
+
 alias zpga="zpool get all "
 alias zga="zfs get all "
 
@@ -74,6 +77,7 @@ alias -g .s="| sort "
 alias -g .r="| rg "
 alias -g R="| rg -i "
 alias -g .rv="| rg -v "
+alias -g .jq="| jq "
 
 alias psrg="ps aux | rgi"
 

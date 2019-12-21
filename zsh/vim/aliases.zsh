@@ -31,6 +31,7 @@ alias vipath="$EDITOR ~/dotfiles/zsh/path.zsh"
 alias vival="$EDITOR ~/dotfiles/zsh/vim/aliases.zsh"
 alias vt="$EDITOR ~/.tmux.conf"
 alias vz="$EDITOR ~/dotfiles/zsh/zshrc"
+alias viexports="$EDITOR ~/dotfiles/zsh/exports.zsh"
 
 # ===================================
 # Vim-specific configuration aliases.
