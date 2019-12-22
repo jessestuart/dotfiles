@@ -9,3 +9,5 @@ fi
 if hash wakatime &>/dev/null; then
   antibody bundle sobolevn/wakatime-zsh-plugin >> ~/.zsh/antibody.sh
 fi
+
+sed 's#\s/.*/antibody# ${ANTIBODY_HOME}#' -i ~/dotfiles/zsh/antibody.sh
